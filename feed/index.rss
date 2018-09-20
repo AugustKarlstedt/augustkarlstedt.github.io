@@ -9,26 +9,18 @@
 
 <channel>
 	<title>August Karlstedt</title>
-	<atom:link href="http://192.168.99.100/feed/" rel="self" type="application/rss+xml" />
-	<link>http://192.168.99.100:8000</link>
-	<description>Machine Learning Researcher, Software Engineer, Game Developer, and Consultant</description>
-	<lastBuildDate>Wed, 19 Sep 2018 06:15:17 +0000</lastBuildDate>
+	<atom:link href="http://localhost/feed/" rel="self" type="application/rss+xml" />
+	<link>http://localhost</link>
+	<description>Just another WordPress site</description>
+	<lastBuildDate>Thu, 20 Sep 2018 08:13:45 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=4.9.8</generator>
-
-<image>
-	<url>http://192.168.99.100:8000/contents/data/2017/05/cropped-swirl-32x32.png</url>
-	<title>August Karlstedt</title>
-	<link>http://192.168.99.100:8000</link>
-	<width>32</width>
-	<height>32</height>
-</image> 
 	<item>
 		<title>Long Short-Term Memory Neural Networks and Guitar Tablature</title>
-		<link>http://192.168.99.100:8000/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/</link>
-		<comments>http://192.168.99.100:8000/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/#respond</comments>
+		<link>http://localhost/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/</link>
+		<comments>http://localhost/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/#respond</comments>
 		<pubDate>Sun, 14 May 2017 02:54:02 +0000</pubDate>
 		<dc:creator><![CDATA[augustk]]></dc:creator>
 				<category><![CDATA[Computer Science]]></category>
@@ -467,13 +459,13 @@ Mrikk is
 </pre>
 <p>As you can see, it does a pretty good job. I think I need more training data!</p>
 ]]></content:encoded>
-			<wfw:commentRss>http://192.168.99.100:8000/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/feed/</wfw:commentRss>
+			<wfw:commentRss>http://localhost/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/feed/</wfw:commentRss>
 		<slash:comments>0</slash:comments>
 		</item>
 		<item>
 		<title>Spring Quarter 2017</title>
-		<link>http://192.168.99.100:8000/2017/05/10/spring-quarter-2017/</link>
-		<comments>http://192.168.99.100:8000/2017/05/10/spring-quarter-2017/#respond</comments>
+		<link>http://localhost/2017/05/10/spring-quarter-2017/</link>
+		<comments>http://localhost/2017/05/10/spring-quarter-2017/#respond</comments>
 		<pubDate>Wed, 10 May 2017 22:16:49 +0000</pubDate>
 		<dc:creator><![CDATA[augustk]]></dc:creator>
 				<category><![CDATA[Computer Science]]></category>
@@ -488,13 +480,13 @@ Mrikk is
 <p>CSC 594 – Topics in Artificial Intelligence: Natural Language Processing</p>
 <p>&nbsp;</p>
 ]]></content:encoded>
-			<wfw:commentRss>http://192.168.99.100:8000/2017/05/10/spring-quarter-2017/feed/</wfw:commentRss>
+			<wfw:commentRss>http://localhost/2017/05/10/spring-quarter-2017/feed/</wfw:commentRss>
 		<slash:comments>0</slash:comments>
 		</item>
 		<item>
 		<title>The BEST Video Series for Linear Algebra</title>
-		<link>http://192.168.99.100:8000/2017/01/31/the-best-video-series-for-linear-algebra/</link>
-		<comments>http://192.168.99.100:8000/2017/01/31/the-best-video-series-for-linear-algebra/#respond</comments>
+		<link>http://localhost/2017/01/31/the-best-video-series-for-linear-algebra/</link>
+		<comments>http://localhost/2017/01/31/the-best-video-series-for-linear-algebra/#respond</comments>
 		<pubDate>Wed, 01 Feb 2017 05:50:24 +0000</pubDate>
 		<dc:creator><![CDATA[augustk]]></dc:creator>
 				<category><![CDATA[Uncategorized]]></category>
@@ -503,13 +495,13 @@ Mrikk is
 		<description><![CDATA[]]></description>
 				<content:encoded><![CDATA[<p><iframe width="730" height="411" src="https://www.youtube.com/embed/videoseries?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
 ]]></content:encoded>
-			<wfw:commentRss>http://192.168.99.100:8000/2017/01/31/the-best-video-series-for-linear-algebra/feed/</wfw:commentRss>
+			<wfw:commentRss>http://localhost/2017/01/31/the-best-video-series-for-linear-algebra/feed/</wfw:commentRss>
 		<slash:comments>0</slash:comments>
 		</item>
 		<item>
 		<title>Winter Quarter 2017</title>
-		<link>http://192.168.99.100:8000/2016/11/29/winter-quarter-2017/</link>
-		<comments>http://192.168.99.100:8000/2016/11/29/winter-quarter-2017/#respond</comments>
+		<link>http://localhost/2016/11/29/winter-quarter-2017/</link>
+		<comments>http://localhost/2016/11/29/winter-quarter-2017/#respond</comments>
 		<pubDate>Wed, 30 Nov 2016 00:50:15 +0000</pubDate>
 		<dc:creator><![CDATA[augustk]]></dc:creator>
 				<category><![CDATA[Computer Science]]></category>
@@ -522,13 +514,13 @@ Mrikk is
 <p>CSC 577 &#8211; Recommender Systems</p>
 <p>SE 450 &#8211; Object-Oriented Software Development</p>
 ]]></content:encoded>
-			<wfw:commentRss>http://192.168.99.100:8000/2016/11/29/winter-quarter-2017/feed/</wfw:commentRss>
+			<wfw:commentRss>http://localhost/2016/11/29/winter-quarter-2017/feed/</wfw:commentRss>
 		<slash:comments>0</slash:comments>
 		</item>
 		<item>
 		<title>Fall Quarter 2016 (First Graduate Quarter!)</title>
-		<link>http://192.168.99.100:8000/2016/11/29/fall-quarter-2016-first-graduate-quarter/</link>
-		<comments>http://192.168.99.100:8000/2016/11/29/fall-quarter-2016-first-graduate-quarter/#respond</comments>
+		<link>http://localhost/2016/11/29/fall-quarter-2016-first-graduate-quarter/</link>
+		<comments>http://localhost/2016/11/29/fall-quarter-2016-first-graduate-quarter/#respond</comments>
 		<pubDate>Wed, 30 Nov 2016 00:26:06 +0000</pubDate>
 		<dc:creator><![CDATA[augustk]]></dc:creator>
 				<category><![CDATA[Data Analysis]]></category>
@@ -548,13 +540,13 @@ Mrikk is
 <p>I wound up with an A and an A-, for CSC 447 and CSC 453, respectively.</p>
 <p>CSC 421 was one of those courses that is really tough, but you where you learn so much. I probably could have benefited taking this course in-person, but I still managed to save some time. Since this is the first time I&#8217;ve ever recorded data like this, it&#8217;ll be interesting to compare to next quarter (where I am taking an in-person course). All said and done, I wound up with a C+ in CSC 421, bringing my GPA for the quarter to a not-too-shabby 3.33.</p>
 ]]></content:encoded>
-			<wfw:commentRss>http://192.168.99.100:8000/2016/11/29/fall-quarter-2016-first-graduate-quarter/feed/</wfw:commentRss>
+			<wfw:commentRss>http://localhost/2016/11/29/fall-quarter-2016-first-graduate-quarter/feed/</wfw:commentRss>
 		<slash:comments>0</slash:comments>
 		</item>
 		<item>
 		<title>Amazing Resource for Linear Algebra</title>
-		<link>http://192.168.99.100:8000/2016/11/26/amazing-resource-for-linear-algebra/</link>
-		<comments>http://192.168.99.100:8000/2016/11/26/amazing-resource-for-linear-algebra/#respond</comments>
+		<link>http://localhost/2016/11/26/amazing-resource-for-linear-algebra/</link>
+		<comments>http://localhost/2016/11/26/amazing-resource-for-linear-algebra/#respond</comments>
 		<pubDate>Sun, 27 Nov 2016 04:03:42 +0000</pubDate>
 		<dc:creator><![CDATA[augustk]]></dc:creator>
 				<category><![CDATA[Uncategorized]]></category>
@@ -563,13 +555,13 @@ Mrikk is
 		<description><![CDATA[http://immersivemath.com/ila/index.html]]></description>
 				<content:encoded><![CDATA[<p><a href="http://immersivemath.com/ila/index.html" target="_blank">http://immersivemath.com/ila/index.html</a></p>
 ]]></content:encoded>
-			<wfw:commentRss>http://192.168.99.100:8000/2016/11/26/amazing-resource-for-linear-algebra/feed/</wfw:commentRss>
+			<wfw:commentRss>http://localhost/2016/11/26/amazing-resource-for-linear-algebra/feed/</wfw:commentRss>
 		<slash:comments>0</slash:comments>
 		</item>
 		<item>
 		<title>Holoportation</title>
-		<link>http://192.168.99.100:8000/2016/11/23/holoportation/</link>
-		<comments>http://192.168.99.100:8000/2016/11/23/holoportation/#respond</comments>
+		<link>http://localhost/2016/11/23/holoportation/</link>
+		<comments>http://localhost/2016/11/23/holoportation/#respond</comments>
 		<pubDate>Wed, 23 Nov 2016 16:10:26 +0000</pubDate>
 		<dc:creator><![CDATA[augustk]]></dc:creator>
 				<category><![CDATA[Uncategorized]]></category>
@@ -578,13 +570,13 @@ Mrikk is
 		<description><![CDATA[]]></description>
 				<content:encoded><![CDATA[<p><iframe width="730" height="411" src="https://www.youtube.com/embed/84ngPFBWLVI?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
 ]]></content:encoded>
-			<wfw:commentRss>http://192.168.99.100:8000/2016/11/23/holoportation/feed/</wfw:commentRss>
+			<wfw:commentRss>http://localhost/2016/11/23/holoportation/feed/</wfw:commentRss>
 		<slash:comments>0</slash:comments>
 		</item>
 		<item>
 		<title>How to Fix Inkscape&#8217;s Default Units (and Finally Work With Illustrator)</title>
-		<link>http://192.168.99.100:8000/2016/11/21/how-to-fix-inkscapes-default-units-and-finally-work-with-illustrator/</link>
-		<comments>http://192.168.99.100:8000/2016/11/21/how-to-fix-inkscapes-default-units-and-finally-work-with-illustrator/#respond</comments>
+		<link>http://localhost/2016/11/21/how-to-fix-inkscapes-default-units-and-finally-work-with-illustrator/</link>
+		<comments>http://localhost/2016/11/21/how-to-fix-inkscapes-default-units-and-finally-work-with-illustrator/#respond</comments>
 		<pubDate>Mon, 21 Nov 2016 22:20:00 +0000</pubDate>
 		<dc:creator><![CDATA[augustk]]></dc:creator>
 				<category><![CDATA[Uncategorized]]></category>
@@ -832,13 +824,13 @@ Mrikk is
 <p>Another cool feature is that Inkscape supports em units! However, after reviewing the source, the base font size is fixed at 12px. Maybe I can submit a fix for this, hmm.</p>
 <p>Happy Inkscaping!</p>
 ]]></content:encoded>
-			<wfw:commentRss>http://192.168.99.100:8000/2016/11/21/how-to-fix-inkscapes-default-units-and-finally-work-with-illustrator/feed/</wfw:commentRss>
+			<wfw:commentRss>http://localhost/2016/11/21/how-to-fix-inkscapes-default-units-and-finally-work-with-illustrator/feed/</wfw:commentRss>
 		<slash:comments>0</slash:comments>
 		</item>
 		<item>
 		<title>Microsoft Research &#8211; HoloLens</title>
-		<link>http://192.168.99.100:8000/2016/11/05/microsoft-research-hololens/</link>
-		<comments>http://192.168.99.100:8000/2016/11/05/microsoft-research-hololens/#respond</comments>
+		<link>http://localhost/2016/11/05/microsoft-research-hololens/</link>
+		<comments>http://localhost/2016/11/05/microsoft-research-hololens/#respond</comments>
 		<pubDate>Sun, 06 Nov 2016 05:26:45 +0000</pubDate>
 		<dc:creator><![CDATA[augustk]]></dc:creator>
 				<category><![CDATA[Uncategorized]]></category>
@@ -848,13 +840,13 @@ Mrikk is
 				<content:encoded><![CDATA[<p>HoloLens version 0.0.0.1? Maybe.</p>
 <p><iframe width="730" height="548" src="https://www.youtube.com/embed/3-mhqYBm7Xo?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
 ]]></content:encoded>
-			<wfw:commentRss>http://192.168.99.100:8000/2016/11/05/microsoft-research-hololens/feed/</wfw:commentRss>
+			<wfw:commentRss>http://localhost/2016/11/05/microsoft-research-hololens/feed/</wfw:commentRss>
 		<slash:comments>0</slash:comments>
 		</item>
 		<item>
 		<title>The ultimate slack emoji: LaTeX</title>
-		<link>http://192.168.99.100:8000/2016/10/13/the-ultimate-slack-emoji-latex/</link>
-		<comments>http://192.168.99.100:8000/2016/10/13/the-ultimate-slack-emoji-latex/#respond</comments>
+		<link>http://localhost/2016/10/13/the-ultimate-slack-emoji-latex/</link>
+		<comments>http://localhost/2016/10/13/the-ultimate-slack-emoji-latex/#respond</comments>
 		<pubDate>Thu, 13 Oct 2016 07:58:51 +0000</pubDate>
 		<dc:creator><![CDATA[augustk]]></dc:creator>
 				<category><![CDATA[Uncategorized]]></category>
@@ -865,14 +857,14 @@ Mrikk is
 <p>&nbsp;</p>
 <p>Here they are, simply add them as custom emoji to your slack. I&#8217;ve named mine :latex-1: :latex-2: :latex-3:</p>
 
-<a href='http://192.168.99.100:8000/2016/10/13/the-ultimate-slack-emoji-latex/latex-1/'><img width="128" height="128" src="http://192.168.99.100:8000/contents/data/2016/10/latex-1.png" class="attachment-thumbnail size-thumbnail" alt="" srcset="http://192.168.99.100:8000/contents/data/2016/10/latex-1.png 128w, http://192.168.99.100:8000/contents/data/2016/10/latex-1-100x100.png 100w" sizes="(max-width: 128px) 100vw, 128px" /></a>
-<a href='http://192.168.99.100:8000/2016/10/13/the-ultimate-slack-emoji-latex/latex-2/'><img width="128" height="128" src="http://192.168.99.100:8000/contents/data/2016/10/latex-2.png" class="attachment-thumbnail size-thumbnail" alt="" srcset="http://192.168.99.100:8000/contents/data/2016/10/latex-2.png 128w, http://192.168.99.100:8000/contents/data/2016/10/latex-2-100x100.png 100w" sizes="(max-width: 128px) 100vw, 128px" /></a>
-<a href='http://192.168.99.100:8000/2016/10/13/the-ultimate-slack-emoji-latex/latex-3/'><img width="128" height="128" src="http://192.168.99.100:8000/contents/data/2016/10/latex-3.png" class="attachment-thumbnail size-thumbnail" alt="" srcset="http://192.168.99.100:8000/contents/data/2016/10/latex-3.png 128w, http://192.168.99.100:8000/contents/data/2016/10/latex-3-100x100.png 100w" sizes="(max-width: 128px) 100vw, 128px" /></a>
+<a href='http://localhost/2016/10/13/the-ultimate-slack-emoji-latex/latex-1/'><img width="128" height="128" src="http://localhost/contents/data/2016/10/latex-1.png" class="attachment-thumbnail size-thumbnail" alt="" /></a>
+<a href='http://localhost/2016/10/13/the-ultimate-slack-emoji-latex/latex-2/'><img width="128" height="128" src="http://localhost/contents/data/2016/10/latex-2.png" class="attachment-thumbnail size-thumbnail" alt="" /></a>
+<a href='http://localhost/2016/10/13/the-ultimate-slack-emoji-latex/latex-3/'><img width="128" height="128" src="http://localhost/contents/data/2016/10/latex-3.png" class="attachment-thumbnail size-thumbnail" alt="" /></a>
 
 <p>And the result</p>
-<p><img class="alignnone size-full wp-image-219" src="http://192.168.99.100:8000/contents/data/2016/10/2016-10-13-02_57_54-clipboard.png" alt="2016-10-13-02_57_54-clipboard" width="325" height="68" srcset="http://192.168.99.100:8000/contents/data/2016/10/2016-10-13-02_57_54-clipboard.png 325w, http://192.168.99.100:8000/contents/data/2016/10/2016-10-13-02_57_54-clipboard-300x63.png 300w" sizes="(max-width: 325px) 100vw, 325px" /></p>
+<p><img class="alignnone size-full wp-image-219" src="http://localhost/contents/data/2016/10/2016-10-13-02_57_54-clipboard.png" alt="2016-10-13-02_57_54-clipboard" width="325" height="68" srcset="http://localhost/contents/data/2016/10/2016-10-13-02_57_54-clipboard.png 325w, http://localhost/contents/data/2016/10/2016-10-13-02_57_54-clipboard-300x63.png 300w" sizes="(max-width: 325px) 100vw, 325px" /></p>
 ]]></content:encoded>
-			<wfw:commentRss>http://192.168.99.100:8000/2016/10/13/the-ultimate-slack-emoji-latex/feed/</wfw:commentRss>
+			<wfw:commentRss>http://localhost/2016/10/13/the-ultimate-slack-emoji-latex/feed/</wfw:commentRss>
 		<slash:comments>0</slash:comments>
 		</item>
 	</channel>

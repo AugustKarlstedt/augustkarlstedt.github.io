@@ -7,10 +7,10 @@
 	>
 <channel>
 	<title>Comments on: ANI 230 &#8211; Completed</title>
-	<atom:link href="http://192.168.99.100/2015/01/06/ani-230-completed/feed/" rel="self" type="application/rss+xml" />
-	<link>http://192.168.99.100:8000/2015/01/06/ani-230-completed/</link>
-	<description>Machine Learning Researcher, Software Engineer, Game Developer, and Consultant</description>
-	<lastBuildDate>Wed, 19 Sep 2018 21:51:11 +0000</lastBuildDate>
+	<atom:link href="http://localhost/2015/01/06/ani-230-completed/feed/" rel="self" type="application/rss+xml" />
+	<link>http://localhost/2015/01/06/ani-230-completed/</link>
+	<description>Just another WordPress site</description>
+	<lastBuildDate>Thu, 20 Sep 2018 08:22:15 +0000</lastBuildDate>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=4.9.8</generator>

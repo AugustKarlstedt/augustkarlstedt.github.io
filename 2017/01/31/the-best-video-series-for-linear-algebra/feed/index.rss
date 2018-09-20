@@ -7,10 +7,10 @@
 	>
 <channel>
 	<title>Comments on: The BEST Video Series for Linear Algebra</title>
-	<atom:link href="http://192.168.99.100/2017/01/31/the-best-video-series-for-linear-algebra/feed/" rel="self" type="application/rss+xml" />
-	<link>http://192.168.99.100:8000/2017/01/31/the-best-video-series-for-linear-algebra/</link>
-	<description>Machine Learning Researcher, Software Engineer, Game Developer, and Consultant</description>
-	<lastBuildDate>Wed, 19 Sep 2018 21:51:14 +0000</lastBuildDate>
+	<atom:link href="http://localhost/2017/01/31/the-best-video-series-for-linear-algebra/feed/" rel="self" type="application/rss+xml" />
+	<link>http://localhost/2017/01/31/the-best-video-series-for-linear-algebra/</link>
+	<description>Just another WordPress site</description>
+	<lastBuildDate>Thu, 20 Sep 2018 08:22:23 +0000</lastBuildDate>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=4.9.8</generator>
