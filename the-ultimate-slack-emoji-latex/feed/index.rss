@@ -4,13 +4,15 @@
 	xmlns:atom="http://www.w3.org/2005/Atom"
 	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
 	
+xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+
 	>
 <channel>
 	<title>Comments on: The ultimate slack emoji: LaTeX</title>
 	<atom:link href="http://localhost/the-ultimate-slack-emoji-latex/feed/" rel="self" type="application/rss+xml" />
 	<link>http://localhost/the-ultimate-slack-emoji-latex/</link>
 	<description>Machine Learning Researcher, Software Engineer, Game Developer, and Consultant</description>
-	<lastBuildDate>Thu, 20 Sep 2018 09:37:21 +0000</lastBuildDate>
+	<lastBuildDate>Sat, 22 Sep 2018 00:34:20 +0000</lastBuildDate>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=4.9.8</generator>

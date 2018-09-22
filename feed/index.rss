@@ -5,14 +5,16 @@
 	xmlns:atom="http://www.w3.org/2005/Atom"
 	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
 	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
-	>
+	
+xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+>
 
 <channel>
 	<title>August Karlstedt</title>
 	<atom:link href="http://localhost/feed/" rel="self" type="application/rss+xml" />
 	<link>http://localhost</link>
 	<description>Machine Learning Researcher, Software Engineer, Game Developer, and Consultant</description>
-	<lastBuildDate>Tue, 18 Sep 2018 05:40:48 +0000</lastBuildDate>
+	<lastBuildDate>Sat, 22 Sep 2018 00:31:35 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
@@ -499,7 +501,7 @@ Mrikk is
 		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=272</guid>
 		<description><![CDATA[<p>The post <a rel="nofollow" href="http://localhost/the-best-video-series-for-linear-algebra/">The BEST Video Series for Linear Algebra</a> appeared first on <a rel="nofollow" href="http://localhost">August Karlstedt</a>.</p>
 ]]></description>
-				<content:encoded><![CDATA[<p><iframe width="730" height="411" src="https://www.youtube.com/embed/videoseries?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
+				<content:encoded><![CDATA[<p><iframe class='youtube-player' type='text/html' width='730' height='411' src='http://www.youtube.com/embed/videoseries?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab&#038;hl=en_US' allowfullscreen='true' style='border:0;'></iframe></p>
 <p>The post <a rel="nofollow" href="http://localhost/the-best-video-series-for-linear-algebra/">The BEST Video Series for Linear Algebra</a> appeared first on <a rel="nofollow" href="http://localhost">August Karlstedt</a>.</p>
 ]]></content:encoded>
 			<wfw:commentRss>http://localhost/the-best-video-series-for-linear-algebra/feed/</wfw:commentRss>
@@ -546,7 +548,7 @@ Mrikk is
 <p><strong><span style="color:#a5a5a5;">CSC 453</span></strong> &#8211; Database Technologies</p>
 <p>But that&#8217;s not the interesting part.</p>
 <p>What&#8217;s interesting is that I took these courses online and collected data on how long I spent watching each lecture. This let me optimize my study habits and see which courses I needed to devote the most time to. The color corresponds to the color above.</p>
-<p>[googleapps domain=&#8221;docs&#8221; dir=&#8221;spreadsheets/d/e/2PACX-1vSt3soiDqYJNYeM2V1jgVvZmZWJ9_9h4NMJo1ntRV5N6-LbLQ8y6GkLMiCJ7TsbWNeVqfiM4yqtJ_8v/pubchart&#8221; query=&#8221;oid=578984766&amp;format=interactive&#8221; width=&#8221;100%&#8221; height=&#8221;450&#8243; /]</p>
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSt3soiDqYJNYeM2V1jgVvZmZWJ9_9h4NMJo1ntRV5N6-LbLQ8y6GkLMiCJ7TsbWNeVqfiM4yqtJ_8v/pubchart?oid=578984766&#038;format=interactive" frameborder="0" width="100%" height="450" marginheight="0" marginwidth="0"></iframe>
 <p>Right off the bat, I knew that CSC 421 will be taking a majority of my time. A very heavy course: algorithm analysis, design, implementation, NP-completeness, and the like &#8211; things which I know I can get better at.</p>
 <p>Overall, for the other two courses, I was saving 80-90% versus being in-class. The materials covered in these courses were not new to me, so I could get by by watching the &#8220;interesting&#8221; parts of the lecture, reading the book, and looking at the slides.</p>
 <p>I wound up with an A and an A-, for CSC 447 and CSC 453, respectively.</p>
@@ -585,7 +587,7 @@ Mrikk is
 		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=251</guid>
 		<description><![CDATA[<p>The post <a rel="nofollow" href="http://localhost/holoportation/">Holoportation</a> appeared first on <a rel="nofollow" href="http://localhost">August Karlstedt</a>.</p>
 ]]></description>
-				<content:encoded><![CDATA[<p><iframe width="730" height="411" src="https://www.youtube.com/embed/84ngPFBWLVI?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
+				<content:encoded><![CDATA[<p><iframe class='youtube-player' type='text/html' width='730' height='411' src='http://www.youtube.com/embed/84ngPFBWLVI?version=3&#038;rel=1&#038;fs=1&#038;autohide=2&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' allowfullscreen='true' style='border:0;'></iframe></p>
 <p>The post <a rel="nofollow" href="http://localhost/holoportation/">Holoportation</a> appeared first on <a rel="nofollow" href="http://localhost">August Karlstedt</a>.</p>
 ]]></content:encoded>
 			<wfw:commentRss>http://localhost/holoportation/feed/</wfw:commentRss>
@@ -861,7 +863,7 @@ Mrikk is
 <p>The post <a rel="nofollow" href="http://localhost/microsoft-research-hololens/">Microsoft Research &#8211; HoloLens</a> appeared first on <a rel="nofollow" href="http://localhost">August Karlstedt</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[<p>HoloLens version 0.0.0.1? Maybe.</p>
-<p><iframe width="730" height="548" src="https://www.youtube.com/embed/3-mhqYBm7Xo?feature=oembed" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></p>
+<p><iframe class='youtube-player' type='text/html' width='730' height='411' src='http://www.youtube.com/embed/3-mhqYBm7Xo?version=3&#038;rel=1&#038;fs=1&#038;autohide=2&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' allowfullscreen='true' style='border:0;'></iframe></p>
 <p>The post <a rel="nofollow" href="http://localhost/microsoft-research-hololens/">Microsoft Research &#8211; HoloLens</a> appeared first on <a rel="nofollow" href="http://localhost">August Karlstedt</a>.</p>
 ]]></content:encoded>
 			<wfw:commentRss>http://localhost/microsoft-research-hololens/feed/</wfw:commentRss>
