@@ -1,0 +1,6 @@
+PROCESSED on Mon, 24 Sep 2018 06:06:17 +0000
+/contents/lib/gutenberg/build/block-library/style.css --- Debug: [wp-block-library] File was opened from /var/www/html/contents/lib/gutenberg/build/block-library/style.css ---
+/inc/css/dashicons.min.css --- Debug: [dashicons] File was opened from /var/www/html/inc/css/dashicons.min.css ---
+/contents/ui/theme/style.css --- Debug: [editor-style] File was opened from /var/www/html/contents/ui/theme/style.css ---
+/contents/ui/theme/inc/fontawesome/font-awesome.css --- Debug: [editor-font-awesome-css] File was opened from /var/www/html/contents/ui/theme/inc/fontawesome/font-awesome.css ---
+PROCESSED from https://augustkarlstedt.github.io/
