@@ -12,7 +12,7 @@ xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01
 	<atom:link href="http://localhost/blog/2014/06/24/finished-with-gam-374/feed/" rel="self" type="application/rss+xml" />
 	<link>http://localhost/blog/2014/06/24/finished-with-gam-374/</link>
 	<description>Machine Learning Researcher, Software Engineer, Game Developer, and Consultant</description>
-	<lastBuildDate>Mon, 24 Sep 2018 06:27:42 +0000</lastBuildDate>
+	<lastBuildDate>Mon, 24 Sep 2018 08:39:37 +0000</lastBuildDate>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=4.9.8</generator>
@@ -25,5 +25,5 @@ Performance optimized by W3 Total Cache. Learn more: https://www.w3-edge.com/pro
 Page Caching using disk: enhanced (Page is feed) 
 Minified using disk
 
-Served from: localhost @ 2018-09-24 00:27:42 by W3 Total Cache
+Served from: localhost @ 2018-09-24 02:39:37 by W3 Total Cache
 -->
