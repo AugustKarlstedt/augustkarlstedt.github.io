@@ -1,0 +1,630 @@
+<!DOCTYPE html><html lang="en-US" prefix="og: http://ogp.me/ns#"><head> </span><span class="value info">Total sequences : 92,369</span></p><p>So yes, it&#8217;s a tiny little dataset.</p><h2>Training</h2><p>I&#8217;m using TFLearn&#8217;s implementation of an LSTM neural net. My setup is as follows:</p><p>Input data -&gt; LSTM layer (512 units, returns full sequence (3d tensor)), -&gt; dropout (50%) -&gt; another LSTM layer (512 units, returns only output of last sequence (2d tensor)) -&gt; dropout (50%) -&gt; fully connected layer (softmax activation).</p><h2>Results</h2><p>On the first epoch with a temperature of 1.0 (meaning we&#8217;re trying to generate novel sequences, less likely to repeat the input data), we get:</p><pre>/ / / C | G F C |
+ |: % |-|---|-----||-------------||-----|-----|----------------6--5------8----4-|-|---6-------
+ --------5-----|-----3------------------|5--------%<span class="text_exposed_show">
+ |-.8------|-8-
+ .|-2-|7------------------------7-----|-----------|x----------------------|--------------|-------------||--|2-------------||----------------|-x-------7----|-7----4-4-x--24--8----|-0---|]||4|----2--90-0-/|--0-----||--------------------|-4----00--a0-000-\0-00-00-40-0---0-20--004-
+ 2-0--0x-4-0-42-0-2%-2-2001--l5|-----12-711|-0-----7x2--0------4--|
+ 5|---|1-----3---------|||2-----------3-|----|--|------------|-----------|---------------3--7|4------------
+ ||5--5--------------|
+ 2 bgsc ko i
+ r@ aO(l' bs ye ] 7T /AAo o -ls5|)|22--010-0-00-0-0-0------2--[2u6I
+ 4]s5LeEao] avcw s4i ie s e|gb stse Y [eer,a i dE
+ g[y Ipaapaetdye] |52--- ( h7seti
+ se C Ty/ixkLou] | 
+ |Wshyo u ut g |[iemhrr efh r
+ ei sp c F</span></pre><p>That&#8217;s actually not bad!</p><p>I let the training run for a while. Interestingly, the temperature being 0.5 tends to yield complete silence:</p><pre>---------------|---------------|----------------|
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</pre><p>This is most likely because the most common sequence <em>is</em> silence: &#8212;&#8212;&#8212;-</p><p>After the seventh epoch, temperature = 1.0:</p><pre>---------------|---------------|----------------|
+|----------------|---------------|---------------|---------|
+|-----------|----------------|-------------------|
+| ------5-------|---------------|---------------|---------------|
+|3-3-3---3---3--|---------------|---------------||---------------|
+|------------#-----------------|---------3-------|
+|----------|-----------------|-------------------|----
+||[glr 1]                                                       |---------------|---------------|
+|5---3----------|---------------|---------------.|----------------||------------------5|---------------|
+|7--7-7-----5------|
+|3-------3--3--3-|5--------------|--7---7---7-7--|
+|7--------------|--------6---------|9---7------------|
+|-.--------------------|----------------------|---
+||--0-0-0-0-0-0-0-0-x-x--|x0-0-0-0-0-0-0-0|x-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|
+|-----------2--||---------------|---------------|---------------|
+|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0---|0-0-0-0-0-0-0-0|
+|---------------|---------------|---------------|-------|</pre><p>That&#8217;s almost a legitimate tab!</p><p>After 12 epochs, temperature=0.5, we get a 14-string guitar tab&#8230;</p><pre>--|5---0---|4-----|5---0---|4-------|0---0---|
+|5-------|5---0---|5-------|5-------|5-------|5-------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|------</pre><p>After epoch fifteen&#8230;</p><pre>-- Test with temperature of 1.0 --
+--------------|-------------------|-------|
+[CHORRES]
+  |Esus4            |             | 
+3'd gote how come  you  F        x2204x-                        %          |
+S INPatgent a fouter floy the striml? Bust by  wonthethertdppnbpally buf you. Acully tay lecco`-
+      qe be    F e          F77m7 Fm7         FB7      
+                      F
+A                     Bm      -
+Le'd dongo ax and wayk hous mud d mim the feat 
+[VBRSE tOAx]
+========================================================
+SSENSHARC
+Ad The Who
+Written by Pete Townshend (c)1969 Fabuloou Music Ltd,
+#-----------------------------------PLEASE NOTE------------------------------5--#
+Mr's  The  byTusthin ]
+-----------------------------------------------------#
+=======================================================
+SOUSSMBRISMEID =YAB
+Ay The Who
+Written by Pete Townshend (c)-969 Fabulous Music Ltd.
+#------------------------------------EL
+LOREEGmtris                     [wrtted Nowr predelt d)Bb          Whotabs                           x2
+|------------------|------</pre><p>Additional output below.</p><pre>EPOCH 43
+-- TESTING...
+-- Test with temperature of 1.0 --
+--0--0|--------|-----0--|--000000|00000000|
+|--------|--------|--------|
+|--------|--------|--------|--------|
+|--------|--------|--------|--------|
+|[bass]                                                  |
+|0.-0--0-|0---0----------|0-------|----0--------|--------|---------------|
+|--5-----|----5---4-----|7------|---------------|--------|
+|5--5--5 |5----|5-----|5-----|5-----|5-------|5-------|
+|4------|4-------|4----|------|4-----|4-----|4-------|4-------|
+|0-------|-------|0---|------|
+|0-----|0-------|--------|--------|
+|--------|--------|--------|--------|
+|[bass]                                                     |
+|--------------5-|---------------|--------------7|7-7-7-7-7-7-7-7|7-7-7-7-7-7-7-7|
+|---------------|---------------|----------------|
+|[acoustic 1]                                                   |
+|7-----8-----7--|-------------------|7-----8-----10--|---------------|
+|8-----8-----8--|-------------------|7-----8-----10-|---------------|
+|8-----6--------|--8-x-6---6----|8-----8-----10-|----------------|
+|8---x-6-----
+-- Test with temperature of 0.5 --
+--0--0|--------|-----0--|--000000|00000000|
+|---------------|---------------|
+|---------------|---------------|----------------|
+|[acoustic 1]                                                                                           |
+|---------------|---------------|---------------|---------------|
+|[acoustic 1]                                                                 |
+|-----------------------------------|------------------------------|
+         F#7                                     [Lele bitesentare playe: for mo, the gtrste.
+[repeat CHORUS]
+She pitball.
+[CHORUS]
+    |------------------------------------|-----------------------|
+   |-11--------------------|11------------------8---|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+Previous transcription by:
+Mike (sef@icbr.ufl.edu)
+==============   
+[2K
+| Adam | epoch: 044 | loss: 0.13966 | val_loss: 0.07798 -- iter: 83132/83132
+--
+WARNING:tensorflow:Error encountered when serializing layer_tensor/LSTM.
+Type is unsupported, or the types of the items don't match field type in CollectionDef.
+'list' object has no attribute 'name'
+WARNING:tensorflow:Error encountered when serializing layer_tensor/Dropout.
+Type is unsupported, or the types of the items don't match field type in CollectionDef.
+'list' object has no attribute 'name'
+-- TESTING...
+-- Test with temperature of 1.0 --
+                      
+Third update
+Note: Most of dravh thouthem praye wish play ahe buthe as.
+[VERSE]
+G    B7                               Gm7sus4    E5   G5 G5 B5 B5 
+I'm free.                            A
+    -----------------------------------5------------------------------------------------------#
+Previous-transcriptt| TI The Khorsher or fou dhink is gonde. E                              |[gur 1]                 |
+|-------------0-|---------------|---------------|--------------|
+|---------------|---------------|---------------|---------------|
+|---------------|--0-0-0-0-0-0-0|---------------|--------------|
+|---------------|---------------|---------------|---------------|
+|---------------|---------------|---------------|---------------|
+|[electric]                                                   
+[NOte: saand and bling:
+Em/B         3 -3 -3              |
+   |-----------------------------|-------------------------------|
+||G                                                    |
+|--------|--------|--------|--------|-----
+-- Test with temperature of 0.5 --
+                      
+Third update
+Note: Most of the stagong.
+    -------------------------------------------------------------------------------------------------------------------#
+Previous transcriptt------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+Mr===================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================
+---------------------------------
+
+
+
+
+
+
+-- TESTING...
+-- Test with temperature of 1.0 --
+-|--8---8---6----|8-----8-----10-|----------------|
+|8---x-8-----8--|--10-(8)10-8-------|8-----8-----8--|---7----|---9---|
+|--------|--------|--------|--------|--------|--------|--------|
+|0---- --|0---0---|0----0---------|--------------|
+|0-------|0-------|0---------------|---------------|
+|0--------------|---------------|---------------|----------------|
+|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|-0-0-0-0-0-0-0-0|
+|---------------|---------------|---------------|---------------|
+|---------------|2--------------|---------------|---------------|---------------|
+|[acoustic 1/2]                                                  |
+|-----------|------------------|------------|------|
+gtr 12 12----10/12-|----11-----11--|11-111111111111111111111112|-----|
+|11--11--11--11--|---11/12--12--|------|--------|------|-------|
+|-----|------|---------------|
+|--------|-------------|-------|-------------|-------|---------------|
+|[electric]                     ||
+|3-----------------|
+|-0--0---2-----0------|-0|-----------------||
+||-0-0-0-0-0-0
+-- Test with temperature of 0.5 --
+-|--8---8---6----|8-----8-----10-|----------------|
+|7---9----------|--7---9---5----|7-----9-----11-|----------------|
+|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0-|
+|---------------|---------------|---------------|---------------|
+|---------------|---------------|---------------|----------------|
+|---------------|---------------|----------------|
+|[acoustic 1]                                                                                                                 |
+|------------------------------|-------------------------------|
+|----10 1---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------
+
+
+
+
+
+
+
+
+
+I|---------------|----------------|---------------|
+  A7          D/C  Bb                            G7     Gm
+I'm free.
+    G                   A              D          D*                [Lele sinna bringtr]
+E5-65 B5               |B               |
+   ----------------------------|------------------------------|
+|------------------------------|-----------------------|
+   |-----------------------|-----------------------|
+   |-10-------------------|-10--------------------|
+   |------------------------|---------------------|-3-2--0--0-|
+   |----------- ------------|---------------------|-----------------|
+|---------------|---------------|---------------|---------------|
+|[acoustic 2; ppopetin for panngorn]
+|[electric]                                                |
+|6--------------|--7---- -------|
+|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0-0|
+|---------------|---------------|---------------|----------------|
+|---------------------|-3-----------
+-- Test with temperature of 0.5 --
+yed in standard tuning same as below 
+and begin at bas hear find.
+[BRIDGE]
+F                                       D/A  
+[INTRRO]
+  
+[INTRO Spark: The Kar-- Wer------Wome and forcathord I've formaring and rishe the somme.
+                                                                                                                                      |
+|---------------|---------------|---------------|---------------|
+|---------------|---------------|---------------|---------------|
+|----------------|---------------|---------------|---------------|
+|---------------|---------------|---------------|---------------|
+|[acoustic 1/2]                                                                                                   |
+|7--------------|----------------|------------------|----------------|---------------|
+|-2----2--------|---------------|---------------|---------------|
+|---------------|---------------|---------------|---------------|
+|[acoustic 1/2]                          
+
+
+
+
+[2K
+| Adam | epoch: 047 | loss: 0.13825 -- iter: 83072/83132
+Training Step: 30550  | total loss: 0.12924 | time: 145.633s
+[2K
+| Adam | epoch: 047 | loss: 0.12924 | val_loss: 0.07769 -- iter: 83132/83132
+--
+WARNING:tensorflow:Error encountered when serializing layer_tensor/LSTM.
+Type is unsupported, or the types of the items don't match field type in CollectionDef.
+'list' object has no attribute 'name'
+WARNING:tensorflow:Error encountered when serializing layer_tensor/Dropout.
+Type is unsupported, or the types of the items don't match field type in CollectionDef.
+'list' object has no attribute 'name'
+-- TESTING...
+-- Test with temperature of 1.0 --
+                 |
+  |-----------------------------|-------                     |------------------------------------|---------|
+|7-7-7-7-7-7-7-7-7-7-7-|-7-7-7-7-7-7-7-7-7-7-7-||
+||-----------------------||
+||------------------------3--------||
+||---------------------------||
+||-----------------------------|------------------------|
+   |-----------------------|-----------------------|
+   |/7--------------------------|---------------------4-|
+       |-6----6---- --------6-|-6---------------------|
+        |-6-------------------|-6---------------------|
+       |-8--------------------|-8---------------------|
+                                                                 |
+|----------------|----------------|---------------|
+|[acoustic 2]                                         |
+|2-------|5---0---|4-------|0---5---|4-------|0---5---|4-------|0---5---|4-------|0---5---|4-------|0---5---|4-------|0---5---|
+|3-------|3---3---|5-------|5-------|5-------|5---
+|--|
+|--------|--------|--------|--------|--------|--------|--------|--------|----
+-- Test with temperature of 0.5 --
+                 |
+  |------------------------------|------------------------|
+   |----------------------|-----------------------|
+   |/7--------------------------|---------------------4--|
+   |-----------------------|-------------------------|
+|----10/12---------------------------||
+||---------------------------|---------------------|--------------------|
+|-----5------------------------|-------------------------------|
+||-------------------------|-------------------------------|
+|D              |           |D          |                    |
+                                                                 |
+|7-----8-----7--|-------------------|7---------------|----------------|
+|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|
+|---------------|---------------|---------------|---------------|
+|---------------|---------------|---------------|---------------|
+|[acoustic 2]                                                  |
+|6------|5-------|4-------|--------|4-------|--------|4-------|--------|4-------|--------|4-------
+---------------------------------
+
+
+
+||----------------------------------|--------------------------------|
+|D              |-----------------|7T------------------|
+|[bass]                                                              
+transcribed by                             Whotabs                    
+litgo@aol.com     rev2220110222211                                             |
+|----------------|------------------|---------------------------|
+b|----------------------------------|-------------------------------|
+|----10/12--------------------------------------------#
+===========================================================
+INLRTERE
+By The Who
+Written by Pete Townshend (c)1969 Fabulous Music Ltd.
+#----------------------------------PLEASE NOTE---------------------------------#
+#This file is the author's own work and represents their interpretation of the #
+#song. You may only use this file for private study, scholar
+-- Test with temperature of 0.5 --
+eping.
+(F#) Em        Bm7    Em        Bm7
+       MAb                                                                                      |
+|-------------------------------|-------------------------------------|
+|-----------------------------------|------------------------|
+|------------------------------------|-------------------------------|
+|D              |--------------------|-6---------------------|
+       |----------------------|-----------------------|
+   |---------------------------------|5------------------------------------|0--0---------------------------|
+||-----------------------------------|-------------------------------------|
+|D              |D             | D/C   | A      |               |
+                                                                                                                                                                                                                       |
+|-----------------------------------|-------------------------------|
+|D              |            |D         
+---------------------------------
+
+
+
+revised by                             Whotabs                    
+litgo@aol.com     rev222
+-- Test with temperature of 0.5 --
+-------|--------------|4----4---|---4---4------|
+|2-2-2-2-2-2-2-2-|2-2-2-2-2-2-2-2|2-2-2-2-2-2-2-2|2-2-2-2-2-2-2-0|
+|-------------------------------|------------------------|
+|------------------|----------------------|
+|-----------------|-----------5-5-3|---------------|---------------|---------------|
+|---------------|---------------|---------------|---------------|
+|[acoustic 1]                                                                                   |
+|-----------------------------|-----------------------|
+   |-10-------------------|-10--------------------|
+   |-10-------------------|-10--------------------|
+   |-10-------------------|-10--------------------|
+   |-10-------------------|-10--------------------|
+   |-10-------------------|-10--------------------|
+   |-10------------------------|-1----------------------------3|
+        Eb                                      Dsus4
+||---------------|---------------|---------------|
+|----------------|--------------------|--------------------|
+|----------------|----------------
+---------------------------------
+Run id: lstmmmmmmmmmm
+
+
+
+
+
+
+
+2[2K
+Training Step: 32499  | total loss: 0.11536 | time: 138.266s
+[2K
+| Adam | epoch: 050 | loss: 0.11536 -- iter: 83072/83132
+Training Step: 32500  | total loss: 0.10930 | time: 145.790s
+[2K
+| Adam | epoch: 050 | loss: 0.10930 | val_loss: 0.06763 -- iter: 83132/83132
+--
+WARNING:tensorflow:Error encountered when serializing layer_tensor/LSTM.
+Type is unsupported, or the types of the items don't match field type in CollectionDef.
+'list' object has no attribute 'name'
+WARNING:tensorflow:Error encountered when serializing layer_tensor/Dropout.
+Type is unsupported, or the types of the items don't match field type in CollectionDef.
+'list' object has no attribute 'name'
+-- TESTING...
+-- Test with temperature of 1.0 --
+---------------|--------|-----------------|
+|--------|---------------|--------|-------------3---|
+|--------|---------------|--------------------|
+|-------------------------|-------------------------------------|
+|-----------------------------------|----------------------------|
+|-------------------------------------|----------------------|
+   |[bass]                                          |
+|--------------5-|---------------|---------------|--------------|
+|---------------|---------------|---------------|---------------|
+|[acoustic 2]                                                   |
+|---------------|---------------|------5--------|---------------|
+|---------------|---------------|---------------|---------------|
+|---------------|-------------3-|5--------------|------------------|
+|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0-|
+|---------------|---------------|---------------|-----------------|
+|------------------|-----------------|---------------|
+                                                    reve-       
+-- Test with temperature of 0.5 --
+---------------|--------|-----------------|
+|--------|---------------|--------|--------------3|--------|---------------|--------|-----------------|
+|--------|---------------|--------|--------------3|--------|-------------3---|
+|--------|---------------|----------------------|-----------|---------|
+|[bass]                                                                      |
+|------------------------------|-------------------------------|
+||-------------------------------------|-------------------------------|
+                                                           |
+|------------------------------|-----------------------|
+   |/9-------------------------|---------------------|
+|-----5-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+Mrikk is
+
+
+</pre><p>As you can see, it does a pretty good job. I think I need more training data!</p></div></article> <article id="post-274" class="post post-274 type-post status-publish format-standard hentry category-computer-science category-machine-learning category-school"> <header class="entry-header"><div class="entry-date"> <span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2017/05/10/spring-quarter-2017/" rel="bookmark"><time class="entry-date published" datetime="2017-05-10T16:16:49+00:00">May 10, 2017</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span></div><h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2017/05/10/spring-quarter-2017/" rel="bookmark">Spring Quarter 2017</a></h1>	</header><div class="entry-meta"><div class="entry-excerpt"><p>CSC 435 &#8211; Distributed Systems I CSC 577 &#8211; Recommender Systems SE 450 &#8211; Object-Oriented Software Development</p></div><ul class="meta-list"><li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/computer-science/" rel="category tag">Computer Science</a>, <a href="https://augustkarlstedt.github.io/blog/category/machine-learning/" rel="category tag">Machine Learning</a>, <a href="https://augustkarlstedt.github.io/blog/category/school/" rel="category tag">School</a></li><li class="meta-comment"> <span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2017/05/10/spring-quarter-2017/#respond"><span class="dsq-postid" data-dsqidentifier="274 https://parad0xdev.wordpress.com/?p=274">Leave a comment</span></a></span></li></ul></div><div class="entry-content"><p>CSC 426 – Research Methods and Practice in Computing</p><p>CSC 478 – Programming Machine Learning Applications</p><p>CSC 594 – Topics in Artificial Intelligence: Natural Language Processing</p><p>&nbsp;</p></div></article> <article id="post-272" class="post post-272 type-post status-publish format-standard hentry category-uncategorized"> <header class="entry-header"><div class="entry-date"> <span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2017/01/31/the-best-video-series-for-linear-algebra/" rel="bookmark"><time class="entry-date published" datetime="2017-01-31T23:50:24+00:00">January 31, 2017</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span></div><h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2017/01/31/the-best-video-series-for-linear-algebra/" rel="bookmark">The BEST Video Series for Linear Algebra</a></h1>	</header><div class="entry-meta"><ul class="meta-list"><li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/uncategorized/" rel="category tag">Uncategorized</a></li><li class="meta-comment"> <span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2017/01/31/the-best-video-series-for-linear-algebra/#respond"><span class="dsq-postid" data-dsqidentifier="272 https://parad0xdev.wordpress.com/?p=272">Leave a comment</span></a></span></li></ul></div><div class="entry-content"><p><span class="embed-youtube" style="text-align:center; display: block;"><iframe class='youtube-player' type='text/html' width='730' height='411' src='http://www.youtube.com/embed/videoseries?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab&#038;hl=en_US' allowfullscreen='true' style='border:0;'></iframe></span></p></div></article> <article id="post-266" class="post post-266 type-post status-publish format-standard hentry category-computer-science category-machine-learning category-school"> <header class="entry-header"><div class="entry-date"> <span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2016/11/29/winter-quarter-2017/" rel="bookmark"><time class="entry-date published" datetime="2016-11-29T18:50:15+00:00">November 29, 2016</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span></div><h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2016/11/29/winter-quarter-2017/" rel="bookmark">Winter Quarter 2017</a></h1>	</header><div class="entry-meta"><ul class="meta-list"><li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/computer-science/" rel="category tag">Computer Science</a>, <a href="https://augustkarlstedt.github.io/blog/category/machine-learning/" rel="category tag">Machine Learning</a>, <a href="https://augustkarlstedt.github.io/blog/category/school/" rel="category tag">School</a></li><li class="meta-comment"> <span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2016/11/29/winter-quarter-2017/#respond"><span class="dsq-postid" data-dsqidentifier="266 https://parad0xdev.wordpress.com/?p=266">Leave a comment</span></a></span></li></ul></div><div class="entry-content"><p>CSC 435 &#8211; Distributed Systems I</p><p>CSC 577 &#8211; Recommender Systems</p><p>SE 450 &#8211; Object-Oriented Software Development</p></div></article> <article id="post-255" class="post post-255 type-post status-publish format-standard has-post-thumbnail hentry category-data-analysis category-school"> <a class="featured-image" href="https://augustkarlstedt.github.io/blog/2016/11/29/fall-quarter-2016-first-graduate-quarter/" title="Fall Quarter 2016 (First Graduate Quarter!)"><img width="1200" height="800" src="https://augustkarlstedt.github.io/contents/data/2016/11/numbers-time-watch-white-1200x800.jpg" class="attachment-large-image size-large-image wp-post-image" alt="" srcset="https://augustkarlstedt.github.io/contents/data/2016/11/numbers-time-watch-white-1200x800.jpg 1200w, https://augustkarlstedt.github.io/contents/data/2016/11/numbers-time-watch-white-300x200.jpg 300w, https://augustkarlstedt.github.io/contents/data/2016/11/numbers-time-watch-white-768x512.jpg 768w, https://augustkarlstedt.github.io/contents/data/2016/11/numbers-time-watch-white-1024x683.jpg 1024w, https://augustkarlstedt.github.io/contents/data/2016/11/numbers-time-watch-white-600x400.jpg 600w" sizes="(max-width: 1200px) 100vw, 1200px" /></a> <header class="entry-header"><div class="entry-date"> <span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2016/11/29/fall-quarter-2016-first-graduate-quarter/" rel="bookmark"><time class="entry-date published" datetime="2016-11-29T18:26:06+00:00">November 29, 2016</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span></div><h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2016/11/29/fall-quarter-2016-first-graduate-quarter/" rel="bookmark">Fall Quarter 2016 (First Graduate Quarter!)</a></h1>	</header><div class="entry-meta"><ul class="meta-list"><li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/data-analysis/" rel="category tag">Data Analysis</a>, <a href="https://augustkarlstedt.github.io/blog/category/school/" rel="category tag">School</a></li><li class="meta-comment"> <span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2016/11/29/fall-quarter-2016-first-graduate-quarter/#respond"><span class="dsq-postid" data-dsqidentifier="255 https://parad0xdev.wordpress.com/?p=255">Leave a comment</span></a></span></li></ul></div><div class="entry-content"><p>My schedule included</p><p><strong><span style="color:#5b9bd5;">CSC 421</span> </strong>&#8211; Applied Algorithms and Structures</p><p><strong><span style="color:#ed7d31;">CSC 447</span></strong> &#8211; Concepts of Programming Language</p><p><strong><span style="color:#a5a5a5;">CSC 453</span></strong> &#8211; Database Technologies</p><p>But that&#8217;s not the interesting part.</p><p>What&#8217;s interesting is that I took these courses online and collected data on how long I spent watching each lecture. This let me optimize my study habits and see which courses I needed to devote the most time to. The color corresponds to the color above.</p> <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSt3soiDqYJNYeM2V1jgVvZmZWJ9_9h4NMJo1ntRV5N6-LbLQ8y6GkLMiCJ7TsbWNeVqfiM4yqtJ_8v/pubchart?oid=578984766&#038;format=interactive" frameborder="0" width="100%" height="450" marginheight="0" marginwidth="0"></iframe><p>Right off the bat, I knew that CSC 421 will be taking a majority of my time. A very heavy course: algorithm analysis, design, implementation, NP-completeness, and the like &#8211; things which I know I can get better at.</p><p>Overall, for the other two courses, I was saving 80-90% versus being in-class. The materials covered in these courses were not new to me, so I could get by by watching the &#8220;interesting&#8221; parts of the lecture, reading the book, and looking at the slides.</p><p>I wound up with an A and an A-, for CSC 447 and CSC 453, respectively.</p><p>CSC 421 was one of those courses that is really tough, but you where you learn so much. I probably could have benefited taking this course in-person, but I still managed to save some time. Since this is the first time I&#8217;ve ever recorded data like this, it&#8217;ll be interesting to compare to next quarter (where I am taking an in-person course). All said and done, I wound up with a C+ in CSC 421, bringing my GPA for the quarter to a not-too-shabby 3.33.</p></div></article> <article id="post-253" class="post post-253 type-post status-publish format-standard hentry category-uncategorized"> <header class="entry-header"><div class="entry-date"> <span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2016/11/26/amazing-resource-for-linear-algebra/" rel="bookmark"><time class="entry-date published" datetime="2016-11-26T22:03:42+00:00">November 26, 2016</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span></div><h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2016/11/26/amazing-resource-for-linear-algebra/" rel="bookmark">Amazing Resource for Linear Algebra</a></h1>	</header><div class="entry-meta"><ul class="meta-list"><li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/uncategorized/" rel="category tag">Uncategorized</a></li><li class="meta-comment"> <span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2016/11/26/amazing-resource-for-linear-algebra/#respond"><span class="dsq-postid" data-dsqidentifier="253 https://parad0xdev.wordpress.com/?p=253">Leave a comment</span></a></span></li></ul></div><div class="entry-content"><p><a href="http://immersivemath.com/ila/index.html" target="_blank">http://immersivemath.com/ila/index.html</a></p></div></article> <article id="post-251" class="post post-251 type-post status-publish format-standard hentry category-uncategorized"> <header class="entry-header"><div class="entry-date"> <span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2016/11/23/holoportation/" rel="bookmark"><time class="entry-date published" datetime="2016-11-23T10:10:26+00:00">November 23, 2016</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span></div><h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2016/11/23/holoportation/" rel="bookmark">Holoportation</a></h1>	</header><div class="entry-meta"><ul class="meta-list"><li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/uncategorized/" rel="category tag">Uncategorized</a></li><li class="meta-comment"> <span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2016/11/23/holoportation/#respond"><span class="dsq-postid" data-dsqidentifier="251 https://parad0xdev.wordpress.com/?p=251">Leave a comment</span></a></span></li></ul></div><div class="entry-content"><p><span class="embed-youtube" style="text-align:center; display: block;"><iframe class='youtube-player' type='text/html' width='730' height='411' src='http://www.youtube.com/embed/84ngPFBWLVI?version=3&#038;rel=1&#038;fs=1&#038;autohide=2&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' allowfullscreen='true' style='border:0;'></iframe></span></p></div></article> <article id="post-229" class="post post-229 type-post status-publish format-standard hentry category-uncategorized"> <header class="entry-header"><div class="entry-date"> <span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2016/11/21/how-to-fix-inkscapes-default-units-and-finally-work-with-illustrator/" rel="bookmark"><time class="entry-date published" datetime="2016-11-21T16:20:00+00:00">November 21, 2016</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span></div><h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2016/11/21/how-to-fix-inkscapes-default-units-and-finally-work-with-illustrator/" rel="bookmark">How to Fix Inkscape&#8217;s Default Units (and Finally Work With Illustrator)</a></h1>	</header><div class="entry-meta"><ul class="meta-list"><li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/uncategorized/" rel="category tag">Uncategorized</a></li><li class="meta-comment"> <span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2016/11/21/how-to-fix-inkscapes-default-units-and-finally-work-with-illustrator/#respond"><span class="dsq-postid" data-dsqidentifier="229 https://parad0xdev.wordpress.com/?p=229">Leave a comment</span></a></span></li></ul></div><div class="entry-content"><p>For some odd reason, Inkscape defaults to having 90px = 1in (and soon 96px = 1in). Compared to Illustrator, where 72px = 1in, there are some issues converting back and forth between programs.</p><p>There are no configuration settings in Inkscape to change this, but I have found a way to do so anyway.</p><p>Navigate to where you&#8217;ve installed Inkscape (for me, this is C:\Program Files (x86)\Inkscape), then open the share folder, then open the ui folder. The folder you should be in is C:\Program Files (x86)\Inkscape\share\ui and you should see a file called units.xml.</p><p>Make a copy of units.xml called units.bak.xml and then open the original units.xml in a text editor.</p><p>Change your file from</p><pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;unitdefs&gt;
+&lt;unit type="DIMENSIONLESS" pri="y"&gt;
+    &lt;name&gt;%&lt;/name&gt;
+    &lt;plural&gt;%&lt;/plural&gt;
+    &lt;abbr&gt;%&lt;/abbr&gt;
+    &lt;factor&gt;1.00&lt;/factor&gt;
+    &lt;description&gt;Percentage&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="y"&gt;
+    &lt;name&gt;pixel&lt;/name&gt;
+    &lt;plural&gt;pixels&lt;/plural&gt;
+    &lt;abbr&gt;px&lt;/abbr&gt;
+    &lt;factor&gt;1.00&lt;/factor&gt;
+    &lt;description&gt;CSS Pixels (90/inch)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;point&lt;/name&gt;
+    &lt;plural&gt;points&lt;/plural&gt;
+    &lt;abbr&gt;pt&lt;/abbr&gt;
+    &lt;factor&gt;1.25&lt;/factor&gt;
+    &lt;description&gt;PostScript points (72/inch)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;pica&lt;/name&gt;
+    &lt;plural&gt;picas&lt;/plural&gt;
+    &lt;abbr&gt;pc&lt;/abbr&gt;
+    &lt;factor&gt;15.0&lt;/factor&gt;
+    &lt;description&gt;12 points&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;inch&lt;/name&gt;
+    &lt;plural&gt;inches&lt;/plural&gt;
+    &lt;abbr&gt;in&lt;/abbr&gt;
+    &lt;factor&gt;90.0&lt;/factor&gt;
+    &lt;description&gt;Inches (90 px/in)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;millimeter&lt;/name&gt;
+    &lt;plural&gt;millimeters&lt;/plural&gt;
+    &lt;abbr&gt;mm&lt;/abbr&gt;
+    &lt;factor&gt;3.543307086614174&lt;/factor&gt;
+    &lt;description&gt;Millimeters (25.4 mm/in)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;centimeter&lt;/name&gt;
+    &lt;plural&gt;centimeters&lt;/plural&gt;
+    &lt;abbr&gt;cm&lt;/abbr&gt;
+    &lt;factor&gt;35.43307086614174&lt;/factor&gt;
+    &lt;description&gt;Centimeters (10 mm/cm)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;meter&lt;/name&gt;
+    &lt;plural&gt;meters&lt;/plural&gt;
+    &lt;abbr&gt;m&lt;/abbr&gt;
+    &lt;factor&gt;3543.307086614174&lt;/factor&gt;
+    &lt;description&gt;Meters (100 cm/m)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;foot&lt;/name&gt;
+    &lt;plural&gt;feet&lt;/plural&gt;
+    &lt;abbr&gt;ft&lt;/abbr&gt;
+    &lt;factor&gt;1080&lt;/factor&gt;
+    &lt;description&gt;Feet (12 in/ft)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="RADIAL" pri="y"&gt;
+    &lt;name&gt;degree&lt;/name&gt;
+    &lt;plural&gt;degrees&lt;/plural&gt;
+    &lt;abbr&gt;°&lt;/abbr&gt;
+    &lt;factor&gt;1.00&lt;/factor&gt;
+    &lt;description&gt;Degrees&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="RADIAL" pri="n"&gt;
+    &lt;name&gt;radian&lt;/name&gt;
+    &lt;plural&gt;radians&lt;/plural&gt;
+    &lt;abbr&gt;rad&lt;/abbr&gt;
+    &lt;factor&gt;57.29577951308232&lt;/factor&gt;
+    &lt;description&gt;Radians (180/pi deg/rad)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="RADIAL" pri="n"&gt;
+    &lt;name&gt;gradian&lt;/name&gt;
+    &lt;plural&gt;gradians&lt;/plural&gt;
+    &lt;abbr&gt;grad&lt;/abbr&gt;
+    &lt;factor&gt;0.9&lt;/factor&gt;
+    &lt;description&gt;Gradians (360/400 deg/grad)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="RADIAL" pri="n"&gt;
+    &lt;name&gt;turn&lt;/name&gt;
+    &lt;plural&gt;turns&lt;/plural&gt;
+    &lt;abbr&gt;turn&lt;/abbr&gt;
+    &lt;factor&gt;360&lt;/factor&gt;
+    &lt;description&gt;Turns (360 deg/turn)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="FONT_HEIGHT" pri="y"&gt;
+    &lt;name&gt;font-height&lt;/name&gt;
+    &lt;plural&gt;font-heights&lt;/plural&gt;
+    &lt;abbr&gt;em&lt;/abbr&gt;
+    &lt;factor&gt;1.00&lt;/factor&gt;
+    &lt;description&gt;Font height&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="FONT_HEIGHT" pri="n"&gt;
+    &lt;name&gt;x-height&lt;/name&gt;
+    &lt;plural&gt;x-heights&lt;/plural&gt;
+    &lt;abbr&gt;ex&lt;/abbr&gt;
+    &lt;factor&gt;0.50&lt;/factor&gt;
+    &lt;description&gt;Height of letter 'x'&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="FONT_HEIGHT" pri="n"&gt;
+    &lt;name&gt;half-em&lt;/name&gt;
+    &lt;plural&gt;half-ems&lt;/plural&gt;
+    &lt;abbr&gt;en&lt;/abbr&gt;
+    &lt;factor&gt;0.50&lt;/factor&gt;
+    &lt;description&gt;Half of font height&lt;/description&gt;
+&lt;/unit&gt;
+&lt;/unitdefs&gt;</pre><p>to</p><pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;unitdefs&gt;
+&lt;unit type="DIMENSIONLESS" pri="y"&gt;
+    &lt;name&gt;%&lt;/name&gt;
+    &lt;plural&gt;%&lt;/plural&gt;
+    &lt;abbr&gt;%&lt;/abbr&gt;
+    &lt;factor&gt;1.00&lt;/factor&gt;
+    &lt;description&gt;Percentage&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="y"&gt;
+    &lt;name&gt;pixel&lt;/name&gt;
+    &lt;plural&gt;pixels&lt;/plural&gt;
+    &lt;abbr&gt;px&lt;/abbr&gt;
+    &lt;factor&gt;1.00&lt;/factor&gt;
+    &lt;description&gt;CSS Pixels (72/inch)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;point&lt;/name&gt;
+    &lt;plural&gt;points&lt;/plural&gt;
+    &lt;abbr&gt;pt&lt;/abbr&gt;
+    &lt;factor&gt;1.00&lt;/factor&gt;
+    &lt;description&gt;PostScript points (72/inch)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;pica&lt;/name&gt;
+    &lt;plural&gt;picas&lt;/plural&gt;
+    &lt;abbr&gt;pc&lt;/abbr&gt;
+    &lt;factor&gt;12.0&lt;/factor&gt;
+    &lt;description&gt;12 points&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;inch&lt;/name&gt;
+    &lt;plural&gt;inches&lt;/plural&gt;
+    &lt;abbr&gt;in&lt;/abbr&gt;
+    &lt;factor&gt;72.0&lt;/factor&gt;
+    &lt;description&gt;Inches (72 px/in)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;millimeter&lt;/name&gt;
+    &lt;plural&gt;millimeters&lt;/plural&gt;
+    &lt;abbr&gt;mm&lt;/abbr&gt;
+    &lt;factor&gt;2.834645669291339&lt;/factor&gt;
+    &lt;description&gt;Millimeters (25.4 mm/in)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;centimeter&lt;/name&gt;
+    &lt;plural&gt;centimeters&lt;/plural&gt;
+    &lt;abbr&gt;cm&lt;/abbr&gt;
+    &lt;factor&gt;28.34645669291339&lt;/factor&gt;
+    &lt;description&gt;Centimeters (10 mm/cm)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;meter&lt;/name&gt;
+    &lt;plural&gt;meters&lt;/plural&gt;
+    &lt;abbr&gt;m&lt;/abbr&gt;
+    &lt;factor&gt;2834.645669291339&lt;/factor&gt;
+    &lt;description&gt;Meters (100 cm/m)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;foot&lt;/name&gt;
+    &lt;plural&gt;feet&lt;/plural&gt;
+    &lt;abbr&gt;ft&lt;/abbr&gt;
+    &lt;factor&gt;864&lt;/factor&gt;
+    &lt;description&gt;Feet (12 in/ft)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="RADIAL" pri="y"&gt;
+    &lt;name&gt;degree&lt;/name&gt;
+    &lt;plural&gt;degrees&lt;/plural&gt;
+    &lt;abbr&gt;°&lt;/abbr&gt;
+    &lt;factor&gt;1.00&lt;/factor&gt;
+    &lt;description&gt;Degrees&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="RADIAL" pri="n"&gt;
+    &lt;name&gt;radian&lt;/name&gt;
+    &lt;plural&gt;radians&lt;/plural&gt;
+    &lt;abbr&gt;rad&lt;/abbr&gt;
+    &lt;factor&gt;57.29577951308232&lt;/factor&gt;
+    &lt;description&gt;Radians (180/pi deg/rad)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="RADIAL" pri="n"&gt;
+    &lt;name&gt;gradian&lt;/name&gt;
+    &lt;plural&gt;gradians&lt;/plural&gt;
+    &lt;abbr&gt;grad&lt;/abbr&gt;
+    &lt;factor&gt;0.9&lt;/factor&gt;
+    &lt;description&gt;Gradians (360/400 deg/grad)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="RADIAL" pri="n"&gt;
+    &lt;name&gt;turn&lt;/name&gt;
+    &lt;plural&gt;turns&lt;/plural&gt;
+    &lt;abbr&gt;turn&lt;/abbr&gt;
+    &lt;factor&gt;360&lt;/factor&gt;
+    &lt;description&gt;Turns (360 deg/turn)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="FONT_HEIGHT" pri="y"&gt;
+    &lt;name&gt;font-height&lt;/name&gt;
+    &lt;plural&gt;font-heights&lt;/plural&gt;
+    &lt;abbr&gt;em&lt;/abbr&gt;
+    &lt;factor&gt;1.00&lt;/factor&gt;
+    &lt;description&gt;Font height&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="FONT_HEIGHT" pri="n"&gt;
+    &lt;name&gt;x-height&lt;/name&gt;
+    &lt;plural&gt;x-heights&lt;/plural&gt;
+    &lt;abbr&gt;ex&lt;/abbr&gt;
+    &lt;factor&gt;0.50&lt;/factor&gt;
+    &lt;description&gt;Height of letter 'x'&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="FONT_HEIGHT" pri="n"&gt;
+    &lt;name&gt;half-em&lt;/name&gt;
+    &lt;plural&gt;half-ems&lt;/plural&gt;
+    &lt;abbr&gt;en&lt;/abbr&gt;
+    &lt;factor&gt;0.50&lt;/factor&gt;
+    &lt;description&gt;Half of font height&lt;/description&gt;
+&lt;/unit&gt;
+&lt;/unitdefs&gt;</pre><p>All of your units now will calculate correctly! As a test, create a box with size 72px by 72px. Changing the units afterward, you&#8217;ll see that this is equal to 1in and correct for the other values as well.</p><p>Make sure you also set your default bitmap resolution to 72dpi in Preferences (Shift + Ctrl + P) -&gt; Bitmaps</p><p>Another cool feature is that Inkscape supports em units! However, after reviewing the source, the base font size is fixed at 12px. Maybe I can submit a fix for this, hmm.</p><p>Happy Inkscaping!</p></div></article> <article id="post-225" class="post post-225 type-post status-publish format-standard hentry category-uncategorized"> <header class="entry-header"><div class="entry-date"> <span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2016/11/05/microsoft-research-hololens/" rel="bookmark"><time class="entry-date published" datetime="2016-11-05T23:26:45+00:00">November 5, 2016</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span></div><h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2016/11/05/microsoft-research-hololens/" rel="bookmark">Microsoft Research &#8211; HoloLens</a></h1>	</header><div class="entry-meta"><ul class="meta-list"><li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/uncategorized/" rel="category tag">Uncategorized</a></li><li class="meta-comment"> <span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2016/11/05/microsoft-research-hololens/#respond"><span class="dsq-postid" data-dsqidentifier="225 https://parad0xdev.wordpress.com/?p=225">Leave a comment</span></a></span></li></ul></div><div class="entry-content"><p>HoloLens version 0.0.0.1? Maybe.</p><p><span class="embed-youtube" style="text-align:center; display: block;"><iframe class='youtube-player' type='text/html' width='730' height='411' src='http://www.youtube.com/embed/3-mhqYBm7Xo?version=3&#038;rel=1&#038;fs=1&#038;autohide=2&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' allowfullscreen='true' style='border:0;'></iframe></span></p></div></article> <article id="post-213" class="post post-213 type-post status-publish format-standard hentry category-uncategorized"> <header class="entry-header"><div class="entry-date"> <span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2016/10/13/the-ultimate-slack-emoji-latex/" rel="bookmark"><time class="entry-date published" datetime="2016-10-13T01:58:51+00:00">October 13, 2016</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span></div><h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2016/10/13/the-ultimate-slack-emoji-latex/" rel="bookmark">The ultimate slack emoji: LaTeX</a></h1>	</header><div class="entry-meta"><ul class="meta-list"><li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/uncategorized/" rel="category tag">Uncategorized</a></li><li class="meta-comment"> <span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2016/10/13/the-ultimate-slack-emoji-latex/#respond"><span class="dsq-postid" data-dsqidentifier="213 https://parad0xdev.wordpress.com/?p=213">Leave a comment</span></a></span></li></ul></div><div class="entry-content"><p>It&#8217;s 3am and I have work in the morning. While working on homework in LaTeX, I thought of the perfect thing to do: construct the ULTIMATE slack emoji consisting of three separate emoji for the LaTeX symbol.</p><p>&nbsp;</p><p>Here they are, simply add them as custom emoji to your slack. I&#8217;ve named mine :latex-1: :latex-2: :latex-3:</p><div id='gallery-1' class='gallery galleryid-213 gallery-columns-3 gallery-size-thumbnail'><figure class='gallery-item'><div class='gallery-icon landscape'> <a href='https://augustkarlstedt.github.io/blog/2016/10/13/the-ultimate-slack-emoji-latex/latex-1/'><img width="128" height="128" src="https://augustkarlstedt.github.io/contents/data/2016/10/latex-1.png" class="attachment-thumbnail size-thumbnail" alt="" /></a></div></figure><figure class='gallery-item'><div class='gallery-icon landscape'> <a href='https://augustkarlstedt.github.io/blog/2016/10/13/the-ultimate-slack-emoji-latex/latex-2/'><img width="128" height="128" src="https://augustkarlstedt.github.io/contents/data/2016/10/latex-2.png" class="attachment-thumbnail size-thumbnail" alt="" /></a></div></figure><figure class='gallery-item'><div class='gallery-icon landscape'> <a href='https://augustkarlstedt.github.io/blog/2016/10/13/the-ultimate-slack-emoji-latex/latex-3/'><img width="128" height="128" src="https://augustkarlstedt.github.io/contents/data/2016/10/latex-3.png" class="attachment-thumbnail size-thumbnail" alt="" /></a></div></figure></div><p>And the result</p><p><img class="alignnone size-full wp-image-219" src="https://augustkarlstedt.github.io/contents/data/2016/10/2016-10-13-02_57_54-clipboard.png" alt="2016-10-13-02_57_54-clipboard" width="325" height="68" srcset="https://augustkarlstedt.github.io/contents/data/2016/10/2016-10-13-02_57_54-clipboard.png 325w, https://augustkarlstedt.github.io/contents/data/2016/10/2016-10-13-02_57_54-clipboard-300x63.png 300w" sizes="(max-width: 325px) 100vw, 325px" /></p></div></article> <nav class="navigation paging-navigation" role="navigation"><h1 class="screen-reader-text">Posts navigation</h1><div class="nav-links"><div class="nav-previous"><a href="https://augustkarlstedt.github.io/blog/page/2/" class="button"><span class="meta-nav"><i class="fa fa-arrow-circle-o-left"></i> Older posts</span></a></div></div> </nav> </main></div></div><footer id="colophon" class="site-footer" role="contentinfo"><div class="site-info"> <a class="powered-by" href="http://wordpress.org/">Proudly powered by WordPress</a> <span class="sep"> | </span> Theme: editor by <a href="https://array.is/">Array</a></div> </footer></div> <script type='text/javascript'>var countVars={"disqusShortname":"augustkarlstedt"};</script> <script type="text/javascript" src="https://augustkarlstedt.github.io/contents/cache/minify/10279.js"></script> </body></html>
