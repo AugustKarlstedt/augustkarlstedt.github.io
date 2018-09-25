@@ -9,10 +9,10 @@ xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01
 	>
 <channel>
 	<title>Comments on: Kali Linux on Raspberry Pi 2</title>
-	<atom:link href="http://localhost/blog/2016/09/15/kali-linux-on-raspberry-pi-2/feed/" rel="self" type="application/rss+xml" />
-	<link>http://localhost/blog/2016/09/15/kali-linux-on-raspberry-pi-2/</link>
+	<atom:link href="https://localhost/blog/2016/09/15/kali-linux-on-raspberry-pi-2/feed/" rel="self" type="application/rss+xml" />
+	<link>https://localhost/blog/2016/09/15/kali-linux-on-raspberry-pi-2/</link>
 	<description>Machine Learning Researcher, Software Engineer, Game Developer, and Consultant</description>
-	<lastBuildDate>Tue, 25 Sep 2018 00:59:27 +0000</lastBuildDate>
+	<lastBuildDate>Tue, 25 Sep 2018 02:00:19 +0000</lastBuildDate>
 	<sy:updatePeriod>hourly</sy:updatePeriod>
 	<sy:updateFrequency>1</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=4.9.8</generator>

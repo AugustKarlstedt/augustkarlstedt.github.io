@@ -11,8 +11,8 @@ xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01
 
 <channel>
 	<title>August Karlstedt</title>
-	<atom:link href="http://localhost/feed/" rel="self" type="application/rss+xml" />
-	<link>http://localhost</link>
+	<atom:link href="https://localhost/feed/" rel="self" type="application/rss+xml" />
+	<link>https://localhost</link>
 	<description>Machine Learning Researcher, Software Engineer, Game Developer, and Consultant</description>
 	<lastBuildDate>Tue, 25 Sep 2018 00:30:36 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,8 +21,8 @@ xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01
 	<generator>https://wordpress.org/?v=4.9.8</generator>
 	<item>
 		<title>Long Short-Term Memory Neural Networks and Guitar Tablature</title>
-		<link>http://localhost/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/</link>
-		<comments>http://localhost/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/#respond</comments>
+		<link>https://localhost/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/</link>
+		<comments>https://localhost/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/#respond</comments>
 		<pubDate>Sun, 14 May 2017 02:54:02 +0000</pubDate>
 		<dc:creator><![CDATA[augustk]]></dc:creator>
 				<category><![CDATA[Computer Science]]></category>
@@ -31,7 +31,7 @@ xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01
 
 		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=285</guid>
 		<description><![CDATA[<p>Just messing around with LSTM neural nets, I had the idea to train it on some guitar tabs and see what happened. Data My dataset was a collection of guitar tabs for The Who&#8217;s album, Tommy. Some stats Text total length: 277,155 Distinct chars : 91 Total sequences : 92,369 So yes, it&#8217;s a tiny [&#8230;]</p>
-<p>The post <a rel="nofollow" href="http://localhost/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/">Long Short-Term Memory Neural Networks and Guitar Tablature</a> appeared first on <a rel="nofollow" href="http://localhost">August Karlstedt</a>.</p>
+<p>The post <a rel="nofollow" href="https://localhost/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/">Long Short-Term Memory Neural Networks and Guitar Tablature</a> appeared first on <a rel="nofollow" href="https://localhost">August Karlstedt</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[<p>Just messing around with LSTM neural nets, I had the idea to train it on some guitar tabs and see what happened.</p>
 <h2>Data</h2>
@@ -462,15 +462,15 @@ Mrikk is
 
 </pre>
 <p>As you can see, it does a pretty good job. I think I need more training data!</p>
-<p>The post <a rel="nofollow" href="http://localhost/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/">Long Short-Term Memory Neural Networks and Guitar Tablature</a> appeared first on <a rel="nofollow" href="http://localhost">August Karlstedt</a>.</p>
+<p>The post <a rel="nofollow" href="https://localhost/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/">Long Short-Term Memory Neural Networks and Guitar Tablature</a> appeared first on <a rel="nofollow" href="https://localhost">August Karlstedt</a>.</p>
 ]]></content:encoded>
-			<wfw:commentRss>http://localhost/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/feed/</wfw:commentRss>
+			<wfw:commentRss>https://localhost/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/feed/</wfw:commentRss>
 		<slash:comments>0</slash:comments>
 		</item>
 		<item>
 		<title>Spring Quarter 2017</title>
-		<link>http://localhost/blog/2017/05/10/spring-quarter-2017/</link>
-		<comments>http://localhost/blog/2017/05/10/spring-quarter-2017/#respond</comments>
+		<link>https://localhost/blog/2017/05/10/spring-quarter-2017/</link>
+		<comments>https://localhost/blog/2017/05/10/spring-quarter-2017/#respond</comments>
 		<pubDate>Wed, 10 May 2017 22:16:49 +0000</pubDate>
 		<dc:creator><![CDATA[augustk]]></dc:creator>
 				<category><![CDATA[Computer Science]]></category>
@@ -479,40 +479,40 @@ Mrikk is
 
 		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=274</guid>
 		<description><![CDATA[<p>CSC 435 &#8211; Distributed Systems I CSC 577 &#8211; Recommender Systems SE 450 &#8211; Object-Oriented Software Development</p>
-<p>The post <a rel="nofollow" href="http://localhost/blog/2017/05/10/spring-quarter-2017/">Spring Quarter 2017</a> appeared first on <a rel="nofollow" href="http://localhost">August Karlstedt</a>.</p>
+<p>The post <a rel="nofollow" href="https://localhost/blog/2017/05/10/spring-quarter-2017/">Spring Quarter 2017</a> appeared first on <a rel="nofollow" href="https://localhost">August Karlstedt</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[<p>CSC 426 – Research Methods and Practice in Computing</p>
 <p>CSC 478 – Programming Machine Learning Applications</p>
 <p>CSC 594 – Topics in Artificial Intelligence: Natural Language Processing</p>
 <p>&nbsp;</p>
-<p>The post <a rel="nofollow" href="http://localhost/blog/2017/05/10/spring-quarter-2017/">Spring Quarter 2017</a> appeared first on <a rel="nofollow" href="http://localhost">August Karlstedt</a>.</p>
+<p>The post <a rel="nofollow" href="https://localhost/blog/2017/05/10/spring-quarter-2017/">Spring Quarter 2017</a> appeared first on <a rel="nofollow" href="https://localhost">August Karlstedt</a>.</p>
 ]]></content:encoded>
-			<wfw:commentRss>http://localhost/blog/2017/05/10/spring-quarter-2017/feed/</wfw:commentRss>
+			<wfw:commentRss>https://localhost/blog/2017/05/10/spring-quarter-2017/feed/</wfw:commentRss>
 		<slash:comments>0</slash:comments>
 		</item>
 		<item>
 		<title>The BEST Video Series for Linear Algebra</title>
-		<link>http://localhost/blog/2017/01/31/the-best-video-series-for-linear-algebra/</link>
-		<comments>http://localhost/blog/2017/01/31/the-best-video-series-for-linear-algebra/#respond</comments>
+		<link>https://localhost/blog/2017/01/31/the-best-video-series-for-linear-algebra/</link>
+		<comments>https://localhost/blog/2017/01/31/the-best-video-series-for-linear-algebra/#respond</comments>
 		<pubDate>Wed, 01 Feb 2017 05:50:24 +0000</pubDate>
 		<dc:creator><![CDATA[augustk]]></dc:creator>
 				<category><![CDATA[Uncategorized]]></category>
 
 		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=272</guid>
-		<description><![CDATA[<p>The post <a rel="nofollow" href="http://localhost/blog/2017/01/31/the-best-video-series-for-linear-algebra/">The BEST Video Series for Linear Algebra</a> appeared first on <a rel="nofollow" href="http://localhost">August Karlstedt</a>.</p>
+		<description><![CDATA[<p>The post <a rel="nofollow" href="https://localhost/blog/2017/01/31/the-best-video-series-for-linear-algebra/">The BEST Video Series for Linear Algebra</a> appeared first on <a rel="nofollow" href="https://localhost">August Karlstedt</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[<figure class="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-has-aspect-ratio wp-embed-aspect-16-9"><div class="wp-block-embed__wrapper">
-<iframe class='youtube-player' type='text/html' width='730' height='411' src='http://www.youtube.com/embed/videoseries?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab&#038;hl=en_US' allowfullscreen='true' style='border:0;'></iframe>
+<iframe class='youtube-player' type='text/html' width='730' height='411' src='https://www.youtube.com/embed/videoseries?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab&#038;hl=en_US' allowfullscreen='true' style='border:0;'></iframe>
 </div></figure>
-<p>The post <a rel="nofollow" href="http://localhost/blog/2017/01/31/the-best-video-series-for-linear-algebra/">The BEST Video Series for Linear Algebra</a> appeared first on <a rel="nofollow" href="http://localhost">August Karlstedt</a>.</p>
+<p>The post <a rel="nofollow" href="https://localhost/blog/2017/01/31/the-best-video-series-for-linear-algebra/">The BEST Video Series for Linear Algebra</a> appeared first on <a rel="nofollow" href="https://localhost">August Karlstedt</a>.</p>
 ]]></content:encoded>
-			<wfw:commentRss>http://localhost/blog/2017/01/31/the-best-video-series-for-linear-algebra/feed/</wfw:commentRss>
+			<wfw:commentRss>https://localhost/blog/2017/01/31/the-best-video-series-for-linear-algebra/feed/</wfw:commentRss>
 		<slash:comments>0</slash:comments>
 		</item>
 		<item>
 		<title>Winter Quarter 2017</title>
-		<link>http://localhost/blog/2016/11/29/winter-quarter-2017/</link>
-		<comments>http://localhost/blog/2016/11/29/winter-quarter-2017/#respond</comments>
+		<link>https://localhost/blog/2016/11/29/winter-quarter-2017/</link>
+		<comments>https://localhost/blog/2016/11/29/winter-quarter-2017/#respond</comments>
 		<pubDate>Wed, 30 Nov 2016 00:50:15 +0000</pubDate>
 		<dc:creator><![CDATA[augustk]]></dc:creator>
 				<category><![CDATA[Computer Science]]></category>
@@ -521,20 +521,20 @@ Mrikk is
 
 		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=266</guid>
 		<description><![CDATA[<p>CSC 435 &#8211; Distributed Systems I CSC 577 &#8211; Recommender Systems SE 450 &#8211; Object-Oriented Software Development</p>
-<p>The post <a rel="nofollow" href="http://localhost/blog/2016/11/29/winter-quarter-2017/">Winter Quarter 2017</a> appeared first on <a rel="nofollow" href="http://localhost">August Karlstedt</a>.</p>
+<p>The post <a rel="nofollow" href="https://localhost/blog/2016/11/29/winter-quarter-2017/">Winter Quarter 2017</a> appeared first on <a rel="nofollow" href="https://localhost">August Karlstedt</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[<p>CSC 435 &#8211; Distributed Systems I</p>
 <p>CSC 577 &#8211; Recommender Systems</p>
 <p>SE 450 &#8211; Object-Oriented Software Development</p>
-<p>The post <a rel="nofollow" href="http://localhost/blog/2016/11/29/winter-quarter-2017/">Winter Quarter 2017</a> appeared first on <a rel="nofollow" href="http://localhost">August Karlstedt</a>.</p>
+<p>The post <a rel="nofollow" href="https://localhost/blog/2016/11/29/winter-quarter-2017/">Winter Quarter 2017</a> appeared first on <a rel="nofollow" href="https://localhost">August Karlstedt</a>.</p>
 ]]></content:encoded>
-			<wfw:commentRss>http://localhost/blog/2016/11/29/winter-quarter-2017/feed/</wfw:commentRss>
+			<wfw:commentRss>https://localhost/blog/2016/11/29/winter-quarter-2017/feed/</wfw:commentRss>
 		<slash:comments>0</slash:comments>
 		</item>
 		<item>
 		<title>Fall Quarter 2016 (First Graduate Quarter!)</title>
-		<link>http://localhost/blog/2016/11/29/fall-quarter-2016-first-graduate-quarter/</link>
-		<comments>http://localhost/blog/2016/11/29/fall-quarter-2016-first-graduate-quarter/#respond</comments>
+		<link>https://localhost/blog/2016/11/29/fall-quarter-2016-first-graduate-quarter/</link>
+		<comments>https://localhost/blog/2016/11/29/fall-quarter-2016-first-graduate-quarter/#respond</comments>
 		<pubDate>Wed, 30 Nov 2016 00:26:06 +0000</pubDate>
 		<dc:creator><![CDATA[augustk]]></dc:creator>
 				<category><![CDATA[Data Analysis]]></category>
@@ -542,7 +542,7 @@ Mrikk is
 
 		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=255</guid>
 		<description><![CDATA[<p>My schedule included CSC 421 &#8211; Applied Algorithms and Structures CSC 447 &#8211; Concepts of Programming Language CSC 453 &#8211; Database Technologies But that&#8217;s not the interesting part. What&#8217;s interesting is that I took these courses online and collected data on how long I spent watching each lecture. This let me optimize my study habits [&#8230;]</p>
-<p>The post <a rel="nofollow" href="http://localhost/blog/2016/11/29/fall-quarter-2016-first-graduate-quarter/">Fall Quarter 2016 (First Graduate Quarter!)</a> appeared first on <a rel="nofollow" href="http://localhost">August Karlstedt</a>.</p>
+<p>The post <a rel="nofollow" href="https://localhost/blog/2016/11/29/fall-quarter-2016-first-graduate-quarter/">Fall Quarter 2016 (First Graduate Quarter!)</a> appeared first on <a rel="nofollow" href="https://localhost">August Karlstedt</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[<p>My schedule included</p>
 <p><strong><span style="color:#5b9bd5;">CSC 421</span> </strong>&#8211; Applied Algorithms and Structures</p>
@@ -555,59 +555,59 @@ Mrikk is
 <p>Overall, for the other two courses, I was saving 80-90% versus being in-class. The materials covered in these courses were not new to me, so I could get by by watching the &#8220;interesting&#8221; parts of the lecture, reading the book, and looking at the slides.</p>
 <p>I wound up with an A and an A-, for CSC 447 and CSC 453, respectively.</p>
 <p>CSC 421 was one of those courses that is really tough, but you where you learn so much. I probably could have benefited taking this course in-person, but I still managed to save some time. Since this is the first time I&#8217;ve ever recorded data like this, it&#8217;ll be interesting to compare to next quarter (where I am taking an in-person course). All said and done, I wound up with a C+ in CSC 421, bringing my GPA for the quarter to a not-too-shabby 3.33.</p>
-<p>The post <a rel="nofollow" href="http://localhost/blog/2016/11/29/fall-quarter-2016-first-graduate-quarter/">Fall Quarter 2016 (First Graduate Quarter!)</a> appeared first on <a rel="nofollow" href="http://localhost">August Karlstedt</a>.</p>
+<p>The post <a rel="nofollow" href="https://localhost/blog/2016/11/29/fall-quarter-2016-first-graduate-quarter/">Fall Quarter 2016 (First Graduate Quarter!)</a> appeared first on <a rel="nofollow" href="https://localhost">August Karlstedt</a>.</p>
 ]]></content:encoded>
-			<wfw:commentRss>http://localhost/blog/2016/11/29/fall-quarter-2016-first-graduate-quarter/feed/</wfw:commentRss>
+			<wfw:commentRss>https://localhost/blog/2016/11/29/fall-quarter-2016-first-graduate-quarter/feed/</wfw:commentRss>
 		<slash:comments>0</slash:comments>
 		</item>
 		<item>
 		<title>Amazing Resource for Linear Algebra</title>
-		<link>http://localhost/blog/2016/11/26/amazing-resource-for-linear-algebra/</link>
-		<comments>http://localhost/blog/2016/11/26/amazing-resource-for-linear-algebra/#respond</comments>
+		<link>https://localhost/blog/2016/11/26/amazing-resource-for-linear-algebra/</link>
+		<comments>https://localhost/blog/2016/11/26/amazing-resource-for-linear-algebra/#respond</comments>
 		<pubDate>Sun, 27 Nov 2016 04:03:42 +0000</pubDate>
 		<dc:creator><![CDATA[augustk]]></dc:creator>
 				<category><![CDATA[Uncategorized]]></category>
 
 		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=253</guid>
 		<description><![CDATA[<p>http://immersivemath.com/ila/index.html</p>
-<p>The post <a rel="nofollow" href="http://localhost/blog/2016/11/26/amazing-resource-for-linear-algebra/">Amazing Resource for Linear Algebra</a> appeared first on <a rel="nofollow" href="http://localhost">August Karlstedt</a>.</p>
+<p>The post <a rel="nofollow" href="https://localhost/blog/2016/11/26/amazing-resource-for-linear-algebra/">Amazing Resource for Linear Algebra</a> appeared first on <a rel="nofollow" href="https://localhost">August Karlstedt</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[<p><a href="http://immersivemath.com/ila/index.html" target="_blank">http://immersivemath.com/ila/index.html</a></p>
-<p>The post <a rel="nofollow" href="http://localhost/blog/2016/11/26/amazing-resource-for-linear-algebra/">Amazing Resource for Linear Algebra</a> appeared first on <a rel="nofollow" href="http://localhost">August Karlstedt</a>.</p>
+<p>The post <a rel="nofollow" href="https://localhost/blog/2016/11/26/amazing-resource-for-linear-algebra/">Amazing Resource for Linear Algebra</a> appeared first on <a rel="nofollow" href="https://localhost">August Karlstedt</a>.</p>
 ]]></content:encoded>
-			<wfw:commentRss>http://localhost/blog/2016/11/26/amazing-resource-for-linear-algebra/feed/</wfw:commentRss>
+			<wfw:commentRss>https://localhost/blog/2016/11/26/amazing-resource-for-linear-algebra/feed/</wfw:commentRss>
 		<slash:comments>0</slash:comments>
 		</item>
 		<item>
 		<title>Holoportation</title>
-		<link>http://localhost/blog/2016/11/23/holoportation/</link>
-		<comments>http://localhost/blog/2016/11/23/holoportation/#respond</comments>
+		<link>https://localhost/blog/2016/11/23/holoportation/</link>
+		<comments>https://localhost/blog/2016/11/23/holoportation/#respond</comments>
 		<pubDate>Wed, 23 Nov 2016 16:10:26 +0000</pubDate>
 		<dc:creator><![CDATA[augustk]]></dc:creator>
 				<category><![CDATA[Uncategorized]]></category>
 
 		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=251</guid>
-		<description><![CDATA[<p>The post <a rel="nofollow" href="http://localhost/blog/2016/11/23/holoportation/">Holoportation</a> appeared first on <a rel="nofollow" href="http://localhost">August Karlstedt</a>.</p>
+		<description><![CDATA[<p>The post <a rel="nofollow" href="https://localhost/blog/2016/11/23/holoportation/">Holoportation</a> appeared first on <a rel="nofollow" href="https://localhost">August Karlstedt</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[<figure class="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-has-aspect-ratio wp-embed-aspect-16-9"><div class="wp-block-embed__wrapper">
-<iframe class='youtube-player' type='text/html' width='730' height='411' src='http://www.youtube.com/embed/84ngPFBWLVI?version=3&#038;rel=1&#038;fs=1&#038;autohide=2&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' allowfullscreen='true' style='border:0;'></iframe>
+<iframe class='youtube-player' type='text/html' width='730' height='411' src='https://www.youtube.com/embed/84ngPFBWLVI?version=3&#038;rel=1&#038;fs=1&#038;autohide=2&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' allowfullscreen='true' style='border:0;'></iframe>
 </div></figure>
-<p>The post <a rel="nofollow" href="http://localhost/blog/2016/11/23/holoportation/">Holoportation</a> appeared first on <a rel="nofollow" href="http://localhost">August Karlstedt</a>.</p>
+<p>The post <a rel="nofollow" href="https://localhost/blog/2016/11/23/holoportation/">Holoportation</a> appeared first on <a rel="nofollow" href="https://localhost">August Karlstedt</a>.</p>
 ]]></content:encoded>
-			<wfw:commentRss>http://localhost/blog/2016/11/23/holoportation/feed/</wfw:commentRss>
+			<wfw:commentRss>https://localhost/blog/2016/11/23/holoportation/feed/</wfw:commentRss>
 		<slash:comments>0</slash:comments>
 		</item>
 		<item>
 		<title>How to Fix Inkscape&#8217;s Default Units (and Finally Work With Illustrator)</title>
-		<link>http://localhost/blog/2016/11/21/how-to-fix-inkscapes-default-units-and-finally-work-with-illustrator/</link>
-		<comments>http://localhost/blog/2016/11/21/how-to-fix-inkscapes-default-units-and-finally-work-with-illustrator/#respond</comments>
+		<link>https://localhost/blog/2016/11/21/how-to-fix-inkscapes-default-units-and-finally-work-with-illustrator/</link>
+		<comments>https://localhost/blog/2016/11/21/how-to-fix-inkscapes-default-units-and-finally-work-with-illustrator/#respond</comments>
 		<pubDate>Mon, 21 Nov 2016 22:20:00 +0000</pubDate>
 		<dc:creator><![CDATA[augustk]]></dc:creator>
 				<category><![CDATA[Uncategorized]]></category>
 
 		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=229</guid>
 		<description><![CDATA[<p>For some odd reason, Inkscape defaults to having 90px = 1in (and soon 96px = 1in). Compared to Illustrator, where 72px = 1in, there are some issues converting back and forth between programs. There are no configuration settings in Inkscape to change this, but I have found a way to do so anyway. Navigate to [&#8230;]</p>
-<p>The post <a rel="nofollow" href="http://localhost/blog/2016/11/21/how-to-fix-inkscapes-default-units-and-finally-work-with-illustrator/">How to Fix Inkscape&#8217;s Default Units (and Finally Work With Illustrator)</a> appeared first on <a rel="nofollow" href="http://localhost">August Karlstedt</a>.</p>
+<p>The post <a rel="nofollow" href="https://localhost/blog/2016/11/21/how-to-fix-inkscapes-default-units-and-finally-work-with-illustrator/">How to Fix Inkscape&#8217;s Default Units (and Finally Work With Illustrator)</a> appeared first on <a rel="nofollow" href="https://localhost">August Karlstedt</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[<p>For some odd reason, Inkscape defaults to having 90px = 1in (and soon 96px = 1in). Compared to Illustrator, where 72px = 1in, there are some issues converting back and forth between programs.</p>
 <p>There are no configuration settings in Inkscape to change this, but I have found a way to do so anyway.</p>
@@ -849,58 +849,58 @@ Mrikk is
 <p>Make sure you also set your default bitmap resolution to 72dpi in Preferences (Shift + Ctrl + P) -&gt; Bitmaps</p>
 <p>Another cool feature is that Inkscape supports em units! However, after reviewing the source, the base font size is fixed at 12px. Maybe I can submit a fix for this, hmm.</p>
 <p>Happy Inkscaping!</p>
-<p>The post <a rel="nofollow" href="http://localhost/blog/2016/11/21/how-to-fix-inkscapes-default-units-and-finally-work-with-illustrator/">How to Fix Inkscape&#8217;s Default Units (and Finally Work With Illustrator)</a> appeared first on <a rel="nofollow" href="http://localhost">August Karlstedt</a>.</p>
+<p>The post <a rel="nofollow" href="https://localhost/blog/2016/11/21/how-to-fix-inkscapes-default-units-and-finally-work-with-illustrator/">How to Fix Inkscape&#8217;s Default Units (and Finally Work With Illustrator)</a> appeared first on <a rel="nofollow" href="https://localhost">August Karlstedt</a>.</p>
 ]]></content:encoded>
-			<wfw:commentRss>http://localhost/blog/2016/11/21/how-to-fix-inkscapes-default-units-and-finally-work-with-illustrator/feed/</wfw:commentRss>
+			<wfw:commentRss>https://localhost/blog/2016/11/21/how-to-fix-inkscapes-default-units-and-finally-work-with-illustrator/feed/</wfw:commentRss>
 		<slash:comments>0</slash:comments>
 		</item>
 		<item>
 		<title>Microsoft Research &#8211; HoloLens</title>
-		<link>http://localhost/blog/2016/11/05/microsoft-research-hololens/</link>
-		<comments>http://localhost/blog/2016/11/05/microsoft-research-hololens/#respond</comments>
+		<link>https://localhost/blog/2016/11/05/microsoft-research-hololens/</link>
+		<comments>https://localhost/blog/2016/11/05/microsoft-research-hololens/#respond</comments>
 		<pubDate>Sun, 06 Nov 2016 05:26:45 +0000</pubDate>
 		<dc:creator><![CDATA[augustk]]></dc:creator>
 				<category><![CDATA[Uncategorized]]></category>
 
 		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=225</guid>
 		<description><![CDATA[<p>HoloLens version 0.0.0.1? Maybe.</p>
-<p>The post <a rel="nofollow" href="http://localhost/blog/2016/11/05/microsoft-research-hololens/">Microsoft Research &#8211; HoloLens</a> appeared first on <a rel="nofollow" href="http://localhost">August Karlstedt</a>.</p>
+<p>The post <a rel="nofollow" href="https://localhost/blog/2016/11/05/microsoft-research-hololens/">Microsoft Research &#8211; HoloLens</a> appeared first on <a rel="nofollow" href="https://localhost">August Karlstedt</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[<p>HoloLens version 0.0.0.1? Maybe.</p>
 
 <figure class="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-has-aspect-ratio wp-embed-aspect-4-3"><div class="wp-block-embed__wrapper">
-<iframe class='youtube-player' type='text/html' width='730' height='411' src='http://www.youtube.com/embed/3-mhqYBm7Xo?version=3&#038;rel=1&#038;fs=1&#038;autohide=2&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' allowfullscreen='true' style='border:0;'></iframe>
+<iframe class='youtube-player' type='text/html' width='730' height='411' src='https://www.youtube.com/embed/3-mhqYBm7Xo?version=3&#038;rel=1&#038;fs=1&#038;autohide=2&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' allowfullscreen='true' style='border:0;'></iframe>
 </div></figure>
-<p>The post <a rel="nofollow" href="http://localhost/blog/2016/11/05/microsoft-research-hololens/">Microsoft Research &#8211; HoloLens</a> appeared first on <a rel="nofollow" href="http://localhost">August Karlstedt</a>.</p>
+<p>The post <a rel="nofollow" href="https://localhost/blog/2016/11/05/microsoft-research-hololens/">Microsoft Research &#8211; HoloLens</a> appeared first on <a rel="nofollow" href="https://localhost">August Karlstedt</a>.</p>
 ]]></content:encoded>
-			<wfw:commentRss>http://localhost/blog/2016/11/05/microsoft-research-hololens/feed/</wfw:commentRss>
+			<wfw:commentRss>https://localhost/blog/2016/11/05/microsoft-research-hololens/feed/</wfw:commentRss>
 		<slash:comments>0</slash:comments>
 		</item>
 		<item>
 		<title>The ultimate slack emoji: LaTeX</title>
-		<link>http://localhost/blog/2016/10/13/the-ultimate-slack-emoji-latex/</link>
-		<comments>http://localhost/blog/2016/10/13/the-ultimate-slack-emoji-latex/#respond</comments>
+		<link>https://localhost/blog/2016/10/13/the-ultimate-slack-emoji-latex/</link>
+		<comments>https://localhost/blog/2016/10/13/the-ultimate-slack-emoji-latex/#respond</comments>
 		<pubDate>Thu, 13 Oct 2016 07:58:51 +0000</pubDate>
 		<dc:creator><![CDATA[augustk]]></dc:creator>
 				<category><![CDATA[Uncategorized]]></category>
 
 		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=213</guid>
 		<description><![CDATA[<p>It&#8217;s 3am and I have work in the morning. While working on homework in LaTeX, I thought of the perfect thing to do: construct the ULTIMATE slack emoji consisting of three separate emoji for the LaTeX symbol. &#160; Here they are, simply add them as custom emoji to your slack. I&#8217;ve named mine :latex-1: :latex-2: [&#8230;]</p>
-<p>The post <a rel="nofollow" href="http://localhost/blog/2016/10/13/the-ultimate-slack-emoji-latex/">The ultimate slack emoji: LaTeX</a> appeared first on <a rel="nofollow" href="http://localhost">August Karlstedt</a>.</p>
+<p>The post <a rel="nofollow" href="https://localhost/blog/2016/10/13/the-ultimate-slack-emoji-latex/">The ultimate slack emoji: LaTeX</a> appeared first on <a rel="nofollow" href="https://localhost">August Karlstedt</a>.</p>
 ]]></description>
 				<content:encoded><![CDATA[<p>It&#8217;s 3am and I have work in the morning. While working on homework in LaTeX, I thought of the perfect thing to do: construct the ULTIMATE slack emoji consisting of three separate emoji for the LaTeX symbol.</p>
 <p>&nbsp;</p>
 <p>Here they are, simply add them as custom emoji to your slack. I&#8217;ve named mine :latex-1: :latex-2: :latex-3:</p>
 
-<a href='http://localhost/blog/2016/10/13/the-ultimate-slack-emoji-latex/latex-1/'><img width="128" height="128" src="http://localhost/contents/data/2016/10/latex-1.png" class="attachment-thumbnail size-thumbnail" alt="" /></a>
-<a href='http://localhost/blog/2016/10/13/the-ultimate-slack-emoji-latex/latex-2/'><img width="128" height="128" src="http://localhost/contents/data/2016/10/latex-2.png" class="attachment-thumbnail size-thumbnail" alt="" /></a>
-<a href='http://localhost/blog/2016/10/13/the-ultimate-slack-emoji-latex/latex-3/'><img width="128" height="128" src="http://localhost/contents/data/2016/10/latex-3.png" class="attachment-thumbnail size-thumbnail" alt="" /></a>
+<a href='https://localhost/blog/2016/10/13/the-ultimate-slack-emoji-latex/latex-1/'><img width="128" height="128" src="https://localhost/contents/data/2016/10/latex-1.png" class="attachment-thumbnail size-thumbnail" alt="" /></a>
+<a href='https://localhost/blog/2016/10/13/the-ultimate-slack-emoji-latex/latex-2/'><img width="128" height="128" src="https://localhost/contents/data/2016/10/latex-2.png" class="attachment-thumbnail size-thumbnail" alt="" /></a>
+<a href='https://localhost/blog/2016/10/13/the-ultimate-slack-emoji-latex/latex-3/'><img width="128" height="128" src="https://localhost/contents/data/2016/10/latex-3.png" class="attachment-thumbnail size-thumbnail" alt="" /></a>
 
 <p>And the result</p>
-<p><img class="alignnone size-full wp-image-219" src="http://localhost/contents/data/2016/10/2016-10-13-02_57_54-clipboard.png" alt="2016-10-13-02_57_54-clipboard" width="325" height="68" srcset="http://localhost/contents/data/2016/10/2016-10-13-02_57_54-clipboard.png 325w, http://localhost/contents/data/2016/10/2016-10-13-02_57_54-clipboard-300x63.png 300w" sizes="(max-width: 325px) 100vw, 325px" /></p>
-<p>The post <a rel="nofollow" href="http://localhost/blog/2016/10/13/the-ultimate-slack-emoji-latex/">The ultimate slack emoji: LaTeX</a> appeared first on <a rel="nofollow" href="http://localhost">August Karlstedt</a>.</p>
+<p><img class="alignnone size-full wp-image-219" src="http://localhost/contents/data/2016/10/2016-10-13-02_57_54-clipboard.png" alt="2016-10-13-02_57_54-clipboard" width="325" height="68" srcset="https://localhost/contents/data/2016/10/2016-10-13-02_57_54-clipboard.png 325w, https://localhost/contents/data/2016/10/2016-10-13-02_57_54-clipboard-300x63.png 300w" sizes="(max-width: 325px) 100vw, 325px" /></p>
+<p>The post <a rel="nofollow" href="https://localhost/blog/2016/10/13/the-ultimate-slack-emoji-latex/">The ultimate slack emoji: LaTeX</a> appeared first on <a rel="nofollow" href="https://localhost">August Karlstedt</a>.</p>
 ]]></content:encoded>
-			<wfw:commentRss>http://localhost/blog/2016/10/13/the-ultimate-slack-emoji-latex/feed/</wfw:commentRss>
+			<wfw:commentRss>https://localhost/blog/2016/10/13/the-ultimate-slack-emoji-latex/feed/</wfw:commentRss>
 		<slash:comments>0</slash:comments>
 		</item>
 	</channel>
