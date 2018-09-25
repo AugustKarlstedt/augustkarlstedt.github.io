@@ -1,0 +1,1857 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" id="ao_optimized_gfonts" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C600%2C700%2C400italic%2C600italic%2C700italic%7CRoboto+Condensed%3A300%2C400%2C700%2C300italic%2C400italic%2C700italic#038;subset=latin%2Clatin-ext" />
+
+
+<link type="text/css" media="all" href="https://augustkarlstedt.github.io/contents/cache/autoptimize/css/autoptimize_229c714fd82f4efa7399b373c6ad6f74.css" rel="stylesheet" /><link type="text/css" media="screen" href="https://augustkarlstedt.github.io/contents/cache/autoptimize/css/autoptimize_5661884aa2f65b8c55ee9227482bd126.css" rel="stylesheet" /><title>Blog - August Karlstedt</title>
+
+<!-- This site is optimized with the Yoast SEO plugin v8.2.1 - https://yoast.com/wordpress/plugins/seo/ -->
+
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Blog - August Karlstedt" />
+<meta property="og:description" content="Just messing around with LSTM neural nets, I had the idea to train it on some guitar tabs and see what happened. Data My dataset was a collection of guitar tabs for The Who&#8217;s album, Tommy. Some stats Text total length: 277,155 Distinct chars : 91 Total sequences : 92,369 So yes, it&#8217;s a tiny &hellip;" />
+<meta property="og:url" content="https://augustkarlstedt.github.io/blog/" />
+<meta property="og:site_name" content="August Karlstedt" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="Just messing around with LSTM neural nets, I had the idea to train it on some guitar tabs and see what happened. Data My dataset was a collection of guitar tabs for The Who&#8217;s album, Tommy. Some stats Text total length: 277,155 Distinct chars : 91 Total sequences : 92,369 So yes, it&#8217;s a tiny [&hellip;]" />
+<meta name="twitter:title" content="Blog - August Karlstedt" />
+<meta name="twitter:image" content="https://augustkarlstedt.github.io/contents/data/2017/05/robot-guitar.jpg" />
+<script type='application/ld+json'>{"@context":"https:\/\/schema.org","@type":"Person","url":"https:\/\/augustkarlstedt.github.io\/","sameAs":["https:\/\/www.linkedin.com\/in\/augustkarlstedt\/","https:\/\/www.youtube.com\/user\/Parad0x0217"],"@id":"#person","name":"August Karlstedt"}</script>
+<!-- / Yoast SEO plugin. -->
+
+<link href='https://fonts.gstatic.com' crossorigin='anonymous' rel='preconnect' />
+
+
+
+<link rel='stylesheet' id='dashicons-css'  href='https://augustkarlstedt.github.io/inc/css/dashicons.min.css' type='text/css' media='all' />
+
+
+<!--[if IE]>
+<link rel='stylesheet' id='ie7-style-css'  href='https://augustkarlstedt.github.io/contents/ui/theme/inc/styles/ie.css' type='text/css' media='all' />
+<![endif]-->
+
+<script type='text/javascript' src='https://augustkarlstedt.github.io/inc/js/jquery/jquery.js'></script>
+
+
+
+
+
+<link rel='dns-prefetch' href='//v0.wordpress.com'/>
+</head>
+
+<body class="blog">
+
+<div id="page" class="hfeed site container">
+
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	<!-- Get sidebar color option (Appearance -> Customize -> Theme Options) -->
+		<header id="masthead" class="site-header dark" role="banner">
+		<!-- Tab navigation -->
+		<ul class="toggle-bar" role="tablist">
+			<!-- Main navigation -->
+			<li id="panel-1" class="current" role="presentation">
+				<a href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true" class="current nav-toggle" data-tab="tab-1"><i class="fa fa-bars"></i><span class="screen-reader-text">View menu</span></a>
+			</li>
+
+			<!-- Featured Posts navigation -->
+			
+			<!-- Sidebar widgets navigation -->
+			<li id="panel-3" role="presentation">
+				<a href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false" class="folder-toggle" data-tab="tab-3"><i class="fa fa-folder"></i><i class="fa fa-folder-open"></i><span class="screen-reader-text">View sidebar</span></a>
+			</li>
+		</ul>
+
+		<div id="tabs" class="toggle-tabs">
+			<div class="site-header-inside">
+				<!-- Logo, description and main navigation -->
+				<div id="tab-1" class="tab-content current fadeIn">
+					<div class="site-branding">
+						<!-- Get the site branding -->
+													<h1 class="site-logo">
+								<a href="https://augustkarlstedt.github.io/"><img class="site-logo" src="https://augustkarlstedt.github.io/contents/data/2018/09/me.png" alt="August Karlstedt" /></a>
+							</h1>
+												<h1 class="site-title"><a href="https://augustkarlstedt.github.io/" rel="home">August Karlstedt</a></h1>
+						<h2 class="site-description">Machine Learning Researcher, Software Engineer, Game Developer, and Consultant</h2>
+					</div>
+
+					<nav id="site-navigation" class="main-navigation" role="navigation">
+						<div class="menu-primary-container"><ul id="menu-primary" class="menu"><li id="menu-item-353" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-353"><a href="https://augustkarlstedt.github.io/">Home</a></li>
+<li id="menu-item-388" class="menu-item menu-item-type-post_type_archive menu-item-object-jetpack-portfolio menu-item-388"><a href="https://augustkarlstedt.github.io/portfolio/">Portfolio</a></li>
+<li id="menu-item-354" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-351 current_page_item current_page_parent menu-item-354"><a href="https://augustkarlstedt.github.io/blog/">Blog</a></li>
+<li id="menu-item-355" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-355"><a href="https://augustkarlstedt.github.io/contact/">Contact</a></li>
+</ul></div>					</nav><!-- #site-navigation -->
+
+											<div class="social-links"><ul id="menu-social" class="menu"><li id="menu-item-356" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-356"><a href="mailto:august.karlstedt@gmail.com"><span class="screen-reader-text">Email</span></a></li>
+<li id="menu-item-324" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-324"><a href="https://www.linkedin.com/in/augustkarlstedt/"><span class="screen-reader-text">LinkedIn</span></a></li>
+<li id="menu-item-357" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-357"><a href="https://www.youtube.com/user/Parad0x0217"><span class="screen-reader-text">YouTube</span></a></li>
+<li id="menu-item-358" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-358"><a href="https://github.com/AugustKarlstedt"><span class="screen-reader-text">GitHub</span></a></li>
+</ul></div>									</div><!-- #tab-1 -->
+
+				<!-- Featured Posts template (template-featured-posts.php) -->
+				
+				<!-- Sidebar widgets -->
+				<div id="tab-3" class="tab-content animated fadeIn" role="tabpanel" aria-labelledby="panel-3" aria-hidden="true">
+						<div id="secondary" class="widget-area" role="complementary">
+		<aside id="archives-2" class="widget widget_archive"><h2 class="widget-title">Archives</h2>		<ul>
+			<li><a href='https://augustkarlstedt.github.io/blog/2017/05/'>May 2017</a></li>
+	<li><a href='https://augustkarlstedt.github.io/blog/2017/01/'>January 2017</a></li>
+	<li><a href='https://augustkarlstedt.github.io/blog/2016/11/'>November 2016</a></li>
+	<li><a href='https://augustkarlstedt.github.io/blog/2016/10/'>October 2016</a></li>
+	<li><a href='https://augustkarlstedt.github.io/blog/2016/09/'>September 2016</a></li>
+	<li><a href='https://augustkarlstedt.github.io/blog/2016/03/'>March 2016</a></li>
+	<li><a href='https://augustkarlstedt.github.io/blog/2016/02/'>February 2016</a></li>
+	<li><a href='https://augustkarlstedt.github.io/blog/2015/01/'>January 2015</a></li>
+	<li><a href='https://augustkarlstedt.github.io/blog/2014/10/'>October 2014</a></li>
+	<li><a href='https://augustkarlstedt.github.io/blog/2014/06/'>June 2014</a></li>
+	<li><a href='https://augustkarlstedt.github.io/blog/2014/05/'>May 2014</a></li>
+		</ul>
+		</aside><aside id="categories-2" class="widget widget_categories"><h2 class="widget-title">Categories</h2>		<ul>
+	<li class="cat-item cat-item-2"><a href="https://augustkarlstedt.github.io/blog/category/android/" >Android</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="https://augustkarlstedt.github.io/blog/category/animation/" >Animation</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="https://augustkarlstedt.github.io/blog/category/c-2/" >C++</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="https://augustkarlstedt.github.io/blog/category/computer-science/" >Computer Science</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="https://augustkarlstedt.github.io/blog/category/data-analysis/" >Data Analysis</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="https://augustkarlstedt.github.io/blog/category/game-development/" >Game Development</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="https://augustkarlstedt.github.io/blog/category/java/" >Java</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="https://augustkarlstedt.github.io/blog/category/machine-learning/" >Machine Learning</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="https://augustkarlstedt.github.io/blog/category/programming-2/" >Programming</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="https://augustkarlstedt.github.io/blog/category/school/" >School</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="https://augustkarlstedt.github.io/blog/category/uncategorized/" >Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="https://augustkarlstedt.github.io/blog/category/work/" >Work</a>
+</li>
+		</ul>
+</aside>	</div><!-- #secondary -->
+				</div><!-- #tab-3 -->
+			</div><!-- .site-header-inside -->
+		</div><!-- #tabs -->
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content fadeInFast">
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+						
+				
+<article id="post-285" class="post post-285 type-post status-publish format-standard has-post-thumbnail hentry category-computer-science category-machine-learning category-programming-2">
+	<!-- Grab the featured image -->
+			<a class="featured-image" href="https://augustkarlstedt.github.io/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/" title="Long Short-Term Memory Neural Networks and Guitar Tablature"><img width="1200" height="800" src="https://augustkarlstedt.github.io/contents/data/2017/05/robot-guitar-1200x800.jpg" class="attachment-large-image size-large-image wp-post-image" alt="" srcset="https://augustkarlstedt.github.io/contents/data/2017/05/robot-guitar-1200x800.jpg 1200w, https://augustkarlstedt.github.io/contents/data/2017/05/robot-guitar-300x200.jpg 300w, https://augustkarlstedt.github.io/contents/data/2017/05/robot-guitar-768x512.jpg 768w, https://augustkarlstedt.github.io/contents/data/2017/05/robot-guitar-1024x683.jpg 1024w, https://augustkarlstedt.github.io/contents/data/2017/05/robot-guitar-600x400.jpg 600w" sizes="(max-width: 1200px) 100vw, 1200px" /></a>
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/" rel="bookmark"><time class="entry-date published" datetime="2017-05-13T20:54:02+00:00">May 13, 2017</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/" rel="bookmark">Long Short-Term Memory Neural Networks and Guitar Tablature</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/computer-science/" rel="category tag">Computer Science</a>, <a href="https://augustkarlstedt.github.io/blog/category/machine-learning/" rel="category tag">Machine Learning</a>, <a href="https://augustkarlstedt.github.io/blog/category/programming-2/" rel="category tag">Programming</a></li>
+								<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/#respond"><span class="dsq-postid" data-dsqidentifier="285 https://parad0xdev.wordpress.com/?p=285">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p>Just messing around with LSTM neural nets, I had the idea to train it on some guitar tabs and see what happened.</p>
+<h2>Data</h2>
+<p>My dataset was <a href="http://www.thewho.net/whotabs/tablature/tommy.txt" target="_blank" rel="noopener noreferrer">a collection of guitar tabs for The Who&#8217;s album, Tommy</a>.</p>
+<p>Some stats<br />
+<span class="value info">Text total length: 277,155<br />
+</span><span class="value info">Distinct chars : 91<br />
+</span><span class="value info">Total sequences : 92,369</span></p>
+<p>So yes, it&#8217;s a tiny little dataset.</p>
+<h2>Training</h2>
+<p>I&#8217;m using TFLearn&#8217;s implementation of an LSTM neural net. My setup is as follows:</p>
+<p>Input data -&gt; LSTM layer (512 units, returns full sequence (3d tensor)), -&gt; dropout (50%) -&gt; another LSTM layer (512 units, returns only output of last sequence (2d tensor)) -&gt; dropout (50%) -&gt; fully connected layer (softmax activation).</p>
+<h2>Results</h2>
+<p>On the first epoch with a temperature of 1.0 (meaning we&#8217;re trying to generate novel sequences, less likely to repeat the input data), we get:</p>
+<pre>/ / / C | G F C |
+ |: % |-|---|-----||-------------||-----|-----|----------------6--5------8----4-|-|---6-------
+ --------5-----|-----3------------------|5--------%<span class="text_exposed_show">
+ |-.8------|-8-
+ .|-2-|7------------------------7-----|-----------|x----------------------|--------------|-------------||--|2-------------||----------------|-x-------7----|-7----4-4-x--24--8----|-0---|]||4|----2--90-0-/|--0-----||--------------------|-4----00--a0-000-\0-00-00-40-0---0-20--004-
+ 2-0--0x-4-0-42-0-2%-2-2001--l5|-----12-711|-0-----7x2--0------4--|
+ 5|---|1-----3---------|||2-----------3-|----|--|------------|-----------|---------------3--7|4------------
+ ||5--5--------------|
+ 2 bgsc ko i
+ r@ aO(l' bs ye ] 7T /AAo o -ls5|)|22--010-0-00-0-0-0------2--[2u6I
+ 4]s5LeEao] avcw s4i ie s e|gb stse Y [eer,a i dE
+ g[y Ipaapaetdye] |52--- ( h7seti
+ se C Ty/ixkLou] | 
+ |Wshyo u ut g |[iemhrr efh r
+ ei sp c F</span></pre>
+<p>That&#8217;s actually not bad!</p>
+<p>I let the training run for a while. Interestingly, the temperature being 0.5 tends to yield complete silence:</p>
+<pre>---------------|---------------|----------------|
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</pre>
+<p>This is most likely because the most common sequence <em>is</em> silence: &#8212;&#8212;&#8212;-</p>
+<p>After the seventh epoch, temperature = 1.0:</p>
+<pre>---------------|---------------|----------------|
+|----------------|---------------|---------------|---------|
+|-----------|----------------|-------------------|
+| ------5-------|---------------|---------------|---------------|
+|3-3-3---3---3--|---------------|---------------||---------------|
+|------------#-----------------|---------3-------|
+|----------|-----------------|-------------------|----
+||[glr 1]                                                       |---------------|---------------|
+|5---3----------|---------------|---------------.|----------------||------------------5|---------------|
+|7--7-7-----5------|
+|3-------3--3--3-|5--------------|--7---7---7-7--|
+|7--------------|--------6---------|9---7------------|
+|-.--------------------|----------------------|---
+||--0-0-0-0-0-0-0-0-x-x--|x0-0-0-0-0-0-0-0|x-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|
+|-----------2--||---------------|---------------|---------------|
+|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0---|0-0-0-0-0-0-0-0|
+|---------------|---------------|---------------|-------|</pre>
+<p>That&#8217;s almost a legitimate tab!</p>
+<p>After 12 epochs, temperature=0.5, we get a 14-string guitar tab&#8230;</p>
+<pre>--|5---0---|4-----|5---0---|4-------|0---0---|
+|5-------|5---0---|5-------|5-------|5-------|5-------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|------</pre>
+<p>After epoch fifteen&#8230;</p>
+<pre>-- Test with temperature of 1.0 --
+--------------|-------------------|-------|
+[CHORRES]
+  |Esus4            |             | 
+3'd gote how come  you  F        x2204x-                        %          |
+S INPatgent a fouter floy the striml? Bust by  wonthethertdppnbpally buf you. Acully tay lecco`-
+      qe be    F e          F77m7 Fm7         FB7      
+                      F
+A                     Bm      -
+Le'd dongo ax and wayk hous mud d mim the feat 
+[VBRSE tOAx]
+========================================================
+SSENSHARC
+Ad The Who
+Written by Pete Townshend (c)1969 Fabuloou Music Ltd,
+#-----------------------------------PLEASE NOTE------------------------------5--#
+Mr's  The  byTusthin ]
+-----------------------------------------------------#
+=======================================================
+SOUSSMBRISMEID =YAB
+Ay The Who
+Written by Pete Townshend (c)-969 Fabulous Music Ltd.
+#------------------------------------EL
+LOREEGmtris                     [wrtted Nowr predelt d)Bb          Whotabs                           x2
+|------------------|------</pre>
+<p>Additional output below.</p>
+<pre>EPOCH 43
+-- TESTING...
+-- Test with temperature of 1.0 --
+--0--0|--------|-----0--|--000000|00000000|
+|--------|--------|--------|
+|--------|--------|--------|--------|
+|--------|--------|--------|--------|
+|[bass]                                                  |
+|0.-0--0-|0---0----------|0-------|----0--------|--------|---------------|
+|--5-----|----5---4-----|7------|---------------|--------|
+|5--5--5 |5----|5-----|5-----|5-----|5-------|5-------|
+|4------|4-------|4----|------|4-----|4-----|4-------|4-------|
+|0-------|-------|0---|------|
+|0-----|0-------|--------|--------|
+|--------|--------|--------|--------|
+|[bass]                                                     |
+|--------------5-|---------------|--------------7|7-7-7-7-7-7-7-7|7-7-7-7-7-7-7-7|
+|---------------|---------------|----------------|
+|[acoustic 1]                                                   |
+|7-----8-----7--|-------------------|7-----8-----10--|---------------|
+|8-----8-----8--|-------------------|7-----8-----10-|---------------|
+|8-----6--------|--8-x-6---6----|8-----8-----10-|----------------|
+|8---x-6-----
+-- Test with temperature of 0.5 --
+--0--0|--------|-----0--|--000000|00000000|
+|---------------|---------------|
+|---------------|---------------|----------------|
+|[acoustic 1]                                                                                           |
+|---------------|---------------|---------------|---------------|
+|[acoustic 1]                                                                 |
+|-----------------------------------|------------------------------|
+         F#7                                     [Lele bitesentare playe: for mo, the gtrste.
+[repeat CHORUS]
+She pitball.
+[CHORUS]
+    |------------------------------------|-----------------------|
+   |-11--------------------|11------------------8---|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+Previous transcription by:
+Mike (sef@icbr.ufl.edu)
+==============   
+[2K
+| Adam | epoch: 044 | loss: 0.13966 | val_loss: 0.07798 -- iter: 83132/83132
+--
+WARNING:tensorflow:Error encountered when serializing layer_tensor/LSTM.
+Type is unsupported, or the types of the items don't match field type in CollectionDef.
+'list' object has no attribute 'name'
+WARNING:tensorflow:Error encountered when serializing layer_tensor/Dropout.
+Type is unsupported, or the types of the items don't match field type in CollectionDef.
+'list' object has no attribute 'name'
+-- TESTING...
+-- Test with temperature of 1.0 --
+                      
+Third update
+Note: Most of dravh thouthem praye wish play ahe buthe as.
+[VERSE]
+G    B7                               Gm7sus4    E5   G5 G5 B5 B5 
+I'm free.                            A
+    -----------------------------------5------------------------------------------------------#
+Previous-transcriptt| TI The Khorsher or fou dhink is gonde. E                              |[gur 1]                 |
+|-------------0-|---------------|---------------|--------------|
+|---------------|---------------|---------------|---------------|
+|---------------|--0-0-0-0-0-0-0|---------------|--------------|
+|---------------|---------------|---------------|---------------|
+|---------------|---------------|---------------|---------------|
+|[electric]                                                   
+[NOte: saand and bling:
+Em/B         3 -3 -3              |
+   |-----------------------------|-------------------------------|
+||G                                                    |
+|--------|--------|--------|--------|-----
+-- Test with temperature of 0.5 --
+                      
+Third update
+Note: Most of the stagong.
+    -------------------------------------------------------------------------------------------------------------------#
+Previous transcriptt------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+Mr===================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================
+---------------------------------
+
+
+
+
+
+
+-- TESTING...
+-- Test with temperature of 1.0 --
+-|--8---8---6----|8-----8-----10-|----------------|
+|8---x-8-----8--|--10-(8)10-8-------|8-----8-----8--|---7----|---9---|
+|--------|--------|--------|--------|--------|--------|--------|
+|0---- --|0---0---|0----0---------|--------------|
+|0-------|0-------|0---------------|---------------|
+|0--------------|---------------|---------------|----------------|
+|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|-0-0-0-0-0-0-0-0|
+|---------------|---------------|---------------|---------------|
+|---------------|2--------------|---------------|---------------|---------------|
+|[acoustic 1/2]                                                  |
+|-----------|------------------|------------|------|
+gtr 12 12----10/12-|----11-----11--|11-111111111111111111111112|-----|
+|11--11--11--11--|---11/12--12--|------|--------|------|-------|
+|-----|------|---------------|
+|--------|-------------|-------|-------------|-------|---------------|
+|[electric]                     ||
+|3-----------------|
+|-0--0---2-----0------|-0|-----------------||
+||-0-0-0-0-0-0
+-- Test with temperature of 0.5 --
+-|--8---8---6----|8-----8-----10-|----------------|
+|7---9----------|--7---9---5----|7-----9-----11-|----------------|
+|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0-|
+|---------------|---------------|---------------|---------------|
+|---------------|---------------|---------------|----------------|
+|---------------|---------------|----------------|
+|[acoustic 1]                                                                                                                 |
+|------------------------------|-------------------------------|
+|----10 1---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------
+
+
+
+
+
+
+
+
+
+I|---------------|----------------|---------------|
+  A7          D/C  Bb                            G7     Gm
+I'm free.
+    G                   A              D          D*                [Lele sinna bringtr]
+E5-65 B5               |B               |
+   ----------------------------|------------------------------|
+|------------------------------|-----------------------|
+   |-----------------------|-----------------------|
+   |-10-------------------|-10--------------------|
+   |------------------------|---------------------|-3-2--0--0-|
+   |----------- ------------|---------------------|-----------------|
+|---------------|---------------|---------------|---------------|
+|[acoustic 2; ppopetin for panngorn]
+|[electric]                                                |
+|6--------------|--7---- -------|
+|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0-0|
+|---------------|---------------|---------------|----------------|
+|---------------------|-3-----------
+-- Test with temperature of 0.5 --
+yed in standard tuning same as below 
+and begin at bas hear find.
+[BRIDGE]
+F                                       D/A  
+[INTRRO]
+  
+[INTRO Spark: The Kar-- Wer------Wome and forcathord I've formaring and rishe the somme.
+                                                                                                                                      |
+|---------------|---------------|---------------|---------------|
+|---------------|---------------|---------------|---------------|
+|----------------|---------------|---------------|---------------|
+|---------------|---------------|---------------|---------------|
+|[acoustic 1/2]                                                                                                   |
+|7--------------|----------------|------------------|----------------|---------------|
+|-2----2--------|---------------|---------------|---------------|
+|---------------|---------------|---------------|---------------|
+|[acoustic 1/2]                          
+
+
+
+
+[2K
+| Adam | epoch: 047 | loss: 0.13825 -- iter: 83072/83132
+Training Step: 30550  | total loss: 0.12924 | time: 145.633s
+[2K
+| Adam | epoch: 047 | loss: 0.12924 | val_loss: 0.07769 -- iter: 83132/83132
+--
+WARNING:tensorflow:Error encountered when serializing layer_tensor/LSTM.
+Type is unsupported, or the types of the items don't match field type in CollectionDef.
+'list' object has no attribute 'name'
+WARNING:tensorflow:Error encountered when serializing layer_tensor/Dropout.
+Type is unsupported, or the types of the items don't match field type in CollectionDef.
+'list' object has no attribute 'name'
+-- TESTING...
+-- Test with temperature of 1.0 --
+                 |
+  |-----------------------------|-------                     |------------------------------------|---------|
+|7-7-7-7-7-7-7-7-7-7-7-|-7-7-7-7-7-7-7-7-7-7-7-||
+||-----------------------||
+||------------------------3--------||
+||---------------------------||
+||-----------------------------|------------------------|
+   |-----------------------|-----------------------|
+   |/7--------------------------|---------------------4-|
+       |-6----6---- --------6-|-6---------------------|
+        |-6-------------------|-6---------------------|
+       |-8--------------------|-8---------------------|
+                                                                 |
+|----------------|----------------|---------------|
+|[acoustic 2]                                         |
+|2-------|5---0---|4-------|0---5---|4-------|0---5---|4-------|0---5---|4-------|0---5---|4-------|0---5---|4-------|0---5---|
+|3-------|3---3---|5-------|5-------|5-------|5---
+|--|
+|--------|--------|--------|--------|--------|--------|--------|--------|----
+-- Test with temperature of 0.5 --
+                 |
+  |------------------------------|------------------------|
+   |----------------------|-----------------------|
+   |/7--------------------------|---------------------4--|
+   |-----------------------|-------------------------|
+|----10/12---------------------------||
+||---------------------------|---------------------|--------------------|
+|-----5------------------------|-------------------------------|
+||-------------------------|-------------------------------|
+|D              |           |D          |                    |
+                                                                 |
+|7-----8-----7--|-------------------|7---------------|----------------|
+|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|
+|---------------|---------------|---------------|---------------|
+|---------------|---------------|---------------|---------------|
+|[acoustic 2]                                                  |
+|6------|5-------|4-------|--------|4-------|--------|4-------|--------|4-------|--------|4-------
+---------------------------------
+
+
+
+||----------------------------------|--------------------------------|
+|D              |-----------------|7T------------------|
+|[bass]                                                              
+transcribed by                             Whotabs                    
+litgo@aol.com     rev2220110222211                                             |
+|----------------|------------------|---------------------------|
+b|----------------------------------|-------------------------------|
+|----10/12--------------------------------------------#
+===========================================================
+INLRTERE
+By The Who
+Written by Pete Townshend (c)1969 Fabulous Music Ltd.
+#----------------------------------PLEASE NOTE---------------------------------#
+#This file is the author's own work and represents their interpretation of the #
+#song. You may only use this file for private study, scholar
+-- Test with temperature of 0.5 --
+eping.
+(F#) Em        Bm7    Em        Bm7
+       MAb                                                                                      |
+|-------------------------------|-------------------------------------|
+|-----------------------------------|------------------------|
+|------------------------------------|-------------------------------|
+|D              |--------------------|-6---------------------|
+       |----------------------|-----------------------|
+   |---------------------------------|5------------------------------------|0--0---------------------------|
+||-----------------------------------|-------------------------------------|
+|D              |D             | D/C   | A      |               |
+                                                                                                                                                                                                                       |
+|-----------------------------------|-------------------------------|
+|D              |            |D         
+---------------------------------
+
+
+
+revised by                             Whotabs                    
+litgo@aol.com     rev222
+-- Test with temperature of 0.5 --
+-------|--------------|4----4---|---4---4------|
+|2-2-2-2-2-2-2-2-|2-2-2-2-2-2-2-2|2-2-2-2-2-2-2-2|2-2-2-2-2-2-2-0|
+|-------------------------------|------------------------|
+|------------------|----------------------|
+|-----------------|-----------5-5-3|---------------|---------------|---------------|
+|---------------|---------------|---------------|---------------|
+|[acoustic 1]                                                                                   |
+|-----------------------------|-----------------------|
+   |-10-------------------|-10--------------------|
+   |-10-------------------|-10--------------------|
+   |-10-------------------|-10--------------------|
+   |-10-------------------|-10--------------------|
+   |-10-------------------|-10--------------------|
+   |-10------------------------|-1----------------------------3|
+        Eb                                      Dsus4
+||---------------|---------------|---------------|
+|----------------|--------------------|--------------------|
+|----------------|----------------
+---------------------------------
+Run id: lstmmmmmmmmmm
+
+
+
+
+
+
+
+2[2K
+Training Step: 32499  | total loss: 0.11536 | time: 138.266s
+[2K
+| Adam | epoch: 050 | loss: 0.11536 -- iter: 83072/83132
+Training Step: 32500  | total loss: 0.10930 | time: 145.790s
+[2K
+| Adam | epoch: 050 | loss: 0.10930 | val_loss: 0.06763 -- iter: 83132/83132
+--
+WARNING:tensorflow:Error encountered when serializing layer_tensor/LSTM.
+Type is unsupported, or the types of the items don't match field type in CollectionDef.
+'list' object has no attribute 'name'
+WARNING:tensorflow:Error encountered when serializing layer_tensor/Dropout.
+Type is unsupported, or the types of the items don't match field type in CollectionDef.
+'list' object has no attribute 'name'
+-- TESTING...
+-- Test with temperature of 1.0 --
+---------------|--------|-----------------|
+|--------|---------------|--------|-------------3---|
+|--------|---------------|--------------------|
+|-------------------------|-------------------------------------|
+|-----------------------------------|----------------------------|
+|-------------------------------------|----------------------|
+   |[bass]                                          |
+|--------------5-|---------------|---------------|--------------|
+|---------------|---------------|---------------|---------------|
+|[acoustic 2]                                                   |
+|---------------|---------------|------5--------|---------------|
+|---------------|---------------|---------------|---------------|
+|---------------|-------------3-|5--------------|------------------|
+|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0-|
+|---------------|---------------|---------------|-----------------|
+|------------------|-----------------|---------------|
+                                                    reve-       
+-- Test with temperature of 0.5 --
+---------------|--------|-----------------|
+|--------|---------------|--------|--------------3|--------|---------------|--------|-----------------|
+|--------|---------------|--------|--------------3|--------|-------------3---|
+|--------|---------------|----------------------|-----------|---------|
+|[bass]                                                                      |
+|------------------------------|-------------------------------|
+||-------------------------------------|-------------------------------|
+                                                           |
+|------------------------------|-----------------------|
+   |/9-------------------------|---------------------|
+|-----5-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+Mrikk is
+
+
+</pre>
+<p>As you can see, it does a pretty good job. I think I need more training data!</p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-274" class="post post-274 type-post status-publish format-standard hentry category-computer-science category-machine-learning category-school">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2017/05/10/spring-quarter-2017/" rel="bookmark"><time class="entry-date published" datetime="2017-05-10T16:16:49+00:00">May 10, 2017</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2017/05/10/spring-quarter-2017/" rel="bookmark">Spring Quarter 2017</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+			<div class="entry-excerpt">
+			<p>CSC 435 &#8211; Distributed Systems I CSC 577 &#8211; Recommender Systems SE 450 &#8211; Object-Oriented Software Development</p>
+		</div>
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/computer-science/" rel="category tag">Computer Science</a>, <a href="https://augustkarlstedt.github.io/blog/category/machine-learning/" rel="category tag">Machine Learning</a>, <a href="https://augustkarlstedt.github.io/blog/category/school/" rel="category tag">School</a></li>
+								<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2017/05/10/spring-quarter-2017/#respond"><span class="dsq-postid" data-dsqidentifier="274 https://parad0xdev.wordpress.com/?p=274">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p>CSC 426 – Research Methods and Practice in Computing</p>
+<p>CSC 478 – Programming Machine Learning Applications</p>
+<p>CSC 594 – Topics in Artificial Intelligence: Natural Language Processing</p>
+<p>&nbsp;</p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-272" class="post post-272 type-post status-publish format-standard hentry category-uncategorized">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2017/01/31/the-best-video-series-for-linear-algebra/" rel="bookmark"><time class="entry-date published" datetime="2017-01-31T23:50:24+00:00">January 31, 2017</time><time class="updated" datetime="2018-09-24T18:29:07+00:00">September 24, 2018</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2017/01/31/the-best-video-series-for-linear-algebra/" rel="bookmark">The BEST Video Series for Linear Algebra</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/uncategorized/" rel="category tag">Uncategorized</a></li>
+								<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2017/01/31/the-best-video-series-for-linear-algebra/#respond"><span class="dsq-postid" data-dsqidentifier="272 https://parad0xdev.wordpress.com/?p=272">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<figure class="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-has-aspect-ratio wp-embed-aspect-16-9"><div class="wp-block-embed__wrapper">
+<span class="embed-youtube" style="text-align:center; display: block;"><iframe class='youtube-player' type='text/html' width='730' height='411' src='https://www.youtube.com/embed/videoseries?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab&#038;hl=en_US' allowfullscreen='true' style='border:0;'></iframe></span>
+</div></figure>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-266" class="post post-266 type-post status-publish format-standard hentry category-computer-science category-machine-learning category-school">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2016/11/29/winter-quarter-2017/" rel="bookmark"><time class="entry-date published" datetime="2016-11-29T18:50:15+00:00">November 29, 2016</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2016/11/29/winter-quarter-2017/" rel="bookmark">Winter Quarter 2017</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/computer-science/" rel="category tag">Computer Science</a>, <a href="https://augustkarlstedt.github.io/blog/category/machine-learning/" rel="category tag">Machine Learning</a>, <a href="https://augustkarlstedt.github.io/blog/category/school/" rel="category tag">School</a></li>
+								<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2016/11/29/winter-quarter-2017/#respond"><span class="dsq-postid" data-dsqidentifier="266 https://parad0xdev.wordpress.com/?p=266">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p>CSC 435 &#8211; Distributed Systems I</p>
+<p>CSC 577 &#8211; Recommender Systems</p>
+<p>SE 450 &#8211; Object-Oriented Software Development</p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-255" class="post post-255 type-post status-publish format-standard has-post-thumbnail hentry category-data-analysis category-school">
+	<!-- Grab the featured image -->
+			<a class="featured-image" href="https://augustkarlstedt.github.io/blog/2016/11/29/fall-quarter-2016-first-graduate-quarter/" title="Fall Quarter 2016 (First Graduate Quarter!)"><img width="1200" height="800" src="https://augustkarlstedt.github.io/contents/data/2016/11/numbers-time-watch-white-1200x800.jpg" class="attachment-large-image size-large-image wp-post-image" alt="" srcset="https://augustkarlstedt.github.io/contents/data/2016/11/numbers-time-watch-white-1200x800.jpg 1200w, https://augustkarlstedt.github.io/contents/data/2016/11/numbers-time-watch-white-300x200.jpg 300w, https://augustkarlstedt.github.io/contents/data/2016/11/numbers-time-watch-white-768x512.jpg 768w, https://augustkarlstedt.github.io/contents/data/2016/11/numbers-time-watch-white-1024x683.jpg 1024w, https://augustkarlstedt.github.io/contents/data/2016/11/numbers-time-watch-white-600x400.jpg 600w" sizes="(max-width: 1200px) 100vw, 1200px" /></a>
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2016/11/29/fall-quarter-2016-first-graduate-quarter/" rel="bookmark"><time class="entry-date published" datetime="2016-11-29T18:26:06+00:00">November 29, 2016</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2016/11/29/fall-quarter-2016-first-graduate-quarter/" rel="bookmark">Fall Quarter 2016 (First Graduate Quarter!)</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/data-analysis/" rel="category tag">Data Analysis</a>, <a href="https://augustkarlstedt.github.io/blog/category/school/" rel="category tag">School</a></li>
+								<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2016/11/29/fall-quarter-2016-first-graduate-quarter/#respond"><span class="dsq-postid" data-dsqidentifier="255 https://parad0xdev.wordpress.com/?p=255">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p>My schedule included</p>
+<p><strong><span style="color:#5b9bd5;">CSC 421</span> </strong>&#8211; Applied Algorithms and Structures</p>
+<p><strong><span style="color:#ed7d31;">CSC 447</span></strong> &#8211; Concepts of Programming Language</p>
+<p><strong><span style="color:#a5a5a5;">CSC 453</span></strong> &#8211; Database Technologies</p>
+<p>But that&#8217;s not the interesting part.</p>
+<p>What&#8217;s interesting is that I took these courses online and collected data on how long I spent watching each lecture. This let me optimize my study habits and see which courses I needed to devote the most time to. The color corresponds to the color above.</p>
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSt3soiDqYJNYeM2V1jgVvZmZWJ9_9h4NMJo1ntRV5N6-LbLQ8y6GkLMiCJ7TsbWNeVqfiM4yqtJ_8v/pubchart?oid=578984766&#038;format=interactive" frameborder="0" width="100%" height="450" marginheight="0" marginwidth="0"></iframe>
+<p>Right off the bat, I knew that CSC 421 will be taking a majority of my time. A very heavy course: algorithm analysis, design, implementation, NP-completeness, and the like &#8211; things which I know I can get better at.</p>
+<p>Overall, for the other two courses, I was saving 80-90% versus being in-class. The materials covered in these courses were not new to me, so I could get by by watching the &#8220;interesting&#8221; parts of the lecture, reading the book, and looking at the slides.</p>
+<p>I wound up with an A and an A-, for CSC 447 and CSC 453, respectively.</p>
+<p>CSC 421 was one of those courses that is really tough, but you where you learn so much. I probably could have benefited taking this course in-person, but I still managed to save some time. Since this is the first time I&#8217;ve ever recorded data like this, it&#8217;ll be interesting to compare to next quarter (where I am taking an in-person course). All said and done, I wound up with a C+ in CSC 421, bringing my GPA for the quarter to a not-too-shabby 3.33.</p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-253" class="post post-253 type-post status-publish format-standard hentry category-uncategorized">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2016/11/26/amazing-resource-for-linear-algebra/" rel="bookmark"><time class="entry-date published" datetime="2016-11-26T22:03:42+00:00">November 26, 2016</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2016/11/26/amazing-resource-for-linear-algebra/" rel="bookmark">Amazing Resource for Linear Algebra</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/uncategorized/" rel="category tag">Uncategorized</a></li>
+								<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2016/11/26/amazing-resource-for-linear-algebra/#respond"><span class="dsq-postid" data-dsqidentifier="253 https://parad0xdev.wordpress.com/?p=253">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p><a href="http://immersivemath.com/ila/index.html" target="_blank">http://immersivemath.com/ila/index.html</a></p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-251" class="post post-251 type-post status-publish format-standard hentry category-uncategorized">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2016/11/23/holoportation/" rel="bookmark"><time class="entry-date published" datetime="2016-11-23T10:10:26+00:00">November 23, 2016</time><time class="updated" datetime="2018-09-24T18:29:43+00:00">September 24, 2018</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2016/11/23/holoportation/" rel="bookmark">Holoportation</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/uncategorized/" rel="category tag">Uncategorized</a></li>
+								<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2016/11/23/holoportation/#respond"><span class="dsq-postid" data-dsqidentifier="251 https://parad0xdev.wordpress.com/?p=251">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<figure class="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-has-aspect-ratio wp-embed-aspect-16-9"><div class="wp-block-embed__wrapper">
+<span class="embed-youtube" style="text-align:center; display: block;"><iframe class='youtube-player' type='text/html' width='730' height='411' src='https://www.youtube.com/embed/84ngPFBWLVI?version=3&#038;rel=1&#038;fs=1&#038;autohide=2&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' allowfullscreen='true' style='border:0;'></iframe></span>
+</div></figure>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-229" class="post post-229 type-post status-publish format-standard hentry category-uncategorized">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2016/11/21/how-to-fix-inkscapes-default-units-and-finally-work-with-illustrator/" rel="bookmark"><time class="entry-date published" datetime="2016-11-21T16:20:00+00:00">November 21, 2016</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2016/11/21/how-to-fix-inkscapes-default-units-and-finally-work-with-illustrator/" rel="bookmark">How to Fix Inkscape&#8217;s Default Units (and Finally Work With Illustrator)</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/uncategorized/" rel="category tag">Uncategorized</a></li>
+								<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2016/11/21/how-to-fix-inkscapes-default-units-and-finally-work-with-illustrator/#respond"><span class="dsq-postid" data-dsqidentifier="229 https://parad0xdev.wordpress.com/?p=229">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p>For some odd reason, Inkscape defaults to having 90px = 1in (and soon 96px = 1in). Compared to Illustrator, where 72px = 1in, there are some issues converting back and forth between programs.</p>
+<p>There are no configuration settings in Inkscape to change this, but I have found a way to do so anyway.</p>
+<p>Navigate to where you&#8217;ve installed Inkscape (for me, this is C:\Program Files (x86)\Inkscape), then open the share folder, then open the ui folder. The folder you should be in is C:\Program Files (x86)\Inkscape\share\ui and you should see a file called units.xml.</p>
+<p>Make a copy of units.xml called units.bak.xml and then open the original units.xml in a text editor.</p>
+<p>Change your file from</p>
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;unitdefs&gt;
+&lt;unit type="DIMENSIONLESS" pri="y"&gt;
+    &lt;name&gt;%&lt;/name&gt;
+    &lt;plural&gt;%&lt;/plural&gt;
+    &lt;abbr&gt;%&lt;/abbr&gt;
+    &lt;factor&gt;1.00&lt;/factor&gt;
+    &lt;description&gt;Percentage&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="y"&gt;
+    &lt;name&gt;pixel&lt;/name&gt;
+    &lt;plural&gt;pixels&lt;/plural&gt;
+    &lt;abbr&gt;px&lt;/abbr&gt;
+    &lt;factor&gt;1.00&lt;/factor&gt;
+    &lt;description&gt;CSS Pixels (90/inch)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;point&lt;/name&gt;
+    &lt;plural&gt;points&lt;/plural&gt;
+    &lt;abbr&gt;pt&lt;/abbr&gt;
+    &lt;factor&gt;1.25&lt;/factor&gt;
+    &lt;description&gt;PostScript points (72/inch)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;pica&lt;/name&gt;
+    &lt;plural&gt;picas&lt;/plural&gt;
+    &lt;abbr&gt;pc&lt;/abbr&gt;
+    &lt;factor&gt;15.0&lt;/factor&gt;
+    &lt;description&gt;12 points&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;inch&lt;/name&gt;
+    &lt;plural&gt;inches&lt;/plural&gt;
+    &lt;abbr&gt;in&lt;/abbr&gt;
+    &lt;factor&gt;90.0&lt;/factor&gt;
+    &lt;description&gt;Inches (90 px/in)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;millimeter&lt;/name&gt;
+    &lt;plural&gt;millimeters&lt;/plural&gt;
+    &lt;abbr&gt;mm&lt;/abbr&gt;
+    &lt;factor&gt;3.543307086614174&lt;/factor&gt;
+    &lt;description&gt;Millimeters (25.4 mm/in)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;centimeter&lt;/name&gt;
+    &lt;plural&gt;centimeters&lt;/plural&gt;
+    &lt;abbr&gt;cm&lt;/abbr&gt;
+    &lt;factor&gt;35.43307086614174&lt;/factor&gt;
+    &lt;description&gt;Centimeters (10 mm/cm)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;meter&lt;/name&gt;
+    &lt;plural&gt;meters&lt;/plural&gt;
+    &lt;abbr&gt;m&lt;/abbr&gt;
+    &lt;factor&gt;3543.307086614174&lt;/factor&gt;
+    &lt;description&gt;Meters (100 cm/m)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;foot&lt;/name&gt;
+    &lt;plural&gt;feet&lt;/plural&gt;
+    &lt;abbr&gt;ft&lt;/abbr&gt;
+    &lt;factor&gt;1080&lt;/factor&gt;
+    &lt;description&gt;Feet (12 in/ft)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="RADIAL" pri="y"&gt;
+    &lt;name&gt;degree&lt;/name&gt;
+    &lt;plural&gt;degrees&lt;/plural&gt;
+    &lt;abbr&gt;°&lt;/abbr&gt;
+    &lt;factor&gt;1.00&lt;/factor&gt;
+    &lt;description&gt;Degrees&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="RADIAL" pri="n"&gt;
+    &lt;name&gt;radian&lt;/name&gt;
+    &lt;plural&gt;radians&lt;/plural&gt;
+    &lt;abbr&gt;rad&lt;/abbr&gt;
+    &lt;factor&gt;57.29577951308232&lt;/factor&gt;
+    &lt;description&gt;Radians (180/pi deg/rad)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="RADIAL" pri="n"&gt;
+    &lt;name&gt;gradian&lt;/name&gt;
+    &lt;plural&gt;gradians&lt;/plural&gt;
+    &lt;abbr&gt;grad&lt;/abbr&gt;
+    &lt;factor&gt;0.9&lt;/factor&gt;
+    &lt;description&gt;Gradians (360/400 deg/grad)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="RADIAL" pri="n"&gt;
+    &lt;name&gt;turn&lt;/name&gt;
+    &lt;plural&gt;turns&lt;/plural&gt;
+    &lt;abbr&gt;turn&lt;/abbr&gt;
+    &lt;factor&gt;360&lt;/factor&gt;
+    &lt;description&gt;Turns (360 deg/turn)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="FONT_HEIGHT" pri="y"&gt;
+    &lt;name&gt;font-height&lt;/name&gt;
+    &lt;plural&gt;font-heights&lt;/plural&gt;
+    &lt;abbr&gt;em&lt;/abbr&gt;
+    &lt;factor&gt;1.00&lt;/factor&gt;
+    &lt;description&gt;Font height&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="FONT_HEIGHT" pri="n"&gt;
+    &lt;name&gt;x-height&lt;/name&gt;
+    &lt;plural&gt;x-heights&lt;/plural&gt;
+    &lt;abbr&gt;ex&lt;/abbr&gt;
+    &lt;factor&gt;0.50&lt;/factor&gt;
+    &lt;description&gt;Height of letter 'x'&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="FONT_HEIGHT" pri="n"&gt;
+    &lt;name&gt;half-em&lt;/name&gt;
+    &lt;plural&gt;half-ems&lt;/plural&gt;
+    &lt;abbr&gt;en&lt;/abbr&gt;
+    &lt;factor&gt;0.50&lt;/factor&gt;
+    &lt;description&gt;Half of font height&lt;/description&gt;
+&lt;/unit&gt;
+&lt;/unitdefs&gt;</pre>
+<p>to</p>
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;unitdefs&gt;
+&lt;unit type="DIMENSIONLESS" pri="y"&gt;
+    &lt;name&gt;%&lt;/name&gt;
+    &lt;plural&gt;%&lt;/plural&gt;
+    &lt;abbr&gt;%&lt;/abbr&gt;
+    &lt;factor&gt;1.00&lt;/factor&gt;
+    &lt;description&gt;Percentage&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="y"&gt;
+    &lt;name&gt;pixel&lt;/name&gt;
+    &lt;plural&gt;pixels&lt;/plural&gt;
+    &lt;abbr&gt;px&lt;/abbr&gt;
+    &lt;factor&gt;1.00&lt;/factor&gt;
+    &lt;description&gt;CSS Pixels (72/inch)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;point&lt;/name&gt;
+    &lt;plural&gt;points&lt;/plural&gt;
+    &lt;abbr&gt;pt&lt;/abbr&gt;
+    &lt;factor&gt;1.00&lt;/factor&gt;
+    &lt;description&gt;PostScript points (72/inch)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;pica&lt;/name&gt;
+    &lt;plural&gt;picas&lt;/plural&gt;
+    &lt;abbr&gt;pc&lt;/abbr&gt;
+    &lt;factor&gt;12.0&lt;/factor&gt;
+    &lt;description&gt;12 points&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;inch&lt;/name&gt;
+    &lt;plural&gt;inches&lt;/plural&gt;
+    &lt;abbr&gt;in&lt;/abbr&gt;
+    &lt;factor&gt;72.0&lt;/factor&gt;
+    &lt;description&gt;Inches (72 px/in)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;millimeter&lt;/name&gt;
+    &lt;plural&gt;millimeters&lt;/plural&gt;
+    &lt;abbr&gt;mm&lt;/abbr&gt;
+    &lt;factor&gt;2.834645669291339&lt;/factor&gt;
+    &lt;description&gt;Millimeters (25.4 mm/in)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;centimeter&lt;/name&gt;
+    &lt;plural&gt;centimeters&lt;/plural&gt;
+    &lt;abbr&gt;cm&lt;/abbr&gt;
+    &lt;factor&gt;28.34645669291339&lt;/factor&gt;
+    &lt;description&gt;Centimeters (10 mm/cm)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;meter&lt;/name&gt;
+    &lt;plural&gt;meters&lt;/plural&gt;
+    &lt;abbr&gt;m&lt;/abbr&gt;
+    &lt;factor&gt;2834.645669291339&lt;/factor&gt;
+    &lt;description&gt;Meters (100 cm/m)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;foot&lt;/name&gt;
+    &lt;plural&gt;feet&lt;/plural&gt;
+    &lt;abbr&gt;ft&lt;/abbr&gt;
+    &lt;factor&gt;864&lt;/factor&gt;
+    &lt;description&gt;Feet (12 in/ft)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="RADIAL" pri="y"&gt;
+    &lt;name&gt;degree&lt;/name&gt;
+    &lt;plural&gt;degrees&lt;/plural&gt;
+    &lt;abbr&gt;°&lt;/abbr&gt;
+    &lt;factor&gt;1.00&lt;/factor&gt;
+    &lt;description&gt;Degrees&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="RADIAL" pri="n"&gt;
+    &lt;name&gt;radian&lt;/name&gt;
+    &lt;plural&gt;radians&lt;/plural&gt;
+    &lt;abbr&gt;rad&lt;/abbr&gt;
+    &lt;factor&gt;57.29577951308232&lt;/factor&gt;
+    &lt;description&gt;Radians (180/pi deg/rad)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="RADIAL" pri="n"&gt;
+    &lt;name&gt;gradian&lt;/name&gt;
+    &lt;plural&gt;gradians&lt;/plural&gt;
+    &lt;abbr&gt;grad&lt;/abbr&gt;
+    &lt;factor&gt;0.9&lt;/factor&gt;
+    &lt;description&gt;Gradians (360/400 deg/grad)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="RADIAL" pri="n"&gt;
+    &lt;name&gt;turn&lt;/name&gt;
+    &lt;plural&gt;turns&lt;/plural&gt;
+    &lt;abbr&gt;turn&lt;/abbr&gt;
+    &lt;factor&gt;360&lt;/factor&gt;
+    &lt;description&gt;Turns (360 deg/turn)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="FONT_HEIGHT" pri="y"&gt;
+    &lt;name&gt;font-height&lt;/name&gt;
+    &lt;plural&gt;font-heights&lt;/plural&gt;
+    &lt;abbr&gt;em&lt;/abbr&gt;
+    &lt;factor&gt;1.00&lt;/factor&gt;
+    &lt;description&gt;Font height&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="FONT_HEIGHT" pri="n"&gt;
+    &lt;name&gt;x-height&lt;/name&gt;
+    &lt;plural&gt;x-heights&lt;/plural&gt;
+    &lt;abbr&gt;ex&lt;/abbr&gt;
+    &lt;factor&gt;0.50&lt;/factor&gt;
+    &lt;description&gt;Height of letter 'x'&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="FONT_HEIGHT" pri="n"&gt;
+    &lt;name&gt;half-em&lt;/name&gt;
+    &lt;plural&gt;half-ems&lt;/plural&gt;
+    &lt;abbr&gt;en&lt;/abbr&gt;
+    &lt;factor&gt;0.50&lt;/factor&gt;
+    &lt;description&gt;Half of font height&lt;/description&gt;
+&lt;/unit&gt;
+&lt;/unitdefs&gt;</pre>
+<p>All of your units now will calculate correctly! As a test, create a box with size 72px by 72px. Changing the units afterward, you&#8217;ll see that this is equal to 1in and correct for the other values as well.</p>
+<p>Make sure you also set your default bitmap resolution to 72dpi in Preferences (Shift + Ctrl + P) -&gt; Bitmaps</p>
+<p>Another cool feature is that Inkscape supports em units! However, after reviewing the source, the base font size is fixed at 12px. Maybe I can submit a fix for this, hmm.</p>
+<p>Happy Inkscaping!</p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-225" class="post post-225 type-post status-publish format-standard hentry category-uncategorized">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2016/11/05/microsoft-research-hololens/" rel="bookmark"><time class="entry-date published" datetime="2016-11-05T23:26:45+00:00">November 5, 2016</time><time class="updated" datetime="2018-09-24T18:30:36+00:00">September 24, 2018</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2016/11/05/microsoft-research-hololens/" rel="bookmark">Microsoft Research &#8211; HoloLens</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/uncategorized/" rel="category tag">Uncategorized</a></li>
+								<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2016/11/05/microsoft-research-hololens/#respond"><span class="dsq-postid" data-dsqidentifier="225 https://parad0xdev.wordpress.com/?p=225">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p>HoloLens version 0.0.0.1? Maybe.</p>
+
+<figure class="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-has-aspect-ratio wp-embed-aspect-4-3"><div class="wp-block-embed__wrapper">
+<span class="embed-youtube" style="text-align:center; display: block;"><iframe class='youtube-player' type='text/html' width='730' height='411' src='https://www.youtube.com/embed/3-mhqYBm7Xo?version=3&#038;rel=1&#038;fs=1&#038;autohide=2&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' allowfullscreen='true' style='border:0;'></iframe></span>
+</div></figure>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-213" class="post post-213 type-post status-publish format-standard hentry category-uncategorized">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2016/10/13/the-ultimate-slack-emoji-latex/" rel="bookmark"><time class="entry-date published" datetime="2016-10-13T01:58:51+00:00">October 13, 2016</time><time class="updated" datetime="2018-09-24T20:36:21+00:00">September 24, 2018</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2016/10/13/the-ultimate-slack-emoji-latex/" rel="bookmark">The ultimate slack emoji: LaTeX</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/uncategorized/" rel="category tag">Uncategorized</a></li>
+								<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2016/10/13/the-ultimate-slack-emoji-latex/#respond"><span class="dsq-postid" data-dsqidentifier="213 https://parad0xdev.wordpress.com/?p=213">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p>It&#8217;s 3am and I have work in the morning. While working on homework in LaTeX, I thought of the perfect thing to do: construct the ULTIMATE slack emoji consisting of three separate emoji for the LaTeX symbol.</p>
+<p>Here they are, simply add them as custom emoji to your slack. I&#8217;ve named mine :latex-1: :latex-2: :latex-3:</p>
+<div id='gallery-1' class='gallery galleryid-213 gallery-columns-3 gallery-size-thumbnail'><figure class='gallery-item'>
+			<div class='gallery-icon landscape'>
+				<a href='https://augustkarlstedt.github.io/contents/data/2016/10/latex-1.png'><img width="128" height="128" src="https://augustkarlstedt.github.io/contents/data/2016/10/latex-1.png" class="attachment-thumbnail size-thumbnail" alt="" /></a>
+			</div></figure><figure class='gallery-item'>
+			<div class='gallery-icon landscape'>
+				<a href='https://augustkarlstedt.github.io/contents/data/2016/10/latex-2.png'><img width="128" height="128" src="https://augustkarlstedt.github.io/contents/data/2016/10/latex-2.png" class="attachment-thumbnail size-thumbnail" alt="" /></a>
+			</div></figure><figure class='gallery-item'>
+			<div class='gallery-icon landscape'>
+				<a href='https://augustkarlstedt.github.io/contents/data/2016/10/latex-3.png'><img width="128" height="128" src="https://augustkarlstedt.github.io/contents/data/2016/10/latex-3.png" class="attachment-thumbnail size-thumbnail" alt="" /></a>
+			</div></figure>
+		</div>
+
+<p>And the result</p>
+<p><img class="alignnone size-full wp-image-219" src="https://augustkarlstedt.github.io/contents/data/2016/10/2016-10-13-02_57_54-clipboard.png" alt="2016-10-13-02_57_54-clipboard" width="325" height="68" srcset="https://augustkarlstedt.github.io/contents/data/2016/10/2016-10-13-02_57_54-clipboard.png 325w, https://augustkarlstedt.github.io/contents/data/2016/10/2016-10-13-02_57_54-clipboard-300x63.png 300w" sizes="(max-width: 325px) 100vw, 325px" /></p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-208" class="post post-208 type-post status-publish format-image hentry category-uncategorized post_format-post-format-image">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2016/09/15/pgp-source-code-and-internals/" rel="bookmark"><time class="entry-date published" datetime="2016-09-15T22:57:49+00:00">September 15, 2016</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2016/09/15/pgp-source-code-and-internals/" rel="bookmark">PGP Source Code and Internals</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/uncategorized/" rel="category tag">Uncategorized</a></li>
+								<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2016/09/15/pgp-source-code-and-internals/#respond"><span class="dsq-postid" data-dsqidentifier="208 https://parad0xdev.wordpress.com/?p=208">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p>I knew it existed and I&#8217;m glad to have spotted it in the wild. 🙂</p>
+<p><img class="alignnone size-full wp-image-211" src="https://augustkarlstedt.github.io/contents/data/2016/09/pgp.jpg" alt="pgp" width="1032" height="1835" srcset="https://augustkarlstedt.github.io/contents/data/2016/09/pgp.jpg 1032w, https://augustkarlstedt.github.io/contents/data/2016/09/pgp-169x300.jpg 169w, https://augustkarlstedt.github.io/contents/data/2016/09/pgp-768x1366.jpg 768w, https://augustkarlstedt.github.io/contents/data/2016/09/pgp-576x1024.jpg 576w" sizes="(max-width: 1032px) 100vw, 1032px" /></p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-192" class="post post-192 type-post status-publish format-standard hentry category-uncategorized">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2016/09/15/kali-linux-on-raspberry-pi-2/" rel="bookmark"><time class="entry-date published" datetime="2016-09-15T22:28:29+00:00">September 15, 2016</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2016/09/15/kali-linux-on-raspberry-pi-2/" rel="bookmark">Kali Linux on Raspberry Pi 2</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/uncategorized/" rel="category tag">Uncategorized</a></li>
+								<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2016/09/15/kali-linux-on-raspberry-pi-2/#respond"><span class="dsq-postid" data-dsqidentifier="192 https://parad0xdev.wordpress.com/?p=192">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p>Quick setup instructions.</p>
+<ol>
+<li>Download the image located here https://www.offensive-security.com/kali-linux-arm-images/</li>
+<li>Extract using 7-zip</li>
+<li>Use Rufus to DD the image to your MicroSD</li>
+<li>Pop it in the Pi, boot it up, and login using root:toor for the username:password</li>
+<li>If you want to install additional tools (you will), you can check them out here https://www.kali.org/news/kali-linux-metapackages/
+<ol>
+<li>e.g. apt-get install kali-linux-wireless</li>
+</ol>
+</li>
+</ol>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-184" class="post post-184 type-post status-publish format-standard hentry category-uncategorized">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2016/09/15/warning-dont-install-the-windows-subsystem-for-linux-beta-if-you-have-bitlocker-enabled/" rel="bookmark"><time class="entry-date published" datetime="2016-09-15T22:24:58+00:00">September 15, 2016</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2016/09/15/warning-dont-install-the-windows-subsystem-for-linux-beta-if-you-have-bitlocker-enabled/" rel="bookmark">Warning: Don&#8217;t Install the Windows Subsystem for Linux (Beta) if you have BitLocker Enabled</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/uncategorized/" rel="category tag">Uncategorized</a></li>
+								<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2016/09/15/warning-dont-install-the-windows-subsystem-for-linux-beta-if-you-have-bitlocker-enabled/#respond"><span class="dsq-postid" data-dsqidentifier="184 https://parad0xdev.wordpress.com/?p=184">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p>I found out the hard way.</p>
+<p>After upgrading my laptop to Windows 10 Version 1607 (Anniversary Update), I was excited to try Bash in Windows. That&#8217;s where my problems started.</p>
+<p>After enabling the feature in the &#8220;Turn Windows Features On or Off&#8221; dialogue, I rebooted my system and was faced with blue screen stating BitLocker encountered a TPM issue.</p>
+<p>Resolution: make sure your BIOS is up-to-date and has TPM enabled, then roll back the latest changes using a recovery drive. Finally, manually enter your BitLocker key to boot into Windows, run tpm.msc, and prepare the TPM.</p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-178" class="post post-178 type-post status-publish format-standard hentry category-uncategorized">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2016/03/21/philosophy-on-relationships/" rel="bookmark"><time class="entry-date published" datetime="2016-03-21T00:40:49+00:00">March 21, 2016</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2016/03/21/philosophy-on-relationships/" rel="bookmark">Philosophy on Relationships</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/uncategorized/" rel="category tag">Uncategorized</a></li>
+								<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2016/03/21/philosophy-on-relationships/#respond"><span class="dsq-postid" data-dsqidentifier="178 https://parad0xdev.wordpress.com/?p=178">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p>View each person as a locked safe of experiences and wisdom that one cannot access until they (you) find the key.</p>
+<p>Sometimes the key is a common interest that allows you two to open up to each other. Other times it can be a moment shared without any form of verbal communication. Whatever the key may be, I find it the part of relationships that intrigues me the most. How do I get to know this person? How can I get past that initial barrier that people shield themselves with to &#8220;strangers&#8221; &#8211; to me?</p>
+<p>The moment that one finds that key is _____.</p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-173" class="post post-173 type-post status-publish format-standard hentry category-uncategorized">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2016/03/08/spring-quarter-2016-final-quarter-as-an-undergrad/" rel="bookmark"><time class="entry-date published" datetime="2016-03-08T23:34:32+00:00">March 8, 2016</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2016/03/08/spring-quarter-2016-final-quarter-as-an-undergrad/" rel="bookmark">Spring Quarter 2016 (FINAL QUARTER AS AN UNDERGRAD!)</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/uncategorized/" rel="category tag">Uncategorized</a></li>
+								<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2016/03/08/spring-quarter-2016-final-quarter-as-an-undergrad/#respond"><span class="dsq-postid" data-dsqidentifier="173 https://parad0xdev.wordpress.com/?p=173">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p>Here&#8217;s my proposed schedule.</p>
+<p>GAM 377 &#8211; Fundamentals of Game Programming II</p>
+<p>GAM 390 &#8211; Multiplayer Game Development</p>
+<p>GAM 395 &#8211; Game Development Project II</p>
+<p>GAM 397 &#8211; Topics In Game Design</p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-166" class="post post-166 type-post status-publish format-standard hentry category-uncategorized">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2016/03/08/winter-quarter-2016/" rel="bookmark"><time class="entry-date published" datetime="2016-03-08T23:31:32+00:00">March 8, 2016</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2016/03/08/winter-quarter-2016/" rel="bookmark">Winter Quarter 2016</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/uncategorized/" rel="category tag">Uncategorized</a></li>
+								<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2016/03/08/winter-quarter-2016/#respond"><span class="dsq-postid" data-dsqidentifier="166 https://parad0xdev.wordpress.com/?p=166">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p>CSC 358 &#8211; Symbolic Programming</p>
+<p>CSC 360 &#8211; User Interface Architecture and Development</p>
+<p>CSC 380 &#8211; Foundations of Artificial Intelligence</p>
+<p>GAM 394 &#8211; Game Development Project I (Capstone)</p>
+<p>&nbsp;</p>
+<p>Over December intersession &#8211; CSC 398 -Internship</p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-160" class="post post-160 type-post status-publish format-standard hentry category-uncategorized">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2016/03/08/fall-quarter-2015/" rel="bookmark"><time class="entry-date published" datetime="2016-03-08T23:29:10+00:00">March 8, 2016</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2016/03/08/fall-quarter-2015/" rel="bookmark">Fall Quarter 2015</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/uncategorized/" rel="category tag">Uncategorized</a></li>
+								<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2016/03/08/fall-quarter-2015/#respond"><span class="dsq-postid" data-dsqidentifier="160 https://parad0xdev.wordpress.com/?p=160">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p>CSC 361 &#8211; Optimized C++</p>
+<p>GAM 350 &#8211; Physics for Game Developers</p>
+<p>GAM 372 &#8211; Object-Oriented Game Development</p>
+<p>GAM 392 &#8211; Game Modification Workshop</p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-151" class="post post-151 type-post status-publish format-standard hentry category-uncategorized">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2016/03/08/spring-quarter-2015/" rel="bookmark"><time class="entry-date published" datetime="2016-03-08T23:24:53+00:00">March 8, 2016</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2016/03/08/spring-quarter-2015/" rel="bookmark">Spring Quarter 2015</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/uncategorized/" rel="category tag">Uncategorized</a></li>
+								<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2016/03/08/spring-quarter-2015/#respond"><span class="dsq-postid" data-dsqidentifier="151 https://parad0xdev.wordpress.com/?p=151">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p>CSC 321 – Design and Analysis of Algorithms</p>
+<p>GPH 389 – Real-Time Graphics Techniques</p>
+<p>PHY 232 – Introduction to Digital Electronics</p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-78" class="post post-78 type-post status-publish format-standard hentry category-school category-work tag-computer tag-development tag-game tag-school-2 tag-science tag-work-2">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2016/02/09/winter-quarter-2015-in-retrospect/" rel="bookmark"><time class="entry-date published" datetime="2016-02-09T03:07:20+00:00">February 9, 2016</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2016/02/09/winter-quarter-2015-in-retrospect/" rel="bookmark">Winter Quarter 2015 in Retrospect</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/school/" rel="category tag">School</a>, <a href="https://augustkarlstedt.github.io/blog/category/work/" rel="category tag">Work</a></li>
+							<li class="meta-tag"><a href="https://augustkarlstedt.github.io/blog/tag/computer/" rel="tag">computer</a>, <a href="https://augustkarlstedt.github.io/blog/tag/development/" rel="tag">development</a>, <a href="https://augustkarlstedt.github.io/blog/tag/game/" rel="tag">game</a>, <a href="https://augustkarlstedt.github.io/blog/tag/school-2/" rel="tag">school</a>, <a href="https://augustkarlstedt.github.io/blog/tag/science/" rel="tag">science</a>, <a href="https://augustkarlstedt.github.io/blog/tag/work-2/" rel="tag">work</a></li>
+						<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2016/02/09/winter-quarter-2015-in-retrospect/#respond"><span class="dsq-postid" data-dsqidentifier="78 https://parad0xdev.wordpress.com/?p=78">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p>Last year I posted about Winter Quarter courses I was about to take and stated that I would explain my consideration to switch majors. A year later, I&#8217;ll now explain my thought process and where I am today. I hope to also discuss the classes I took during this quarter and the work and projects completed during this time.</p>
+<p>&nbsp;</p>
+<h2>Computer Game Development vs. Computer Science</h2>
+<p>The future is scary. Who knows what it holds? So why not try to make it as concrete as possible for yourself and choose a path that will most likely lead to whatever it is you desire? That was my thinking when I was considering switching from Computer Game Development to Computer Science.</p>
+<p>If one were to evaluate a Computer Game Development degree just by its name, it would be reasonable to assume that the end goal is to just make video games. In fact, that was one of my fears when I was thinking about switching to CS. Working alongside engineers that have degrees in Computer Science, Electrical Engineering, Mechanical Engineering, and more at my internship with a local engineering consulting company, I felt that their degrees would be considered more thoroughly than mine would.</p>
+<p>Shortly after, I started researching what it would take to switch my course plan from game dev to CS. Unfortunately, because I had taken so many major courses already, I wouldn&#8217;t have been able to complete my degree in the same time frame. I was bummed &#8211; what was I going to do now? I&#8217;m stuck.</p>
+<p>As I entered my second quarter of my Junior year, I was enrolled in CSC 395 &#8211; Research Colloquium. As I described in an earlier post, it&#8217;s a course where every week a new speaker presents their research to the class. Going in, I hadn&#8217;t realized how influential this course would be to me. Not once was I disinterested in a topic, no matter how difficult it was to grasp or how I couldn&#8217;t understand the title. The presentation of these ideas interested me and motivated me to start thinking about graduate school.</p>
+<p>That leads me to where I am today. I am still pursuing a degree in Computer Game Development, but I no longer feel like Computer Science or any other degree would be more worthwhile. I&#8217;m not pigeonholed into just making video games. Still at the same internship, I&#8217;ve been able to work on a lot of cool projects and get a good taste of the professional world. But I am still compelled by the idea of academia. Therefore, I am applying to graduate schools for Master&#8217;s programs in Computer Science.</p>
+<p>This has been in my drafts for a few days now. So I guess I&#8217;ll post this and give each course a separate post in the coming days.</p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-76" class="post post-76 type-post status-publish format-standard hentry category-school category-uncategorized tag-college tag-depaul tag-feel tag-learning tag-quarter tag-school-2 tag-winter">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2015/01/19/dat-college-feel/" rel="bookmark"><time class="entry-date published" datetime="2015-01-19T11:18:41+00:00">January 19, 2015</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2015/01/19/dat-college-feel/" rel="bookmark">Dat College Feel</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/school/" rel="category tag">School</a>, <a href="https://augustkarlstedt.github.io/blog/category/uncategorized/" rel="category tag">Uncategorized</a></li>
+							<li class="meta-tag"><a href="https://augustkarlstedt.github.io/blog/tag/college/" rel="tag">college</a>, <a href="https://augustkarlstedt.github.io/blog/tag/depaul/" rel="tag">depaul</a>, <a href="https://augustkarlstedt.github.io/blog/tag/feel/" rel="tag">feel</a>, <a href="https://augustkarlstedt.github.io/blog/tag/learning/" rel="tag">learning</a>, <a href="https://augustkarlstedt.github.io/blog/tag/quarter/" rel="tag">quarter</a>, <a href="https://augustkarlstedt.github.io/blog/tag/school-2/" rel="tag">school</a>, <a href="https://augustkarlstedt.github.io/blog/tag/winter/" rel="tag">winter</a></li>
+						<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2015/01/19/dat-college-feel/#respond"><span class="dsq-postid" data-dsqidentifier="76 https://parad0xdev.wordpress.com/?p=76">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p>Walking to class this morning is the first time I&#8217;ve ever actually felt college-y. I don&#8217;t know what&#8217;s different this morning, but the brisk air, morning sun, and overall atmosphere seems&#8230; Different. </p>
+<p>Maybe it&#8217;s the realization that this path isn&#8217;t what everyone chooses. I see so many people from when I was younger choosing one of the billions of other paths there are and I believe I&#8217;ve chosen the best one for me. </p>
+<p>For the first two years of college (I&#8217;m a junior now), I only took it semi-seriously. To me, it was just something I <em>had</em> to do, not something I <em>wanted</em> to do. I felt most of the classes I had been taking were pointless, and that the idea that college finally lets someone explore the things they are most interested in was false.</p>
+<p>I understand now that one cannot look at it as black and white as that. College is a place where, yes, you learn about certain specific things you&#8217;re interested in, but it also shows you that there&#8217;s a world where there&#8217;s so much more to learn, understand, and contemplate that it doesn&#8217;t make sense to ignore it.</p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-74" class="post post-74 type-post status-publish format-standard hentry category-programming-2 category-school tag-depaul tag-encryption tag-mat tag-pgp tag-programming">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2015/01/08/mat-140-pgp-encryption/" rel="bookmark"><time class="entry-date published" datetime="2015-01-08T05:29:57+00:00">January 8, 2015</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2015/01/08/mat-140-pgp-encryption/" rel="bookmark">MAT 140 &#038; PGP Encryption</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/programming-2/" rel="category tag">Programming</a>, <a href="https://augustkarlstedt.github.io/blog/category/school/" rel="category tag">School</a></li>
+							<li class="meta-tag"><a href="https://augustkarlstedt.github.io/blog/tag/depaul/" rel="tag">depaul</a>, <a href="https://augustkarlstedt.github.io/blog/tag/encryption/" rel="tag">encryption</a>, <a href="https://augustkarlstedt.github.io/blog/tag/mat/" rel="tag">mat</a>, <a href="https://augustkarlstedt.github.io/blog/tag/pgp/" rel="tag">pgp</a>, <a href="https://augustkarlstedt.github.io/blog/tag/programming/" rel="tag">programming</a></li>
+						<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2015/01/08/mat-140-pgp-encryption/#respond"><span class="dsq-postid" data-dsqidentifier="74 http://parad0xdev.wordpress.com/?p=74">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p>I was in MAT 140 &#8211; Discrete Mathematics last quarter and I found that the <a href="http://en.wikipedia.org/wiki/Fundamental_theorem_of_arithmetic">fundamental theorem of arithmetic</a> is super interesting. When the professor was speaking about it, I asked if it was the base for <a href="http://en.wikipedia.org/wiki/Pretty_Good_Privacy">PGP encryption</a> and it turned out it was. I had an inkling for this, because I previously heard that PGP generates super large numbers and that&#8217;s where the security lies.</p>
+<p>I&#8217;m kind of skeptical. Sure, with the current state of computing these cryptography keys are nearly impossible to crack, but the fact is that they still <em>are</em> possible to crack. I&#8217;m betting on sooner rather than later.</p>
+<p>Well, I&#8217;ll be looking into how this works in greater detail whenever I have time.</p>
+<p>Anyone know some places to learn more?</p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-69" class="post post-69 type-post status-publish format-standard hentry category-game-development category-programming-2 category-school tag-csc tag-depaul tag-gam tag-phl tag-quarter tag-soc tag-winter">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2015/01/08/new-classes-winter-quarter/" rel="bookmark"><time class="entry-date published" datetime="2015-01-08T01:45:11+00:00">January 8, 2015</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2015/01/08/new-classes-winter-quarter/" rel="bookmark">New Classes &#8211; Winter Quarter</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/game-development/" rel="category tag">Game Development</a>, <a href="https://augustkarlstedt.github.io/blog/category/programming-2/" rel="category tag">Programming</a>, <a href="https://augustkarlstedt.github.io/blog/category/school/" rel="category tag">School</a></li>
+							<li class="meta-tag"><a href="https://augustkarlstedt.github.io/blog/tag/csc/" rel="tag">CSC</a>, <a href="https://augustkarlstedt.github.io/blog/tag/depaul/" rel="tag">depaul</a>, <a href="https://augustkarlstedt.github.io/blog/tag/gam/" rel="tag">gam</a>, <a href="https://augustkarlstedt.github.io/blog/tag/phl/" rel="tag">phl</a>, <a href="https://augustkarlstedt.github.io/blog/tag/quarter/" rel="tag">quarter</a>, <a href="https://augustkarlstedt.github.io/blog/tag/soc/" rel="tag">soc</a>, <a href="https://augustkarlstedt.github.io/blog/tag/winter/" rel="tag">winter</a></li>
+						<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2015/01/08/new-classes-winter-quarter/#respond"><span class="dsq-postid" data-dsqidentifier="69 http://parad0xdev.wordpress.com/?p=69">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p>Alright so I&#8217;m finally going to discuss the new courses I&#8217;m taking now.</p>
+<p>CSC 395 &#8211; Research Colloquium &#8211; I&#8217;m pretty excited about this course. It&#8217;s completely online and every week there will be a lecture by a guest speaker on new work in areas of computing. Hopefully there are some talks relevant to my interests, but nonetheless I love TED talks, so this should be similar.</p>
+<p>GAM 341 &#8211; Introduction to Level Design &#8211; Since I&#8217;m majoring in Computer Game Development and focusing on the programming portion of it, I figured I should also get a little more experience in the non-programming parts. We&#8217;re going to be using Unreal Engine 4, which I&#8217;m pretty stoked about!</p>
+<p>GAM 376 &#8211; AI for Computer Games &#8211; I&#8217;ve always been interested in artificial intelligence. Actually, in the class I&#8217;ll describe next we&#8217;re discussing AI through a philosophical perspective. I&#8217;ll probably post more on this later. As for this course, I hope we don&#8217;t just use some already-implemented AI algorithms and we can actually write our own. I doubt it though.</p>
+<p>PHL 242 &#8211; Philosophy &amp; Technology &#8211; We&#8217;re discussing what technology actually <i>is</i>. Admittedly, when asked this question I thought it was going to be easy to define. I was horribly wrong. While it isn&#8217;t required, I may read the recommended material, &#8220;War in the Age of Intelligent Machines&#8221; by Manuel De Landa. We read the first chapter and thinking about how a robot historian would describe its history is something that made me extremely intrigued.</p>
+<p>SOC 281 &#8211; Sociology of Rock Music &#8211; This is kind of weird, yes, and I know that. It fulfills some requirement that I needed to complete, so hey why not? We&#8217;re going to trace Rock Music from the beginning to now, and I&#8217;m thinking I&#8217;ll learn a lot. The professor asked in the first day of class what we knew about rock. While I do know some stuff, and I listen to rock all the time, I wrote that I had no knowledge of rock. I think this will benefit me because starting with a blank-ish slate should be fun.</p>
+<p>Anyhow, I wasn&#8217;t going to take these classes and considered switching majors. I&#8217;ll explain why in the next post.</p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-58" class="post post-58 type-post status-publish format-standard hentry category-c-2 category-game-development category-programming-2 category-school tag-c tag-code tag-depaul tag-gph">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2015/01/06/gph-321-completed/" rel="bookmark"><time class="entry-date published" datetime="2015-01-06T23:16:13+00:00">January 6, 2015</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2015/01/06/gph-321-completed/" rel="bookmark">GPH 321 &#8211; Completed</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/c-2/" rel="category tag">C++</a>, <a href="https://augustkarlstedt.github.io/blog/category/game-development/" rel="category tag">Game Development</a>, <a href="https://augustkarlstedt.github.io/blog/category/programming-2/" rel="category tag">Programming</a>, <a href="https://augustkarlstedt.github.io/blog/category/school/" rel="category tag">School</a></li>
+							<li class="meta-tag"><a href="https://augustkarlstedt.github.io/blog/tag/c/" rel="tag">c++</a>, <a href="https://augustkarlstedt.github.io/blog/tag/code/" rel="tag">code</a>, <a href="https://augustkarlstedt.github.io/blog/tag/depaul/" rel="tag">depaul</a>, <a href="https://augustkarlstedt.github.io/blog/tag/gph/" rel="tag">GPH</a></li>
+						<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2015/01/06/gph-321-completed/#respond"><span class="dsq-postid" data-dsqidentifier="58 http://parad0xdev.wordpress.com/?p=58">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p>In this class we created a ray tracer from the ground up. I by &#8220;we&#8221; I mean our professor wrote most of the code and we had to fill in certain class functions. It was pretty terrible, but overall the end result was good. Oh and we had to zip our source code and send it in, instead of simply using something like Github or Bitbucket. The midterm and final SUCKED, simply because it&#8217;s 2015 (well, it was 2014) and written exams for programming finals are absurd. Writing code on paper completely lacks the feel of typing it out using an IDE. Plus, come on, who doesn&#8217;t use IntelliSense, Resharper, Visual Assist X, or some kind of code-completion tool? A fool! And that&#8217;s exactly what we are when we write code by hand.</p>
+<p>Anyhow, here are some screenshots from the course.</p>
+<p>First we simply had to get rays working and detecting collisions.</p>
+<div id="attachment_60" style="width: 310px" class="wp-caption alignnone"><a href="https://augustkarlstedt.github.io/contents/data/2015/01/2015-01-06-22_44_45-intersecting-a-polygon.png"><img class="size-medium wp-image-60" src="https://augustkarlstedt.github.io/contents/data/2015/01/2015-01-06-22_44_45-intersecting-a-polygon.png?w=300" alt="Rays &amp; Intersections" width="300" height="228" srcset="https://augustkarlstedt.github.io/contents/data/2015/01/2015-01-06-22_44_45-intersecting-a-polygon.png 650w, https://augustkarlstedt.github.io/contents/data/2015/01/2015-01-06-22_44_45-intersecting-a-polygon-300x228.png 300w" sizes="(max-width: 300px) 100vw, 300px" /></a><p class="wp-caption-text">Rays &amp; Intersections</p></div>
+<p>Then we had to ray-trace our first object, a sphere. This is because it&#8217;s pretty simple to represent in math.</p>
+<div id="attachment_61" style="width: 287px" class="wp-caption alignnone"><a href="https://augustkarlstedt.github.io/contents/data/2015/01/2015-01-06-22_58_30-implementing-constant-material.png"><img class="size-medium wp-image-61" src="https://augustkarlstedt.github.io/contents/data/2015/01/2015-01-06-22_58_30-implementing-constant-material.png?w=277" alt="First Ray-traced Object " width="277" height="300" srcset="https://augustkarlstedt.github.io/contents/data/2015/01/2015-01-06-22_58_30-implementing-constant-material.png 520w, https://augustkarlstedt.github.io/contents/data/2015/01/2015-01-06-22_58_30-implementing-constant-material-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px" /></a><p class="wp-caption-text">First Ray-traced Object</p></div>
+<p>Then we had to add some shading to that sphere. I know, it isn&#8217;t 100% correct. Spot the error!</p>
+<div id="attachment_62" style="width: 287px" class="wp-caption alignnone"><a href="https://augustkarlstedt.github.io/contents/data/2015/01/2015-01-06-22_59_23-implementing-phong-material.png"><img class="size-medium wp-image-62" src="https://augustkarlstedt.github.io/contents/data/2015/01/2015-01-06-22_59_23-implementing-phong-material.png?w=277" alt="Phong shading" width="277" height="300" srcset="https://augustkarlstedt.github.io/contents/data/2015/01/2015-01-06-22_59_23-implementing-phong-material.png 520w, https://augustkarlstedt.github.io/contents/data/2015/01/2015-01-06-22_59_23-implementing-phong-material-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px" /></a><p class="wp-caption-text">Phong Shading</p></div>
+<p>Next came shadows. These are awesome.</p>
+<div id="attachment_63" style="width: 287px" class="wp-caption alignnone"><a href="https://augustkarlstedt.github.io/contents/data/2015/01/2015-01-06-23_01_28-testing-transforms.png"><img class="size-medium wp-image-63" src="https://augustkarlstedt.github.io/contents/data/2015/01/2015-01-06-23_01_28-testing-transforms.png?w=277" alt="Ray-traced Shadows" width="277" height="300" srcset="https://augustkarlstedt.github.io/contents/data/2015/01/2015-01-06-23_01_28-testing-transforms.png 520w, https://augustkarlstedt.github.io/contents/data/2015/01/2015-01-06-23_01_28-testing-transforms-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px" /></a><p class="wp-caption-text">Ray-traced Shadows</p></div>
+<p>Next was reflections. Super easy thanks to how ray-tracing works.</p>
+<div id="attachment_64" style="width: 287px" class="wp-caption alignnone"><a href="https://augustkarlstedt.github.io/contents/data/2015/01/2015-01-06-23_01_58-implementing-reflection.png"><img class="size-medium wp-image-64" src="https://augustkarlstedt.github.io/contents/data/2015/01/2015-01-06-23_01_58-implementing-reflection.png?w=277" alt="Ray-traced Reflections" width="277" height="300" srcset="https://augustkarlstedt.github.io/contents/data/2015/01/2015-01-06-23_01_58-implementing-reflection.png 520w, https://augustkarlstedt.github.io/contents/data/2015/01/2015-01-06-23_01_58-implementing-reflection-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px" /></a><p class="wp-caption-text">Ray-traced Reflections</p></div>
+<p>Then we had to create a checkerboard pattern.</p>
+<div id="attachment_65" style="width: 287px" class="wp-caption alignnone"><a href="https://augustkarlstedt.github.io/contents/data/2015/01/2015-01-06-23_02_11-testing-procedural-texture.png"><img class="size-medium wp-image-65" src="https://augustkarlstedt.github.io/contents/data/2015/01/2015-01-06-23_02_11-testing-procedural-texture.png?w=277" alt="Checkerboard" width="277" height="300" srcset="https://augustkarlstedt.github.io/contents/data/2015/01/2015-01-06-23_02_11-testing-procedural-texture.png 520w, https://augustkarlstedt.github.io/contents/data/2015/01/2015-01-06-23_02_11-testing-procedural-texture-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px" /></a><p class="wp-caption-text">Checkboard</p></div>
+<p>Finally we were to implement Fresnel equations to properly simulate glass. I didn&#8217;t finish this one fully.</p>
+<div id="attachment_66" style="width: 287px" class="wp-caption alignnone"><a href="https://augustkarlstedt.github.io/contents/data/2015/01/2015-01-06-23_02_25-implementing-glass-material.png"><img class="size-medium wp-image-66" src="https://augustkarlstedt.github.io/contents/data/2015/01/2015-01-06-23_02_25-implementing-glass-material.png?w=277" alt="Ray-traced Fresnel" width="277" height="300" srcset="https://augustkarlstedt.github.io/contents/data/2015/01/2015-01-06-23_02_25-implementing-glass-material.png 520w, https://augustkarlstedt.github.io/contents/data/2015/01/2015-01-06-23_02_25-implementing-glass-material-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px" /></a><p class="wp-caption-text">Ray-traced Fresnel</p></div>
+<p>And that was the end of the course. This course was online only, which probably had an impact on my view of it. The course notes weren&#8217;t that great. I repeatedly found myself Googling things that were phrased in strange ways to figure out how to implement them. And variable names like <i>V, N, n1, n2, </i>etc. used throughout the given code made things unnecessarily complex.</p>
+<p>Oh well, it&#8217;s over and done with!</p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-51" class="post post-51 type-post status-publish format-standard hentry category-animation category-game-development category-school tag-ani tag-depaul tag-gimp tag-maya tag-modeling">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2015/01/06/ani-230-completed/" rel="bookmark"><time class="entry-date published" datetime="2015-01-06T22:19:41+00:00">January 6, 2015</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2015/01/06/ani-230-completed/" rel="bookmark">ANI 230 &#8211; Completed</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/animation/" rel="category tag">Animation</a>, <a href="https://augustkarlstedt.github.io/blog/category/game-development/" rel="category tag">Game Development</a>, <a href="https://augustkarlstedt.github.io/blog/category/school/" rel="category tag">School</a></li>
+							<li class="meta-tag"><a href="https://augustkarlstedt.github.io/blog/tag/ani/" rel="tag">ANI</a>, <a href="https://augustkarlstedt.github.io/blog/tag/depaul/" rel="tag">depaul</a>, <a href="https://augustkarlstedt.github.io/blog/tag/gimp/" rel="tag">gimp</a>, <a href="https://augustkarlstedt.github.io/blog/tag/maya/" rel="tag">maya</a>, <a href="https://augustkarlstedt.github.io/blog/tag/modeling/" rel="tag">modeling</a></li>
+						<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2015/01/06/ani-230-completed/#respond"><span class="dsq-postid" data-dsqidentifier="51 http://parad0xdev.wordpress.com/?p=51">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p>Well I totally forgot to update this <em>during</em> class, but that&#8217;s okay.</p>
+<p>IT IS TIME FOR UPDATES.</p>
+<p>The class was about Maya so it was recommended that we download Maya 2015. I was a bit too lazy and decided that my installation of Maya 2014 would have to do. Here are a few of the things we had to make.</p>
+<p>So our first homework was simple, but introduced us to Maya. We made a fan.</p>
+<div id="attachment_52" style="width: 310px" class="wp-caption alignnone"><a href="https://augustkarlstedt.github.io/contents/data/2015/01/01.jpg"><img class="size-medium wp-image-52" src="https://augustkarlstedt.github.io/contents/data/2015/01/01.jpg?w=300" alt="Simple Fan - Maya 2014" width="300" height="169" srcset="https://augustkarlstedt.github.io/contents/data/2015/01/01.jpg 960w, https://augustkarlstedt.github.io/contents/data/2015/01/01-300x169.jpg 300w, https://augustkarlstedt.github.io/contents/data/2015/01/01-768x432.jpg 768w" sizes="(max-width: 300px) 100vw, 300px" /></a><p class="wp-caption-text">Simple Fan &#8211; Maya 2014</p></div>
+<p>It had limitations, so it really looks bad. Luckily this is a course about low-poly modeling, so super-detailed isn&#8217;t what we aimed for.</p>
+<p>Second homework was to model some animals, again with limitations.</p>
+<div id="attachment_54" style="width: 310px" class="wp-caption alignnone"><a href="https://augustkarlstedt.github.io/contents/data/2015/01/everyone.jpg"><img class="size-medium wp-image-54" src="https://augustkarlstedt.github.io/contents/data/2015/01/everyone.jpg?w=300" alt="Animals - Maya 2014" width="300" height="225" srcset="https://augustkarlstedt.github.io/contents/data/2015/01/everyone.jpg 640w, https://augustkarlstedt.github.io/contents/data/2015/01/everyone-300x225.jpg 300w" sizes="(max-width: 300px) 100vw, 300px" /></a><p class="wp-caption-text">Animals &#8211; Maya 2014</p></div>
+<p>I chose to model a snail, a T-Rex, a kiwi, and a human. I think improvements can be seen!</p>
+<p>Next up was a shoe, and a lot of revisions.</p>
+<div id="attachment_53" style="width: 310px" class="wp-caption alignnone"><a href="https://augustkarlstedt.github.io/contents/data/2015/01/03.jpg"><img class="size-medium wp-image-53" src="https://augustkarlstedt.github.io/contents/data/2015/01/03.jpg?w=300" alt="Shoe - Maya 2014" width="300" height="169" srcset="https://augustkarlstedt.github.io/contents/data/2015/01/03.jpg 960w, https://augustkarlstedt.github.io/contents/data/2015/01/03-300x169.jpg 300w, https://augustkarlstedt.github.io/contents/data/2015/01/03-768x432.jpg 768w" sizes="(max-width: 300px) 100vw, 300px" /></a><p class="wp-caption-text">Shoe &#8211; Maya 2014</p></div>
+<p>Somehow turned into this after a lot of messing around:</p>
+<div id="attachment_55" style="width: 310px" class="wp-caption alignnone"><a href="https://augustkarlstedt.github.io/contents/data/2015/01/04.jpg"><img class="size-medium wp-image-55" src="https://augustkarlstedt.github.io/contents/data/2015/01/04.jpg?w=300" alt="Revised Shoe - Maya 2014" width="300" height="169" srcset="https://augustkarlstedt.github.io/contents/data/2015/01/04.jpg 960w, https://augustkarlstedt.github.io/contents/data/2015/01/04-300x169.jpg 300w, https://augustkarlstedt.github.io/contents/data/2015/01/04-768x432.jpg 768w" sizes="(max-width: 300px) 100vw, 300px" /></a><p class="wp-caption-text">Revised Shoe &#8211; Maya 2014</p></div>
+<p>Then I chose to model a guitar capo which proved an interesting challenge:</p>
+<div id="attachment_56" style="width: 310px" class="wp-caption alignnone"><a href="https://augustkarlstedt.github.io/contents/data/2015/01/05.jpg"><img class="size-medium wp-image-56" src="https://augustkarlstedt.github.io/contents/data/2015/01/05.jpg?w=300" alt="Guitar Capo - Maya 2014" width="300" height="169" srcset="https://augustkarlstedt.github.io/contents/data/2015/01/05.jpg 960w, https://augustkarlstedt.github.io/contents/data/2015/01/05-300x169.jpg 300w, https://augustkarlstedt.github.io/contents/data/2015/01/05-768x432.jpg 768w" sizes="(max-width: 300px) 100vw, 300px" /></a><p class="wp-caption-text">Guitar Capo &#8211; Maya 2014</p></div>
+<p>Skip a few and we arrive at our toy store assignment. It was pretty simple, with a animated camera flying around.</p>
+<p>First revision:</p>
+<span class="embed-youtube" style="text-align:center; display: block;"><iframe class='youtube-player' type='text/html' width='730' height='411' src='https://www.youtube.com/embed/lnxFdhqMIb4?version=3&#038;rel=1&#038;fs=1&#038;autohide=2&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' allowfullscreen='true' style='border:0;'></iframe></span>
+<p>Second revision:</p>
+<span class="embed-youtube" style="text-align:center; display: block;"><iframe class='youtube-player' type='text/html' width='730' height='411' src='https://www.youtube.com/embed/7mScqCP51-Q?version=3&#038;rel=1&#038;fs=1&#038;autohide=2&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' allowfullscreen='true' style='border:0;'></iframe></span>
+<p>Final revision:</p>
+<span class="embed-youtube" style="text-align:center; display: block;"><iframe class='youtube-player' type='text/html' width='730' height='411' src='https://www.youtube.com/embed/-ywoBxwJs60?version=3&#038;rel=1&#038;fs=1&#038;autohide=2&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' allowfullscreen='true' style='border:0;'></iframe></span>
+<p>Jump ahead to the final assignment:</p>
+<span class="embed-youtube" style="text-align:center; display: block;"><iframe class='youtube-player' type='text/html' width='730' height='411' src='https://www.youtube.com/embed/HkyzERtm_X4?version=3&#038;rel=1&#038;fs=1&#038;autohide=2&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' allowfullscreen='true' style='border:0;'></iframe></span>
+<p>GIMP was difficult to get working properly with the PSDs Maya exported, but it kind of worked. Oh well. That was the end of that class and I learned a lot about low-poly modeling. Nice!</p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-47" class="post post-47 type-post status-publish format-standard hentry category-android category-c-2 category-game-development category-java category-programming-2 category-school category-work tag-ani tag-code tag-csc tag-gph tag-java-2">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2014/10/13/updates/" rel="bookmark"><time class="entry-date published" datetime="2014-10-13T12:12:55+00:00">October 13, 2014</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2014/10/13/updates/" rel="bookmark">Updates!</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/android/" rel="category tag">Android</a>, <a href="https://augustkarlstedt.github.io/blog/category/c-2/" rel="category tag">C++</a>, <a href="https://augustkarlstedt.github.io/blog/category/game-development/" rel="category tag">Game Development</a>, <a href="https://augustkarlstedt.github.io/blog/category/java/" rel="category tag">Java</a>, <a href="https://augustkarlstedt.github.io/blog/category/programming-2/" rel="category tag">Programming</a>, <a href="https://augustkarlstedt.github.io/blog/category/school/" rel="category tag">School</a>, <a href="https://augustkarlstedt.github.io/blog/category/work/" rel="category tag">Work</a></li>
+							<li class="meta-tag"><a href="https://augustkarlstedt.github.io/blog/tag/ani/" rel="tag">ANI</a>, <a href="https://augustkarlstedt.github.io/blog/tag/code/" rel="tag">code</a>, <a href="https://augustkarlstedt.github.io/blog/tag/csc/" rel="tag">CSC</a>, <a href="https://augustkarlstedt.github.io/blog/tag/gph/" rel="tag">GPH</a>, <a href="https://augustkarlstedt.github.io/blog/tag/java-2/" rel="tag">java</a></li>
+						<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2014/10/13/updates/#respond"><span class="dsq-postid" data-dsqidentifier="47 http://parad0xdev.wordpress.com/?p=47">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p>Obviously I haven&#8217;t posted anything in a while. But it&#8217;s time for a change &#8211; and change is good!</p>
+<p>I am now currently in three courses that are at least semi-relevant to this blog.</p>
+<ul>
+<li>ANI 230 &#8211; 3D Design &amp; Modeling</li>
+<li>CSC 298 &#8211; Internship</li>
+<li>GPH 321 &#8211; Computer Graphics Development I</li>
+</ul>
+<p>In ANI 230, we&#8217;re learning Maya 2015. Starting with low-poly and now (it&#8217;s about midterms time) we&#8217;re onto animation with keyframes. I&#8217;m particularly interested in ray tracing, because we are building our very own in C++ in GPH 321.</p>
+<p>As for CSC 298, it basically runs alongside the internship that I already have. Here, I&#8217;ve been working with a ton of Java stuff lately interfacing with a USB HID. Through this, I&#8217;ve learned to use Maven &#8211; let me just say it&#8217;s awesome.</p>
+<p>Anyhow, I&#8217;ll be posting some images of the stuff I&#8217;ve been working on soon.</p>
+<p>Also, I may move this entire blog to a domain/host I pay for now. Or maybe even use Github Pages and Jekyll, those look fun.</p>
+<p>Oh and I read a few Android books, great stuff. Loving Android dev.</p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-35" class="post post-35 type-post status-publish format-standard hentry category-android category-c-2 category-game-development category-java category-programming-2 category-school category-work tag-13 tag-azul tag-c tag-c11 tag-code tag-gam tag-java-2 tag-programming tag-school-2 tag-work-2">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/" rel="bookmark"><time class="entry-date published" datetime="2014-06-24T22:17:37+00:00">June 24, 2014</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/" rel="bookmark">Finished with GAM 374</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/android/" rel="category tag">Android</a>, <a href="https://augustkarlstedt.github.io/blog/category/c-2/" rel="category tag">C++</a>, <a href="https://augustkarlstedt.github.io/blog/category/game-development/" rel="category tag">Game Development</a>, <a href="https://augustkarlstedt.github.io/blog/category/java/" rel="category tag">Java</a>, <a href="https://augustkarlstedt.github.io/blog/category/programming-2/" rel="category tag">Programming</a>, <a href="https://augustkarlstedt.github.io/blog/category/school/" rel="category tag">School</a>, <a href="https://augustkarlstedt.github.io/blog/category/work/" rel="category tag">Work</a></li>
+							<li class="meta-tag"><a href="https://augustkarlstedt.github.io/blog/tag/374/" rel="tag">374</a>, <a href="https://augustkarlstedt.github.io/blog/tag/azul/" rel="tag">azul</a>, <a href="https://augustkarlstedt.github.io/blog/tag/c/" rel="tag">c++</a>, <a href="https://augustkarlstedt.github.io/blog/tag/c11/" rel="tag">c++11</a>, <a href="https://augustkarlstedt.github.io/blog/tag/code/" rel="tag">code</a>, <a href="https://augustkarlstedt.github.io/blog/tag/gam/" rel="tag">gam</a>, <a href="https://augustkarlstedt.github.io/blog/tag/java-2/" rel="tag">java</a>, <a href="https://augustkarlstedt.github.io/blog/tag/programming/" rel="tag">programming</a>, <a href="https://augustkarlstedt.github.io/blog/tag/school-2/" rel="tag">school</a>, <a href="https://augustkarlstedt.github.io/blog/tag/work-2/" rel="tag">work</a></li>
+						<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/#respond"><span class="dsq-postid" data-dsqidentifier="35 http://parad0xdev.wordpress.com/?p=35">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p>Well, I chose to turn in exactly what you see in that last blog post. Everything that was required for the assignment was there and it earned me a 95%.</p>
+<p>I am now focusing my efforts into work with a near-full-time schedule of 38 hours a week. I will be posting stuff about happenings relating to that from here on out.</p>
+<p>I&#8217;m also working on an Android app, so there will be some Java tossed in.</p>
+<p>And last but not least, my love for C++ is growing as I discover C++11 features. There&#8217;s a little code I wrote to test out the functionality of some of the new stuff if you read on.</p>
+<p> <a href="https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/#more-35" class="more-link">Continue reading &rarr;</a></p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-31" class="post post-31 type-post status-publish format-standard hentry category-game-development category-programming-2 category-school tag-13 tag-azul tag-code tag-collision tag-gam tag-physics tag-ugly">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2014/06/12/walls-and-collision/" rel="bookmark"><time class="entry-date published" datetime="2014-06-12T22:07:06+00:00">June 12, 2014</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2014/06/12/walls-and-collision/" rel="bookmark">Walls and Collision</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/game-development/" rel="category tag">Game Development</a>, <a href="https://augustkarlstedt.github.io/blog/category/programming-2/" rel="category tag">Programming</a>, <a href="https://augustkarlstedt.github.io/blog/category/school/" rel="category tag">School</a></li>
+							<li class="meta-tag"><a href="https://augustkarlstedt.github.io/blog/tag/374/" rel="tag">374</a>, <a href="https://augustkarlstedt.github.io/blog/tag/azul/" rel="tag">azul</a>, <a href="https://augustkarlstedt.github.io/blog/tag/code/" rel="tag">code</a>, <a href="https://augustkarlstedt.github.io/blog/tag/collision/" rel="tag">collision</a>, <a href="https://augustkarlstedt.github.io/blog/tag/gam/" rel="tag">gam</a>, <a href="https://augustkarlstedt.github.io/blog/tag/physics/" rel="tag">physics</a>, <a href="https://augustkarlstedt.github.io/blog/tag/ugly/" rel="tag">ugly</a></li>
+						<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2014/06/12/walls-and-collision/#respond"><span class="dsq-postid" data-dsqidentifier="31 http://parad0xdev.wordpress.com/?p=31">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p>Azul doesn&#8217;t support <em>real</em> collision, so I have to check the position of stuff. It kinda sucks. Hopefully there will be improvements on the physics components, along with collision in Azul.</p>
+<p>It&#8217;s coming together, but the code isn&#8217;t pretty.</p>
+<p><a href="https://augustkarlstedt.github.io/contents/data/2014/06/2014-06-12-23_05_02-final-project-tanks_.png"><img id="i-32" class="size-full wp-image" src="https://augustkarlstedt.github.io/contents/data/2014/06/2014-06-12-23_05_02-final-project-tanks_.png?w=650" alt="Image" /></a></p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-30" class="post post-30 type-post status-publish format-standard hentry category-game-development category-programming-2 category-school tag-13 tag-azul tag-depaul tag-gam tag-player tag-tanks tag-two">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2014/06/12/more-work/" rel="bookmark"><time class="entry-date published" datetime="2014-06-12T20:12:02+00:00">June 12, 2014</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2014/06/12/more-work/" rel="bookmark">More Work</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/game-development/" rel="category tag">Game Development</a>, <a href="https://augustkarlstedt.github.io/blog/category/programming-2/" rel="category tag">Programming</a>, <a href="https://augustkarlstedt.github.io/blog/category/school/" rel="category tag">School</a></li>
+							<li class="meta-tag"><a href="https://augustkarlstedt.github.io/blog/tag/374/" rel="tag">374</a>, <a href="https://augustkarlstedt.github.io/blog/tag/azul/" rel="tag">azul</a>, <a href="https://augustkarlstedt.github.io/blog/tag/depaul/" rel="tag">depaul</a>, <a href="https://augustkarlstedt.github.io/blog/tag/gam/" rel="tag">gam</a>, <a href="https://augustkarlstedt.github.io/blog/tag/player/" rel="tag">player</a>, <a href="https://augustkarlstedt.github.io/blog/tag/tanks/" rel="tag">tanks</a>, <a href="https://augustkarlstedt.github.io/blog/tag/two/" rel="tag">two</a></li>
+						<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2014/06/12/more-work/#respond"><span class="dsq-postid" data-dsqidentifier="30 http://parad0xdev.wordpress.com/2014/06/12/more-work/">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p>Instead of cloning Tanks! I&#8217;m actually going to create a two player tank battle game. It won&#8217;t be the best, because of time constraints, but it will have one player control a tank with the keyboard (WASD + Arrow keys to rotate turret) and the other player using a controller.</p>
+<p><a href="https://augustkarlstedt.github.io/contents/data/2014/06/2014-06-12-21_10_15-clipboard.png"><img id="i-28" class="size-full wp-image" src="https://augustkarlstedt.github.io/contents/data/2014/06/2014-06-12-21_10_15-clipboard.png?w=650" alt="Image" /></a></p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-23" class="post post-23 type-post status-publish format-video hentry category-game-development category-programming-2 category-school tag-13 tag-azul tag-bullets tag-c tag-depaul tag-gam tag-programming post_format-post-format-video">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2014/06/01/bullets/" rel="bookmark"><time class="entry-date published" datetime="2014-06-01T17:42:39+00:00">June 1, 2014</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2014/06/01/bullets/" rel="bookmark">Bullets!</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/game-development/" rel="category tag">Game Development</a>, <a href="https://augustkarlstedt.github.io/blog/category/programming-2/" rel="category tag">Programming</a>, <a href="https://augustkarlstedt.github.io/blog/category/school/" rel="category tag">School</a></li>
+							<li class="meta-tag"><a href="https://augustkarlstedt.github.io/blog/tag/374/" rel="tag">374</a>, <a href="https://augustkarlstedt.github.io/blog/tag/azul/" rel="tag">azul</a>, <a href="https://augustkarlstedt.github.io/blog/tag/bullets/" rel="tag">bullets</a>, <a href="https://augustkarlstedt.github.io/blog/tag/c/" rel="tag">c++</a>, <a href="https://augustkarlstedt.github.io/blog/tag/depaul/" rel="tag">depaul</a>, <a href="https://augustkarlstedt.github.io/blog/tag/gam/" rel="tag">gam</a>, <a href="https://augustkarlstedt.github.io/blog/tag/programming/" rel="tag">programming</a></li>
+						<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2014/06/01/bullets/#respond"><span class="dsq-postid" data-dsqidentifier="23 http://parad0xdev.wordpress.com/2014/06/01/bullets/">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p><span class="embed-youtube" style="text-align:center; display: block;"><iframe class='youtube-player' type='text/html' width='730' height='411' src='https://www.youtube.com/embed/QpQPwHxBJFw?version=3&#038;rel=1&#038;fs=1&#038;autohide=2&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' allowfullscreen='true' style='border:0;'></iframe></span></p>
+<p>Added bullets. Pretty simple really.</p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-12" class="post post-12 type-post status-publish format-standard hentry category-game-development category-programming-2 category-school tag-13 tag-azul tag-depaul tag-engine tag-gam tag-game tag-greenshot tag-input tag-mouse tag-player tag-tanks tag-unity">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2014/05/23/player-tank/" rel="bookmark"><time class="entry-date published" datetime="2014-05-23T22:13:39+00:00">May 23, 2014</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2014/05/23/player-tank/" rel="bookmark">Player Tank!</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/game-development/" rel="category tag">Game Development</a>, <a href="https://augustkarlstedt.github.io/blog/category/programming-2/" rel="category tag">Programming</a>, <a href="https://augustkarlstedt.github.io/blog/category/school/" rel="category tag">School</a></li>
+							<li class="meta-tag"><a href="https://augustkarlstedt.github.io/blog/tag/374/" rel="tag">374</a>, <a href="https://augustkarlstedt.github.io/blog/tag/azul/" rel="tag">azul</a>, <a href="https://augustkarlstedt.github.io/blog/tag/depaul/" rel="tag">depaul</a>, <a href="https://augustkarlstedt.github.io/blog/tag/engine/" rel="tag">engine</a>, <a href="https://augustkarlstedt.github.io/blog/tag/gam/" rel="tag">gam</a>, <a href="https://augustkarlstedt.github.io/blog/tag/game/" rel="tag">game</a>, <a href="https://augustkarlstedt.github.io/blog/tag/greenshot/" rel="tag">greenshot</a>, <a href="https://augustkarlstedt.github.io/blog/tag/input/" rel="tag">input</a>, <a href="https://augustkarlstedt.github.io/blog/tag/mouse/" rel="tag">mouse</a>, <a href="https://augustkarlstedt.github.io/blog/tag/player/" rel="tag">player</a>, <a href="https://augustkarlstedt.github.io/blog/tag/tanks/" rel="tag">tanks</a>, <a href="https://augustkarlstedt.github.io/blog/tag/unity/" rel="tag">unity</a></li>
+						<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2014/05/23/player-tank/#respond"><span class="dsq-postid" data-dsqidentifier="12 http://parad0xdev.wordpress.com/?p=12">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p>I&#8217;ve finally done some work on this and got the player tank working. Azul doesn&#8217;t handle mouse input very well (I&#8217;m spoiled by Unity), so it&#8217;s all keyboard controls.</p>
+<p>WASD controls the tank movement</p>
+<p>LEFT/RIGHT control the turret</p>
+<p>I&#8217;m thinking the up arrow will fire a shell and the down arrow will lay a landmine.</p>
+<h2><a href="https://augustkarlstedt.github.io/contents/data/2014/05/2014-05-23-23_12_00-final-project-tanks_.png"><img id="i-17" class="size-full wp-image" src="https://augustkarlstedt.github.io/contents/data/2014/05/2014-05-23-23_12_00-final-project-tanks_.png?w=650" alt="Image" /></a></h2>
+<h2></h2>
+<p>Screenshot taken with <a href="http://getgreenshot.org/">Greenshot</a>.</p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-6" class="post post-6 type-post status-publish format-standard hentry category-game-development category-programming-2 category-school tag-13 tag-azul tag-depaul tag-design tag-gam tag-game tag-patterns tag-programming">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2014/05/18/first-day-of-final-project/" rel="bookmark"><time class="entry-date published" datetime="2014-05-18T10:37:55+00:00">May 18, 2014</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2014/05/18/first-day-of-final-project/" rel="bookmark">First Day of Final Project</a></h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+	
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/game-development/" rel="category tag">Game Development</a>, <a href="https://augustkarlstedt.github.io/blog/category/programming-2/" rel="category tag">Programming</a>, <a href="https://augustkarlstedt.github.io/blog/category/school/" rel="category tag">School</a></li>
+							<li class="meta-tag"><a href="https://augustkarlstedt.github.io/blog/tag/374/" rel="tag">374</a>, <a href="https://augustkarlstedt.github.io/blog/tag/azul/" rel="tag">azul</a>, <a href="https://augustkarlstedt.github.io/blog/tag/depaul/" rel="tag">depaul</a>, <a href="https://augustkarlstedt.github.io/blog/tag/design/" rel="tag">design</a>, <a href="https://augustkarlstedt.github.io/blog/tag/gam/" rel="tag">gam</a>, <a href="https://augustkarlstedt.github.io/blog/tag/game/" rel="tag">game</a>, <a href="https://augustkarlstedt.github.io/blog/tag/patterns/" rel="tag">patterns</a>, <a href="https://augustkarlstedt.github.io/blog/tag/programming/" rel="tag">programming</a></li>
+						<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2014/05/18/first-day-of-final-project/#respond"><span class="dsq-postid" data-dsqidentifier="6 http://parad0xdev.wordpress.com/?p=3">Leave a comment</span></a></span>
+		</li>
+					</ul>
+</div>
+	<div class="entry-content">
+		<p>Today marks the first day I&#8217;ve started working on the final project for my GAM 374: Fundamentals of Game Programming I class. I&#8217;ve decided to recreate <a href="http://en.wikipedia.org/wiki/Tank_(arcade_game)">Tank</a> &#8211; well actually, the Wii Play version called &#8220;<a href="http://en.wikipedia.org/wiki/Wii_Play#Tanks.21">Tanks!</a>&#8220;.</p>
+<p>We&#8217;re using the DePaul game engine called Azul &#8211; which I think could definitely use an engine overhaul since it&#8217;s based on the singleton design pattern. Gross.</p>
+<p><a href="http://gameprogrammingpatterns.com/">Click to learn about Game Programming Patterns</a></p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+			
+			
+		
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+
+	</div><!-- #content -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
+			<a class="powered-by" href="http://wordpress.org/">Proudly powered by WordPress</a>
+			<span class="sep"> | </span>
+			Theme: editor by <a href="https://array.is/">Array</a>		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<script type='text/javascript'>
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"augustkarlstedt"};
+/* ]]> */
+</script>
+
+
+
+
+<script type="text/javascript" defer src="https://augustkarlstedt.github.io/contents/cache/autoptimize/js/autoptimize_026de52e57c41be38733adf4ba48c000.js"></script></body>
+</html>
