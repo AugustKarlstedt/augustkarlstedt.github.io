@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en-US"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" id="ao_optimized_gfonts" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C600%2C700%2C400italic%2C600italic%2C700italic%7CRoboto+Condensed%3A300%2C400%2C700%2C300italic%2C400italic%2C700italic&subset=latin%2Clatin-ext"><link type="text/css" media="all" href="https://augustkarlstedt.github.io/wp-content/cache/autoptimize/css/autoptimize_71cc4f2a5f71789425df88bb9dfc4ac8.css" rel="stylesheet"><link type="text/css" media="screen" href="https://augustkarlstedt.github.io/wp-content/cache/autoptimize/css/autoptimize_b2157956717263a1c1f4fbe9a2f1d26c.css" rel="stylesheet"><title>Learning about Android and FireOS - August Karlstedt</title><meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="Learning about Android and FireOS - August Karlstedt"><meta property="og:description" content="Note: these are my notes from a session learning about Amazon’s Kindle FireOS and the possibility of using Linux kernel exploit to gain root access. What I’ve tried in chronological order: Connected to device over USB via ADB. The command service list lists all of the available services running. You can send a command to …"><meta property="og:url" content="https://augustkarlstedt.github.io/blog/2018/10/11/learning-about-android-and-fireos/"><meta property="og:site_name" content="August Karlstedt"><meta property="article:section" content="Uncategorized"><meta property="article:published_time" content="2018-10-12T06:07:00+00:00"><meta property="article:modified_time" content="2019-11-27T02:41:28+00:00"><meta property="og:updated_time" content="2019-11-27T02:41:28+00:00"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="Note: these are my notes from a session learning about Amazon’s Kindle FireOS and the possibility of using Linux kernel exploit to gain root access. What I’ve tried in chronological order: Connected to device over USB via ADB. The command service list lists all of the available services running. You can send a command to […]"><meta name="twitter:title" content="Learning about Android and FireOS - August Karlstedt"><meta name="twitter:site" content="@AugustKarlstedt"><meta name="twitter:creator" content="@AugustKarlstedt"><script type="application/ld+json" class="yoast-schema-graph yoast-schema-graph--main">{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": [
+                "Person",
+                "Organization"
+            ],
+            "@id": "https://augustkarlstedt.github.io/#/schema/person/a7417a5928f21d52b8cbb34bddb4f89b",
+            "name": "augustk",
+            "image": {
+                "@type": "ImageObject",
+                "@id": "https://augustkarlstedt.github.io/#personlogo",
+                "url": "https://secure.gravatar.com/avatar/d168ab0dcaff8f9cbeb5d0b010e6653f?s=96&d=mm&r=g",
+                "caption": "augustk"
+            },
+            "logo": {
+                "@id": "https://augustkarlstedt.github.io/#personlogo"
+            },
+            "sameAs": [
+                "https://www.linkedin.com/in/augustkarlstedt/",
+                "https://twitter.com/AugustKarlstedt"
+            ]
+        },
+        {
+            "@type": "WebSite",
+            "@id": "https://augustkarlstedt.github.io/#website",
+            "url": "https://augustkarlstedt.github.io/",
+            "name": "August Karlstedt",
+            "description": "Machine Learning Researcher, Software Engineer, Game Developer, and Consultant",
+            "publisher": {
+                "@id": "https://augustkarlstedt.github.io/#/schema/person/a7417a5928f21d52b8cbb34bddb4f89b"
+            },
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://augustkarlstedt.github.io/?s={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://augustkarlstedt.github.io/blog/2018/10/11/learning-about-android-and-fireos/#webpage",
+            "url": "https://augustkarlstedt.github.io/blog/2018/10/11/learning-about-android-and-fireos/",
+            "inLanguage": "en-US",
+            "name": "Learning about Android and FireOS - August Karlstedt",
+            "isPartOf": {
+                "@id": "https://augustkarlstedt.github.io/#website"
+            },
+            "datePublished": "2018-10-12T06:07:00+00:00",
+            "dateModified": "2019-11-27T02:41:28+00:00"
+        },
+        {
+            "@type": "Article",
+            "@id": "https://augustkarlstedt.github.io/blog/2018/10/11/learning-about-android-and-fireos/#article",
+            "isPartOf": {
+                "@id": "https://augustkarlstedt.github.io/blog/2018/10/11/learning-about-android-and-fireos/#webpage"
+            },
+            "author": {
+                "@id": "https://augustkarlstedt.github.io/#/schema/person/a7417a5928f21d52b8cbb34bddb4f89b"
+            },
+            "headline": "Learning about Android and FireOS",
+            "datePublished": "2018-10-12T06:07:00+00:00",
+            "dateModified": "2019-11-27T02:41:28+00:00",
+            "commentCount": 0,
+            "mainEntityOfPage": {
+                "@id": "https://augustkarlstedt.github.io/blog/2018/10/11/learning-about-android-and-fireos/#webpage"
+            },
+            "publisher": {
+                "@id": "https://augustkarlstedt.github.io/#/schema/person/a7417a5928f21d52b8cbb34bddb4f89b"
+            },
+            "articleSection": ""
+        }
+    ]
+}</script><link href="https://fonts.gstatic.com" crossorigin="anonymous" rel="preconnect"><script type="text/javascript" src="https://augustkarlstedt.github.io/wp-includes/js/jquery/jquery.js"></script><link rel="dns-prefetch" href="//v0.wordpress.com"></head><body class="post-template-default single single-post postid-411 single-format-standard">
+
+<div id="page" class="hfeed site container">
+
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	
+		<header id="masthead" class="site-header dark" role="banner"><ul class="toggle-bar" role="tablist"><li id="panel-1" class="current" role="presentation">
+				<a href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true" class="current nav-toggle" data-tab="tab-1"><i class="fa fa-bars"></i><span class="screen-reader-text">View menu</span></a>
+			</li>
+
+			
+			
+			
+			<li id="panel-3" role="presentation">
+				<a href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false" class="folder-toggle" data-tab="tab-3"><i class="fa fa-folder"></i><i class="fa fa-folder-open"></i><span class="screen-reader-text">View sidebar</span></a>
+			</li>
+		</ul><div id="tabs" class="toggle-tabs">
+			<div class="site-header-inside">
+				
+				<div id="tab-1" class="tab-content current fadeIn">
+					<div class="site-branding">
+						
+													<h1 class="site-logo">
+								<a href="https://augustkarlstedt.github.io/"><img class="site-logo" src="https://augustkarlstedt.github.io/wp-content/uploads/2018/09/me.png" alt="August Karlstedt"></a>
+							</h1>
+												<h1 class="site-title"><a href="https://augustkarlstedt.github.io/" rel="home">August Karlstedt</a></h1>
+						<h2 class="site-description">Machine Learning Researcher, Software Engineer, Game Developer, and Consultant</h2>
+					</div>
+
+					<nav id="site-navigation" class="main-navigation" role="navigation"><div class="menu-primary-container"><ul id="menu-primary" class="menu"><li id="menu-item-353" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-353"><a href="https://augustkarlstedt.github.io/">Home</a></li>
+<li id="menu-item-388" class="menu-item menu-item-type-post_type_archive menu-item-object-jetpack-portfolio menu-item-388"><a href="https://augustkarlstedt.github.io/portfolio/">Portfolio</a></li>
+<li id="menu-item-354" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-354"><a href="https://augustkarlstedt.github.io/blog/">Blog</a></li>
+<li id="menu-item-355" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-355"><a href="https://augustkarlstedt.github.io/contact/">Contact</a></li>
+</ul></div>					</nav><div class="social-links"><ul id="menu-social" class="menu"><li id="menu-item-356" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-356"><a href="mailto:august.karlstedt@gmail.com"><span class="screen-reader-text">Email</span></a></li>
+<li id="menu-item-324" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-324"><a href="https://www.linkedin.com/in/augustkarlstedt/"><span class="screen-reader-text">LinkedIn</span></a></li>
+<li id="menu-item-357" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-357"><a href="https://www.youtube.com/user/Parad0x0217"><span class="screen-reader-text">YouTube</span></a></li>
+<li id="menu-item-358" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-358"><a href="https://github.com/AugustKarlstedt"><span class="screen-reader-text">GitHub</span></a></li>
+</ul></div>									</div>
+
+				
+				
+				
+				<div id="tab-3" class="tab-content animated fadeIn" role="tabpanel" aria-labelledby="panel-3" aria-hidden="true">
+						<div id="secondary" class="widget-area" role="complementary">
+		<aside id="archives-2" class="widget widget_archive"><h2 class="widget-title">Archives</h2>		<ul><li><a href="https://augustkarlstedt.github.io/blog/2018/10/">October 2018</a></li>
+	<li><a href="https://augustkarlstedt.github.io/blog/2018/09/">September 2018</a></li>
+	<li><a href="https://augustkarlstedt.github.io/blog/2017/05/">May 2017</a></li>
+	<li><a href="https://augustkarlstedt.github.io/blog/2017/01/">January 2017</a></li>
+	<li><a href="https://augustkarlstedt.github.io/blog/2016/11/">November 2016</a></li>
+	<li><a href="https://augustkarlstedt.github.io/blog/2016/10/">October 2016</a></li>
+	<li><a href="https://augustkarlstedt.github.io/blog/2016/09/">September 2016</a></li>
+	<li><a href="https://augustkarlstedt.github.io/blog/2016/03/">March 2016</a></li>
+	<li><a href="https://augustkarlstedt.github.io/blog/2016/02/">February 2016</a></li>
+	<li><a href="https://augustkarlstedt.github.io/blog/2015/01/">January 2015</a></li>
+	<li><a href="https://augustkarlstedt.github.io/blog/2014/10/">October 2014</a></li>
+	<li><a href="https://augustkarlstedt.github.io/blog/2014/06/">June 2014</a></li>
+	<li><a href="https://augustkarlstedt.github.io/blog/2014/05/">May 2014</a></li>
+		</ul></aside><aside id="categories-2" class="widget widget_categories"><h2 class="widget-title">Categories</h2>		<ul><li class="cat-item cat-item-2"><a href="https://augustkarlstedt.github.io/blog/category/android/">Android</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="https://augustkarlstedt.github.io/blog/category/animation/">Animation</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="https://augustkarlstedt.github.io/blog/category/c-2/">C++</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="https://augustkarlstedt.github.io/blog/category/computer-science/">Computer Science</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="https://augustkarlstedt.github.io/blog/category/data-analysis/">Data Analysis</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="https://augustkarlstedt.github.io/blog/category/game-development/">Game Development</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="https://augustkarlstedt.github.io/blog/category/java/">Java</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="https://augustkarlstedt.github.io/blog/category/machine-learning/">Machine Learning</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="https://augustkarlstedt.github.io/blog/category/programming-2/">Programming</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="https://augustkarlstedt.github.io/blog/category/school/">School</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="https://augustkarlstedt.github.io/blog/category/uncategorized/">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-64"><a href="https://augustkarlstedt.github.io/blog/category/web/">Web</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="https://augustkarlstedt.github.io/blog/category/work/">Work</a>
+</li>
+		</ul></aside></div>
+				</div>
+			</div>
+		</div>
+	</header><div id="content" class="site-content fadeInFast">
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main"><article id="post-411" class="post post-411 type-post status-publish format-standard hentry category-uncategorized"><header class="entry-header"><div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2018/10/11/learning-about-android-and-fireos/" rel="bookmark"><time class="entry-date published" datetime="2018-10-11T23:07:00-07:00">October 11, 2018</time><time class="updated" datetime="2019-11-26T18:41:28-08:00">November 26, 2019</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div>
+		
+		<h1 class="entry-title">Learning about Android and FireOS</h1>	</header><div class="entry-meta">
+	
+	<ul class="meta-list"><li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/uncategorized/" rel="category tag">Uncategorized</a></li>
+								<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2018/10/11/learning-about-android-and-fireos/#respond"><span class="dsq-postid" data-dsqidentifier="411 https://augustkarlstedt.github.io/?p=411">Leave a comment</span></a></span>
+		</li>
+					</ul></div>
+	<div class="entry-content">
+		
+<p>Note: these are my notes from a session learning about Amazon’s Kindle FireOS and the possibility of using Linux kernel exploit to gain root access. </p>
+
+
+
+<p></p>
+
+
+
+<p>What I’ve tried in chronological order:</p>
+
+
+
+<p>Connected to device over USB via ADB.</p>
+
+
+
+<p>The command service list lists all of the available services running. You can send a command to these services by running service call [service] [integer]</p>
+
+
+
+<p>I’ve tried service call statusbar 1 and service call statusbar 2 and can see the statusbar appear and disappear, respectively.</p>
+
+
+
+<p>What happens if we poke into some Amazon stuff?</p>
+
+
+
+<p>pm list packages -f <br></p>
+
+
+
+<pre class="wp-block-preformatted">package:/system/priv-app/AmazonPlatform-release/AmazonPlatform-release.apk=com.amazon.platform<br>
+package:/data/app/com.box.android-2/base.apk=com.box.android<br>
+package:/system/priv-app/FireflyIdentifiesSDK-release/FireflyIdentifiesSDK-release.apk=com.amazon.mw.sdk<br>
+package:/system/priv-app/com.amazon.knight.calendar/com.amazon.knight.calendar.apk=com.amazon.knight.calendar<br>
+package:/data/app/com.google.android.youtube-1/base.apk=com.google.android.youtube<br>
+package:/data/app/com.amazon.photos-2/base.apk=com.amazon.photos<br>
+package:/system/priv-app/com.amazon.dp.contacts/com.amazon.dp.contacts.apk=com.amazon.dp.contacts<br>
+package:/system/priv-app/com.amazon.unifiedsharegoodreads/com.amazon.unifiedsharegoodreads.apk=com.amazon.unifiedsharegoodreads<br>
+package:/system/priv-app/com.amazon.kindle.otter.oobe.forced.ota/com.amazon.kindle.otter.oobe.forced.ota.apk=com.amazon.kindle.otter.oobe.forced.ota<br>
+package:/system/priv-app/FireRecessProxy/FireRecessProxy.apk=com.amazon.recess<br>
+package:/system/app/fdrw/fdrw.apk=com.amazon.platform.fdrw<br>
+package:/data/app/com.google.android.googlequicksearchbox-1/base.apk=com.google.android.googlequicksearchbox<br>
+package:/system/priv-app/com.android.providers.calendar/com.android.providers.calendar.apk=com.android.providers.calendar<br>
+package:/system/priv-app/WhisperlinkSdk/WhisperlinkSdk.apk=com.amazon.whisperplay.contracts<br>
+package:/system/priv-app/MediaProvider/MediaProvider.apk=com.android.providers.media<br>
+package:/data/app/com.amazon.venezia-2/base.apk=com.amazon.venezia<br>
+package:/system/priv-app/SpeechUi/SpeechUi.apk=com.amazon.speechui<br>
+package:/data/app/com.amazon.webapp-1/base.apk=com.amazon.webapp<br>
+package:/system/priv-app/DeviceSoftwareOTAContracts/DeviceSoftwareOTAContracts.apk=com.amazon.dcp.contracts.library<br>
+package:/system/priv-app/WallpaperCropper/WallpaperCropper.apk=com.android.wallpapercropper<br>
+package:/data/app/com.teslacoilsw.launcher-2/base.apk=com.teslacoilsw.launcher<br>
+package:/system/priv-app/com.amazon.zordon/com.amazon.zordon.apk=com.amazon.zordon<br>
+package:/data/app/com.udacity.android-1/base.apk=com.udacity.android<br>
+package:/system/app/Protips/Protips.apk=com.android.protips<br>
+package:/data/app/com.speedsoftware.rootexplorer-1/base.apk=com.speedsoftware.rootexplorer<br>
+package:/system/priv-app/IvonaTtsOrchestrator/IvonaTtsOrchestrator.apk=com.ivona.orchestrator<br>
+package:/system/priv-app/com.amazon.device.sync/com.amazon.device.sync.apk=com.amazon.device.sync<br>
+package:/system/framework/fireos-res/fireos-res.apk=amazon.fireos<br>
+package:/data/app/com.google.android.apps.paidtasks-1/base.apk=com.google.android.apps.paidtasks<br>
+package:/system/priv-app/LogManager-logd/LogManager-logd.apk=com.amazon.device.logmanager<br>
+package:/system/app/DocumentsUI/DocumentsUI.apk=com.android.documentsui<br>
+package:/system/priv-app/ExternalStorageProvider/ExternalStorageProvider.apk=com.android.externalstorage<br>
+package:/system/app/HTMLViewer/HTMLViewer.apk=com.android.htmlviewer<br>
+package:/data/app/com.gbeatty.arxiv-1/base.apk=com.gbeatty.arxiv<br>
+package:/data/app/com.amazon.firelauncher-1/base.apk=com.amazon.firelauncher<br>
+package:/system/priv-app/com.amazon.media.session.monitor/com.amazon.media.session.monitor.apk=com.amazon.media.session.monitor<br>
+package:/system/priv-app/com.amazon.h2clientservice/com.amazon.h2clientservice.apk=com.amazon.alta.h2clientservice<br>
+package:/system/priv-app/AdvertisingIdSettings/AdvertisingIdSettings.apk=com.amazon.advertisingidsettings<br>
+package:/system/priv-app/DownloadProvider/DownloadProvider.apk=com.android.providers.downloads<br>
+package:/system/priv-app/com.amazon.socialplatform/com.amazon.socialplatform.apk=com.amazon.socialplatform<br>
+package:/system/priv-app/com.amazon.dp.fbcontacts/com.amazon.dp.fbcontacts.apk=com.amazon.dp.fbcontacts<br>
+package:/system/priv-app/com.amazon.comms.knightcontacts/com.amazon.comms.knightcontacts.apk=com.amazon.comms.knightcontacts<br>
+package:/system/priv-app/com.amazon.h2settingsfortablet/com.amazon.h2settingsfortablet.apk=com.amazon.h2settingsfortablet<br>
+package:/data/app/com.hulu.plus-1/base.apk=com.hulu.plus<br>
+package:/system/priv-app/com.amazon.calculator/com.amazon.calculator.apk=com.amazon.calculator<br>
+package:/system/priv-app/com.amazon.cloud9.systembrowserprovider/com.amazon.cloud9.systembrowserprovider.apk=com.amazon.cloud9.systembrowserprovider<br>
+package:/system/priv-app/com.amazon.kindle.otter.settings/com.amazon.kindle.otter.settings.apk=com.amazon.kindle.otter.settings<br>
+package:/system/priv-app/AlexaModeSwitch/AlexaModeSwitch.apk=com.amazon.alexa.modeswitch<br>
+package:/system/priv-app/com.amazon.dp.logger/com.amazon.dp.logger.apk=com.amazon.dp.logger<br>
+package:/system/priv-app/com.amazon.ods.kindleconnect/com.amazon.ods.kindleconnect.apk=com.amazon.ods.kindleconnect<br>
+package:/system/priv-app/DefaultContainerService/DefaultContainerService.apk=com.android.defcontainer<br>
+package:/system/priv-app/com.amazon.accessorynotifier/com.amazon.accessorynotifier.apk=com.amazon.accessorynotifier<br>
+package:/data/app/com.amazon.cloud9.contentservice-1/base.apk=com.amazon.cloud9.contentservice<br>
+package:/system/priv-app/DownloadProviderUi/DownloadProviderUi.apk=com.android.providers.downloads.ui<br>
+package:/data/app/com.android.vending-1/base.apk=com.android.vending<br>
+package:/system/app/PacProcessor/PacProcessor.apk=com.android.pacprocessor<br>
+package:/system/priv-app/com.amazon.sharingservice.android.client.proxy.release/com.amazon.sharingservice.android.client.proxy.release.apk=com.amazon.sharingservice.android.client.proxy<br>
+package:/system/priv-app/com.amazon.weather/com.amazon.weather.apk=com.amazon.weather<br>
+package:/system/priv-app/AmazonKKWebViewLib/AmazonKKWebViewLib.apk=com.amazon.webview<br>
+package:/system/priv-app/marketplace_service_receiver/marketplace_service_receiver.apk=com.amazon.android.marketplace<br>
+package:/data/app/com.tencent.ig-2/base.apk=com.tencent.ig<br>
+package:/system/priv-app/FireStorageManager/FireStorageManager.apk=com.amazon.storagemanager<br>
+package:/system/priv-app/com.amazon.vans.alexatabletshopping.app/com.amazon.vans.alexatabletshopping.app.apk=com.amazon.vans.alexatabletshopping.app<br>
+package:/system/app/CertInstaller/CertInstaller.apk=com.android.certinstaller<br>
+package:/system/priv-app/wakewordserver/wakewordserver.apk=amazon.speech.wakewordservice<br>
+package:/data/app/com.reddit.frontpage-1/base.apk=com.reddit.frontpage<br>
+package:/system/priv-app/TabletDockSettings/TabletDockSettings.apk=com.amazon.tablet.dock.settings<br>
+package:/system/priv-app/DeviceBackupAndRestoreInternalSDK-release/DeviceBackupAndRestoreInternalSDK-release.apk=com.amazon.device.backup.sdk.internal.library<br>
+package:/system/framework/framework-res.apk=android<br>
+package:/data/app/com.llamalab.automate.ext.network-1/base.apk=com.llamalab.automate.ext.network<br>
+package:/system/priv-app/com.android.contacts/com.android.contacts.apk=com.android.contacts<br>
+package:/data/app/org.mozilla.fennec_aurora-2/base.apk=org.mozilla.fennec_aurora<br>
+package:/data/app/com.aor.droidedit.pro-1/base.apk=com.aor.droidedit.pro<br>
+package:/system/priv-app/ReadyNowCore-release/ReadyNowCore-release.apk=com.amazon.readynowcore<br>
+package:/system/priv-app/MetricsApi/MetricsApi.apk=com.amazon.client.metrics.api<br>
+package:/data/app/com.amazon.aca-1/base.apk=com.amazon.aca<br>
+package:/system/priv-app/FireOsMiddlewareDebugApp/FireOsMiddlewareDebugApp.apk=com.amazon.dcp<br>
+package:/system/priv-app/com.amazon.imp/com.amazon.imp.apk=com.amazon.imp<br>
+package:/data/app/com.amazon.mp3-2/base.apk=com.amazon.mp3<br>
+package:/system/priv-app/com.amazon.unifiedsharesinaweibo/com.amazon.unifiedsharesinaweibo.apk=com.amazon.unifiedsharesinaweibo<br>
+package:/system/priv-app/amazon.alexa.tablet/amazon.alexa.tablet.apk=amazon.alexa.tablet<br>
+package:/system/priv-app/sync-service-fireos-tablet-release/sync-service-fireos-tablet-release.apk=com.amazon.sync.service<br>
+package:/system/priv-app/com.amazon.comms.knightmessaging/com.amazon.comms.knightmessaging.apk=com.amazon.comms.knightmessaging<br>
+package:/system/priv-app/com.amazon.frameworksettings/com.amazon.frameworksettings.apk=com.amazon.frameworksettings<br>
+package:/system/priv-app/com.amazon.fireinputdevices/com.amazon.fireinputdevices.apk=com.amazon.fireinputdevices<br>
+package:/data/app/com.NewDsemu.FreeDraStic-1/base.apk=com.NewDsemu.FreeDraStic<br>
+package:/system/app/Stk/Stk.apk=com.android.stk<br>
+package:/system/priv-app/BackupRestoreConfirmation/BackupRestoreConfirmation.apk=com.android.backupconfirm<br>
+package:/data/app/com.amazon.dee.app-2/base.apk=com.amazon.dee.app<br>
+package:/system/priv-app/com.amazon.csapp/com.amazon.csapp.apk=com.amazon.csapp<br>
+package:/system/priv-app/logan/logan.apk=com.amazon.logan<br>
+package:/data/app/com.amazon.tahoe-1/base.apk=com.amazon.tahoe<br>
+package:/system/priv-app/com.amazon.tcomm/com.amazon.tcomm.apk=com.amazon.tcomm<br>
+package:/data/app/com.microsoft.office.onenote-1/base.apk=com.microsoft.office.onenote<br>
+package:/data/app/org.coursera.android-2/base.apk=org.coursera.android<br>
+package:/system/priv-app/com.amazon.redstone/com.amazon.redstone.apk=com.amazon.redstone<br>
+package:/system/priv-app/com.android.calendar/com.android.calendar.apk=com.android.calendar<br>
+package:/data/app/com.llamalab.automate.ext.settings-1/base.apk=com.llamalab.automate.ext.settings<br>
+package:/system/priv-app/com.amazon.kindle.personal_video/com.amazon.kindle.personal_video.apk=com.amazon.kindle.personal_video<br>
+package:/system/priv-app/com.amazon.displayclockface/com.amazon.displayclockface.apk=com.amazon.displayclockface<br>
+package:/system/priv-app/SpeechInteractionManager/SpeechInteractionManager.apk=amazon.speech.sim<br>
+package:/system/priv-app/com.amazon.identity.auth.device.authorization/com.amazon.identity.auth.device.authorization.apk=com.amazon.identity.auth.device.authorization<br>
+package:/system/priv-app/com.amazon.kcp.tutorial/com.amazon.kcp.tutorial.apk=com.amazon.kcp.tutorial<br>
+package:/system/priv-app/com.amazon.kindle.cms-service/com.amazon.kindle.cms-service.apk=com.amazon.kindle.cms<br>
+package:/data/app/com.amazon.kindle.kso-1/base.apk=com.amazon.kindle.kso<br>
+package:/system/priv-app/SettingsProvider/SettingsProvider.apk=com.android.providers.settings<br>
+package:/system/priv-app/com.amazon.kindleautomatictimezone/com.amazon.kindleautomatictimezone.apk=com.amazon.kindleautomatictimezone<br>
+package:/system/priv-app/SharedStorageBackup/SharedStorageBackup.apk=com.android.sharedstoragebackup<br>
+package:/data/app/com.llamalab.automate.ext.storage-1/base.apk=com.llamalab.automate.ext.storage<br>
+package:/system/priv-app/PrintSpooler/PrintSpooler.apk=com.android.printspooler<br>
+package:/system/priv-app/DeviceBackupAndRestore-release/DeviceBackupAndRestore-release.apk=com.amazon.device.backup<br>
+package:/system/priv-app/MapsAPIClientServices-release-signed/MapsAPIClientServices-release-signed.apk=com.amazon.geo.mapsv2.services<br>
+package:/system/app/MopriaPlugin/MopriaPlugin.apk=org.mopria.printplugin<br>
+package:/system/priv-app/com.amazon.securitysyncclient/com.amazon.securitysyncclient.apk=com.amazon.securitysyncclient<br>
+package:/system/priv-app/UnifiedShareActivityChooser/UnifiedShareActivityChooser.apk=com.amazon.unifiedshare.actionchooser<br>
+package:/system/priv-app/WhisperplayActivityView/WhisperplayActivityView.apk=com.amazon.whisperlink.activityview.android<br>
+package:/data/app/com.dropbox.android-2/base.apk=com.dropbox.android<br>
+package:/system/priv-app/DeviceMessagingAndroid/DeviceMessagingAndroid.apk=com.amazon.device.messaging<br>
+package:/system/priv-app/com.amazon.digital.asset.ownership.app/com.amazon.digital.asset.ownership.app.apk=com.amazon.digital.asset.ownership.app<br>
+package:/system/app/AmazonDeviceMetrics/AmazonDeviceMetrics.apk=com.amazon.device.metrics<br>
+package:/system/priv-app/DeviceMessagingAndroidInternalSDK/DeviceMessagingAndroidInternalSDK.apk=com.amazon.device.messaging.sdk.internal.library<br>
+package:/system/app/WhiteListedUrlProvider/WhiteListedUrlProvider.apk=com.amazon.providers<br>
+package:/data/app/com.amazon.kindle.otter.oobe-1/base.apk=com.amazon.kindle.otter.oobe<br>
+package:/data/app/com.foxit.mobile.pdf.lite-2/base.apk=com.foxit.mobile.pdf.lite<br>
+package:/system/priv-app/com.amazon.tv.ottssocompanionapp/com.amazon.tv.ottssocompanionapp.apk=com.amazon.tv.ottssocompanionapp<br>
+package:/system/priv-app/com.amazon.photos.importer/com.amazon.photos.importer.apk=com.amazon.photos.importer<br>
+package:/system/priv-app/SystemUpdatesUI/SystemUpdatesUI.apk=com.amazon.settings.systemupdates<br>
+package:/data/app/com.teslacoilsw.launcher.prime-1/base.apk=com.teslacoilsw.launcher.prime<br>
+package:/system/priv-app/OneTimeInitializer/OneTimeInitializer.apk=com.android.onetimeinitializer<br>
+package:/system/priv-app/davsclientservice/davsclientservice.apk=amazon.speech.davs.davsclientservice<br>
+package:/system/priv-app/MapsAPISupportLibrary-release-signed/MapsAPISupportLibrary-release-signed.apk=com.amazon.geo.mapsv2<br>
+package:/system/app/KeyChain/KeyChain.apk=com.android.keychain<br>
+package:/system/priv-app/com.amazon.unifiedsharetwitter/com.amazon.unifiedsharetwitter.apk=com.amazon.unifiedsharetwitter<br>
+package:/data/app/com.android.chrome-1/base.apk=com.android.chrome<br>
+package:/system/priv-app/FireTvSaleService/FireTvSaleService.apk=com.amazon.device.sale.service<br>
+package:/system/priv-app/com.amazon.cardinal/com.amazon.cardinal.apk=com.amazon.cardinal<br>
+package:/system/priv-app/com.amazon.comms.multimodaltachyonarm/com.amazon.comms.multimodaltachyonarm.apk=com.amazon.comms.multimodaltachyonarm<br>
+package:/data/app/com.medium.reader-1/base.apk=com.medium.reader<br>
+package:/data/app/com.google.android.gms-2/base.apk=com.google.android.gms<br>
+package:/data/app/com.google.android.gsf-1/base.apk=com.google.android.gsf<br>
+package:/data/app/tv.twitch.android.app-2/base.apk=tv.twitch.android.app<br>
+package:/system/priv-app/PackageInstaller/PackageInstaller.apk=com.android.packageinstaller<br>
+package:/data/app/com.glassdoor.app-2/base.apk=com.glassdoor.app<br>
+package:/system/app/PicoTts/PicoTts.apk=com.svox.pico<br>
+package:/system/priv-app/com.amazon.communication/com.amazon.communication.apk=com.amazon.tcomm.client<br>
+package:/system/priv-app/com.amazon.knight.blink/com.amazon.knight.blink.apk=com.amazon.knight.blink<br>
+package:/system/priv-app/MetricsService/MetricsService.apk=com.amazon.client.metrics<br>
+package:/system/priv-app/RemoteSettingsInternalSDK/RemoteSettingsInternalSDK.apk=com.amazon.device.settings.sdk.internal.library<br>
+package:/system/priv-app/ProxyHandler/ProxyHandler.apk=com.android.proxyhandler<br>
+package:/system/app/UnifiedSettingsProvider/UnifiedSettingsProvider.apk=com.amazon.acos.providers.UnifiedSettingsProvider<br>
+package:/data/app/com.upwork.android-1/base.apk=com.upwork.android<br>
+package:/data/app/com.netflix.mediaclient-1/base.apk=com.netflix.mediaclient<br>
+package:/system/priv-app/com.amazon.firepowersettings/com.amazon.firepowersettings.apk=com.amazon.firepowersettings<br>
+package:/system/priv-app/com.amazon.glorialist/com.amazon.glorialist.apk=com.amazon.glorialist<br>
+package:/data/app/app.greyshirts.sslcapture-1/base.apk=app.greyshirts.sslcapture<br>
+package:/data/app/com.llamalab.automate-1/base.apk=com.llamalab.automate<br>
+package:/system/priv-app/amazon.jackson-19/amazon.jackson-19.apk=amazon.jackson19<br>
+package:/data/app/com.google.android.calendar-1/base.apk=com.google.android.calendar<br>
+package:/system/priv-app/com.audible.application.kindle/com.audible.application.kindle.apk=com.audible.application.kindle<br>
+package:/system/priv-app/ManagedProvisioning/ManagedProvisioning.apk=com.android.managedprovisioning<br>
+package:/data/app/com.spotify.music-1/base.apk=com.spotify.music<br>
+package:/data/app/org.khanacademy.android-1/base.apk=org.khanacademy.android<br>
+package:/system/vendor/app/AtciService/AtciService.apk=com.mediatek.atci.service<br>
+package:/system/priv-app/DeviceSoftwareOTA/DeviceSoftwareOTA.apk=com.amazon.device.software.ota<br>
+package:/system/priv-app/FireflyAppFireOS-release-stub/FireflyAppFireOS-release-stub.apk=com.amazon.mw<br>
+package:/system/priv-app/com.amazon.pm/com.amazon.pm.apk=com.amazon.pm<br>
+package:/system/priv-app/com.amazon.gloria.smarthome/com.amazon.gloria.smarthome.apk=com.amazon.gloria.smarthome<br>
+package:/system/priv-app/CredentialLockerAndroid-tablet-release/CredentialLockerAndroid-tablet-release.apk=com.amazon.wifilocker<br>
+package:/data/app/com.linkedin.android.jobs.jobseeker-2/base.apk=com.linkedin.android.jobs.jobseeker<br>
+package:/system/priv-app/com.amazon.tabletsubscriptions/com.amazon.tabletsubscriptions.apk=com.amazon.tabletsubscriptions<br>
+package:/system/priv-app/DeviceClientPlatformContractsFramework/DeviceClientPlatformContractsFramework.apk=com.amazon.dcp.contracts.framework.library<br>
+package:/system/priv-app/com.amazon.device.bluetoothdfu/com.amazon.device.bluetoothdfu.apk=com.amazon.device.bluetoothdfu<br>
+package:/data/app/com.google.android.gsf.login-1/base.apk=com.google.android.gsf.login<br>
+package:/system/priv-app/WhisperplayCore/WhisperplayCore.apk=com.amazon.whisperlink.core.android<br>
+package:/system/priv-app/com.amazon.kor.demo/com.amazon.kor.demo.apk=com.amazon.kor.demo<br>
+package:/system/priv-app/DeviceMessagingAndroidSDK/DeviceMessagingAndroidSDK.apk=com.amazon.device.messaging.sdk.library<br>
+package:/data/app/com.ultimateguitar.tabs-1/base.apk=com.ultimateguitar.tabs<br>
+package:/data/app/com.faultexception.reader-1/base.apk=com.faultexception.reader<br>
+package:/system/priv-app/com.amazon.geo.client.maps/com.amazon.geo.client.maps.apk=com.amazon.geo.client.maps<br>
+package:/data/app/com.scee.psxandroid-1/base.apk=com.scee.psxandroid<br>
+package:/system/app/jp.co.omronsoft.iwnnime.mlaz/jp.co.omronsoft.iwnnime.mlaz.apk=jp.co.omronsoft.iwnnime.mlaz<br>
+package:/system/vendor/app/Ds/Ds.apk=com.dolby<br>
+package:/data/app/jackpal.androidterm-1/base.apk=jackpal.androidterm<br>
+package:/system/priv-app/com.amazon.ags.app/com.amazon.ags.app.apk=com.amazon.ags.app<br>
+package:/system/app/jp.co.omronsoft.iwnnime.languagepack.zhcn_az/jp.co.omronsoft.iwnnime.languagepack.zhcn_az.apk=jp.co.omronsoft.iwnnime.languagepack.zhcn_az<br>
+package:/data/app/org.edx.mobile-1/base.apk=org.edx.mobile<br>
+package:/data/app/com.amazon.kindle.unifiedSearch-1/base.apk=com.amazon.kindle.unifiedSearch<br>
+package:/data/app/com.linkedin.android-1/base.apk=com.linkedin.android<br>
+package:/system/priv-app/sync-provider_ipc-tablet-release/sync-provider_ipc-tablet-release.apk=com.amazon.sync.provider.ipc<br>
+package:/system/priv-app/FireTabletSettings/FireTabletSettings.apk=com.android.settings<br>
+package:/system/framework/android.amazon.perm/android.amazon.perm.apk=android.amazon.perm<br>
+package:/system/priv-app/com.amazon.paladin/com.amazon.paladin.apk=com.amazon.paladin<br>
+package:/system/priv-app/com.goodreads.kindle/com.goodreads.kindle.apk=com.goodreads.kindle<br>
+package:/system/priv-app/AwvDeploymentService/AwvDeploymentService.apk=com.amazon.webview.awvdeploymentservice<br>
+package:/data/app/com.pushbullet.android-1/base.apk=com.pushbullet.android<br>
+package:/data/app/com.elevenworks.touchdraw-1/base.apk=com.elevenworks.touchdraw<br>
+package:/system/priv-app/ContentSupportProvider/ContentSupportProvider.apk=com.amazon.providers.contentsupport<br>
+package:/system/priv-app/com.amazon.platformsettings/com.amazon.platformsettings.apk=com.amazon.platformsettings<br>
+package:/system/priv-app/VpnDialogs/VpnDialogs.apk=com.android.vpndialogs<br>
+package:/system/priv-app/moffice_7.1_default_en00105_multidex_217792/moffice_7.1_default_en00105_multidex_217792.apk=com.kingsoft.office.amz<br>
+package:/system/priv-app/com.amazon.ava.shopping.android/com.amazon.ava.shopping.android.apk=com.amazon.ava.shopping.android<br>
+package:/system/priv-app/com.amazon.virtual.dash.knight.app/com.amazon.virtual.dash.knight.app.apk=com.amazon.virtual.dash.knight.app<br>
+package:/system/priv-app/CrashManager/CrashManager.apk=com.amazon.device.crashmanager<br>
+package:/system/priv-app/FireApplicationCompatibilityEnforcer/FireApplicationCompatibilityEnforcer.apk=com.amazon.application.compatibility.enforcer<br>
+package:/system/priv-app/com.android.email/com.android.email.apk=com.android.email<br>
+package:/system/priv-app/IvonaTTS/IvonaTTS.apk=com.ivona.tts.oem<br>
+package:/system/app/Music/Music.apk=com.android.music<br>
+package:/system/priv-app/Shell/Shell.apk=com.android.shell<br>
+package:/data/app/com.baronkiko.launcherhijack-1/base.apk=com.baronkiko.launcherhijack<br>
+package:/system/app/UserDictionaryProvider/UserDictionaryProvider.apk=com.android.providers.userdictionary<br>
+package:/data/app/com.llamalab.automate.ext.superuser-1/base.apk=com.llamalab.automate.ext.superuser<br>
+package:/data/app/com.ideashower.readitlater.pro-2/base.apk=com.ideashower.readitlater.pro<br>
+package:/system/priv-app/com.amazon.kindle.rdmdeviceadmin/com.amazon.kindle.rdmdeviceadmin.apk=com.amazon.kindle.rdmdeviceadmin<br>
+package:/data/app/com.camelgames.superking-2/base.apk=com.camelgames.superking<br>
+package:/system/priv-app/com.amazon.parentalcontrols/com.amazon.parentalcontrols.apk=com.amazon.parentalcontrols<br>
+package:/system/priv-app/DeviceSoftwareOTAIdleOverride/DeviceSoftwareOTAIdleOverride.apk=com.amazon.device.software.ota.override<br>
+package:/system/priv-app/EnvironmentContextService/EnvironmentContextService.apk=com.amazon.knight.ecs<br>
+package:/system/priv-app/HumanDetectionService/HumanDetectionService.apk=com.amazon.knight.hds<br>
+package:/system/priv-app/FusedLocation/FusedLocation.apk=com.android.location.fused<br>
+package:/system/priv-app/com.android.deskclock/com.android.deskclock.apk=com.android.deskclock<br>
+package:/system/priv-app/SystemUI/SystemUI.apk=com.android.systemui<br>
+package:/system/app/audiostreamproviderservice/audiostreamproviderservice.apk=amazon.speech.audiostreamproviderservice<br>
+package:/data/app/com.amazon.windowshop-1/base.apk=com.amazon.windowshop<br>
+package:/data/app/org.cnx.android-1/base.apk=org.cnx.android<br>
+package:/system/priv-app/com.nokia.odnp.service/com.nokia.odnp.service.apk=com.here.odnp.service<br>
+package:/data/app/com.amazon.avod-2/base.apk=com.amazon.avod<br>
+package:/system/priv-app/shipmode/shipmode.apk=com.amazon.shpm<br>
+package:/system/priv-app/com.amazon.zico/com.amazon.zico.apk=com.amazon.zico<br>
+package:/system/priv-app/com.amazon.communication.discovery/com.amazon.communication.discovery.apk=com.amazon.communication.discovery<br>
+package:/data/app/com.jagex.oldscape.android-1/base.apk=com.jagex.oldscape.android<br>
+package:/system/priv-app/BluetoothInternals/BluetoothInternals.apk=com.amazon.bluetoothinternals<br>
+package:/system/priv-app/com.amazon.legalsettings/com.amazon.legalsettings.apk=com.amazon.legalsettings<br>
+package:/system/priv-app/Camera/Camera.apk=com.amazon.camera<br>
+package:/system/priv-app/RemoteSettingsAndroid/RemoteSettingsAndroid.apk=com.amazon.device.settings<br>
+package:/data/app/com.amazon.cloud9-1/base.apk=com.amazon.cloud9<br>
+package:/data/app/com.amazon.cloud9.kids-1/base.apk=com.amazon.cloud9.kids<br>
+package:/data/app/com.google.android.play.games-2/base.apk=com.google.android.play.games<br>
+package:/system/priv-app/com.amazon.device.sync.sdk.internal/com.amazon.device.sync.sdk.internal.apk=com.amazon.device.sync.sdk.internal<br>
+package:/data/app/com.valvesoftware.steamlink-2/base.apk=com.valvesoftware.steamlink<br>
+package:/system/priv-app/com.amazon.unifiedsharefacebook/com.amazon.unifiedsharefacebook.apk=com.amazon.unifiedsharefacebook<br>
+package:/system/priv-app/ConnectivityDiag/ConnectivityDiag.apk=com.amazon.connectivitydiag<br>
+package:/system/priv-app/com.amazon.dynamicupdationservice/com.amazon.dynamicupdationservice.apk=com.amazon.dynamicupdationservice<br>
+package:/system/app/Bluetooth/Bluetooth.apk=com.android.bluetooth<br>
+package:/system/priv-app/com.android.providers.contacts/com.android.providers.contacts.apk=com.android.providers.contacts<br>
+package:/system/app/TabletCaptivePortalLogin/TabletCaptivePortalLogin.apk=com.android.captiveportallogin<br>
+package:/system/priv-app/com.amazon.gambit/com.amazon.gambit.apk=com.amazon.gambit<br>
+package:/system/app/AmazonWebView/AmazonWebView.apk=com.amazon.webview.chromium<br>
+package:/system/priv-app/AwvMetricsService/AwvMetricsService.apk=com.amazon.webview.metrics.service<br>
+package:/system/priv-app/com.amazon.kindle.devicecontrols/com.amazon.kindle.devicecontrols.apk=com.amazon.kindle.devicecontrols<br>
+package:/system/priv-app/com.amazon.alexa.youtube.app/com.amazon.alexa.youtube.app.apk=com.amazon.alexa.youtube.app<br>
+package:/data/app/com.google.android.inputmethod.latin-2/base.apk=com.google.android.inputmethod.latin<br>
+package:/data/app/com.amazon.kindle-1/base.apk=com.amazon.kindle<br>
+package:/system/priv-app/FireApplicationCompatibilityEnforcerSDK/FireApplicationCompatibilityEnforcerSDK.apk=com.amazon.application.compatibility.enforcer.sdk.library</pre>
+
+
+
+<p>After dumping some apks and trying to start them with stuff like</p>
+
+
+
+<p>am start -n com.mediatek.connectivity/com.mediatek.connectivity.CdsInfoActivity</p>
+
+
+
+<p>I gave up on this. The Amazon junk on there is probably not worth the time/effort to RE. So I grabbed the Linux version with cat /proc/version</p>
+
+
+
+<pre class="wp-block-preformatted">Linux version 3.18.19+ (build@i3-ri-14-use1a-b-7) (gcc version 4.9 20140514 (prerelease) (GCC) ) #1 SMP PREEMPT Fri Aug 10 03:07:50 UTC 2018<br type="_moz"></pre>
+
+
+
+<p>Let’s check for some Linux kernel vulnerabilities…</p>
+
+
+
+<p>[CHECKING ON https://www.cvedetails.com]</p>
+
+
+
+<p>Manually comparing a bunch of the vulnerabilities reported there to the actual source downloaded from https://www.amazon.com/gp/help/customer/display.html?nodeId=200203720 shows me that Amazon has patched pretty much everything up.</p>
+
+
+
+<p>This looks interesting: https://www.cvedetails.com/cve/CVE-2016-10229/ and comparing it to the Amazon kernel, it seems they might not have patched it up correctly. Let’s examine what we need. Patch: https://github.com/torvalds/linux/commit/197c949e7798fbf28cfadc69d9ca0c2abbf93191#diff-07a34bde5a1c422186acb5d57d6adc2b</p>
+
+
+
+<p>So copied < ulen has to be true OR UDP_SKB_CB(skb)->partial_cov has to be true (not sure what the latter is yet)</p>
+
+
+
+<p>If this evaluates to true, then we call udp_lib_checksum_complete and store its return value in checksum_valid. If the checksum is invalid, we abort</p>
+
+
+
+<p>This is where Amazon messes up, because right after this we call skb_csum_unnecessary. In the patch, they check again if the checksum is invalid OR  skb_csum_unnecessary.</p>
+
+
+
+<p>So let’s see. The patch says:</p>
+
+
+
+<pre class="wp-block-preformatted"><br>
+udp: properly support MSG_PEEK with truncated buffers
+    <br>
+
+Backport of this upstream commit into stable kernels :
+<a href="https://github.com/torvalds/linux/commit/89c22d8c3b278212eef6a8cc66b570bc840a6f5a">89c22d8</a> ("net: Fix skb csum races when peeking")
+exposed a bug in udp stack vs MSG_PEEK support, when user provides
+a buffer smaller than skb payload.
+
+In this case,
+skb_copy_and_csum_datagram_iovec(skb, sizeof(struct udphdr),
+                                 msg->msg_iov);
+returns -EFAULT.
+
+This bug does not happen in upstream kernels since Al Viro did a great
+job to replace this into :
+skb_copy_and_csum_datagram_msg(skb, sizeof(struct udphdr), msg);
+This variant is safe vs short buffers.
+
+For the time being, instead reverting Herbert Xu patch and add back
+skb->ip_summed invalid changes, simply store the result of
+udp_lib_checksum_complete() so that we avoid computing the checksum a
+second time, and avoid the problematic
+skb_copy_and_csum_datagram_iovec() call.
+
+This patch can be applied on recent kernels as it avoids a double
+checksumming, then backported to stable kernels as a bug fix.
+
+
+
+</pre>
+
+
+
+<p>So __skb_checksum_complete gets called twice which calculates the checksum twice. <br></p>
+
+
+
+<p></p>
+
+
+
+<p>(Side idea: run a static analysis on the FireOS kernel source smackerelofopinion.blogspot.com/2017/09/static-analysis-on-linux-kernel.html)</p>
+
+
+
+<p></p>
+
+
+
+<p>So is the problem that…</p>
+
+
+
+<pre class="wp-block-preformatted">udp.c in the Linux kernel before 4.5 allows remote attackers to execute arbitrary code via UDP traffic that triggers an unsafe second checksum calculation during execution of a recv system call with the MSG_PEEK flag. </pre>
+
+
+
+<p></p>
+
+
+
+<p>LATEST DEVELOPMENT: Build a local Linux kernel for quick PoC work. If it’s vulnerable it’ll be a lot faster to try out a simple C program, then work out the Android attack vector.</p>
+
+
+
+<p>Sources:<br>https://www.cvedetails.com/cve/CVE-2016-10229/<br>https://github.com/torvalds/linux/commit/197c949e7798fbf28cfadc69d9ca0c2abbf93191<br>https://github.com/torvalds/linux/commit/89c22d8c3b278212eef6a8cc66b570bc840a6f5a<br>https://github.com/mcxiaoke/android-ndk-notes/blob/master/cpp11-support/src/main/jni/native.cpp<br></p>
+
+
+
+<p></p>
+
+
+
+<p></p>
+			</div>
+
+</article><nav class="navigation post-navigation" role="navigation"><h1 class="screen-reader-text">Post navigation</h1>
+		<div class="nav-links">
+			<div class="nav-previous"><a href="https://augustkarlstedt.github.io/blog/2018/09/26/new-blog-stuff/" rel="prev"><span class="meta-nav">← Previous Post</span> New Blog Stuff!</a></div>		</div>
+	</nav><div id="disqus_thread"></div>
+
+		
+		</main></div>
+
+
+	</div>
+
+	<footer id="colophon" class="site-footer" role="contentinfo"><div class="site-info">
+			<span class="powered-by">Powered by WordPress, WP Static Site Generator, Docker, and GitHub Pages</span>
+			<span class="sep"> | </span>
+			Editor theme by Array.is
+		</div>
+	</footer></div>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"augustkarlstedt"};
+/* ]]> */
+</script><script type="text/javascript">
+/* <![CDATA[ */
+var embedVars = {"disqusConfig":{"integration":"wordpress 3.0.17"},"disqusIdentifier":"411 https:\/\/augustkarlstedt.github.io\/?p=411","disqusShortname":"augustkarlstedt","disqusTitle":"Learning about Android and FireOS","disqusUrl":"https:\/\/augustkarlstedt.github.io\/blog\/2018\/10\/11\/learning-about-android-and-fireos\/","postId":"411"};
+/* ]]> */
+</script><script type="text/javascript" defer src="https://augustkarlstedt.github.io/wp-content/cache/autoptimize/js/autoptimize_1ff213bf4e87817aff5a10cca3aa02f0.js"></script></body></html>

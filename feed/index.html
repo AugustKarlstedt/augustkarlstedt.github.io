@@ -1,0 +1,2116 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>August Karlstedt</title>
+	<atom:link href="https://augustkarlstedt.github.io/feed/" rel="self" type="application/rss+xml" />
+	<link>https://augustkarlstedt.github.io/</link>
+	<description>Machine Learning Researcher, Software Engineer, Game Developer, and Consultant</description>
+	<lastBuildDate>Wed, 27 Nov 2019 02:41:28 -0800</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.3</generator>
+	<item>
+		<title>Learning about Android and FireOS</title>
+		<link>https://augustkarlstedt.github.io/blog/2018/10/11/learning-about-android-and-fireos/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2018/10/11/learning-about-android-and-fireos/#respond</comments>
+				<pubDate>Fri, 12 Oct 2018 06:07:00 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">https://augustkarlstedt.github.io/?p=411</guid>
+				<description><![CDATA[<p>Note: these are my notes from a session learning about Amazon&#8217;s Kindle FireOS and the possibility of using Linux kernel exploit to gain root access. What I&#8217;ve tried in chronological order: Connected to device over USB via ADB. The command service list lists all of the available services running. You can send a command to [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2018/10/11/learning-about-android-and-fireos/">Learning about Android and FireOS</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[
+<p>Note: these are my notes from a session learning about Amazon&#8217;s Kindle FireOS and the possibility of using Linux kernel exploit to gain root access. </p>
+
+
+
+<p></p>
+
+
+
+<p>What I&#8217;ve tried in chronological order:</p>
+
+
+
+<p>Connected to device over USB via ADB.</p>
+
+
+
+<p>The command service list lists all of the available services running. You can send a command to these services by running service call [service] [integer]</p>
+
+
+
+<p>I&#8217;ve tried service call statusbar 1 and service call statusbar 2 and can see the statusbar appear and disappear, respectively.</p>
+
+
+
+<p>What happens if we poke into some Amazon stuff?</p>
+
+
+
+<p>pm list packages -f <br></p>
+
+
+
+<pre class="wp-block-preformatted">package:/system/priv-app/AmazonPlatform-release/AmazonPlatform-release.apk=com.amazon.platform<br>
+package:/data/app/com.box.android-2/base.apk=com.box.android<br>
+package:/system/priv-app/FireflyIdentifiesSDK-release/FireflyIdentifiesSDK-release.apk=com.amazon.mw.sdk<br>
+package:/system/priv-app/com.amazon.knight.calendar/com.amazon.knight.calendar.apk=com.amazon.knight.calendar<br>
+package:/data/app/com.google.android.youtube-1/base.apk=com.google.android.youtube<br>
+package:/data/app/com.amazon.photos-2/base.apk=com.amazon.photos<br>
+package:/system/priv-app/com.amazon.dp.contacts/com.amazon.dp.contacts.apk=com.amazon.dp.contacts<br>
+package:/system/priv-app/com.amazon.unifiedsharegoodreads/com.amazon.unifiedsharegoodreads.apk=com.amazon.unifiedsharegoodreads<br>
+package:/system/priv-app/com.amazon.kindle.otter.oobe.forced.ota/com.amazon.kindle.otter.oobe.forced.ota.apk=com.amazon.kindle.otter.oobe.forced.ota<br>
+package:/system/priv-app/FireRecessProxy/FireRecessProxy.apk=com.amazon.recess<br>
+package:/system/app/fdrw/fdrw.apk=com.amazon.platform.fdrw<br>
+package:/data/app/com.google.android.googlequicksearchbox-1/base.apk=com.google.android.googlequicksearchbox<br>
+package:/system/priv-app/com.android.providers.calendar/com.android.providers.calendar.apk=com.android.providers.calendar<br>
+package:/system/priv-app/WhisperlinkSdk/WhisperlinkSdk.apk=com.amazon.whisperplay.contracts<br>
+package:/system/priv-app/MediaProvider/MediaProvider.apk=com.android.providers.media<br>
+package:/data/app/com.amazon.venezia-2/base.apk=com.amazon.venezia<br>
+package:/system/priv-app/SpeechUi/SpeechUi.apk=com.amazon.speechui<br>
+package:/data/app/com.amazon.webapp-1/base.apk=com.amazon.webapp<br>
+package:/system/priv-app/DeviceSoftwareOTAContracts/DeviceSoftwareOTAContracts.apk=com.amazon.dcp.contracts.library<br>
+package:/system/priv-app/WallpaperCropper/WallpaperCropper.apk=com.android.wallpapercropper<br>
+package:/data/app/com.teslacoilsw.launcher-2/base.apk=com.teslacoilsw.launcher<br>
+package:/system/priv-app/com.amazon.zordon/com.amazon.zordon.apk=com.amazon.zordon<br>
+package:/data/app/com.udacity.android-1/base.apk=com.udacity.android<br>
+package:/system/app/Protips/Protips.apk=com.android.protips<br>
+package:/data/app/com.speedsoftware.rootexplorer-1/base.apk=com.speedsoftware.rootexplorer<br>
+package:/system/priv-app/IvonaTtsOrchestrator/IvonaTtsOrchestrator.apk=com.ivona.orchestrator<br>
+package:/system/priv-app/com.amazon.device.sync/com.amazon.device.sync.apk=com.amazon.device.sync<br>
+package:/system/framework/fireos-res/fireos-res.apk=amazon.fireos<br>
+package:/data/app/com.google.android.apps.paidtasks-1/base.apk=com.google.android.apps.paidtasks<br>
+package:/system/priv-app/LogManager-logd/LogManager-logd.apk=com.amazon.device.logmanager<br>
+package:/system/app/DocumentsUI/DocumentsUI.apk=com.android.documentsui<br>
+package:/system/priv-app/ExternalStorageProvider/ExternalStorageProvider.apk=com.android.externalstorage<br>
+package:/system/app/HTMLViewer/HTMLViewer.apk=com.android.htmlviewer<br>
+package:/data/app/com.gbeatty.arxiv-1/base.apk=com.gbeatty.arxiv<br>
+package:/data/app/com.amazon.firelauncher-1/base.apk=com.amazon.firelauncher<br>
+package:/system/priv-app/com.amazon.media.session.monitor/com.amazon.media.session.monitor.apk=com.amazon.media.session.monitor<br>
+package:/system/priv-app/com.amazon.h2clientservice/com.amazon.h2clientservice.apk=com.amazon.alta.h2clientservice<br>
+package:/system/priv-app/AdvertisingIdSettings/AdvertisingIdSettings.apk=com.amazon.advertisingidsettings<br>
+package:/system/priv-app/DownloadProvider/DownloadProvider.apk=com.android.providers.downloads<br>
+package:/system/priv-app/com.amazon.socialplatform/com.amazon.socialplatform.apk=com.amazon.socialplatform<br>
+package:/system/priv-app/com.amazon.dp.fbcontacts/com.amazon.dp.fbcontacts.apk=com.amazon.dp.fbcontacts<br>
+package:/system/priv-app/com.amazon.comms.knightcontacts/com.amazon.comms.knightcontacts.apk=com.amazon.comms.knightcontacts<br>
+package:/system/priv-app/com.amazon.h2settingsfortablet/com.amazon.h2settingsfortablet.apk=com.amazon.h2settingsfortablet<br>
+package:/data/app/com.hulu.plus-1/base.apk=com.hulu.plus<br>
+package:/system/priv-app/com.amazon.calculator/com.amazon.calculator.apk=com.amazon.calculator<br>
+package:/system/priv-app/com.amazon.cloud9.systembrowserprovider/com.amazon.cloud9.systembrowserprovider.apk=com.amazon.cloud9.systembrowserprovider<br>
+package:/system/priv-app/com.amazon.kindle.otter.settings/com.amazon.kindle.otter.settings.apk=com.amazon.kindle.otter.settings<br>
+package:/system/priv-app/AlexaModeSwitch/AlexaModeSwitch.apk=com.amazon.alexa.modeswitch<br>
+package:/system/priv-app/com.amazon.dp.logger/com.amazon.dp.logger.apk=com.amazon.dp.logger<br>
+package:/system/priv-app/com.amazon.ods.kindleconnect/com.amazon.ods.kindleconnect.apk=com.amazon.ods.kindleconnect<br>
+package:/system/priv-app/DefaultContainerService/DefaultContainerService.apk=com.android.defcontainer<br>
+package:/system/priv-app/com.amazon.accessorynotifier/com.amazon.accessorynotifier.apk=com.amazon.accessorynotifier<br>
+package:/data/app/com.amazon.cloud9.contentservice-1/base.apk=com.amazon.cloud9.contentservice<br>
+package:/system/priv-app/DownloadProviderUi/DownloadProviderUi.apk=com.android.providers.downloads.ui<br>
+package:/data/app/com.android.vending-1/base.apk=com.android.vending<br>
+package:/system/app/PacProcessor/PacProcessor.apk=com.android.pacprocessor<br>
+package:/system/priv-app/com.amazon.sharingservice.android.client.proxy.release/com.amazon.sharingservice.android.client.proxy.release.apk=com.amazon.sharingservice.android.client.proxy<br>
+package:/system/priv-app/com.amazon.weather/com.amazon.weather.apk=com.amazon.weather<br>
+package:/system/priv-app/AmazonKKWebViewLib/AmazonKKWebViewLib.apk=com.amazon.webview<br>
+package:/system/priv-app/marketplace_service_receiver/marketplace_service_receiver.apk=com.amazon.android.marketplace<br>
+package:/data/app/com.tencent.ig-2/base.apk=com.tencent.ig<br>
+package:/system/priv-app/FireStorageManager/FireStorageManager.apk=com.amazon.storagemanager<br>
+package:/system/priv-app/com.amazon.vans.alexatabletshopping.app/com.amazon.vans.alexatabletshopping.app.apk=com.amazon.vans.alexatabletshopping.app<br>
+package:/system/app/CertInstaller/CertInstaller.apk=com.android.certinstaller<br>
+package:/system/priv-app/wakewordserver/wakewordserver.apk=amazon.speech.wakewordservice<br>
+package:/data/app/com.reddit.frontpage-1/base.apk=com.reddit.frontpage<br>
+package:/system/priv-app/TabletDockSettings/TabletDockSettings.apk=com.amazon.tablet.dock.settings<br>
+package:/system/priv-app/DeviceBackupAndRestoreInternalSDK-release/DeviceBackupAndRestoreInternalSDK-release.apk=com.amazon.device.backup.sdk.internal.library<br>
+package:/system/framework/framework-res.apk=android<br>
+package:/data/app/com.llamalab.automate.ext.network-1/base.apk=com.llamalab.automate.ext.network<br>
+package:/system/priv-app/com.android.contacts/com.android.contacts.apk=com.android.contacts<br>
+package:/data/app/org.mozilla.fennec_aurora-2/base.apk=org.mozilla.fennec_aurora<br>
+package:/data/app/com.aor.droidedit.pro-1/base.apk=com.aor.droidedit.pro<br>
+package:/system/priv-app/ReadyNowCore-release/ReadyNowCore-release.apk=com.amazon.readynowcore<br>
+package:/system/priv-app/MetricsApi/MetricsApi.apk=com.amazon.client.metrics.api<br>
+package:/data/app/com.amazon.aca-1/base.apk=com.amazon.aca<br>
+package:/system/priv-app/FireOsMiddlewareDebugApp/FireOsMiddlewareDebugApp.apk=com.amazon.dcp<br>
+package:/system/priv-app/com.amazon.imp/com.amazon.imp.apk=com.amazon.imp<br>
+package:/data/app/com.amazon.mp3-2/base.apk=com.amazon.mp3<br>
+package:/system/priv-app/com.amazon.unifiedsharesinaweibo/com.amazon.unifiedsharesinaweibo.apk=com.amazon.unifiedsharesinaweibo<br>
+package:/system/priv-app/amazon.alexa.tablet/amazon.alexa.tablet.apk=amazon.alexa.tablet<br>
+package:/system/priv-app/sync-service-fireos-tablet-release/sync-service-fireos-tablet-release.apk=com.amazon.sync.service<br>
+package:/system/priv-app/com.amazon.comms.knightmessaging/com.amazon.comms.knightmessaging.apk=com.amazon.comms.knightmessaging<br>
+package:/system/priv-app/com.amazon.frameworksettings/com.amazon.frameworksettings.apk=com.amazon.frameworksettings<br>
+package:/system/priv-app/com.amazon.fireinputdevices/com.amazon.fireinputdevices.apk=com.amazon.fireinputdevices<br>
+package:/data/app/com.NewDsemu.FreeDraStic-1/base.apk=com.NewDsemu.FreeDraStic<br>
+package:/system/app/Stk/Stk.apk=com.android.stk<br>
+package:/system/priv-app/BackupRestoreConfirmation/BackupRestoreConfirmation.apk=com.android.backupconfirm<br>
+package:/data/app/com.amazon.dee.app-2/base.apk=com.amazon.dee.app<br>
+package:/system/priv-app/com.amazon.csapp/com.amazon.csapp.apk=com.amazon.csapp<br>
+package:/system/priv-app/logan/logan.apk=com.amazon.logan<br>
+package:/data/app/com.amazon.tahoe-1/base.apk=com.amazon.tahoe<br>
+package:/system/priv-app/com.amazon.tcomm/com.amazon.tcomm.apk=com.amazon.tcomm<br>
+package:/data/app/com.microsoft.office.onenote-1/base.apk=com.microsoft.office.onenote<br>
+package:/data/app/org.coursera.android-2/base.apk=org.coursera.android<br>
+package:/system/priv-app/com.amazon.redstone/com.amazon.redstone.apk=com.amazon.redstone<br>
+package:/system/priv-app/com.android.calendar/com.android.calendar.apk=com.android.calendar<br>
+package:/data/app/com.llamalab.automate.ext.settings-1/base.apk=com.llamalab.automate.ext.settings<br>
+package:/system/priv-app/com.amazon.kindle.personal_video/com.amazon.kindle.personal_video.apk=com.amazon.kindle.personal_video<br>
+package:/system/priv-app/com.amazon.displayclockface/com.amazon.displayclockface.apk=com.amazon.displayclockface<br>
+package:/system/priv-app/SpeechInteractionManager/SpeechInteractionManager.apk=amazon.speech.sim<br>
+package:/system/priv-app/com.amazon.identity.auth.device.authorization/com.amazon.identity.auth.device.authorization.apk=com.amazon.identity.auth.device.authorization<br>
+package:/system/priv-app/com.amazon.kcp.tutorial/com.amazon.kcp.tutorial.apk=com.amazon.kcp.tutorial<br>
+package:/system/priv-app/com.amazon.kindle.cms-service/com.amazon.kindle.cms-service.apk=com.amazon.kindle.cms<br>
+package:/data/app/com.amazon.kindle.kso-1/base.apk=com.amazon.kindle.kso<br>
+package:/system/priv-app/SettingsProvider/SettingsProvider.apk=com.android.providers.settings<br>
+package:/system/priv-app/com.amazon.kindleautomatictimezone/com.amazon.kindleautomatictimezone.apk=com.amazon.kindleautomatictimezone<br>
+package:/system/priv-app/SharedStorageBackup/SharedStorageBackup.apk=com.android.sharedstoragebackup<br>
+package:/data/app/com.llamalab.automate.ext.storage-1/base.apk=com.llamalab.automate.ext.storage<br>
+package:/system/priv-app/PrintSpooler/PrintSpooler.apk=com.android.printspooler<br>
+package:/system/priv-app/DeviceBackupAndRestore-release/DeviceBackupAndRestore-release.apk=com.amazon.device.backup<br>
+package:/system/priv-app/MapsAPIClientServices-release-signed/MapsAPIClientServices-release-signed.apk=com.amazon.geo.mapsv2.services<br>
+package:/system/app/MopriaPlugin/MopriaPlugin.apk=org.mopria.printplugin<br>
+package:/system/priv-app/com.amazon.securitysyncclient/com.amazon.securitysyncclient.apk=com.amazon.securitysyncclient<br>
+package:/system/priv-app/UnifiedShareActivityChooser/UnifiedShareActivityChooser.apk=com.amazon.unifiedshare.actionchooser<br>
+package:/system/priv-app/WhisperplayActivityView/WhisperplayActivityView.apk=com.amazon.whisperlink.activityview.android<br>
+package:/data/app/com.dropbox.android-2/base.apk=com.dropbox.android<br>
+package:/system/priv-app/DeviceMessagingAndroid/DeviceMessagingAndroid.apk=com.amazon.device.messaging<br>
+package:/system/priv-app/com.amazon.digital.asset.ownership.app/com.amazon.digital.asset.ownership.app.apk=com.amazon.digital.asset.ownership.app<br>
+package:/system/app/AmazonDeviceMetrics/AmazonDeviceMetrics.apk=com.amazon.device.metrics<br>
+package:/system/priv-app/DeviceMessagingAndroidInternalSDK/DeviceMessagingAndroidInternalSDK.apk=com.amazon.device.messaging.sdk.internal.library<br>
+package:/system/app/WhiteListedUrlProvider/WhiteListedUrlProvider.apk=com.amazon.providers<br>
+package:/data/app/com.amazon.kindle.otter.oobe-1/base.apk=com.amazon.kindle.otter.oobe<br>
+package:/data/app/com.foxit.mobile.pdf.lite-2/base.apk=com.foxit.mobile.pdf.lite<br>
+package:/system/priv-app/com.amazon.tv.ottssocompanionapp/com.amazon.tv.ottssocompanionapp.apk=com.amazon.tv.ottssocompanionapp<br>
+package:/system/priv-app/com.amazon.photos.importer/com.amazon.photos.importer.apk=com.amazon.photos.importer<br>
+package:/system/priv-app/SystemUpdatesUI/SystemUpdatesUI.apk=com.amazon.settings.systemupdates<br>
+package:/data/app/com.teslacoilsw.launcher.prime-1/base.apk=com.teslacoilsw.launcher.prime<br>
+package:/system/priv-app/OneTimeInitializer/OneTimeInitializer.apk=com.android.onetimeinitializer<br>
+package:/system/priv-app/davsclientservice/davsclientservice.apk=amazon.speech.davs.davsclientservice<br>
+package:/system/priv-app/MapsAPISupportLibrary-release-signed/MapsAPISupportLibrary-release-signed.apk=com.amazon.geo.mapsv2<br>
+package:/system/app/KeyChain/KeyChain.apk=com.android.keychain<br>
+package:/system/priv-app/com.amazon.unifiedsharetwitter/com.amazon.unifiedsharetwitter.apk=com.amazon.unifiedsharetwitter<br>
+package:/data/app/com.android.chrome-1/base.apk=com.android.chrome<br>
+package:/system/priv-app/FireTvSaleService/FireTvSaleService.apk=com.amazon.device.sale.service<br>
+package:/system/priv-app/com.amazon.cardinal/com.amazon.cardinal.apk=com.amazon.cardinal<br>
+package:/system/priv-app/com.amazon.comms.multimodaltachyonarm/com.amazon.comms.multimodaltachyonarm.apk=com.amazon.comms.multimodaltachyonarm<br>
+package:/data/app/com.medium.reader-1/base.apk=com.medium.reader<br>
+package:/data/app/com.google.android.gms-2/base.apk=com.google.android.gms<br>
+package:/data/app/com.google.android.gsf-1/base.apk=com.google.android.gsf<br>
+package:/data/app/tv.twitch.android.app-2/base.apk=tv.twitch.android.app<br>
+package:/system/priv-app/PackageInstaller/PackageInstaller.apk=com.android.packageinstaller<br>
+package:/data/app/com.glassdoor.app-2/base.apk=com.glassdoor.app<br>
+package:/system/app/PicoTts/PicoTts.apk=com.svox.pico<br>
+package:/system/priv-app/com.amazon.communication/com.amazon.communication.apk=com.amazon.tcomm.client<br>
+package:/system/priv-app/com.amazon.knight.blink/com.amazon.knight.blink.apk=com.amazon.knight.blink<br>
+package:/system/priv-app/MetricsService/MetricsService.apk=com.amazon.client.metrics<br>
+package:/system/priv-app/RemoteSettingsInternalSDK/RemoteSettingsInternalSDK.apk=com.amazon.device.settings.sdk.internal.library<br>
+package:/system/priv-app/ProxyHandler/ProxyHandler.apk=com.android.proxyhandler<br>
+package:/system/app/UnifiedSettingsProvider/UnifiedSettingsProvider.apk=com.amazon.acos.providers.UnifiedSettingsProvider<br>
+package:/data/app/com.upwork.android-1/base.apk=com.upwork.android<br>
+package:/data/app/com.netflix.mediaclient-1/base.apk=com.netflix.mediaclient<br>
+package:/system/priv-app/com.amazon.firepowersettings/com.amazon.firepowersettings.apk=com.amazon.firepowersettings<br>
+package:/system/priv-app/com.amazon.glorialist/com.amazon.glorialist.apk=com.amazon.glorialist<br>
+package:/data/app/app.greyshirts.sslcapture-1/base.apk=app.greyshirts.sslcapture<br>
+package:/data/app/com.llamalab.automate-1/base.apk=com.llamalab.automate<br>
+package:/system/priv-app/amazon.jackson-19/amazon.jackson-19.apk=amazon.jackson19<br>
+package:/data/app/com.google.android.calendar-1/base.apk=com.google.android.calendar<br>
+package:/system/priv-app/com.audible.application.kindle/com.audible.application.kindle.apk=com.audible.application.kindle<br>
+package:/system/priv-app/ManagedProvisioning/ManagedProvisioning.apk=com.android.managedprovisioning<br>
+package:/data/app/com.spotify.music-1/base.apk=com.spotify.music<br>
+package:/data/app/org.khanacademy.android-1/base.apk=org.khanacademy.android<br>
+package:/system/vendor/app/AtciService/AtciService.apk=com.mediatek.atci.service<br>
+package:/system/priv-app/DeviceSoftwareOTA/DeviceSoftwareOTA.apk=com.amazon.device.software.ota<br>
+package:/system/priv-app/FireflyAppFireOS-release-stub/FireflyAppFireOS-release-stub.apk=com.amazon.mw<br>
+package:/system/priv-app/com.amazon.pm/com.amazon.pm.apk=com.amazon.pm<br>
+package:/system/priv-app/com.amazon.gloria.smarthome/com.amazon.gloria.smarthome.apk=com.amazon.gloria.smarthome<br>
+package:/system/priv-app/CredentialLockerAndroid-tablet-release/CredentialLockerAndroid-tablet-release.apk=com.amazon.wifilocker<br>
+package:/data/app/com.linkedin.android.jobs.jobseeker-2/base.apk=com.linkedin.android.jobs.jobseeker<br>
+package:/system/priv-app/com.amazon.tabletsubscriptions/com.amazon.tabletsubscriptions.apk=com.amazon.tabletsubscriptions<br>
+package:/system/priv-app/DeviceClientPlatformContractsFramework/DeviceClientPlatformContractsFramework.apk=com.amazon.dcp.contracts.framework.library<br>
+package:/system/priv-app/com.amazon.device.bluetoothdfu/com.amazon.device.bluetoothdfu.apk=com.amazon.device.bluetoothdfu<br>
+package:/data/app/com.google.android.gsf.login-1/base.apk=com.google.android.gsf.login<br>
+package:/system/priv-app/WhisperplayCore/WhisperplayCore.apk=com.amazon.whisperlink.core.android<br>
+package:/system/priv-app/com.amazon.kor.demo/com.amazon.kor.demo.apk=com.amazon.kor.demo<br>
+package:/system/priv-app/DeviceMessagingAndroidSDK/DeviceMessagingAndroidSDK.apk=com.amazon.device.messaging.sdk.library<br>
+package:/data/app/com.ultimateguitar.tabs-1/base.apk=com.ultimateguitar.tabs<br>
+package:/data/app/com.faultexception.reader-1/base.apk=com.faultexception.reader<br>
+package:/system/priv-app/com.amazon.geo.client.maps/com.amazon.geo.client.maps.apk=com.amazon.geo.client.maps<br>
+package:/data/app/com.scee.psxandroid-1/base.apk=com.scee.psxandroid<br>
+package:/system/app/jp.co.omronsoft.iwnnime.mlaz/jp.co.omronsoft.iwnnime.mlaz.apk=jp.co.omronsoft.iwnnime.mlaz<br>
+package:/system/vendor/app/Ds/Ds.apk=com.dolby<br>
+package:/data/app/jackpal.androidterm-1/base.apk=jackpal.androidterm<br>
+package:/system/priv-app/com.amazon.ags.app/com.amazon.ags.app.apk=com.amazon.ags.app<br>
+package:/system/app/jp.co.omronsoft.iwnnime.languagepack.zhcn_az/jp.co.omronsoft.iwnnime.languagepack.zhcn_az.apk=jp.co.omronsoft.iwnnime.languagepack.zhcn_az<br>
+package:/data/app/org.edx.mobile-1/base.apk=org.edx.mobile<br>
+package:/data/app/com.amazon.kindle.unifiedSearch-1/base.apk=com.amazon.kindle.unifiedSearch<br>
+package:/data/app/com.linkedin.android-1/base.apk=com.linkedin.android<br>
+package:/system/priv-app/sync-provider_ipc-tablet-release/sync-provider_ipc-tablet-release.apk=com.amazon.sync.provider.ipc<br>
+package:/system/priv-app/FireTabletSettings/FireTabletSettings.apk=com.android.settings<br>
+package:/system/framework/android.amazon.perm/android.amazon.perm.apk=android.amazon.perm<br>
+package:/system/priv-app/com.amazon.paladin/com.amazon.paladin.apk=com.amazon.paladin<br>
+package:/system/priv-app/com.goodreads.kindle/com.goodreads.kindle.apk=com.goodreads.kindle<br>
+package:/system/priv-app/AwvDeploymentService/AwvDeploymentService.apk=com.amazon.webview.awvdeploymentservice<br>
+package:/data/app/com.pushbullet.android-1/base.apk=com.pushbullet.android<br>
+package:/data/app/com.elevenworks.touchdraw-1/base.apk=com.elevenworks.touchdraw<br>
+package:/system/priv-app/ContentSupportProvider/ContentSupportProvider.apk=com.amazon.providers.contentsupport<br>
+package:/system/priv-app/com.amazon.platformsettings/com.amazon.platformsettings.apk=com.amazon.platformsettings<br>
+package:/system/priv-app/VpnDialogs/VpnDialogs.apk=com.android.vpndialogs<br>
+package:/system/priv-app/moffice_7.1_default_en00105_multidex_217792/moffice_7.1_default_en00105_multidex_217792.apk=com.kingsoft.office.amz<br>
+package:/system/priv-app/com.amazon.ava.shopping.android/com.amazon.ava.shopping.android.apk=com.amazon.ava.shopping.android<br>
+package:/system/priv-app/com.amazon.virtual.dash.knight.app/com.amazon.virtual.dash.knight.app.apk=com.amazon.virtual.dash.knight.app<br>
+package:/system/priv-app/CrashManager/CrashManager.apk=com.amazon.device.crashmanager<br>
+package:/system/priv-app/FireApplicationCompatibilityEnforcer/FireApplicationCompatibilityEnforcer.apk=com.amazon.application.compatibility.enforcer<br>
+package:/system/priv-app/com.android.email/com.android.email.apk=com.android.email<br>
+package:/system/priv-app/IvonaTTS/IvonaTTS.apk=com.ivona.tts.oem<br>
+package:/system/app/Music/Music.apk=com.android.music<br>
+package:/system/priv-app/Shell/Shell.apk=com.android.shell<br>
+package:/data/app/com.baronkiko.launcherhijack-1/base.apk=com.baronkiko.launcherhijack<br>
+package:/system/app/UserDictionaryProvider/UserDictionaryProvider.apk=com.android.providers.userdictionary<br>
+package:/data/app/com.llamalab.automate.ext.superuser-1/base.apk=com.llamalab.automate.ext.superuser<br>
+package:/data/app/com.ideashower.readitlater.pro-2/base.apk=com.ideashower.readitlater.pro<br>
+package:/system/priv-app/com.amazon.kindle.rdmdeviceadmin/com.amazon.kindle.rdmdeviceadmin.apk=com.amazon.kindle.rdmdeviceadmin<br>
+package:/data/app/com.camelgames.superking-2/base.apk=com.camelgames.superking<br>
+package:/system/priv-app/com.amazon.parentalcontrols/com.amazon.parentalcontrols.apk=com.amazon.parentalcontrols<br>
+package:/system/priv-app/DeviceSoftwareOTAIdleOverride/DeviceSoftwareOTAIdleOverride.apk=com.amazon.device.software.ota.override<br>
+package:/system/priv-app/EnvironmentContextService/EnvironmentContextService.apk=com.amazon.knight.ecs<br>
+package:/system/priv-app/HumanDetectionService/HumanDetectionService.apk=com.amazon.knight.hds<br>
+package:/system/priv-app/FusedLocation/FusedLocation.apk=com.android.location.fused<br>
+package:/system/priv-app/com.android.deskclock/com.android.deskclock.apk=com.android.deskclock<br>
+package:/system/priv-app/SystemUI/SystemUI.apk=com.android.systemui<br>
+package:/system/app/audiostreamproviderservice/audiostreamproviderservice.apk=amazon.speech.audiostreamproviderservice<br>
+package:/data/app/com.amazon.windowshop-1/base.apk=com.amazon.windowshop<br>
+package:/data/app/org.cnx.android-1/base.apk=org.cnx.android<br>
+package:/system/priv-app/com.nokia.odnp.service/com.nokia.odnp.service.apk=com.here.odnp.service<br>
+package:/data/app/com.amazon.avod-2/base.apk=com.amazon.avod<br>
+package:/system/priv-app/shipmode/shipmode.apk=com.amazon.shpm<br>
+package:/system/priv-app/com.amazon.zico/com.amazon.zico.apk=com.amazon.zico<br>
+package:/system/priv-app/com.amazon.communication.discovery/com.amazon.communication.discovery.apk=com.amazon.communication.discovery<br>
+package:/data/app/com.jagex.oldscape.android-1/base.apk=com.jagex.oldscape.android<br>
+package:/system/priv-app/BluetoothInternals/BluetoothInternals.apk=com.amazon.bluetoothinternals<br>
+package:/system/priv-app/com.amazon.legalsettings/com.amazon.legalsettings.apk=com.amazon.legalsettings<br>
+package:/system/priv-app/Camera/Camera.apk=com.amazon.camera<br>
+package:/system/priv-app/RemoteSettingsAndroid/RemoteSettingsAndroid.apk=com.amazon.device.settings<br>
+package:/data/app/com.amazon.cloud9-1/base.apk=com.amazon.cloud9<br>
+package:/data/app/com.amazon.cloud9.kids-1/base.apk=com.amazon.cloud9.kids<br>
+package:/data/app/com.google.android.play.games-2/base.apk=com.google.android.play.games<br>
+package:/system/priv-app/com.amazon.device.sync.sdk.internal/com.amazon.device.sync.sdk.internal.apk=com.amazon.device.sync.sdk.internal<br>
+package:/data/app/com.valvesoftware.steamlink-2/base.apk=com.valvesoftware.steamlink<br>
+package:/system/priv-app/com.amazon.unifiedsharefacebook/com.amazon.unifiedsharefacebook.apk=com.amazon.unifiedsharefacebook<br>
+package:/system/priv-app/ConnectivityDiag/ConnectivityDiag.apk=com.amazon.connectivitydiag<br>
+package:/system/priv-app/com.amazon.dynamicupdationservice/com.amazon.dynamicupdationservice.apk=com.amazon.dynamicupdationservice<br>
+package:/system/app/Bluetooth/Bluetooth.apk=com.android.bluetooth<br>
+package:/system/priv-app/com.android.providers.contacts/com.android.providers.contacts.apk=com.android.providers.contacts<br>
+package:/system/app/TabletCaptivePortalLogin/TabletCaptivePortalLogin.apk=com.android.captiveportallogin<br>
+package:/system/priv-app/com.amazon.gambit/com.amazon.gambit.apk=com.amazon.gambit<br>
+package:/system/app/AmazonWebView/AmazonWebView.apk=com.amazon.webview.chromium<br>
+package:/system/priv-app/AwvMetricsService/AwvMetricsService.apk=com.amazon.webview.metrics.service<br>
+package:/system/priv-app/com.amazon.kindle.devicecontrols/com.amazon.kindle.devicecontrols.apk=com.amazon.kindle.devicecontrols<br>
+package:/system/priv-app/com.amazon.alexa.youtube.app/com.amazon.alexa.youtube.app.apk=com.amazon.alexa.youtube.app<br>
+package:/data/app/com.google.android.inputmethod.latin-2/base.apk=com.google.android.inputmethod.latin<br>
+package:/data/app/com.amazon.kindle-1/base.apk=com.amazon.kindle<br>
+package:/system/priv-app/FireApplicationCompatibilityEnforcerSDK/FireApplicationCompatibilityEnforcerSDK.apk=com.amazon.application.compatibility.enforcer.sdk.library</pre>
+
+
+
+<p>After dumping some apks and trying to start them with stuff like</p>
+
+
+
+<p>am start -n com.mediatek.connectivity/com.mediatek.connectivity.CdsInfoActivity</p>
+
+
+
+<p>I gave up on this. The Amazon junk on there is probably not worth the time/effort to RE. So I grabbed the Linux version with cat /proc/version</p>
+
+
+
+<pre class="wp-block-preformatted">Linux version 3.18.19+ (build@i3-ri-14-use1a-b-7) (gcc version 4.9 20140514 (prerelease) (GCC) ) #1 SMP PREEMPT Fri Aug 10 03:07:50 UTC 2018<br type="_moz"/></pre>
+
+
+
+<p>Let&#8217;s check for some Linux kernel vulnerabilities&#8230;</p>
+
+
+
+<p>[CHECKING ON https://www.cvedetails.com]</p>
+
+
+
+<p>Manually comparing a bunch of the vulnerabilities reported there to the actual source downloaded from https://www.amazon.com/gp/help/customer/display.html?nodeId=200203720 shows me that Amazon has patched pretty much everything up.</p>
+
+
+
+<p>This looks interesting: https://www.cvedetails.com/cve/CVE-2016-10229/ and comparing it to the Amazon kernel, it seems they might not have patched it up correctly. Let&#8217;s examine what we need. Patch: https://github.com/torvalds/linux/commit/197c949e7798fbf28cfadc69d9ca0c2abbf93191#diff-07a34bde5a1c422186acb5d57d6adc2b</p>
+
+
+
+<p>So copied &lt; ulen has to be true OR UDP_SKB_CB(skb)-&gt;partial_cov has to be true (not sure what the latter is yet)</p>
+
+
+
+<p>If this evaluates to true, then we call udp_lib_checksum_complete and store its return value in checksum_valid. If the checksum is invalid, we abort</p>
+
+
+
+<p>This is where Amazon messes up, because right after this we call skb_csum_unnecessary. In the patch, they check again if the checksum is invalid OR  skb_csum_unnecessary.</p>
+
+
+
+<p>So let&#8217;s see. The patch says:</p>
+
+
+
+<pre class="wp-block-preformatted"><br>
+udp: properly support MSG_PEEK with truncated buffers
+    <br>
+
+Backport of this upstream commit into stable kernels :
+<a href="https://github.com/torvalds/linux/commit/89c22d8c3b278212eef6a8cc66b570bc840a6f5a">89c22d8</a> ("net: Fix skb csum races when peeking")
+exposed a bug in udp stack vs MSG_PEEK support, when user provides
+a buffer smaller than skb payload.
+
+In this case,
+skb_copy_and_csum_datagram_iovec(skb, sizeof(struct udphdr),
+                                 msg-&gt;msg_iov);
+returns -EFAULT.
+
+This bug does not happen in upstream kernels since Al Viro did a great
+job to replace this into :
+skb_copy_and_csum_datagram_msg(skb, sizeof(struct udphdr), msg);
+This variant is safe vs short buffers.
+
+For the time being, instead reverting Herbert Xu patch and add back
+skb-&gt;ip_summed invalid changes, simply store the result of
+udp_lib_checksum_complete() so that we avoid computing the checksum a
+second time, and avoid the problematic
+skb_copy_and_csum_datagram_iovec() call.
+
+This patch can be applied on recent kernels as it avoids a double
+checksumming, then backported to stable kernels as a bug fix.
+
+
+
+</pre>
+
+
+
+<p>So __skb_checksum_complete gets called twice which calculates the checksum twice. <br></p>
+
+
+
+<p></p>
+
+
+
+<p>(Side idea: run a static analysis on the FireOS kernel source smackerelofopinion.blogspot.com/2017/09/static-analysis-on-linux-kernel.html)</p>
+
+
+
+<p></p>
+
+
+
+<p>So is the problem that&#8230;</p>
+
+
+
+<pre class="wp-block-preformatted">udp.c in the Linux kernel before 4.5 allows remote attackers to execute arbitrary code via UDP traffic that triggers an unsafe second checksum calculation during execution of a recv system call with the MSG_PEEK flag. </pre>
+
+
+
+<p></p>
+
+
+
+<p>LATEST DEVELOPMENT: Build a local Linux kernel for quick PoC work. If it&#8217;s vulnerable it&#8217;ll be a lot faster to try out a simple C program, then work out the Android attack vector.</p>
+
+
+
+<p>Sources:<br>https://www.cvedetails.com/cve/CVE-2016-10229/<br>https://github.com/torvalds/linux/commit/197c949e7798fbf28cfadc69d9ca0c2abbf93191<br>https://github.com/torvalds/linux/commit/89c22d8c3b278212eef6a8cc66b570bc840a6f5a<br>https://github.com/mcxiaoke/android-ndk-notes/blob/master/cpp11-support/src/main/jni/native.cpp<br></p>
+
+
+
+<p></p>
+
+
+
+<p></p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2018/10/11/learning-about-android-and-fireos/">Learning about Android and FireOS</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2018/10/11/learning-about-android-and-fireos/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>New Blog Stuff!</title>
+		<link>https://augustkarlstedt.github.io/blog/2018/09/26/new-blog-stuff/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2018/09/26/new-blog-stuff/#respond</comments>
+				<pubDate>Wed, 26 Sep 2018 21:23:11 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Web]]></category>
+
+		<guid isPermaLink="false">https://augustkarlstedt.github.io/?p=404</guid>
+				<description><![CDATA[<p>As a first post on my newly updated blog, I figured I&#8217;ll explain my setup. After experimenting with Jekyll, Gatsby, and Hugo I realized I didn&#8217;t want to learn an entire static site generator system for something so simple. While learning is important (my favorite thing to do, in fact), what mattered more was the [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2018/09/26/new-blog-stuff/">New Blog Stuff!</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[
+<p>As a first post on my newly updated blog, I figured I&#8217;ll explain my setup. After experimenting with <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://www.gatsbyjs.org/">Gatsby</a>, and <a href="https://gohugo.io/">Hugo</a> I realized I didn&#8217;t want to learn an entire static site generator system for something so simple. While learning is important (my favorite thing to do, in fact), what mattered more was the TTL (time to live). I needed something that I could work with and quickly get results.</p>
+
+
+
+<p>Enter WordPress! According to <a href="https://w3techs.com/technologies/overview/content_management/all">W3Techs</a>, WordPress accounts for 60% of the market share for content management systems on the web! I&#8217;ve used it at work, for clients, and through WordPress.com, where my blog was originally located. </p>
+
+
+
+<p>WordPress.com was a bit too restrictive compared to a self-hosted WordPress installation. You can&#8217;t add plugins or JavaScript or tweak the theme files and such. For this reason, I started to look into self-hosting a WordPress environment. But then it hit me &#8211; why not just export the site and host it for free on <a href="https://pages.github.com/">GitHub pages</a>?</p>
+
+
+
+<p>Since I didn&#8217;t need to have a publicly-accessible WordPress site, I decided to use Docker to setup the WordPress and MySQL environment for rapid deployments and easy backup purposes (and because I&#8217;m running Windows and didn&#8217;t want to pollute it with all the installs for PHP and the like).</p>
+
+
+
+<p>My docker-compose.yml file looks like this:</p>
+
+
+
+<pre class="wp-block-preformatted">version: '3.6'<br/>
+services:
+  wordpress:
+    image: wordpress:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    command: 'bash -c /usr/local/bin/apache2-custom.sh'
+    volumes:
+      - ./config/php.conf.uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+      - ./config/wp-init.sh:/usr/local/bin/apache2-custom.sh
+      - ./wp-app:/var/www/html # Full wordpress project
+      #- ./plugin-name/trunk/:/var/www/html/wp-content/plugins/plugin-name # Plugin development
+      #- ./theme-name/trunk/:/var/www/html/wp-content/themes/theme-name # Theme development
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: password
+    depends_on:
+      - db<br/>
+db:
+    image: mysql:latest
+    command: [
+        '--default_authentication_plugin=mysql_native_password',
+        '--character-set-server=utf8mb4',
+        '--collation-server=utf8mb4_unicode_ci'
+    ]
+    volumes:
+      - ./wp-data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_ROOT_PASSWORD: password</pre>
+
+
+
+<p>Running docker-compose up -d on this results in WordPress being started using a self-signed SSL cert (see wp-init.sh below) and connects it over to MySQL. All of the data files are mounted as volumes for easy access in Windows/the host environment.</p>
+
+
+
+<pre class="wp-block-preformatted">#!/bin/bash<br/>
+# modified from https://github.com/docker-library/wordpress/issues/46#issuecomment-358266189<br/>
+apt-get update
+apt-get install -y  --no-install-recommends ssl-cert
+rm -r /var/lib/apt/lists/*<br/>
+a2enmod ssl
+a2ensite default-ssl<br/>
+# finally execute default command
+docker-entrypoint.sh apache2-foreground</pre>
+
+
+
+<p>With that, my local WordPress environment was set up. This admittedly took a few hours across multiple days to get configured just right. I then exported my WordPress.com content and imported it over here. Finally, when I want to update my site here, I simply navigate to the WP Static Site Generator plugin and click export. Voilà!</p>
+
+
+
+<p>It works wonderfully well. You get all of the power of WordPress + plugins (SEO, minification, etc.) and all of the speed + security of a static site.</p>
+
+
+
+<p></p>
+
+
+
+<p></p>
+
+
+
+<p></p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2018/09/26/new-blog-stuff/">New Blog Stuff!</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2018/09/26/new-blog-stuff/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Long Short-Term Memory Neural Networks and Guitar Tablature</title>
+		<link>https://augustkarlstedt.github.io/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/#respond</comments>
+				<pubDate>Sun, 14 May 2017 02:54:02 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Computer Science]]></category>
+		<category><![CDATA[Machine Learning]]></category>
+		<category><![CDATA[Programming]]></category>
+
+		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=285</guid>
+				<description><![CDATA[<p>Just messing around with LSTM neural nets, I had the idea to train it on some guitar tabs and see what happened. Data My dataset was a collection of guitar tabs for The Who&#8217;s album, Tommy. Some stats Text total length: 277,155 Distinct chars : 91 Total sequences : 92,369 So yes, it&#8217;s a tiny [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/">Long Short-Term Memory Neural Networks and Guitar Tablature</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Just messing around with LSTM neural nets, I had the idea to train it on some guitar tabs and see what happened.</p>
+<h2>Data</h2>
+<p>My dataset was <a href="http://www.thewho.net/whotabs/tablature/tommy.txt" target="_blank" rel="noopener noreferrer">a collection of guitar tabs for The Who&#8217;s album, Tommy</a>.</p>
+<p>Some stats<br />
+<span class="value info">Text total length: 277,155<br />
+</span><span class="value info">Distinct chars : 91<br />
+</span><span class="value info">Total sequences : 92,369</span></p>
+<p>So yes, it&#8217;s a tiny little dataset.</p>
+<h2>Training</h2>
+<p>I&#8217;m using TFLearn&#8217;s implementation of an LSTM neural net. My setup is as follows:</p>
+<p>Input data -&gt; LSTM layer (512 units, returns full sequence (3d tensor)), -&gt; dropout (50%) -&gt; another LSTM layer (512 units, returns only output of last sequence (2d tensor)) -&gt; dropout (50%) -&gt; fully connected layer (softmax activation).</p>
+<h2>Results</h2>
+<p>On the first epoch with a temperature of 1.0 (meaning we&#8217;re trying to generate novel sequences, less likely to repeat the input data), we get:</p>
+<pre>/ / / C | G F C |
+ |: % |-|---|-----||-------------||-----|-----|----------------6--5------8----4-|-|---6-------
+ --------5-----|-----3------------------|5--------%<span class="text_exposed_show">
+ |-.8------|-8-
+ .|-2-|7------------------------7-----|-----------|x----------------------|--------------|-------------||--|2-------------||----------------|-x-------7----|-7----4-4-x--24--8----|-0---|]||4|----2--90-0-/|--0-----||--------------------|-4----00--a0-000-\0-00-00-40-0---0-20--004-
+ 2-0--0x-4-0-42-0-2%-2-2001--l5|-----12-711|-0-----7x2--0------4--|
+ 5|---|1-----3---------|||2-----------3-|----|--|------------|-----------|---------------3--7|4------------
+ ||5--5--------------|
+ 2 bgsc ko i
+ r@ aO(l' bs ye ] 7T /AAo o -ls5|)|22--010-0-00-0-0-0------2--[2u6I
+ 4]s5LeEao] avcw s4i ie s e|gb stse Y [eer,a i dE
+ g[y Ipaapaetdye] |52--- ( h7seti
+ se C Ty/ixkLou] | 
+ |Wshyo u ut g |[iemhrr efh r
+ ei sp c F</span></pre>
+<p>That&#8217;s actually not bad!</p>
+<p>I let the training run for a while. Interestingly, the temperature being 0.5 tends to yield complete silence:</p>
+<pre>---------------|---------------|----------------|
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</pre>
+<p>This is most likely because the most common sequence <em>is</em> silence: &#8212;&#8212;&#8212;-</p>
+<p>After the seventh epoch, temperature = 1.0:</p>
+<pre>---------------|---------------|----------------|
+|----------------|---------------|---------------|---------|
+|-----------|----------------|-------------------|
+| ------5-------|---------------|---------------|---------------|
+|3-3-3---3---3--|---------------|---------------||---------------|
+|------------#-----------------|---------3-------|
+|----------|-----------------|-------------------|----
+||[glr 1]                                                       |---------------|---------------|
+|5---3----------|---------------|---------------.|----------------||------------------5|---------------|
+|7--7-7-----5------|
+|3-------3--3--3-|5--------------|--7---7---7-7--|
+|7--------------|--------6---------|9---7------------|
+|-.--------------------|----------------------|---
+||--0-0-0-0-0-0-0-0-x-x--|x0-0-0-0-0-0-0-0|x-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|
+|-----------2--||---------------|---------------|---------------|
+|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0---|0-0-0-0-0-0-0-0|
+|---------------|---------------|---------------|-------|</pre>
+<p>That&#8217;s almost a legitimate tab!</p>
+<p>After 12 epochs, temperature=0.5, we get a 14-string guitar tab&#8230;</p>
+<pre>--|5---0---|4-----|5---0---|4-------|0---0---|
+|5-------|5---0---|5-------|5-------|5-------|5-------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|------</pre>
+<p>After epoch fifteen&#8230;</p>
+<pre>-- Test with temperature of 1.0 --
+--------------|-------------------|-------|
+[CHORRES]
+  |Esus4            |             | 
+3'd gote how come  you  F        x2204x-                        %          |
+S INPatgent a fouter floy the striml? Bust by  wonthethertdppnbpally buf you. Acully tay lecco`-
+      qe be    F e          F77m7 Fm7         FB7      
+                      F
+A                     Bm      -
+Le'd dongo ax and wayk hous mud d mim the feat 
+[VBRSE tOAx]
+========================================================
+SSENSHARC
+Ad The Who
+Written by Pete Townshend (c)1969 Fabuloou Music Ltd,
+#-----------------------------------PLEASE NOTE------------------------------5--#
+Mr's  The  byTusthin ]
+-----------------------------------------------------#
+=======================================================
+SOUSSMBRISMEID =YAB
+Ay The Who
+Written by Pete Townshend (c)-969 Fabulous Music Ltd.
+#------------------------------------EL
+LOREEGmtris                     [wrtted Nowr predelt d)Bb          Whotabs                           x2
+|------------------|------</pre>
+<p>Additional output below.</p>
+<pre>EPOCH 43
+-- TESTING...
+-- Test with temperature of 1.0 --
+--0--0|--------|-----0--|--000000|00000000|
+|--------|--------|--------|
+|--------|--------|--------|--------|
+|--------|--------|--------|--------|
+|[bass]                                                  |
+|0.-0--0-|0---0----------|0-------|----0--------|--------|---------------|
+|--5-----|----5---4-----|7------|---------------|--------|
+|5--5--5 |5----|5-----|5-----|5-----|5-------|5-------|
+|4------|4-------|4----|------|4-----|4-----|4-------|4-------|
+|0-------|-------|0---|------|
+|0-----|0-------|--------|--------|
+|--------|--------|--------|--------|
+|[bass]                                                     |
+|--------------5-|---------------|--------------7|7-7-7-7-7-7-7-7|7-7-7-7-7-7-7-7|
+|---------------|---------------|----------------|
+|[acoustic 1]                                                   |
+|7-----8-----7--|-------------------|7-----8-----10--|---------------|
+|8-----8-----8--|-------------------|7-----8-----10-|---------------|
+|8-----6--------|--8-x-6---6----|8-----8-----10-|----------------|
+|8---x-6-----
+-- Test with temperature of 0.5 --
+--0--0|--------|-----0--|--000000|00000000|
+|---------------|---------------|
+|---------------|---------------|----------------|
+|[acoustic 1]                                                                                           |
+|---------------|---------------|---------------|---------------|
+|[acoustic 1]                                                                 |
+|-----------------------------------|------------------------------|
+         F#7                                     [Lele bitesentare playe: for mo, the gtrste.
+[repeat CHORUS]
+She pitball.
+[CHORUS]
+    |------------------------------------|-----------------------|
+   |-11--------------------|11------------------8---|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+Previous transcription by:
+Mike (sef@icbr.ufl.edu)
+==============   
+[2K
+| Adam | epoch: 044 | loss: 0.13966 | val_loss: 0.07798 -- iter: 83132/83132
+--
+WARNING:tensorflow:Error encountered when serializing layer_tensor/LSTM.
+Type is unsupported, or the types of the items don't match field type in CollectionDef.
+'list' object has no attribute 'name'
+WARNING:tensorflow:Error encountered when serializing layer_tensor/Dropout.
+Type is unsupported, or the types of the items don't match field type in CollectionDef.
+'list' object has no attribute 'name'
+-- TESTING...
+-- Test with temperature of 1.0 --
+                      
+Third update
+Note: Most of dravh thouthem praye wish play ahe buthe as.
+[VERSE]
+G    B7                               Gm7sus4    E5   G5 G5 B5 B5 
+I'm free.                            A
+    -----------------------------------5------------------------------------------------------#
+Previous-transcriptt| TI The Khorsher or fou dhink is gonde. E                              |[gur 1]                 |
+|-------------0-|---------------|---------------|--------------|
+|---------------|---------------|---------------|---------------|
+|---------------|--0-0-0-0-0-0-0|---------------|--------------|
+|---------------|---------------|---------------|---------------|
+|---------------|---------------|---------------|---------------|
+|[electric]                                                   
+[NOte: saand and bling:
+Em/B         3 -3 -3              |
+   |-----------------------------|-------------------------------|
+||G                                                    |
+|--------|--------|--------|--------|-----
+-- Test with temperature of 0.5 --
+                      
+Third update
+Note: Most of the stagong.
+    -------------------------------------------------------------------------------------------------------------------#
+Previous transcriptt------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+Mr===================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================
+---------------------------------
+
+
+
+
+
+
+-- TESTING...
+-- Test with temperature of 1.0 --
+-|--8---8---6----|8-----8-----10-|----------------|
+|8---x-8-----8--|--10-(8)10-8-------|8-----8-----8--|---7----|---9---|
+|--------|--------|--------|--------|--------|--------|--------|
+|0---- --|0---0---|0----0---------|--------------|
+|0-------|0-------|0---------------|---------------|
+|0--------------|---------------|---------------|----------------|
+|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|-0-0-0-0-0-0-0-0|
+|---------------|---------------|---------------|---------------|
+|---------------|2--------------|---------------|---------------|---------------|
+|[acoustic 1/2]                                                  |
+|-----------|------------------|------------|------|
+gtr 12 12----10/12-|----11-----11--|11-111111111111111111111112|-----|
+|11--11--11--11--|---11/12--12--|------|--------|------|-------|
+|-----|------|---------------|
+|--------|-------------|-------|-------------|-------|---------------|
+|[electric]                     ||
+|3-----------------|
+|-0--0---2-----0------|-0|-----------------||
+||-0-0-0-0-0-0
+-- Test with temperature of 0.5 --
+-|--8---8---6----|8-----8-----10-|----------------|
+|7---9----------|--7---9---5----|7-----9-----11-|----------------|
+|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0-|
+|---------------|---------------|---------------|---------------|
+|---------------|---------------|---------------|----------------|
+|---------------|---------------|----------------|
+|[acoustic 1]                                                                                                                 |
+|------------------------------|-------------------------------|
+|----10 1---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------
+
+
+
+
+
+
+
+
+
+I|---------------|----------------|---------------|
+  A7          D/C  Bb                            G7     Gm
+I'm free.
+    G                   A              D          D*                [Lele sinna bringtr]
+E5-65 B5               |B               |
+   ----------------------------|------------------------------|
+|------------------------------|-----------------------|
+   |-----------------------|-----------------------|
+   |-10-------------------|-10--------------------|
+   |------------------------|---------------------|-3-2--0--0-|
+   |----------- ------------|---------------------|-----------------|
+|---------------|---------------|---------------|---------------|
+|[acoustic 2; ppopetin for panngorn]
+|[electric]                                                |
+|6--------------|--7---- -------|
+|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0-0|
+|---------------|---------------|---------------|----------------|
+|---------------------|-3-----------
+-- Test with temperature of 0.5 --
+yed in standard tuning same as below 
+and begin at bas hear find.
+[BRIDGE]
+F                                       D/A  
+[INTRRO]
+  
+[INTRO Spark: The Kar-- Wer------Wome and forcathord I've formaring and rishe the somme.
+                                                                                                                                      |
+|---------------|---------------|---------------|---------------|
+|---------------|---------------|---------------|---------------|
+|----------------|---------------|---------------|---------------|
+|---------------|---------------|---------------|---------------|
+|[acoustic 1/2]                                                                                                   |
+|7--------------|----------------|------------------|----------------|---------------|
+|-2----2--------|---------------|---------------|---------------|
+|---------------|---------------|---------------|---------------|
+|[acoustic 1/2]                          
+
+
+
+
+[2K
+| Adam | epoch: 047 | loss: 0.13825 -- iter: 83072/83132
+Training Step: 30550  | total loss: 0.12924 | time: 145.633s
+[2K
+| Adam | epoch: 047 | loss: 0.12924 | val_loss: 0.07769 -- iter: 83132/83132
+--
+WARNING:tensorflow:Error encountered when serializing layer_tensor/LSTM.
+Type is unsupported, or the types of the items don't match field type in CollectionDef.
+'list' object has no attribute 'name'
+WARNING:tensorflow:Error encountered when serializing layer_tensor/Dropout.
+Type is unsupported, or the types of the items don't match field type in CollectionDef.
+'list' object has no attribute 'name'
+-- TESTING...
+-- Test with temperature of 1.0 --
+                 |
+  |-----------------------------|-------                     |------------------------------------|---------|
+|7-7-7-7-7-7-7-7-7-7-7-|-7-7-7-7-7-7-7-7-7-7-7-||
+||-----------------------||
+||------------------------3--------||
+||---------------------------||
+||-----------------------------|------------------------|
+   |-----------------------|-----------------------|
+   |/7--------------------------|---------------------4-|
+       |-6----6---- --------6-|-6---------------------|
+        |-6-------------------|-6---------------------|
+       |-8--------------------|-8---------------------|
+                                                                 |
+|----------------|----------------|---------------|
+|[acoustic 2]                                         |
+|2-------|5---0---|4-------|0---5---|4-------|0---5---|4-------|0---5---|4-------|0---5---|4-------|0---5---|4-------|0---5---|
+|3-------|3---3---|5-------|5-------|5-------|5---
+|--|
+|--------|--------|--------|--------|--------|--------|--------|--------|----
+-- Test with temperature of 0.5 --
+                 |
+  |------------------------------|------------------------|
+   |----------------------|-----------------------|
+   |/7--------------------------|---------------------4--|
+   |-----------------------|-------------------------|
+|----10/12---------------------------||
+||---------------------------|---------------------|--------------------|
+|-----5------------------------|-------------------------------|
+||-------------------------|-------------------------------|
+|D              |           |D          |                    |
+                                                                 |
+|7-----8-----7--|-------------------|7---------------|----------------|
+|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|
+|---------------|---------------|---------------|---------------|
+|---------------|---------------|---------------|---------------|
+|[acoustic 2]                                                  |
+|6------|5-------|4-------|--------|4-------|--------|4-------|--------|4-------|--------|4-------
+---------------------------------
+
+
+
+||----------------------------------|--------------------------------|
+|D              |-----------------|7T------------------|
+|[bass]                                                              
+transcribed by                             Whotabs                    
+litgo@aol.com     rev2220110222211                                             |
+|----------------|------------------|---------------------------|
+b|----------------------------------|-------------------------------|
+|----10/12--------------------------------------------#
+===========================================================
+INLRTERE
+By The Who
+Written by Pete Townshend (c)1969 Fabulous Music Ltd.
+#----------------------------------PLEASE NOTE---------------------------------#
+#This file is the author's own work and represents their interpretation of the #
+#song. You may only use this file for private study, scholar
+-- Test with temperature of 0.5 --
+eping.
+(F#) Em        Bm7    Em        Bm7
+       MAb                                                                                      |
+|-------------------------------|-------------------------------------|
+|-----------------------------------|------------------------|
+|------------------------------------|-------------------------------|
+|D              |--------------------|-6---------------------|
+       |----------------------|-----------------------|
+   |---------------------------------|5------------------------------------|0--0---------------------------|
+||-----------------------------------|-------------------------------------|
+|D              |D             | D/C   | A      |               |
+                                                                                                                                                                                                                       |
+|-----------------------------------|-------------------------------|
+|D              |            |D         
+---------------------------------
+
+
+
+revised by                             Whotabs                    
+litgo@aol.com     rev222
+-- Test with temperature of 0.5 --
+-------|--------------|4----4---|---4---4------|
+|2-2-2-2-2-2-2-2-|2-2-2-2-2-2-2-2|2-2-2-2-2-2-2-2|2-2-2-2-2-2-2-0|
+|-------------------------------|------------------------|
+|------------------|----------------------|
+|-----------------|-----------5-5-3|---------------|---------------|---------------|
+|---------------|---------------|---------------|---------------|
+|[acoustic 1]                                                                                   |
+|-----------------------------|-----------------------|
+   |-10-------------------|-10--------------------|
+   |-10-------------------|-10--------------------|
+   |-10-------------------|-10--------------------|
+   |-10-------------------|-10--------------------|
+   |-10-------------------|-10--------------------|
+   |-10------------------------|-1----------------------------3|
+        Eb                                      Dsus4
+||---------------|---------------|---------------|
+|----------------|--------------------|--------------------|
+|----------------|----------------
+---------------------------------
+Run id: lstmmmmmmmmmm
+
+
+
+
+
+
+
+2[2K
+Training Step: 32499  | total loss: 0.11536 | time: 138.266s
+[2K
+| Adam | epoch: 050 | loss: 0.11536 -- iter: 83072/83132
+Training Step: 32500  | total loss: 0.10930 | time: 145.790s
+[2K
+| Adam | epoch: 050 | loss: 0.10930 | val_loss: 0.06763 -- iter: 83132/83132
+--
+WARNING:tensorflow:Error encountered when serializing layer_tensor/LSTM.
+Type is unsupported, or the types of the items don't match field type in CollectionDef.
+'list' object has no attribute 'name'
+WARNING:tensorflow:Error encountered when serializing layer_tensor/Dropout.
+Type is unsupported, or the types of the items don't match field type in CollectionDef.
+'list' object has no attribute 'name'
+-- TESTING...
+-- Test with temperature of 1.0 --
+---------------|--------|-----------------|
+|--------|---------------|--------|-------------3---|
+|--------|---------------|--------------------|
+|-------------------------|-------------------------------------|
+|-----------------------------------|----------------------------|
+|-------------------------------------|----------------------|
+   |[bass]                                          |
+|--------------5-|---------------|---------------|--------------|
+|---------------|---------------|---------------|---------------|
+|[acoustic 2]                                                   |
+|---------------|---------------|------5--------|---------------|
+|---------------|---------------|---------------|---------------|
+|---------------|-------------3-|5--------------|------------------|
+|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0-|
+|---------------|---------------|---------------|-----------------|
+|------------------|-----------------|---------------|
+                                                    reve-       
+-- Test with temperature of 0.5 --
+---------------|--------|-----------------|
+|--------|---------------|--------|--------------3|--------|---------------|--------|-----------------|
+|--------|---------------|--------|--------------3|--------|-------------3---|
+|--------|---------------|----------------------|-----------|---------|
+|[bass]                                                                      |
+|------------------------------|-------------------------------|
+||-------------------------------------|-------------------------------|
+                                                           |
+|------------------------------|-----------------------|
+   |/9-------------------------|---------------------|
+|-----5-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+Mrikk is
+
+
+</pre>
+<p>As you can see, it does a pretty good job. I think I need more training data!</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/">Long Short-Term Memory Neural Networks and Guitar Tablature</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Spring Quarter 2017</title>
+		<link>https://augustkarlstedt.github.io/blog/2017/05/10/spring-quarter-2017/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2017/05/10/spring-quarter-2017/#respond</comments>
+				<pubDate>Wed, 10 May 2017 22:16:49 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Computer Science]]></category>
+		<category><![CDATA[Machine Learning]]></category>
+		<category><![CDATA[School]]></category>
+
+		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=274</guid>
+				<description><![CDATA[
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2017/05/10/spring-quarter-2017/">Spring Quarter 2017</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>CSC 426 – Research Methods and Practice in Computing</p>
+<p>CSC 478 – Programming Machine Learning Applications</p>
+<p>CSC 594 – Topics in Artificial Intelligence: Natural Language Processing</p>
+<p>&nbsp;</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2017/05/10/spring-quarter-2017/">Spring Quarter 2017</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2017/05/10/spring-quarter-2017/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>The BEST Video Series for Linear Algebra</title>
+		<link>https://augustkarlstedt.github.io/blog/2017/01/31/the-best-video-series-for-linear-algebra/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2017/01/31/the-best-video-series-for-linear-algebra/#respond</comments>
+				<pubDate>Wed, 01 Feb 2017 05:50:24 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=272</guid>
+				<description><![CDATA[<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2017/01/31/the-best-video-series-for-linear-algebra/">The BEST Video Series for Linear Algebra</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[
+<figure class="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-has-aspect-ratio wp-embed-aspect-16-9"><div class="wp-block-embed__wrapper">
+<iframe class='youtube-player' type='text/html' width='730' height='411' src='https://www.youtube.com/embed/videoseries?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab&#038;hl=en_US' allowfullscreen='true' style='border:0;'></iframe>
+</div></figure>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2017/01/31/the-best-video-series-for-linear-algebra/">The BEST Video Series for Linear Algebra</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2017/01/31/the-best-video-series-for-linear-algebra/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Winter Quarter 2017</title>
+		<link>https://augustkarlstedt.github.io/blog/2016/11/29/winter-quarter-2017/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2016/11/29/winter-quarter-2017/#respond</comments>
+				<pubDate>Wed, 30 Nov 2016 00:50:15 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Computer Science]]></category>
+		<category><![CDATA[Machine Learning]]></category>
+		<category><![CDATA[School]]></category>
+
+		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=266</guid>
+				<description><![CDATA[<p>CSC 435 &#8211; Distributed Systems I CSC 577 &#8211; Recommender Systems SE 450 &#8211; Object-Oriented Software Development</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/11/29/winter-quarter-2017/">Winter Quarter 2017</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>CSC 435 &#8211; Distributed Systems I</p>
+<p>CSC 577 &#8211; Recommender Systems</p>
+<p>SE 450 &#8211; Object-Oriented Software Development</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/11/29/winter-quarter-2017/">Winter Quarter 2017</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2016/11/29/winter-quarter-2017/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Fall Quarter 2016 (First Graduate Quarter!)</title>
+		<link>https://augustkarlstedt.github.io/blog/2016/11/29/fall-quarter-2016-first-graduate-quarter/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2016/11/29/fall-quarter-2016-first-graduate-quarter/#respond</comments>
+				<pubDate>Wed, 30 Nov 2016 00:26:06 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Data Analysis]]></category>
+		<category><![CDATA[School]]></category>
+
+		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=255</guid>
+				<description><![CDATA[<p>My schedule included CSC 421 &#8211; Applied Algorithms and Structures CSC 447 &#8211; Concepts of Programming Language CSC 453 &#8211; Database Technologies But that&#8217;s not the interesting part. What&#8217;s interesting is that I took these courses online and collected data on how long I spent watching each lecture. This let me optimize my study habits [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/11/29/fall-quarter-2016-first-graduate-quarter/">Fall Quarter 2016 (First Graduate Quarter!)</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>My schedule included</p>
+<p><strong><span style="color:#5b9bd5;">CSC 421</span> </strong>&#8211; Applied Algorithms and Structures</p>
+<p><strong><span style="color:#ed7d31;">CSC 447</span></strong> &#8211; Concepts of Programming Language</p>
+<p><strong><span style="color:#a5a5a5;">CSC 453</span></strong> &#8211; Database Technologies</p>
+<p>But that&#8217;s not the interesting part.</p>
+<p>What&#8217;s interesting is that I took these courses online and collected data on how long I spent watching each lecture. This let me optimize my study habits and see which courses I needed to devote the most time to. The color corresponds to the color above.</p>
+<p><iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSt3soiDqYJNYeM2V1jgVvZmZWJ9_9h4NMJo1ntRV5N6-LbLQ8y6GkLMiCJ7TsbWNeVqfiM4yqtJ_8v/pubchart?oid=578984766&#038;format=interactive" frameborder="0" width="100%" height="450" marginheight="0" marginwidth="0" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></p>
+<p>Right off the bat, I knew that CSC 421 will be taking a majority of my time. A very heavy course: algorithm analysis, design, implementation, NP-completeness, and the like &#8211; things which I know I can get better at.</p>
+<p>Overall, for the other two courses, I was saving 80-90% versus being in-class. The materials covered in these courses were not new to me, so I could get by by watching the &#8220;interesting&#8221; parts of the lecture, reading the book, and looking at the slides.</p>
+<p>I wound up with an A and an A-, for CSC 447 and CSC 453, respectively.</p>
+<p>CSC 421 was one of those courses that is really tough, but you where you learn so much. I probably could have benefited taking this course in-person, but I still managed to save some time. Since this is the first time I&#8217;ve ever recorded data like this, it&#8217;ll be interesting to compare to next quarter (where I am taking an in-person course). All said and done, I wound up with a C+ in CSC 421, bringing my GPA for the quarter to a not-too-shabby 3.33.</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/11/29/fall-quarter-2016-first-graduate-quarter/">Fall Quarter 2016 (First Graduate Quarter!)</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2016/11/29/fall-quarter-2016-first-graduate-quarter/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Amazing Resource for Linear Algebra</title>
+		<link>https://augustkarlstedt.github.io/blog/2016/11/26/amazing-resource-for-linear-algebra/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2016/11/26/amazing-resource-for-linear-algebra/#respond</comments>
+				<pubDate>Sun, 27 Nov 2016 04:03:42 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=253</guid>
+				<description><![CDATA[<p>http://immersivemath.com/ila/index.html</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/11/26/amazing-resource-for-linear-algebra/">Amazing Resource for Linear Algebra</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p><a href="http://immersivemath.com/ila/index.html" target="_blank">http://immersivemath.com/ila/index.html</a></p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/11/26/amazing-resource-for-linear-algebra/">Amazing Resource for Linear Algebra</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2016/11/26/amazing-resource-for-linear-algebra/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Holoportation</title>
+		<link>https://augustkarlstedt.github.io/blog/2016/11/23/holoportation/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2016/11/23/holoportation/#respond</comments>
+				<pubDate>Wed, 23 Nov 2016 16:10:26 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=251</guid>
+				<description><![CDATA[<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/11/23/holoportation/">Holoportation</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[
+<figure class="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-has-aspect-ratio wp-embed-aspect-16-9"><div class="wp-block-embed__wrapper">
+<iframe class='youtube-player' type='text/html' width='730' height='411' src='https://www.youtube.com/embed/84ngPFBWLVI?version=3&#038;rel=1&#038;fs=1&#038;autohide=2&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' allowfullscreen='true' style='border:0;'></iframe>
+</div></figure>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/11/23/holoportation/">Holoportation</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2016/11/23/holoportation/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>How to Fix Inkscape&#8217;s Default Units (and Finally Work With Illustrator)</title>
+		<link>https://augustkarlstedt.github.io/blog/2016/11/21/how-to-fix-inkscapes-default-units-and-finally-work-with-illustrator/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2016/11/21/how-to-fix-inkscapes-default-units-and-finally-work-with-illustrator/#respond</comments>
+				<pubDate>Mon, 21 Nov 2016 22:20:00 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=229</guid>
+				<description><![CDATA[<p>For some odd reason, Inkscape defaults to having 90px = 1in (and soon 96px = 1in). Compared to Illustrator, where 72px = 1in, there are some issues converting back and forth between programs. There are no configuration settings in Inkscape to change this, but I have found a way to do so anyway. Navigate to [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/11/21/how-to-fix-inkscapes-default-units-and-finally-work-with-illustrator/">How to Fix Inkscape&#8217;s Default Units (and Finally Work With Illustrator)</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>For some odd reason, Inkscape defaults to having 90px = 1in (and soon 96px = 1in). Compared to Illustrator, where 72px = 1in, there are some issues converting back and forth between programs.</p>
+<p>There are no configuration settings in Inkscape to change this, but I have found a way to do so anyway.</p>
+<p>Navigate to where you&#8217;ve installed Inkscape (for me, this is C:\Program Files (x86)\Inkscape), then open the share folder, then open the ui folder. The folder you should be in is C:\Program Files (x86)\Inkscape\share\ui and you should see a file called units.xml.</p>
+<p>Make a copy of units.xml called units.bak.xml and then open the original units.xml in a text editor.</p>
+<p>Change your file from</p>
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;unitdefs&gt;
+&lt;unit type="DIMENSIONLESS" pri="y"&gt;
+    &lt;name&gt;%&lt;/name&gt;
+    &lt;plural&gt;%&lt;/plural&gt;
+    &lt;abbr&gt;%&lt;/abbr&gt;
+    &lt;factor&gt;1.00&lt;/factor&gt;
+    &lt;description&gt;Percentage&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="y"&gt;
+    &lt;name&gt;pixel&lt;/name&gt;
+    &lt;plural&gt;pixels&lt;/plural&gt;
+    &lt;abbr&gt;px&lt;/abbr&gt;
+    &lt;factor&gt;1.00&lt;/factor&gt;
+    &lt;description&gt;CSS Pixels (90/inch)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;point&lt;/name&gt;
+    &lt;plural&gt;points&lt;/plural&gt;
+    &lt;abbr&gt;pt&lt;/abbr&gt;
+    &lt;factor&gt;1.25&lt;/factor&gt;
+    &lt;description&gt;PostScript points (72/inch)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;pica&lt;/name&gt;
+    &lt;plural&gt;picas&lt;/plural&gt;
+    &lt;abbr&gt;pc&lt;/abbr&gt;
+    &lt;factor&gt;15.0&lt;/factor&gt;
+    &lt;description&gt;12 points&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;inch&lt;/name&gt;
+    &lt;plural&gt;inches&lt;/plural&gt;
+    &lt;abbr&gt;in&lt;/abbr&gt;
+    &lt;factor&gt;90.0&lt;/factor&gt;
+    &lt;description&gt;Inches (90 px/in)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;millimeter&lt;/name&gt;
+    &lt;plural&gt;millimeters&lt;/plural&gt;
+    &lt;abbr&gt;mm&lt;/abbr&gt;
+    &lt;factor&gt;3.543307086614174&lt;/factor&gt;
+    &lt;description&gt;Millimeters (25.4 mm/in)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;centimeter&lt;/name&gt;
+    &lt;plural&gt;centimeters&lt;/plural&gt;
+    &lt;abbr&gt;cm&lt;/abbr&gt;
+    &lt;factor&gt;35.43307086614174&lt;/factor&gt;
+    &lt;description&gt;Centimeters (10 mm/cm)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;meter&lt;/name&gt;
+    &lt;plural&gt;meters&lt;/plural&gt;
+    &lt;abbr&gt;m&lt;/abbr&gt;
+    &lt;factor&gt;3543.307086614174&lt;/factor&gt;
+    &lt;description&gt;Meters (100 cm/m)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;foot&lt;/name&gt;
+    &lt;plural&gt;feet&lt;/plural&gt;
+    &lt;abbr&gt;ft&lt;/abbr&gt;
+    &lt;factor&gt;1080&lt;/factor&gt;
+    &lt;description&gt;Feet (12 in/ft)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="RADIAL" pri="y"&gt;
+    &lt;name&gt;degree&lt;/name&gt;
+    &lt;plural&gt;degrees&lt;/plural&gt;
+    &lt;abbr&gt;°&lt;/abbr&gt;
+    &lt;factor&gt;1.00&lt;/factor&gt;
+    &lt;description&gt;Degrees&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="RADIAL" pri="n"&gt;
+    &lt;name&gt;radian&lt;/name&gt;
+    &lt;plural&gt;radians&lt;/plural&gt;
+    &lt;abbr&gt;rad&lt;/abbr&gt;
+    &lt;factor&gt;57.29577951308232&lt;/factor&gt;
+    &lt;description&gt;Radians (180/pi deg/rad)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="RADIAL" pri="n"&gt;
+    &lt;name&gt;gradian&lt;/name&gt;
+    &lt;plural&gt;gradians&lt;/plural&gt;
+    &lt;abbr&gt;grad&lt;/abbr&gt;
+    &lt;factor&gt;0.9&lt;/factor&gt;
+    &lt;description&gt;Gradians (360/400 deg/grad)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="RADIAL" pri="n"&gt;
+    &lt;name&gt;turn&lt;/name&gt;
+    &lt;plural&gt;turns&lt;/plural&gt;
+    &lt;abbr&gt;turn&lt;/abbr&gt;
+    &lt;factor&gt;360&lt;/factor&gt;
+    &lt;description&gt;Turns (360 deg/turn)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="FONT_HEIGHT" pri="y"&gt;
+    &lt;name&gt;font-height&lt;/name&gt;
+    &lt;plural&gt;font-heights&lt;/plural&gt;
+    &lt;abbr&gt;em&lt;/abbr&gt;
+    &lt;factor&gt;1.00&lt;/factor&gt;
+    &lt;description&gt;Font height&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="FONT_HEIGHT" pri="n"&gt;
+    &lt;name&gt;x-height&lt;/name&gt;
+    &lt;plural&gt;x-heights&lt;/plural&gt;
+    &lt;abbr&gt;ex&lt;/abbr&gt;
+    &lt;factor&gt;0.50&lt;/factor&gt;
+    &lt;description&gt;Height of letter 'x'&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="FONT_HEIGHT" pri="n"&gt;
+    &lt;name&gt;half-em&lt;/name&gt;
+    &lt;plural&gt;half-ems&lt;/plural&gt;
+    &lt;abbr&gt;en&lt;/abbr&gt;
+    &lt;factor&gt;0.50&lt;/factor&gt;
+    &lt;description&gt;Half of font height&lt;/description&gt;
+&lt;/unit&gt;
+&lt;/unitdefs&gt;</pre>
+<p>to</p>
+<pre>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;unitdefs&gt;
+&lt;unit type="DIMENSIONLESS" pri="y"&gt;
+    &lt;name&gt;%&lt;/name&gt;
+    &lt;plural&gt;%&lt;/plural&gt;
+    &lt;abbr&gt;%&lt;/abbr&gt;
+    &lt;factor&gt;1.00&lt;/factor&gt;
+    &lt;description&gt;Percentage&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="y"&gt;
+    &lt;name&gt;pixel&lt;/name&gt;
+    &lt;plural&gt;pixels&lt;/plural&gt;
+    &lt;abbr&gt;px&lt;/abbr&gt;
+    &lt;factor&gt;1.00&lt;/factor&gt;
+    &lt;description&gt;CSS Pixels (72/inch)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;point&lt;/name&gt;
+    &lt;plural&gt;points&lt;/plural&gt;
+    &lt;abbr&gt;pt&lt;/abbr&gt;
+    &lt;factor&gt;1.00&lt;/factor&gt;
+    &lt;description&gt;PostScript points (72/inch)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;pica&lt;/name&gt;
+    &lt;plural&gt;picas&lt;/plural&gt;
+    &lt;abbr&gt;pc&lt;/abbr&gt;
+    &lt;factor&gt;12.0&lt;/factor&gt;
+    &lt;description&gt;12 points&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;inch&lt;/name&gt;
+    &lt;plural&gt;inches&lt;/plural&gt;
+    &lt;abbr&gt;in&lt;/abbr&gt;
+    &lt;factor&gt;72.0&lt;/factor&gt;
+    &lt;description&gt;Inches (72 px/in)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;millimeter&lt;/name&gt;
+    &lt;plural&gt;millimeters&lt;/plural&gt;
+    &lt;abbr&gt;mm&lt;/abbr&gt;
+    &lt;factor&gt;2.834645669291339&lt;/factor&gt;
+    &lt;description&gt;Millimeters (25.4 mm/in)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;centimeter&lt;/name&gt;
+    &lt;plural&gt;centimeters&lt;/plural&gt;
+    &lt;abbr&gt;cm&lt;/abbr&gt;
+    &lt;factor&gt;28.34645669291339&lt;/factor&gt;
+    &lt;description&gt;Centimeters (10 mm/cm)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;meter&lt;/name&gt;
+    &lt;plural&gt;meters&lt;/plural&gt;
+    &lt;abbr&gt;m&lt;/abbr&gt;
+    &lt;factor&gt;2834.645669291339&lt;/factor&gt;
+    &lt;description&gt;Meters (100 cm/m)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="LINEAR" pri="n"&gt;
+    &lt;name&gt;foot&lt;/name&gt;
+    &lt;plural&gt;feet&lt;/plural&gt;
+    &lt;abbr&gt;ft&lt;/abbr&gt;
+    &lt;factor&gt;864&lt;/factor&gt;
+    &lt;description&gt;Feet (12 in/ft)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="RADIAL" pri="y"&gt;
+    &lt;name&gt;degree&lt;/name&gt;
+    &lt;plural&gt;degrees&lt;/plural&gt;
+    &lt;abbr&gt;°&lt;/abbr&gt;
+    &lt;factor&gt;1.00&lt;/factor&gt;
+    &lt;description&gt;Degrees&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="RADIAL" pri="n"&gt;
+    &lt;name&gt;radian&lt;/name&gt;
+    &lt;plural&gt;radians&lt;/plural&gt;
+    &lt;abbr&gt;rad&lt;/abbr&gt;
+    &lt;factor&gt;57.29577951308232&lt;/factor&gt;
+    &lt;description&gt;Radians (180/pi deg/rad)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="RADIAL" pri="n"&gt;
+    &lt;name&gt;gradian&lt;/name&gt;
+    &lt;plural&gt;gradians&lt;/plural&gt;
+    &lt;abbr&gt;grad&lt;/abbr&gt;
+    &lt;factor&gt;0.9&lt;/factor&gt;
+    &lt;description&gt;Gradians (360/400 deg/grad)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="RADIAL" pri="n"&gt;
+    &lt;name&gt;turn&lt;/name&gt;
+    &lt;plural&gt;turns&lt;/plural&gt;
+    &lt;abbr&gt;turn&lt;/abbr&gt;
+    &lt;factor&gt;360&lt;/factor&gt;
+    &lt;description&gt;Turns (360 deg/turn)&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="FONT_HEIGHT" pri="y"&gt;
+    &lt;name&gt;font-height&lt;/name&gt;
+    &lt;plural&gt;font-heights&lt;/plural&gt;
+    &lt;abbr&gt;em&lt;/abbr&gt;
+    &lt;factor&gt;1.00&lt;/factor&gt;
+    &lt;description&gt;Font height&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="FONT_HEIGHT" pri="n"&gt;
+    &lt;name&gt;x-height&lt;/name&gt;
+    &lt;plural&gt;x-heights&lt;/plural&gt;
+    &lt;abbr&gt;ex&lt;/abbr&gt;
+    &lt;factor&gt;0.50&lt;/factor&gt;
+    &lt;description&gt;Height of letter 'x'&lt;/description&gt;
+&lt;/unit&gt;
+&lt;unit type="FONT_HEIGHT" pri="n"&gt;
+    &lt;name&gt;half-em&lt;/name&gt;
+    &lt;plural&gt;half-ems&lt;/plural&gt;
+    &lt;abbr&gt;en&lt;/abbr&gt;
+    &lt;factor&gt;0.50&lt;/factor&gt;
+    &lt;description&gt;Half of font height&lt;/description&gt;
+&lt;/unit&gt;
+&lt;/unitdefs&gt;</pre>
+<p>All of your units now will calculate correctly! As a test, create a box with size 72px by 72px. Changing the units afterward, you&#8217;ll see that this is equal to 1in and correct for the other values as well.</p>
+<p>Make sure you also set your default bitmap resolution to 72dpi in Preferences (Shift + Ctrl + P) -&gt; Bitmaps</p>
+<p>Another cool feature is that Inkscape supports em units! However, after reviewing the source, the base font size is fixed at 12px. Maybe I can submit a fix for this, hmm.</p>
+<p>Happy Inkscaping!</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/11/21/how-to-fix-inkscapes-default-units-and-finally-work-with-illustrator/">How to Fix Inkscape&#8217;s Default Units (and Finally Work With Illustrator)</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2016/11/21/how-to-fix-inkscapes-default-units-and-finally-work-with-illustrator/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Microsoft Research &#8211; HoloLens</title>
+		<link>https://augustkarlstedt.github.io/blog/2016/11/05/microsoft-research-hololens/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2016/11/05/microsoft-research-hololens/#respond</comments>
+				<pubDate>Sun, 06 Nov 2016 05:26:45 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=225</guid>
+				<description><![CDATA[<p>HoloLens version 0.0.0.1? Maybe.</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/11/05/microsoft-research-hololens/">Microsoft Research &#8211; HoloLens</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>HoloLens version 0.0.0.1? Maybe.</p>
+
+
+<figure class="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-has-aspect-ratio wp-embed-aspect-4-3"><div class="wp-block-embed__wrapper">
+<iframe class='youtube-player' type='text/html' width='730' height='411' src='https://www.youtube.com/embed/3-mhqYBm7Xo?version=3&#038;rel=1&#038;fs=1&#038;autohide=2&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' allowfullscreen='true' style='border:0;'></iframe>
+</div></figure>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/11/05/microsoft-research-hololens/">Microsoft Research &#8211; HoloLens</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2016/11/05/microsoft-research-hololens/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>The ultimate slack emoji: LaTeX</title>
+		<link>https://augustkarlstedt.github.io/blog/2016/10/13/the-ultimate-slack-emoji-latex/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2016/10/13/the-ultimate-slack-emoji-latex/#respond</comments>
+				<pubDate>Thu, 13 Oct 2016 07:58:51 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=213</guid>
+				<description><![CDATA[<p>It&#8217;s 3am and I have work in the morning. While working on homework in LaTeX, I thought of the perfect thing to do: construct the ULTIMATE slack emoji consisting of three separate emoji for the LaTeX symbol. Here they are, simply add them as custom emoji to your slack. I&#8217;ve named mine :latex-1: :latex-2: :latex-3: [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/10/13/the-ultimate-slack-emoji-latex/">The ultimate slack emoji: LaTeX</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>It&#8217;s 3am and I have work in the morning. While working on homework in LaTeX, I thought of the perfect thing to do: construct the ULTIMATE slack emoji consisting of three separate emoji for the LaTeX symbol.</p>
+<p>Here they are, simply add them as custom emoji to your slack. I&#8217;ve named mine :latex-1: :latex-2: :latex-3:</p>
+<p>
+<a href='https://augustkarlstedt.github.io/blog/2016/10/13/the-ultimate-slack-emoji-latex/latex-1/'><img width="128" height="128" src="https://augustkarlstedt.github.io/wp-content/uploads/2016/10/latex-1.png" class="attachment-thumbnail size-thumbnail" alt="" /></a>
+<a href='https://augustkarlstedt.github.io/blog/2016/10/13/the-ultimate-slack-emoji-latex/latex-2/'><img width="128" height="128" src="https://augustkarlstedt.github.io/wp-content/uploads/2016/10/latex-2.png" class="attachment-thumbnail size-thumbnail" alt="" /></a>
+<a href='https://augustkarlstedt.github.io/blog/2016/10/13/the-ultimate-slack-emoji-latex/latex-3/'><img width="128" height="128" src="https://augustkarlstedt.github.io/wp-content/uploads/2016/10/latex-3.png" class="attachment-thumbnail size-thumbnail" alt="" /></a>
+</p>
+<p>And the result</p>
+<p><img class="alignnone size-full wp-image-219" src="http://augustkarlstedt.github.io/wp-content/uploads/2016/10/2016-10-13-02_57_54-clipboard.png" alt="2016-10-13-02_57_54-clipboard" width="325" height="68" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2016/10/2016-10-13-02_57_54-clipboard.png 325w, https://augustkarlstedt.github.io/wp-content/uploads/2016/10/2016-10-13-02_57_54-clipboard-300x63.png 300w" sizes="(max-width: 325px) 100vw, 325px" /></p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/10/13/the-ultimate-slack-emoji-latex/">The ultimate slack emoji: LaTeX</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2016/10/13/the-ultimate-slack-emoji-latex/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>PGP Source Code and Internals</title>
+		<link>https://augustkarlstedt.github.io/blog/2016/09/15/pgp-source-code-and-internals/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2016/09/15/pgp-source-code-and-internals/#respond</comments>
+				<pubDate>Fri, 16 Sep 2016 04:57:49 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=208</guid>
+				<description><![CDATA[<p>I knew it existed and I&#8217;m glad to have spotted it in the wild. 🙂</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/09/15/pgp-source-code-and-internals/">PGP Source Code and Internals</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>I knew it existed and I&#8217;m glad to have spotted it in the wild. 🙂</p>
+<p><img class="alignnone size-full wp-image-211" src="http://augustkarlstedt.github.io/wp-content/uploads/2016/09/pgp.jpg" alt="pgp" width="1032" height="1835" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2016/09/pgp.jpg 1032w, https://augustkarlstedt.github.io/wp-content/uploads/2016/09/pgp-169x300.jpg 169w, https://augustkarlstedt.github.io/wp-content/uploads/2016/09/pgp-768x1366.jpg 768w, https://augustkarlstedt.github.io/wp-content/uploads/2016/09/pgp-576x1024.jpg 576w" sizes="(max-width: 1032px) 100vw, 1032px" /></p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/09/15/pgp-source-code-and-internals/">PGP Source Code and Internals</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2016/09/15/pgp-source-code-and-internals/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Kali Linux on Raspberry Pi 2</title>
+		<link>https://augustkarlstedt.github.io/blog/2016/09/15/kali-linux-on-raspberry-pi-2/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2016/09/15/kali-linux-on-raspberry-pi-2/#respond</comments>
+				<pubDate>Fri, 16 Sep 2016 04:28:29 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=192</guid>
+				<description><![CDATA[<p>Quick setup instructions. Download the image located here https://www.offensive-security.com/kali-linux-arm-images/ Extract using 7-zip Use Rufus to DD the image to your MicroSD Pop it in the Pi, boot it up, and login using root:toor for the username:password If you want to install additional tools (you will), you can check them out here https://www.kali.org/news/kali-linux-metapackages/ e.g. apt-get install [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/09/15/kali-linux-on-raspberry-pi-2/">Kali Linux on Raspberry Pi 2</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Quick setup instructions.</p>
+<ol>
+<li>Download the image located here https://www.offensive-security.com/kali-linux-arm-images/</li>
+<li>Extract using 7-zip</li>
+<li>Use Rufus to DD the image to your MicroSD</li>
+<li>Pop it in the Pi, boot it up, and login using root:toor for the username:password</li>
+<li>If you want to install additional tools (you will), you can check them out here https://www.kali.org/news/kali-linux-metapackages/
+<ol>
+<li>e.g. apt-get install kali-linux-wireless</li>
+</ol>
+</li>
+</ol>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/09/15/kali-linux-on-raspberry-pi-2/">Kali Linux on Raspberry Pi 2</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2016/09/15/kali-linux-on-raspberry-pi-2/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Warning: Don&#8217;t Install the Windows Subsystem for Linux (Beta) if you have BitLocker Enabled</title>
+		<link>https://augustkarlstedt.github.io/blog/2016/09/15/warning-dont-install-the-windows-subsystem-for-linux-beta-if-you-have-bitlocker-enabled/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2016/09/15/warning-dont-install-the-windows-subsystem-for-linux-beta-if-you-have-bitlocker-enabled/#respond</comments>
+				<pubDate>Fri, 16 Sep 2016 04:24:58 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=184</guid>
+				<description><![CDATA[<p>I found out the hard way. After upgrading my laptop to Windows 10 Version 1607 (Anniversary Update), I was excited to try Bash in Windows. That&#8217;s where my problems started. After enabling the feature in the &#8220;Turn Windows Features On or Off&#8221; dialogue, I rebooted my system and was faced with blue screen stating BitLocker [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/09/15/warning-dont-install-the-windows-subsystem-for-linux-beta-if-you-have-bitlocker-enabled/">Warning: Don&#8217;t Install the Windows Subsystem for Linux (Beta) if you have BitLocker Enabled</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>I found out the hard way.</p>
+<p>After upgrading my laptop to Windows 10 Version 1607 (Anniversary Update), I was excited to try Bash in Windows. That&#8217;s where my problems started.</p>
+<p>After enabling the feature in the &#8220;Turn Windows Features On or Off&#8221; dialogue, I rebooted my system and was faced with blue screen stating BitLocker encountered a TPM issue.</p>
+<p>Resolution: make sure your BIOS is up-to-date and has TPM enabled, then roll back the latest changes using a recovery drive. Finally, manually enter your BitLocker key to boot into Windows, run tpm.msc, and prepare the TPM.</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/09/15/warning-dont-install-the-windows-subsystem-for-linux-beta-if-you-have-bitlocker-enabled/">Warning: Don&#8217;t Install the Windows Subsystem for Linux (Beta) if you have BitLocker Enabled</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2016/09/15/warning-dont-install-the-windows-subsystem-for-linux-beta-if-you-have-bitlocker-enabled/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Philosophy on Relationships</title>
+		<link>https://augustkarlstedt.github.io/blog/2016/03/21/philosophy-on-relationships/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2016/03/21/philosophy-on-relationships/#respond</comments>
+				<pubDate>Mon, 21 Mar 2016 06:40:49 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=178</guid>
+				<description><![CDATA[<p>View each person as a locked safe of experiences and wisdom that one cannot access until they (you) find the key. Sometimes the key is a common interest that allows you two to open up to each other. Other times it can be a moment shared without any form of verbal communication. Whatever the key [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/03/21/philosophy-on-relationships/">Philosophy on Relationships</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>View each person as a locked safe of experiences and wisdom that one cannot access until they (you) find the key.</p>
+<p>Sometimes the key is a common interest that allows you two to open up to each other. Other times it can be a moment shared without any form of verbal communication. Whatever the key may be, I find it the part of relationships that intrigues me the most. How do I get to know this person?</p>
+<p>How can one get past that initial barrier that people shield themselves with to strangers?</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/03/21/philosophy-on-relationships/">Philosophy on Relationships</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2016/03/21/philosophy-on-relationships/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Spring Quarter 2016 (FINAL QUARTER AS AN UNDERGRAD!)</title>
+		<link>https://augustkarlstedt.github.io/blog/2016/03/08/spring-quarter-2016-final-quarter-as-an-undergrad/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2016/03/08/spring-quarter-2016-final-quarter-as-an-undergrad/#respond</comments>
+				<pubDate>Wed, 09 Mar 2016 05:34:32 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=173</guid>
+				<description><![CDATA[<p>Here&#8217;s my proposed schedule. GAM 377 &#8211; Fundamentals of Game Programming II GAM 390 &#8211; Multiplayer Game Development GAM 395 &#8211; Game Development Project II GAM 397 &#8211; Topics In Game Design</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/03/08/spring-quarter-2016-final-quarter-as-an-undergrad/">Spring Quarter 2016 (FINAL QUARTER AS AN UNDERGRAD!)</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Here&#8217;s my proposed schedule.</p>
+<p>GAM 377 &#8211; Fundamentals of Game Programming II</p>
+<p>GAM 390 &#8211; Multiplayer Game Development</p>
+<p>GAM 395 &#8211; Game Development Project II</p>
+<p>GAM 397 &#8211; Topics In Game Design</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/03/08/spring-quarter-2016-final-quarter-as-an-undergrad/">Spring Quarter 2016 (FINAL QUARTER AS AN UNDERGRAD!)</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2016/03/08/spring-quarter-2016-final-quarter-as-an-undergrad/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Winter Quarter 2016</title>
+		<link>https://augustkarlstedt.github.io/blog/2016/03/08/winter-quarter-2016/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2016/03/08/winter-quarter-2016/#respond</comments>
+				<pubDate>Wed, 09 Mar 2016 05:31:32 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=166</guid>
+				<description><![CDATA[<p>CSC 358 &#8211; Symbolic Programming CSC 360 &#8211; User Interface Architecture and Development CSC 380 &#8211; Foundations of Artificial Intelligence GAM 394 &#8211; Game Development Project I (Capstone) &#160; Over December intersession &#8211; CSC 398 -Internship</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/03/08/winter-quarter-2016/">Winter Quarter 2016</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>CSC 358 &#8211; Symbolic Programming</p>
+<p>CSC 360 &#8211; User Interface Architecture and Development</p>
+<p>CSC 380 &#8211; Foundations of Artificial Intelligence</p>
+<p>GAM 394 &#8211; Game Development Project I (Capstone)</p>
+<p>&nbsp;</p>
+<p>Over December intersession &#8211; CSC 398 -Internship</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/03/08/winter-quarter-2016/">Winter Quarter 2016</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2016/03/08/winter-quarter-2016/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Fall Quarter 2015</title>
+		<link>https://augustkarlstedt.github.io/blog/2016/03/08/fall-quarter-2015/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2016/03/08/fall-quarter-2015/#respond</comments>
+				<pubDate>Wed, 09 Mar 2016 05:29:10 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=160</guid>
+				<description><![CDATA[<p>CSC 361 &#8211; Optimized C++ GAM 350 &#8211; Physics for Game Developers GAM 372 &#8211; Object-Oriented Game Development GAM 392 &#8211; Game Modification Workshop</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/03/08/fall-quarter-2015/">Fall Quarter 2015</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>CSC 361 &#8211; Optimized C++</p>
+<p>GAM 350 &#8211; Physics for Game Developers</p>
+<p>GAM 372 &#8211; Object-Oriented Game Development</p>
+<p>GAM 392 &#8211; Game Modification Workshop</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/03/08/fall-quarter-2015/">Fall Quarter 2015</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2016/03/08/fall-quarter-2015/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Spring Quarter 2015</title>
+		<link>https://augustkarlstedt.github.io/blog/2016/03/08/spring-quarter-2015/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2016/03/08/spring-quarter-2015/#respond</comments>
+				<pubDate>Wed, 09 Mar 2016 05:24:53 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=151</guid>
+				<description><![CDATA[<p>CSC 321 – Design and Analysis of Algorithms GPH 389 – Real-Time Graphics Techniques PHY 232 – Introduction to Digital Electronics</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/03/08/spring-quarter-2015/">Spring Quarter 2015</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>CSC 321 – Design and Analysis of Algorithms</p>
+<p>GPH 389 – Real-Time Graphics Techniques</p>
+<p>PHY 232 – Introduction to Digital Electronics</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/03/08/spring-quarter-2015/">Spring Quarter 2015</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2016/03/08/spring-quarter-2015/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Winter Quarter 2015 in Retrospect</title>
+		<link>https://augustkarlstedt.github.io/blog/2016/02/09/winter-quarter-2015-in-retrospect/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2016/02/09/winter-quarter-2015-in-retrospect/#respond</comments>
+				<pubDate>Tue, 09 Feb 2016 09:07:20 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[School]]></category>
+		<category><![CDATA[Work]]></category>
+		<category><![CDATA[computer]]></category>
+		<category><![CDATA[development]]></category>
+		<category><![CDATA[game]]></category>
+		<category><![CDATA[school]]></category>
+		<category><![CDATA[science]]></category>
+		<category><![CDATA[work]]></category>
+
+		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=78</guid>
+				<description><![CDATA[<p>Last year I posted about Winter Quarter courses I was about to take and stated that I would explain my consideration to switch majors. A year later, I&#8217;ll now explain my thought process and where I am today. I hope to also discuss the classes I took during this quarter and the work and projects [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/02/09/winter-quarter-2015-in-retrospect/">Winter Quarter 2015 in Retrospect</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Last year I posted about Winter Quarter courses I was about to take and stated that I would explain my consideration to switch majors. A year later, I&#8217;ll now explain my thought process and where I am today. I hope to also discuss the classes I took during this quarter and the work and projects completed during this time.</p>
+<p>&nbsp;</p>
+<h2>Computer Game Development vs. Computer Science</h2>
+<p>The future is scary. Who knows what it holds? So why not try to make it as concrete as possible for yourself and choose a path that will most likely lead to whatever it is you desire? That was my thinking when I was considering switching from Computer Game Development to Computer Science.</p>
+<p>If one were to evaluate a Computer Game Development degree just by its name, it would be reasonable to assume that the end goal is to just make video games. In fact, that was one of my fears when I was thinking about switching to CS. Working alongside engineers that have degrees in Computer Science, Electrical Engineering, Mechanical Engineering, and more at my internship with a local engineering consulting company, I felt that their degrees would be considered more thoroughly than mine would.</p>
+<p>Shortly after, I started researching what it would take to switch my course plan from game dev to CS. Unfortunately, because I had taken so many major courses already, I wouldn&#8217;t have been able to complete my degree in the same time frame. I was bummed &#8211; what was I going to do now? I&#8217;m stuck.</p>
+<p>As I entered my second quarter of my Junior year, I was enrolled in CSC 395 &#8211; Research Colloquium. As I described in an earlier post, it&#8217;s a course where every week a new speaker presents their research to the class. Going in, I hadn&#8217;t realized how influential this course would be to me. Not once was I disinterested in a topic, no matter how difficult it was to grasp or how I couldn&#8217;t understand the title. The presentation of these ideas interested me and motivated me to start thinking about graduate school.</p>
+<p>That leads me to where I am today. I am still pursuing a degree in Computer Game Development, but I no longer feel like Computer Science or any other degree would be more worthwhile. I&#8217;m not pigeonholed into just making video games. Still at the same internship, I&#8217;ve been able to work on a lot of cool projects and get a good taste of the professional world. But I am still compelled by the idea of academia. Therefore, I am applying to graduate schools for Master&#8217;s programs in Computer Science.</p>
+<p>This has been in my drafts for a few days now. So I guess I&#8217;ll post this and give each course a separate post in the coming days.</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2016/02/09/winter-quarter-2015-in-retrospect/">Winter Quarter 2015 in Retrospect</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2016/02/09/winter-quarter-2015-in-retrospect/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Dat College Feel</title>
+		<link>https://augustkarlstedt.github.io/blog/2015/01/19/dat-college-feel/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2015/01/19/dat-college-feel/#respond</comments>
+				<pubDate>Mon, 19 Jan 2015 17:18:41 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[School]]></category>
+		<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[college]]></category>
+		<category><![CDATA[depaul]]></category>
+		<category><![CDATA[feel]]></category>
+		<category><![CDATA[learning]]></category>
+		<category><![CDATA[quarter]]></category>
+		<category><![CDATA[school]]></category>
+		<category><![CDATA[winter]]></category>
+
+		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=76</guid>
+				<description><![CDATA[<p>Walking to class this morning is the first time I&#8217;ve ever actually felt college-y. I don&#8217;t know what&#8217;s different this morning, but the brisk air, morning sun, and overall atmosphere seems&#8230; Different. Maybe it&#8217;s the realization that this path isn&#8217;t what everyone chooses. I see so many people from when I was younger choosing one [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2015/01/19/dat-college-feel/">Dat College Feel</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Walking to class this morning is the first time I&#8217;ve ever actually felt college-y. I don&#8217;t know what&#8217;s different this morning, but the brisk air, morning sun, and overall atmosphere seems&#8230; Different. </p>
+<p>Maybe it&#8217;s the realization that this path isn&#8217;t what everyone chooses. I see so many people from when I was younger choosing one of the billions of other paths there are and I believe I&#8217;ve chosen the best one for me. </p>
+<p>For the first two years of college (I&#8217;m a junior now), I only took it semi-seriously. To me, it was just something I <em>had</em> to do, not something I <em>wanted</em> to do. I felt most of the classes I had been taking were pointless, and that the idea that college finally lets someone explore the things they are most interested in was false.</p>
+<p>I understand now that one cannot look at it as black and white as that. College is a place where, yes, you learn about certain specific things you&#8217;re interested in, but it also shows you that there&#8217;s a world where there&#8217;s so much more to learn, understand, and contemplate that it doesn&#8217;t make sense to ignore it.</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2015/01/19/dat-college-feel/">Dat College Feel</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2015/01/19/dat-college-feel/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>MAT 140 &#038; PGP Encryption</title>
+		<link>https://augustkarlstedt.github.io/blog/2015/01/08/mat-140-pgp-encryption/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2015/01/08/mat-140-pgp-encryption/#respond</comments>
+				<pubDate>Thu, 08 Jan 2015 11:29:57 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Programming]]></category>
+		<category><![CDATA[School]]></category>
+		<category><![CDATA[depaul]]></category>
+		<category><![CDATA[encryption]]></category>
+		<category><![CDATA[mat]]></category>
+		<category><![CDATA[pgp]]></category>
+		<category><![CDATA[programming]]></category>
+
+		<guid isPermaLink="false">http://parad0xdev.wordpress.com/?p=74</guid>
+				<description><![CDATA[<p>I was in MAT 140 &#8211; Discrete Mathematics last quarter and I found that the fundamental theorem of arithmetic is super interesting. When the professor was speaking about it, I asked if it was the base for PGP encryption and it turned out it was. I had an inkling for this, because I previously heard [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2015/01/08/mat-140-pgp-encryption/">MAT 140 &#038; PGP Encryption</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>I was in MAT 140 &#8211; Discrete Mathematics last quarter and I found that the <a href="http://en.wikipedia.org/wiki/Fundamental_theorem_of_arithmetic">fundamental theorem of arithmetic</a> is super interesting. When the professor was speaking about it, I asked if it was the base for <a href="http://en.wikipedia.org/wiki/Pretty_Good_Privacy">PGP encryption</a> and it turned out it was. I had an inkling for this, because I previously heard that PGP generates super large numbers and that&#8217;s where the security lies.</p>
+<p>I&#8217;m kind of skeptical. Sure, with the current state of computing these cryptography keys are nearly impossible to crack, but the fact is that they still <em>are</em> possible to crack. I&#8217;m betting on sooner rather than later.</p>
+<p>Well, I&#8217;ll be looking into how this works in greater detail whenever I have time.</p>
+<p>Anyone know some places to learn more?</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2015/01/08/mat-140-pgp-encryption/">MAT 140 &#038; PGP Encryption</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2015/01/08/mat-140-pgp-encryption/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>New Classes &#8211; Winter Quarter</title>
+		<link>https://augustkarlstedt.github.io/blog/2015/01/08/new-classes-winter-quarter/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2015/01/08/new-classes-winter-quarter/#respond</comments>
+				<pubDate>Thu, 08 Jan 2015 07:45:11 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Game Development]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[School]]></category>
+		<category><![CDATA[CSC]]></category>
+		<category><![CDATA[depaul]]></category>
+		<category><![CDATA[gam]]></category>
+		<category><![CDATA[phl]]></category>
+		<category><![CDATA[quarter]]></category>
+		<category><![CDATA[soc]]></category>
+		<category><![CDATA[winter]]></category>
+
+		<guid isPermaLink="false">http://parad0xdev.wordpress.com/?p=69</guid>
+				<description><![CDATA[<p>Alright so I&#8217;m finally going to discuss the new courses I&#8217;m taking now. CSC 395 &#8211; Research Colloquium &#8211; I&#8217;m pretty excited about this course. It&#8217;s completely online and every week there will be a lecture by a guest speaker on new work in areas of computing. Hopefully there are some talks relevant to my [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2015/01/08/new-classes-winter-quarter/">New Classes &#8211; Winter Quarter</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Alright so I&#8217;m finally going to discuss the new courses I&#8217;m taking now.</p>
+<p>CSC 395 &#8211; Research Colloquium &#8211; I&#8217;m pretty excited about this course. It&#8217;s completely online and every week there will be a lecture by a guest speaker on new work in areas of computing. Hopefully there are some talks relevant to my interests, but nonetheless I love TED talks, so this should be similar.</p>
+<p>GAM 341 &#8211; Introduction to Level Design &#8211; Since I&#8217;m majoring in Computer Game Development and focusing on the programming portion of it, I figured I should also get a little more experience in the non-programming parts. We&#8217;re going to be using Unreal Engine 4, which I&#8217;m pretty stoked about!</p>
+<p>GAM 376 &#8211; AI for Computer Games &#8211; I&#8217;ve always been interested in artificial intelligence. Actually, in the class I&#8217;ll describe next we&#8217;re discussing AI through a philosophical perspective. I&#8217;ll probably post more on this later. As for this course, I hope we don&#8217;t just use some already-implemented AI algorithms and we can actually write our own. I doubt it though.</p>
+<p>PHL 242 &#8211; Philosophy &amp; Technology &#8211; We&#8217;re discussing what technology actually <i>is</i>. Admittedly, when asked this question I thought it was going to be easy to define. I was horribly wrong. While it isn&#8217;t required, I may read the recommended material, &#8220;War in the Age of Intelligent Machines&#8221; by Manuel De Landa. We read the first chapter and thinking about how a robot historian would describe its history is something that made me extremely intrigued.</p>
+<p>SOC 281 &#8211; Sociology of Rock Music &#8211; This is kind of weird, yes, and I know that. It fulfills some requirement that I needed to complete, so hey why not? We&#8217;re going to trace Rock Music from the beginning to now, and I&#8217;m thinking I&#8217;ll learn a lot. The professor asked in the first day of class what we knew about rock. While I do know some stuff, and I listen to rock all the time, I wrote that I had no knowledge of rock. I think this will benefit me because starting with a blank-ish slate should be fun.</p>
+<p>Anyhow, I wasn&#8217;t going to take these classes and considered switching majors. I&#8217;ll explain why in the next post.</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2015/01/08/new-classes-winter-quarter/">New Classes &#8211; Winter Quarter</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2015/01/08/new-classes-winter-quarter/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>GPH 321 &#8211; Completed</title>
+		<link>https://augustkarlstedt.github.io/blog/2015/01/06/gph-321-completed/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2015/01/06/gph-321-completed/#respond</comments>
+				<pubDate>Wed, 07 Jan 2015 05:16:13 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[C++]]></category>
+		<category><![CDATA[Game Development]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[School]]></category>
+		<category><![CDATA[c++]]></category>
+		<category><![CDATA[code]]></category>
+		<category><![CDATA[depaul]]></category>
+		<category><![CDATA[GPH]]></category>
+
+		<guid isPermaLink="false">http://parad0xdev.wordpress.com/?p=58</guid>
+				<description><![CDATA[<p>In this class we created a ray tracer from the ground up. I by &#8220;we&#8221; I mean our professor wrote most of the code and we had to fill in certain class functions. It was pretty terrible, but overall the end result was good. Oh and we had to zip our source code and send [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2015/01/06/gph-321-completed/">GPH 321 &#8211; Completed</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>In this class we created a ray tracer from the ground up. I by &#8220;we&#8221; I mean our professor wrote most of the code and we had to fill in certain class functions. It was pretty terrible, but overall the end result was good. Oh and we had to zip our source code and send it in, instead of simply using something like Github or Bitbucket. The midterm and final SUCKED, simply because it&#8217;s 2015 (well, it was 2014) and written exams for programming finals are absurd. Writing code on paper completely lacks the feel of typing it out using an IDE. Plus, come on, who doesn&#8217;t use IntelliSense, Resharper, Visual Assist X, or some kind of code-completion tool? A fool! And that&#8217;s exactly what we are when we write code by hand.</p>
+<p>Anyhow, here are some screenshots from the course.</p>
+<p>First we simply had to get rays working and detecting collisions.</p>
+<p><div id="attachment_60" style="width: 310px" class="wp-caption alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_44_45-intersecting-a-polygon.png"><img aria-describedby="caption-attachment-60" class="size-medium wp-image-60" src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_44_45-intersecting-a-polygon.png?w=300" alt="Rays &amp; Intersections" width="300" height="228" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_44_45-intersecting-a-polygon.png 650w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_44_45-intersecting-a-polygon-300x228.png 300w" sizes="(max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-60" class="wp-caption-text">Rays &amp; Intersections</p></div></p>
+<p>Then we had to ray-trace our first object, a sphere. This is because it&#8217;s pretty simple to represent in math.</p>
+<p><div id="attachment_61" style="width: 287px" class="wp-caption alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_58_30-implementing-constant-material.png"><img aria-describedby="caption-attachment-61" class="size-medium wp-image-61" src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_58_30-implementing-constant-material.png?w=277" alt="First Ray-traced Object " width="277" height="300" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_58_30-implementing-constant-material.png 520w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_58_30-implementing-constant-material-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px" /></a><p id="caption-attachment-61" class="wp-caption-text">First Ray-traced Object</p></div></p>
+<p>Then we had to add some shading to that sphere. I know, it isn&#8217;t 100% correct. Spot the error!</p>
+<p><div id="attachment_62" style="width: 287px" class="wp-caption alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_59_23-implementing-phong-material.png"><img aria-describedby="caption-attachment-62" class="size-medium wp-image-62" src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_59_23-implementing-phong-material.png?w=277" alt="Phong shading" width="277" height="300" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_59_23-implementing-phong-material.png 520w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_59_23-implementing-phong-material-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px" /></a><p id="caption-attachment-62" class="wp-caption-text">Phong Shading</p></div></p>
+<p>Next came shadows. These are awesome.</p>
+<p><div id="attachment_63" style="width: 287px" class="wp-caption alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_28-testing-transforms.png"><img aria-describedby="caption-attachment-63" class="size-medium wp-image-63" src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_28-testing-transforms.png?w=277" alt="Ray-traced Shadows" width="277" height="300" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_28-testing-transforms.png 520w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_28-testing-transforms-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px" /></a><p id="caption-attachment-63" class="wp-caption-text">Ray-traced Shadows</p></div></p>
+<p>Next was reflections. Super easy thanks to how ray-tracing works.</p>
+<p><div id="attachment_64" style="width: 287px" class="wp-caption alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_58-implementing-reflection.png"><img aria-describedby="caption-attachment-64" class="size-medium wp-image-64" src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_58-implementing-reflection.png?w=277" alt="Ray-traced Reflections" width="277" height="300" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_58-implementing-reflection.png 520w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_58-implementing-reflection-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px" /></a><p id="caption-attachment-64" class="wp-caption-text">Ray-traced Reflections</p></div></p>
+<p>Then we had to create a checkerboard pattern.</p>
+<p><div id="attachment_65" style="width: 287px" class="wp-caption alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_11-testing-procedural-texture.png"><img aria-describedby="caption-attachment-65" class="size-medium wp-image-65" src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_11-testing-procedural-texture.png?w=277" alt="Checkerboard" width="277" height="300" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_11-testing-procedural-texture.png 520w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_11-testing-procedural-texture-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px" /></a><p id="caption-attachment-65" class="wp-caption-text">Checkboard</p></div></p>
+<p>Finally we were to implement Fresnel equations to properly simulate glass. I didn&#8217;t finish this one fully.</p>
+<p><div id="attachment_66" style="width: 287px" class="wp-caption alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_25-implementing-glass-material.png"><img aria-describedby="caption-attachment-66" class="size-medium wp-image-66" src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_25-implementing-glass-material.png?w=277" alt="Ray-traced Fresnel" width="277" height="300" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_25-implementing-glass-material.png 520w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_25-implementing-glass-material-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px" /></a><p id="caption-attachment-66" class="wp-caption-text">Ray-traced Fresnel</p></div></p>
+<p>And that was the end of the course. This course was online only, which probably had an impact on my view of it. The course notes weren&#8217;t that great. I repeatedly found myself Googling things that were phrased in strange ways to figure out how to implement them. And variable names like <i>V, N, n1, n2, </i>etc. used throughout the given code made things unnecessarily complex.</p>
+<p>Oh well, it&#8217;s over and done with!</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2015/01/06/gph-321-completed/">GPH 321 &#8211; Completed</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2015/01/06/gph-321-completed/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>ANI 230 &#8211; Completed</title>
+		<link>https://augustkarlstedt.github.io/blog/2015/01/06/ani-230-completed/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2015/01/06/ani-230-completed/#respond</comments>
+				<pubDate>Wed, 07 Jan 2015 04:19:41 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Animation]]></category>
+		<category><![CDATA[Game Development]]></category>
+		<category><![CDATA[School]]></category>
+		<category><![CDATA[ANI]]></category>
+		<category><![CDATA[depaul]]></category>
+		<category><![CDATA[gimp]]></category>
+		<category><![CDATA[maya]]></category>
+		<category><![CDATA[modeling]]></category>
+
+		<guid isPermaLink="false">http://parad0xdev.wordpress.com/?p=51</guid>
+				<description><![CDATA[<p>Well I totally forgot to update this during class, but that&#8217;s okay. IT IS TIME FOR UPDATES. The class was about Maya so it was recommended that we download Maya 2015. I was a bit too lazy and decided that my installation of Maya 2014 would have to do. Here are a few of the things [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2015/01/06/ani-230-completed/">ANI 230 &#8211; Completed</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Well I totally forgot to update this <em>during</em> class, but that&#8217;s okay.</p>
+<p>IT IS TIME FOR UPDATES.</p>
+<p>The class was about Maya so it was recommended that we download Maya 2015. I was a bit too lazy and decided that my installation of Maya 2014 would have to do. Here are a few of the things we had to make.</p>
+<p>So our first homework was simple, but introduced us to Maya. We made a fan.</p>
+<p><div id="attachment_52" style="width: 310px" class="wp-caption alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/01.jpg"><img aria-describedby="caption-attachment-52" class="size-medium wp-image-52" src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/01.jpg?w=300" alt="Simple Fan - Maya 2014" width="300" height="169" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/01.jpg 960w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/01-300x169.jpg 300w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/01-768x432.jpg 768w" sizes="(max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-52" class="wp-caption-text">Simple Fan &#8211; Maya 2014</p></div></p>
+<p>It had limitations, so it really looks bad. Luckily this is a course about low-poly modeling, so super-detailed isn&#8217;t what we aimed for.</p>
+<p>Second homework was to model some animals, again with limitations.</p>
+<p><div id="attachment_54" style="width: 310px" class="wp-caption alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/everyone.jpg"><img aria-describedby="caption-attachment-54" class="size-medium wp-image-54" src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/everyone.jpg?w=300" alt="Animals - Maya 2014" width="300" height="225" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/everyone.jpg 640w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/everyone-300x225.jpg 300w" sizes="(max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-54" class="wp-caption-text">Animals &#8211; Maya 2014</p></div></p>
+<p>I chose to model a snail, a T-Rex, a kiwi, and a human. I think improvements can be seen!</p>
+<p>Next up was a shoe, and a lot of revisions.</p>
+<p><div id="attachment_53" style="width: 310px" class="wp-caption alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/03.jpg"><img aria-describedby="caption-attachment-53" class="size-medium wp-image-53" src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/03.jpg?w=300" alt="Shoe - Maya 2014" width="300" height="169" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/03.jpg 960w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/03-300x169.jpg 300w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/03-768x432.jpg 768w" sizes="(max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-53" class="wp-caption-text">Shoe &#8211; Maya 2014</p></div></p>
+<p>Somehow turned into this after a lot of messing around:</p>
+<p><div id="attachment_55" style="width: 310px" class="wp-caption alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/04.jpg"><img aria-describedby="caption-attachment-55" class="size-medium wp-image-55" src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/04.jpg?w=300" alt="Revised Shoe - Maya 2014" width="300" height="169" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/04.jpg 960w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/04-300x169.jpg 300w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/04-768x432.jpg 768w" sizes="(max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-55" class="wp-caption-text">Revised Shoe &#8211; Maya 2014</p></div></p>
+<p>Then I chose to model a guitar capo which proved an interesting challenge:</p>
+<p><div id="attachment_56" style="width: 310px" class="wp-caption alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/05.jpg"><img aria-describedby="caption-attachment-56" class="size-medium wp-image-56" src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/05.jpg?w=300" alt="Guitar Capo - Maya 2014" width="300" height="169" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/05.jpg 960w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/05-300x169.jpg 300w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/05-768x432.jpg 768w" sizes="(max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-56" class="wp-caption-text">Guitar Capo &#8211; Maya 2014</p></div></p>
+<p>Skip a few and we arrive at our toy store assignment. It was pretty simple, with a animated camera flying around.</p>
+<p>First revision:</p>
+<p><iframe class='youtube-player' type='text/html' width='730' height='411' src='https://www.youtube.com/embed/lnxFdhqMIb4?version=3&#038;rel=1&#038;fs=1&#038;autohide=2&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' allowfullscreen='true' style='border:0;'></iframe></p>
+<p>Second revision:</p>
+<p><iframe class='youtube-player' type='text/html' width='730' height='411' src='https://www.youtube.com/embed/7mScqCP51-Q?version=3&#038;rel=1&#038;fs=1&#038;autohide=2&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' allowfullscreen='true' style='border:0;'></iframe></p>
+<p>Final revision:</p>
+<p><iframe class='youtube-player' type='text/html' width='730' height='411' src='https://www.youtube.com/embed/-ywoBxwJs60?version=3&#038;rel=1&#038;fs=1&#038;autohide=2&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' allowfullscreen='true' style='border:0;'></iframe></p>
+<p>Jump ahead to the final assignment:</p>
+<p><iframe class='youtube-player' type='text/html' width='730' height='411' src='https://www.youtube.com/embed/HkyzERtm_X4?version=3&#038;rel=1&#038;fs=1&#038;autohide=2&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' allowfullscreen='true' style='border:0;'></iframe></p>
+<p>GIMP was difficult to get working properly with the PSDs Maya exported, but it kind of worked. Oh well. That was the end of that class and I learned a lot about low-poly modeling. Nice!</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2015/01/06/ani-230-completed/">ANI 230 &#8211; Completed</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2015/01/06/ani-230-completed/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Updates!</title>
+		<link>https://augustkarlstedt.github.io/blog/2014/10/13/updates/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2014/10/13/updates/#respond</comments>
+				<pubDate>Mon, 13 Oct 2014 18:12:55 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Android]]></category>
+		<category><![CDATA[C++]]></category>
+		<category><![CDATA[Game Development]]></category>
+		<category><![CDATA[Java]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[School]]></category>
+		<category><![CDATA[Work]]></category>
+		<category><![CDATA[ANI]]></category>
+		<category><![CDATA[code]]></category>
+		<category><![CDATA[CSC]]></category>
+		<category><![CDATA[GPH]]></category>
+		<category><![CDATA[java]]></category>
+
+		<guid isPermaLink="false">http://parad0xdev.wordpress.com/?p=47</guid>
+				<description><![CDATA[<p>Obviously I haven&#8217;t posted anything in a while. But it&#8217;s time for a change &#8211; and change is good! I am now currently in three courses that are at least semi-relevant to this blog. ANI 230 &#8211; 3D Design &#38; Modeling CSC 298 &#8211; Internship GPH 321 &#8211; Computer Graphics Development I In ANI 230, we&#8217;re [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/10/13/updates/">Updates!</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Obviously I haven&#8217;t posted anything in a while. But it&#8217;s time for a change &#8211; and change is good!</p>
+<p>I am now currently in three courses that are at least semi-relevant to this blog.</p>
+<ul>
+<li>ANI 230 &#8211; 3D Design &amp; Modeling</li>
+<li>CSC 298 &#8211; Internship</li>
+<li>GPH 321 &#8211; Computer Graphics Development I</li>
+</ul>
+<p>In ANI 230, we&#8217;re learning Maya 2015. Starting with low-poly and now (it&#8217;s about midterms time) we&#8217;re onto animation with keyframes. I&#8217;m particularly interested in ray tracing, because we are building our very own in C++ in GPH 321.</p>
+<p>As for CSC 298, it basically runs alongside the internship that I already have. Here, I&#8217;ve been working with a ton of Java stuff lately interfacing with a USB HID. Through this, I&#8217;ve learned to use Maven &#8211; let me just say it&#8217;s awesome.</p>
+<p>Anyhow, I&#8217;ll be posting some images of the stuff I&#8217;ve been working on soon.</p>
+<p>Also, I may move this entire blog to a domain/host I pay for now. Or maybe even use Github Pages and Jekyll, those look fun.</p>
+<p>Oh and I read a few Android books, great stuff. Loving Android dev.</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/10/13/updates/">Updates!</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/10/13/updates/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Finished with GAM 374</title>
+		<link>https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/#respond</comments>
+				<pubDate>Wed, 25 Jun 2014 04:17:37 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Android]]></category>
+		<category><![CDATA[C++]]></category>
+		<category><![CDATA[Game Development]]></category>
+		<category><![CDATA[Java]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[School]]></category>
+		<category><![CDATA[Work]]></category>
+		<category><![CDATA[374]]></category>
+		<category><![CDATA[azul]]></category>
+		<category><![CDATA[c++]]></category>
+		<category><![CDATA[c++11]]></category>
+		<category><![CDATA[code]]></category>
+		<category><![CDATA[gam]]></category>
+		<category><![CDATA[java]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[school]]></category>
+		<category><![CDATA[work]]></category>
+
+		<guid isPermaLink="false">http://parad0xdev.wordpress.com/?p=35</guid>
+				<description><![CDATA[<p>Well, I chose to turn in exactly what you see in that last blog post. Everything that was required for the assignment was there and it earned me a 95%. I am now focusing my efforts into work with a near-full-time schedule of 38 hours a week. I will be posting stuff about happenings relating [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/">Finished with GAM 374</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Well, I chose to turn in exactly what you see in that last blog post. Everything that was required for the assignment was there and it earned me a 95%.</p>
+<p>I am now focusing my efforts into work with a near-full-time schedule of 38 hours a week. I will be posting stuff about happenings relating to that from here on out.</p>
+<p>I&#8217;m also working on an Android app, so there will be some Java tossed in.</p>
+<p>And last but not least, my love for C++ is growing as I discover C++11 features. There&#8217;s a little code I wrote to test out the functionality of some of the new stuff if you read on.</p>
+<p><span id="more-35"></span></p>
+<p>[code language=&#8221;cpp&#8221;]<br />
+#include &lt;iostream&gt;<br />
+#include &lt;vector&gt;<br />
+#include &lt;algorithm&gt;<br />
+#include &lt;thread&gt;<br />
+#include &lt;memory&gt;</p>
+<p>using namespace std;</p>
+<p>int main()<br />
+{<br />
+	cout &lt;&lt; &quot;BASIC USE OF AUTO\n&quot;;<br />
+	auto hi = &quot;Hello, World!&quot;;<br />
+	cout &lt;&lt; hi &lt;&lt; endl;</p>
+<p>	cout &lt;&lt; &quot;\nLAMBDA FUNCTIONS\n&quot;;<br />
+	auto squareIt = [hi](int i) { cout &lt;&lt; hi &lt;&lt; &quot; from inside a lambda! &quot;; return i * i; };<br />
+	cout &lt;&lt; squareIt(10) &lt;&lt; endl;</p>
+<p>	cout &lt;&lt; &quot;\nPOINTERS AND NULLPTR\n&quot;;<br />
+	shared_ptr&lt;int&gt; sp;<br />
+	unique_ptr&lt;int&gt; up;<br />
+	weak_ptr&lt;int&gt; wp;<br />
+	auto pointer = nullptr;</p>
+<p>	cout &lt;&lt; &quot;\nUNIFORM INITIALIZATION AND INITIALIZER LISTS\n&quot;;<br />
+	int x{ 17 };<br />
+	cout &lt;&lt; x &lt;&lt; endl;<br />
+	vector&lt;int&gt; v{ 2, 1, 7, 9, 4 };</p>
+<p>	cout &lt;&lt; &quot;\nRANGE FOR\n&quot;;<br />
+	for (auto d : v)<br />
+	{<br />
+		cout &lt;&lt; d &lt;&lt; endl;<br />
+	}</p>
+<p>	cout &lt;&lt; &quot;\nNONMEMBER BEGIN AND END\n&quot;;<br />
+	sort(begin(v), end(v));</p>
+<p>	for (auto d : v)<br />
+	{<br />
+		cout &lt;&lt; d &lt;&lt; endl;<br />
+	}</p>
+<p>	cout &lt;&lt; &quot;\nCOMBINATION OF NONMEMBER BEGIN AND END AND LAMBDA FUNCTIONS\n&quot;;<br />
+	find_if(begin(v), end(v), [](int i) { if (i % 2) { cout &lt;&lt; i &lt;&lt; endl; } return 0; });</p>
+<p>	cout &lt;&lt; &quot;\nTHREADS\n&quot;;<br />
+	for (int i = 0; i &lt; 100; ++i)<br />
+	{<br />
+		thread([]{ cout &lt;&lt; &quot;I&#8217;m a thread! &quot; &lt;&lt; this_thread::get_id() &lt;&lt; endl; }).join();<br />
+	}</p>
+<p>	cin.get();<br />
+	return 0;<br />
+}<br />
+[/code]</p>
+<p>That&#8217;s all for now! Thanks for reading.</pre>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/">Finished with GAM 374</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Walls and Collision</title>
+		<link>https://augustkarlstedt.github.io/blog/2014/06/12/walls-and-collision/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2014/06/12/walls-and-collision/#respond</comments>
+				<pubDate>Fri, 13 Jun 2014 04:07:06 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Game Development]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[School]]></category>
+		<category><![CDATA[374]]></category>
+		<category><![CDATA[azul]]></category>
+		<category><![CDATA[code]]></category>
+		<category><![CDATA[collision]]></category>
+		<category><![CDATA[gam]]></category>
+		<category><![CDATA[physics]]></category>
+		<category><![CDATA[ugly]]></category>
+
+		<guid isPermaLink="false">http://parad0xdev.wordpress.com/?p=31</guid>
+				<description><![CDATA[<p>Azul doesn&#8217;t support real collision, so I have to check the position of stuff. It kinda sucks. Hopefully there will be improvements on the physics components, along with collision in Azul. It&#8217;s coming together, but the code isn&#8217;t pretty.</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/06/12/walls-and-collision/">Walls and Collision</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Azul doesn&#8217;t support <em>real</em> collision, so I have to check the position of stuff. It kinda sucks. Hopefully there will be improvements on the physics components, along with collision in Azul.</p>
+<p>It&#8217;s coming together, but the code isn&#8217;t pretty.</p>
+<p><a href="http://augustkarlstedt.github.io/wp-content/uploads/2014/06/2014-06-12-23_05_02-final-project-tanks_.png"><img id="i-32" class="size-full wp-image" src="http://augustkarlstedt.github.io/wp-content/uploads/2014/06/2014-06-12-23_05_02-final-project-tanks_.png?w=650" alt="Image" /></a></p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/06/12/walls-and-collision/">Walls and Collision</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/06/12/walls-and-collision/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>More Work</title>
+		<link>https://augustkarlstedt.github.io/blog/2014/06/12/more-work/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2014/06/12/more-work/#respond</comments>
+				<pubDate>Fri, 13 Jun 2014 02:12:02 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Game Development]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[School]]></category>
+		<category><![CDATA[374]]></category>
+		<category><![CDATA[azul]]></category>
+		<category><![CDATA[depaul]]></category>
+		<category><![CDATA[gam]]></category>
+		<category><![CDATA[player]]></category>
+		<category><![CDATA[tanks]]></category>
+		<category><![CDATA[two]]></category>
+
+		<guid isPermaLink="false">http://parad0xdev.wordpress.com/2014/06/12/more-work/</guid>
+				<description><![CDATA[<p>Instead of cloning Tanks! I&#8217;m actually going to create a two player tank battle game. It won&#8217;t be the best, because of time constraints, but it will have one player control a tank with the keyboard (WASD + Arrow keys to rotate turret) and the other player using a controller.</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/06/12/more-work/">More Work</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Instead of cloning Tanks! I&#8217;m actually going to create a two player tank battle game. It won&#8217;t be the best, because of time constraints, but it will have one player control a tank with the keyboard (WASD + Arrow keys to rotate turret) and the other player using a controller.</p>
+<p><a href="http://augustkarlstedt.github.io/wp-content/uploads/2014/06/2014-06-12-21_10_15-clipboard.png"><img id="i-28" class="size-full wp-image" src="http://augustkarlstedt.github.io/wp-content/uploads/2014/06/2014-06-12-21_10_15-clipboard.png?w=650" alt="Image" /></a></p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/06/12/more-work/">More Work</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/06/12/more-work/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Bullets!</title>
+		<link>https://augustkarlstedt.github.io/blog/2014/06/01/bullets/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2014/06/01/bullets/#respond</comments>
+				<pubDate>Sun, 01 Jun 2014 23:42:39 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Game Development]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[School]]></category>
+		<category><![CDATA[374]]></category>
+		<category><![CDATA[azul]]></category>
+		<category><![CDATA[bullets]]></category>
+		<category><![CDATA[c++]]></category>
+		<category><![CDATA[depaul]]></category>
+		<category><![CDATA[gam]]></category>
+		<category><![CDATA[programming]]></category>
+
+		<guid isPermaLink="false">http://parad0xdev.wordpress.com/2014/06/01/bullets/</guid>
+				<description><![CDATA[<p>Added bullets. Pretty simple really.</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/06/01/bullets/">Bullets!</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p><iframe class='youtube-player' type='text/html' width='730' height='411' src='https://www.youtube.com/embed/QpQPwHxBJFw?version=3&#038;rel=1&#038;fs=1&#038;autohide=2&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' allowfullscreen='true' style='border:0;'></iframe></p>
+<p>Added bullets. Pretty simple really.</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/06/01/bullets/">Bullets!</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/06/01/bullets/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Player Tank!</title>
+		<link>https://augustkarlstedt.github.io/blog/2014/05/23/player-tank/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2014/05/23/player-tank/#respond</comments>
+				<pubDate>Sat, 24 May 2014 04:13:39 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Game Development]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[School]]></category>
+		<category><![CDATA[374]]></category>
+		<category><![CDATA[azul]]></category>
+		<category><![CDATA[depaul]]></category>
+		<category><![CDATA[engine]]></category>
+		<category><![CDATA[gam]]></category>
+		<category><![CDATA[game]]></category>
+		<category><![CDATA[greenshot]]></category>
+		<category><![CDATA[input]]></category>
+		<category><![CDATA[mouse]]></category>
+		<category><![CDATA[player]]></category>
+		<category><![CDATA[tanks]]></category>
+		<category><![CDATA[unity]]></category>
+
+		<guid isPermaLink="false">http://parad0xdev.wordpress.com/?p=12</guid>
+				<description><![CDATA[<p>I&#8217;ve finally done some work on this and got the player tank working. Azul doesn&#8217;t handle mouse input very well (I&#8217;m spoiled by Unity), so it&#8217;s all keyboard controls. WASD controls the tank movement LEFT/RIGHT control the turret I&#8217;m thinking the up arrow will fire a shell and the down arrow will lay a landmine. [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/05/23/player-tank/">Player Tank!</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>I&#8217;ve finally done some work on this and got the player tank working. Azul doesn&#8217;t handle mouse input very well (I&#8217;m spoiled by Unity), so it&#8217;s all keyboard controls.</p>
+<p>WASD controls the tank movement</p>
+<p>LEFT/RIGHT control the turret</p>
+<p>I&#8217;m thinking the up arrow will fire a shell and the down arrow will lay a landmine.</p>
+<h2><a href="http://augustkarlstedt.github.io/wp-content/uploads/2014/05/2014-05-23-23_12_00-final-project-tanks_.png"><img id="i-17" class="size-full wp-image" src="http://augustkarlstedt.github.io/wp-content/uploads/2014/05/2014-05-23-23_12_00-final-project-tanks_.png?w=650" alt="Image" /></a></h2>
+<h2></h2>
+<p>Screenshot taken with <a href="http://getgreenshot.org/">Greenshot</a>.</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/05/23/player-tank/">Player Tank!</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/05/23/player-tank/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>First Day of Final Project</title>
+		<link>https://augustkarlstedt.github.io/blog/2014/05/18/first-day-of-final-project/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2014/05/18/first-day-of-final-project/#respond</comments>
+				<pubDate>Sun, 18 May 2014 16:37:55 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Game Development]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[School]]></category>
+		<category><![CDATA[374]]></category>
+		<category><![CDATA[azul]]></category>
+		<category><![CDATA[depaul]]></category>
+		<category><![CDATA[design]]></category>
+		<category><![CDATA[gam]]></category>
+		<category><![CDATA[game]]></category>
+		<category><![CDATA[patterns]]></category>
+		<category><![CDATA[programming]]></category>
+
+		<guid isPermaLink="false">http://parad0xdev.wordpress.com/?p=3</guid>
+				<description><![CDATA[<p>Today marks the first day I&#8217;ve started working on the final project for my GAM 374: Fundamentals of Game Programming I class. I&#8217;ve decided to recreate Tank &#8211; well actually, the Wii Play version called &#8220;Tanks!&#8220;. We&#8217;re using the DePaul game engine called Azul &#8211; which I think could definitely use an engine overhaul since it&#8217;s based [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/05/18/first-day-of-final-project/">First Day of Final Project</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Today marks the first day I&#8217;ve started working on the final project for my GAM 374: Fundamentals of Game Programming I class. I&#8217;ve decided to recreate <a href="http://en.wikipedia.org/wiki/Tank_(arcade_game)">Tank</a> &#8211; well actually, the Wii Play version called &#8220;<a href="http://en.wikipedia.org/wiki/Wii_Play#Tanks.21">Tanks!</a>&#8220;.</p>
+<p>We&#8217;re using the DePaul game engine called Azul &#8211; which I think could definitely use an engine overhaul since it&#8217;s based on the singleton design pattern. Gross.</p>
+<p><a href="http://gameprogrammingpatterns.com/">Click to learn about Game Programming Patterns</a></p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/05/18/first-day-of-final-project/">First Day of Final Project</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/05/18/first-day-of-final-project/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>

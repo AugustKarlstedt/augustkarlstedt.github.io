@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>Programming &#8211; August Karlstedt</title>
+	<atom:link href="https://augustkarlstedt.github.io/blog/category/programming-2/feed/" rel="self" type="application/rss+xml" />
+	<link>https://augustkarlstedt.github.io/</link>
+	<description>Machine Learning Researcher, Software Engineer, Game Developer, and Consultant</description>
+	<lastBuildDate>Sun, 14 May 2017 02:54:02 -0700</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.3</generator>
+	<item>
+		<title>Long Short-Term Memory Neural Networks and Guitar Tablature</title>
+		<link>https://augustkarlstedt.github.io/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/#respond</comments>
+				<pubDate>Sun, 14 May 2017 02:54:02 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Computer Science]]></category>
+		<category><![CDATA[Machine Learning]]></category>
+		<category><![CDATA[Programming]]></category>
+
+		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=285</guid>
+				<description><![CDATA[<p>Just messing around with LSTM neural nets, I had the idea to train it on some guitar tabs and see what happened. Data My dataset was a collection of guitar tabs for The Who&#8217;s album, Tommy. Some stats Text total length: 277,155 Distinct chars : 91 Total sequences : 92,369 So yes, it&#8217;s a tiny [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/">Long Short-Term Memory Neural Networks and Guitar Tablature</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Just messing around with LSTM neural nets, I had the idea to train it on some guitar tabs and see what happened.</p>
+<h2>Data</h2>
+<p>My dataset was <a href="http://www.thewho.net/whotabs/tablature/tommy.txt" target="_blank" rel="noopener noreferrer">a collection of guitar tabs for The Who&#8217;s album, Tommy</a>.</p>
+<p>Some stats<br />
+<span class="value info">Text total length: 277,155<br />
+</span><span class="value info">Distinct chars : 91<br />
+</span><span class="value info">Total sequences : 92,369</span></p>
+<p>So yes, it&#8217;s a tiny little dataset.</p>
+<h2>Training</h2>
+<p>I&#8217;m using TFLearn&#8217;s implementation of an LSTM neural net. My setup is as follows:</p>
+<p>Input data -&gt; LSTM layer (512 units, returns full sequence (3d tensor)), -&gt; dropout (50%) -&gt; another LSTM layer (512 units, returns only output of last sequence (2d tensor)) -&gt; dropout (50%) -&gt; fully connected layer (softmax activation).</p>
+<h2>Results</h2>
+<p>On the first epoch with a temperature of 1.0 (meaning we&#8217;re trying to generate novel sequences, less likely to repeat the input data), we get:</p>
+<pre>/ / / C | G F C |
+ |: % |-|---|-----||-------------||-----|-----|----------------6--5------8----4-|-|---6-------
+ --------5-----|-----3------------------|5--------%<span class="text_exposed_show">
+ |-.8------|-8-
+ .|-2-|7------------------------7-----|-----------|x----------------------|--------------|-------------||--|2-------------||----------------|-x-------7----|-7----4-4-x--24--8----|-0---|]||4|----2--90-0-/|--0-----||--------------------|-4----00--a0-000-\0-00-00-40-0---0-20--004-
+ 2-0--0x-4-0-42-0-2%-2-2001--l5|-----12-711|-0-----7x2--0------4--|
+ 5|---|1-----3---------|||2-----------3-|----|--|------------|-----------|---------------3--7|4------------
+ ||5--5--------------|
+ 2 bgsc ko i
+ r@ aO(l' bs ye ] 7T /AAo o -ls5|)|22--010-0-00-0-0-0------2--[2u6I
+ 4]s5LeEao] avcw s4i ie s e|gb stse Y [eer,a i dE
+ g[y Ipaapaetdye] |52--- ( h7seti
+ se C Ty/ixkLou] | 
+ |Wshyo u ut g |[iemhrr efh r
+ ei sp c F</span></pre>
+<p>That&#8217;s actually not bad!</p>
+<p>I let the training run for a while. Interestingly, the temperature being 0.5 tends to yield complete silence:</p>
+<pre>---------------|---------------|----------------|
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</pre>
+<p>This is most likely because the most common sequence <em>is</em> silence: &#8212;&#8212;&#8212;-</p>
+<p>After the seventh epoch, temperature = 1.0:</p>
+<pre>---------------|---------------|----------------|
+|----------------|---------------|---------------|---------|
+|-----------|----------------|-------------------|
+| ------5-------|---------------|---------------|---------------|
+|3-3-3---3---3--|---------------|---------------||---------------|
+|------------#-----------------|---------3-------|
+|----------|-----------------|-------------------|----
+||[glr 1]                                                       |---------------|---------------|
+|5---3----------|---------------|---------------.|----------------||------------------5|---------------|
+|7--7-7-----5------|
+|3-------3--3--3-|5--------------|--7---7---7-7--|
+|7--------------|--------6---------|9---7------------|
+|-.--------------------|----------------------|---
+||--0-0-0-0-0-0-0-0-x-x--|x0-0-0-0-0-0-0-0|x-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|
+|-----------2--||---------------|---------------|---------------|
+|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0---|0-0-0-0-0-0-0-0|
+|---------------|---------------|---------------|-------|</pre>
+<p>That&#8217;s almost a legitimate tab!</p>
+<p>After 12 epochs, temperature=0.5, we get a 14-string guitar tab&#8230;</p>
+<pre>--|5---0---|4-----|5---0---|4-------|0---0---|
+|5-------|5---0---|5-------|5-------|5-------|5-------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+|--------|--------|--------|------</pre>
+<p>After epoch fifteen&#8230;</p>
+<pre>-- Test with temperature of 1.0 --
+--------------|-------------------|-------|
+[CHORRES]
+  |Esus4            |             | 
+3'd gote how come  you  F        x2204x-                        %          |
+S INPatgent a fouter floy the striml? Bust by  wonthethertdppnbpally buf you. Acully tay lecco`-
+      qe be    F e          F77m7 Fm7         FB7      
+                      F
+A                     Bm      -
+Le'd dongo ax and wayk hous mud d mim the feat 
+[VBRSE tOAx]
+========================================================
+SSENSHARC
+Ad The Who
+Written by Pete Townshend (c)1969 Fabuloou Music Ltd,
+#-----------------------------------PLEASE NOTE------------------------------5--#
+Mr's  The  byTusthin ]
+-----------------------------------------------------#
+=======================================================
+SOUSSMBRISMEID =YAB
+Ay The Who
+Written by Pete Townshend (c)-969 Fabulous Music Ltd.
+#------------------------------------EL
+LOREEGmtris                     [wrtted Nowr predelt d)Bb          Whotabs                           x2
+|------------------|------</pre>
+<p>Additional output below.</p>
+<pre>EPOCH 43
+-- TESTING...
+-- Test with temperature of 1.0 --
+--0--0|--------|-----0--|--000000|00000000|
+|--------|--------|--------|
+|--------|--------|--------|--------|
+|--------|--------|--------|--------|
+|[bass]                                                  |
+|0.-0--0-|0---0----------|0-------|----0--------|--------|---------------|
+|--5-----|----5---4-----|7------|---------------|--------|
+|5--5--5 |5----|5-----|5-----|5-----|5-------|5-------|
+|4------|4-------|4----|------|4-----|4-----|4-------|4-------|
+|0-------|-------|0---|------|
+|0-----|0-------|--------|--------|
+|--------|--------|--------|--------|
+|[bass]                                                     |
+|--------------5-|---------------|--------------7|7-7-7-7-7-7-7-7|7-7-7-7-7-7-7-7|
+|---------------|---------------|----------------|
+|[acoustic 1]                                                   |
+|7-----8-----7--|-------------------|7-----8-----10--|---------------|
+|8-----8-----8--|-------------------|7-----8-----10-|---------------|
+|8-----6--------|--8-x-6---6----|8-----8-----10-|----------------|
+|8---x-6-----
+-- Test with temperature of 0.5 --
+--0--0|--------|-----0--|--000000|00000000|
+|---------------|---------------|
+|---------------|---------------|----------------|
+|[acoustic 1]                                                                                           |
+|---------------|---------------|---------------|---------------|
+|[acoustic 1]                                                                 |
+|-----------------------------------|------------------------------|
+         F#7                                     [Lele bitesentare playe: for mo, the gtrste.
+[repeat CHORUS]
+She pitball.
+[CHORUS]
+    |------------------------------------|-----------------------|
+   |-11--------------------|11------------------8---|
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+Previous transcription by:
+Mike (sef@icbr.ufl.edu)
+==============   
+[2K
+| Adam | epoch: 044 | loss: 0.13966 | val_loss: 0.07798 -- iter: 83132/83132
+--
+WARNING:tensorflow:Error encountered when serializing layer_tensor/LSTM.
+Type is unsupported, or the types of the items don't match field type in CollectionDef.
+'list' object has no attribute 'name'
+WARNING:tensorflow:Error encountered when serializing layer_tensor/Dropout.
+Type is unsupported, or the types of the items don't match field type in CollectionDef.
+'list' object has no attribute 'name'
+-- TESTING...
+-- Test with temperature of 1.0 --
+                      
+Third update
+Note: Most of dravh thouthem praye wish play ahe buthe as.
+[VERSE]
+G    B7                               Gm7sus4    E5   G5 G5 B5 B5 
+I'm free.                            A
+    -----------------------------------5------------------------------------------------------#
+Previous-transcriptt| TI The Khorsher or fou dhink is gonde. E                              |[gur 1]                 |
+|-------------0-|---------------|---------------|--------------|
+|---------------|---------------|---------------|---------------|
+|---------------|--0-0-0-0-0-0-0|---------------|--------------|
+|---------------|---------------|---------------|---------------|
+|---------------|---------------|---------------|---------------|
+|[electric]                                                   
+[NOte: saand and bling:
+Em/B         3 -3 -3              |
+   |-----------------------------|-------------------------------|
+||G                                                    |
+|--------|--------|--------|--------|-----
+-- Test with temperature of 0.5 --
+                      
+Third update
+Note: Most of the stagong.
+    -------------------------------------------------------------------------------------------------------------------#
+Previous transcriptt------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+Mr===================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================
+---------------------------------
+
+
+
+
+
+
+-- TESTING...
+-- Test with temperature of 1.0 --
+-|--8---8---6----|8-----8-----10-|----------------|
+|8---x-8-----8--|--10-(8)10-8-------|8-----8-----8--|---7----|---9---|
+|--------|--------|--------|--------|--------|--------|--------|
+|0---- --|0---0---|0----0---------|--------------|
+|0-------|0-------|0---------------|---------------|
+|0--------------|---------------|---------------|----------------|
+|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|-0-0-0-0-0-0-0-0|
+|---------------|---------------|---------------|---------------|
+|---------------|2--------------|---------------|---------------|---------------|
+|[acoustic 1/2]                                                  |
+|-----------|------------------|------------|------|
+gtr 12 12----10/12-|----11-----11--|11-111111111111111111111112|-----|
+|11--11--11--11--|---11/12--12--|------|--------|------|-------|
+|-----|------|---------------|
+|--------|-------------|-------|-------------|-------|---------------|
+|[electric]                     ||
+|3-----------------|
+|-0--0---2-----0------|-0|-----------------||
+||-0-0-0-0-0-0
+-- Test with temperature of 0.5 --
+-|--8---8---6----|8-----8-----10-|----------------|
+|7---9----------|--7---9---5----|7-----9-----11-|----------------|
+|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0-|
+|---------------|---------------|---------------|---------------|
+|---------------|---------------|---------------|----------------|
+|---------------|---------------|----------------|
+|[acoustic 1]                                                                                                                 |
+|------------------------------|-------------------------------|
+|----10 1---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------
+
+
+
+
+
+
+
+
+
+I|---------------|----------------|---------------|
+  A7          D/C  Bb                            G7     Gm
+I'm free.
+    G                   A              D          D*                [Lele sinna bringtr]
+E5-65 B5               |B               |
+   ----------------------------|------------------------------|
+|------------------------------|-----------------------|
+   |-----------------------|-----------------------|
+   |-10-------------------|-10--------------------|
+   |------------------------|---------------------|-3-2--0--0-|
+   |----------- ------------|---------------------|-----------------|
+|---------------|---------------|---------------|---------------|
+|[acoustic 2; ppopetin for panngorn]
+|[electric]                                                |
+|6--------------|--7---- -------|
+|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0-0|
+|---------------|---------------|---------------|----------------|
+|---------------------|-3-----------
+-- Test with temperature of 0.5 --
+yed in standard tuning same as below 
+and begin at bas hear find.
+[BRIDGE]
+F                                       D/A  
+[INTRRO]
+  
+[INTRO Spark: The Kar-- Wer------Wome and forcathord I've formaring and rishe the somme.
+                                                                                                                                      |
+|---------------|---------------|---------------|---------------|
+|---------------|---------------|---------------|---------------|
+|----------------|---------------|---------------|---------------|
+|---------------|---------------|---------------|---------------|
+|[acoustic 1/2]                                                                                                   |
+|7--------------|----------------|------------------|----------------|---------------|
+|-2----2--------|---------------|---------------|---------------|
+|---------------|---------------|---------------|---------------|
+|[acoustic 1/2]                          
+
+
+
+
+[2K
+| Adam | epoch: 047 | loss: 0.13825 -- iter: 83072/83132
+Training Step: 30550  | total loss: 0.12924 | time: 145.633s
+[2K
+| Adam | epoch: 047 | loss: 0.12924 | val_loss: 0.07769 -- iter: 83132/83132
+--
+WARNING:tensorflow:Error encountered when serializing layer_tensor/LSTM.
+Type is unsupported, or the types of the items don't match field type in CollectionDef.
+'list' object has no attribute 'name'
+WARNING:tensorflow:Error encountered when serializing layer_tensor/Dropout.
+Type is unsupported, or the types of the items don't match field type in CollectionDef.
+'list' object has no attribute 'name'
+-- TESTING...
+-- Test with temperature of 1.0 --
+                 |
+  |-----------------------------|-------                     |------------------------------------|---------|
+|7-7-7-7-7-7-7-7-7-7-7-|-7-7-7-7-7-7-7-7-7-7-7-||
+||-----------------------||
+||------------------------3--------||
+||---------------------------||
+||-----------------------------|------------------------|
+   |-----------------------|-----------------------|
+   |/7--------------------------|---------------------4-|
+       |-6----6---- --------6-|-6---------------------|
+        |-6-------------------|-6---------------------|
+       |-8--------------------|-8---------------------|
+                                                                 |
+|----------------|----------------|---------------|
+|[acoustic 2]                                         |
+|2-------|5---0---|4-------|0---5---|4-------|0---5---|4-------|0---5---|4-------|0---5---|4-------|0---5---|4-------|0---5---|
+|3-------|3---3---|5-------|5-------|5-------|5---
+|--|
+|--------|--------|--------|--------|--------|--------|--------|--------|----
+-- Test with temperature of 0.5 --
+                 |
+  |------------------------------|------------------------|
+   |----------------------|-----------------------|
+   |/7--------------------------|---------------------4--|
+   |-----------------------|-------------------------|
+|----10/12---------------------------||
+||---------------------------|---------------------|--------------------|
+|-----5------------------------|-------------------------------|
+||-------------------------|-------------------------------|
+|D              |           |D          |                    |
+                                                                 |
+|7-----8-----7--|-------------------|7---------------|----------------|
+|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|
+|---------------|---------------|---------------|---------------|
+|---------------|---------------|---------------|---------------|
+|[acoustic 2]                                                  |
+|6------|5-------|4-------|--------|4-------|--------|4-------|--------|4-------|--------|4-------
+---------------------------------
+
+
+
+||----------------------------------|--------------------------------|
+|D              |-----------------|7T------------------|
+|[bass]                                                              
+transcribed by                             Whotabs                    
+litgo@aol.com     rev2220110222211                                             |
+|----------------|------------------|---------------------------|
+b|----------------------------------|-------------------------------|
+|----10/12--------------------------------------------#
+===========================================================
+INLRTERE
+By The Who
+Written by Pete Townshend (c)1969 Fabulous Music Ltd.
+#----------------------------------PLEASE NOTE---------------------------------#
+#This file is the author's own work and represents their interpretation of the #
+#song. You may only use this file for private study, scholar
+-- Test with temperature of 0.5 --
+eping.
+(F#) Em        Bm7    Em        Bm7
+       MAb                                                                                      |
+|-------------------------------|-------------------------------------|
+|-----------------------------------|------------------------|
+|------------------------------------|-------------------------------|
+|D              |--------------------|-6---------------------|
+       |----------------------|-----------------------|
+   |---------------------------------|5------------------------------------|0--0---------------------------|
+||-----------------------------------|-------------------------------------|
+|D              |D             | D/C   | A      |               |
+                                                                                                                                                                                                                       |
+|-----------------------------------|-------------------------------|
+|D              |            |D         
+---------------------------------
+
+
+
+revised by                             Whotabs                    
+litgo@aol.com     rev222
+-- Test with temperature of 0.5 --
+-------|--------------|4----4---|---4---4------|
+|2-2-2-2-2-2-2-2-|2-2-2-2-2-2-2-2|2-2-2-2-2-2-2-2|2-2-2-2-2-2-2-0|
+|-------------------------------|------------------------|
+|------------------|----------------------|
+|-----------------|-----------5-5-3|---------------|---------------|---------------|
+|---------------|---------------|---------------|---------------|
+|[acoustic 1]                                                                                   |
+|-----------------------------|-----------------------|
+   |-10-------------------|-10--------------------|
+   |-10-------------------|-10--------------------|
+   |-10-------------------|-10--------------------|
+   |-10-------------------|-10--------------------|
+   |-10-------------------|-10--------------------|
+   |-10------------------------|-1----------------------------3|
+        Eb                                      Dsus4
+||---------------|---------------|---------------|
+|----------------|--------------------|--------------------|
+|----------------|----------------
+---------------------------------
+Run id: lstmmmmmmmmmm
+
+
+
+
+
+
+
+2[2K
+Training Step: 32499  | total loss: 0.11536 | time: 138.266s
+[2K
+| Adam | epoch: 050 | loss: 0.11536 -- iter: 83072/83132
+Training Step: 32500  | total loss: 0.10930 | time: 145.790s
+[2K
+| Adam | epoch: 050 | loss: 0.10930 | val_loss: 0.06763 -- iter: 83132/83132
+--
+WARNING:tensorflow:Error encountered when serializing layer_tensor/LSTM.
+Type is unsupported, or the types of the items don't match field type in CollectionDef.
+'list' object has no attribute 'name'
+WARNING:tensorflow:Error encountered when serializing layer_tensor/Dropout.
+Type is unsupported, or the types of the items don't match field type in CollectionDef.
+'list' object has no attribute 'name'
+-- TESTING...
+-- Test with temperature of 1.0 --
+---------------|--------|-----------------|
+|--------|---------------|--------|-------------3---|
+|--------|---------------|--------------------|
+|-------------------------|-------------------------------------|
+|-----------------------------------|----------------------------|
+|-------------------------------------|----------------------|
+   |[bass]                                          |
+|--------------5-|---------------|---------------|--------------|
+|---------------|---------------|---------------|---------------|
+|[acoustic 2]                                                   |
+|---------------|---------------|------5--------|---------------|
+|---------------|---------------|---------------|---------------|
+|---------------|-------------3-|5--------------|------------------|
+|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0|0-0-0-0-0-0-0-0-|
+|---------------|---------------|---------------|-----------------|
+|------------------|-----------------|---------------|
+                                                    reve-       
+-- Test with temperature of 0.5 --
+---------------|--------|-----------------|
+|--------|---------------|--------|--------------3|--------|---------------|--------|-----------------|
+|--------|---------------|--------|--------------3|--------|-------------3---|
+|--------|---------------|----------------------|-----------|---------|
+|[bass]                                                                      |
+|------------------------------|-------------------------------|
+||-------------------------------------|-------------------------------|
+                                                           |
+|------------------------------|-----------------------|
+   |/9-------------------------|---------------------|
+|-----5-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
+Mrikk is
+
+
+</pre>
+<p>As you can see, it does a pretty good job. I think I need more training data!</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/">Long Short-Term Memory Neural Networks and Guitar Tablature</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>MAT 140 &#038; PGP Encryption</title>
+		<link>https://augustkarlstedt.github.io/blog/2015/01/08/mat-140-pgp-encryption/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2015/01/08/mat-140-pgp-encryption/#respond</comments>
+				<pubDate>Thu, 08 Jan 2015 11:29:57 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Programming]]></category>
+		<category><![CDATA[School]]></category>
+		<category><![CDATA[depaul]]></category>
+		<category><![CDATA[encryption]]></category>
+		<category><![CDATA[mat]]></category>
+		<category><![CDATA[pgp]]></category>
+		<category><![CDATA[programming]]></category>
+
+		<guid isPermaLink="false">http://parad0xdev.wordpress.com/?p=74</guid>
+				<description><![CDATA[<p>I was in MAT 140 &#8211; Discrete Mathematics last quarter and I found that the fundamental theorem of arithmetic is super interesting. When the professor was speaking about it, I asked if it was the base for PGP encryption and it turned out it was. I had an inkling for this, because I previously heard [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2015/01/08/mat-140-pgp-encryption/">MAT 140 &#038; PGP Encryption</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>I was in MAT 140 &#8211; Discrete Mathematics last quarter and I found that the <a href="http://en.wikipedia.org/wiki/Fundamental_theorem_of_arithmetic">fundamental theorem of arithmetic</a> is super interesting. When the professor was speaking about it, I asked if it was the base for <a href="http://en.wikipedia.org/wiki/Pretty_Good_Privacy">PGP encryption</a> and it turned out it was. I had an inkling for this, because I previously heard that PGP generates super large numbers and that&#8217;s where the security lies.</p>
+<p>I&#8217;m kind of skeptical. Sure, with the current state of computing these cryptography keys are nearly impossible to crack, but the fact is that they still <em>are</em> possible to crack. I&#8217;m betting on sooner rather than later.</p>
+<p>Well, I&#8217;ll be looking into how this works in greater detail whenever I have time.</p>
+<p>Anyone know some places to learn more?</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2015/01/08/mat-140-pgp-encryption/">MAT 140 &#038; PGP Encryption</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2015/01/08/mat-140-pgp-encryption/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>New Classes &#8211; Winter Quarter</title>
+		<link>https://augustkarlstedt.github.io/blog/2015/01/08/new-classes-winter-quarter/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2015/01/08/new-classes-winter-quarter/#respond</comments>
+				<pubDate>Thu, 08 Jan 2015 07:45:11 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Game Development]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[School]]></category>
+		<category><![CDATA[CSC]]></category>
+		<category><![CDATA[depaul]]></category>
+		<category><![CDATA[gam]]></category>
+		<category><![CDATA[phl]]></category>
+		<category><![CDATA[quarter]]></category>
+		<category><![CDATA[soc]]></category>
+		<category><![CDATA[winter]]></category>
+
+		<guid isPermaLink="false">http://parad0xdev.wordpress.com/?p=69</guid>
+				<description><![CDATA[<p>Alright so I&#8217;m finally going to discuss the new courses I&#8217;m taking now. CSC 395 &#8211; Research Colloquium &#8211; I&#8217;m pretty excited about this course. It&#8217;s completely online and every week there will be a lecture by a guest speaker on new work in areas of computing. Hopefully there are some talks relevant to my [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2015/01/08/new-classes-winter-quarter/">New Classes &#8211; Winter Quarter</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Alright so I&#8217;m finally going to discuss the new courses I&#8217;m taking now.</p>
+<p>CSC 395 &#8211; Research Colloquium &#8211; I&#8217;m pretty excited about this course. It&#8217;s completely online and every week there will be a lecture by a guest speaker on new work in areas of computing. Hopefully there are some talks relevant to my interests, but nonetheless I love TED talks, so this should be similar.</p>
+<p>GAM 341 &#8211; Introduction to Level Design &#8211; Since I&#8217;m majoring in Computer Game Development and focusing on the programming portion of it, I figured I should also get a little more experience in the non-programming parts. We&#8217;re going to be using Unreal Engine 4, which I&#8217;m pretty stoked about!</p>
+<p>GAM 376 &#8211; AI for Computer Games &#8211; I&#8217;ve always been interested in artificial intelligence. Actually, in the class I&#8217;ll describe next we&#8217;re discussing AI through a philosophical perspective. I&#8217;ll probably post more on this later. As for this course, I hope we don&#8217;t just use some already-implemented AI algorithms and we can actually write our own. I doubt it though.</p>
+<p>PHL 242 &#8211; Philosophy &amp; Technology &#8211; We&#8217;re discussing what technology actually <i>is</i>. Admittedly, when asked this question I thought it was going to be easy to define. I was horribly wrong. While it isn&#8217;t required, I may read the recommended material, &#8220;War in the Age of Intelligent Machines&#8221; by Manuel De Landa. We read the first chapter and thinking about how a robot historian would describe its history is something that made me extremely intrigued.</p>
+<p>SOC 281 &#8211; Sociology of Rock Music &#8211; This is kind of weird, yes, and I know that. It fulfills some requirement that I needed to complete, so hey why not? We&#8217;re going to trace Rock Music from the beginning to now, and I&#8217;m thinking I&#8217;ll learn a lot. The professor asked in the first day of class what we knew about rock. While I do know some stuff, and I listen to rock all the time, I wrote that I had no knowledge of rock. I think this will benefit me because starting with a blank-ish slate should be fun.</p>
+<p>Anyhow, I wasn&#8217;t going to take these classes and considered switching majors. I&#8217;ll explain why in the next post.</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2015/01/08/new-classes-winter-quarter/">New Classes &#8211; Winter Quarter</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2015/01/08/new-classes-winter-quarter/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>GPH 321 &#8211; Completed</title>
+		<link>https://augustkarlstedt.github.io/blog/2015/01/06/gph-321-completed/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2015/01/06/gph-321-completed/#respond</comments>
+				<pubDate>Wed, 07 Jan 2015 05:16:13 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[C++]]></category>
+		<category><![CDATA[Game Development]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[School]]></category>
+		<category><![CDATA[c++]]></category>
+		<category><![CDATA[code]]></category>
+		<category><![CDATA[depaul]]></category>
+		<category><![CDATA[GPH]]></category>
+
+		<guid isPermaLink="false">http://parad0xdev.wordpress.com/?p=58</guid>
+				<description><![CDATA[<p>In this class we created a ray tracer from the ground up. I by &#8220;we&#8221; I mean our professor wrote most of the code and we had to fill in certain class functions. It was pretty terrible, but overall the end result was good. Oh and we had to zip our source code and send [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2015/01/06/gph-321-completed/">GPH 321 &#8211; Completed</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>In this class we created a ray tracer from the ground up. I by &#8220;we&#8221; I mean our professor wrote most of the code and we had to fill in certain class functions. It was pretty terrible, but overall the end result was good. Oh and we had to zip our source code and send it in, instead of simply using something like Github or Bitbucket. The midterm and final SUCKED, simply because it&#8217;s 2015 (well, it was 2014) and written exams for programming finals are absurd. Writing code on paper completely lacks the feel of typing it out using an IDE. Plus, come on, who doesn&#8217;t use IntelliSense, Resharper, Visual Assist X, or some kind of code-completion tool? A fool! And that&#8217;s exactly what we are when we write code by hand.</p>
+<p>Anyhow, here are some screenshots from the course.</p>
+<p>First we simply had to get rays working and detecting collisions.</p>
+<div id="attachment_60" style="width: 310px" class="wp-caption alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_44_45-intersecting-a-polygon.png"><img aria-describedby="caption-attachment-60" class="size-medium wp-image-60" src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_44_45-intersecting-a-polygon.png?w=300" alt="Rays &amp; Intersections" width="300" height="228" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_44_45-intersecting-a-polygon.png 650w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_44_45-intersecting-a-polygon-300x228.png 300w" sizes="(max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-60" class="wp-caption-text">Rays &amp; Intersections</p></div>
+<p>Then we had to ray-trace our first object, a sphere. This is because it&#8217;s pretty simple to represent in math.</p>
+<div id="attachment_61" style="width: 287px" class="wp-caption alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_58_30-implementing-constant-material.png"><img aria-describedby="caption-attachment-61" class="size-medium wp-image-61" src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_58_30-implementing-constant-material.png?w=277" alt="First Ray-traced Object " width="277" height="300" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_58_30-implementing-constant-material.png 520w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_58_30-implementing-constant-material-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px" /></a><p id="caption-attachment-61" class="wp-caption-text">First Ray-traced Object</p></div>
+<p>Then we had to add some shading to that sphere. I know, it isn&#8217;t 100% correct. Spot the error!</p>
+<div id="attachment_62" style="width: 287px" class="wp-caption alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_59_23-implementing-phong-material.png"><img aria-describedby="caption-attachment-62" class="size-medium wp-image-62" src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_59_23-implementing-phong-material.png?w=277" alt="Phong shading" width="277" height="300" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_59_23-implementing-phong-material.png 520w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_59_23-implementing-phong-material-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px" /></a><p id="caption-attachment-62" class="wp-caption-text">Phong Shading</p></div>
+<p>Next came shadows. These are awesome.</p>
+<div id="attachment_63" style="width: 287px" class="wp-caption alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_28-testing-transforms.png"><img aria-describedby="caption-attachment-63" class="size-medium wp-image-63" src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_28-testing-transforms.png?w=277" alt="Ray-traced Shadows" width="277" height="300" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_28-testing-transforms.png 520w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_28-testing-transforms-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px" /></a><p id="caption-attachment-63" class="wp-caption-text">Ray-traced Shadows</p></div>
+<p>Next was reflections. Super easy thanks to how ray-tracing works.</p>
+<div id="attachment_64" style="width: 287px" class="wp-caption alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_58-implementing-reflection.png"><img aria-describedby="caption-attachment-64" class="size-medium wp-image-64" src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_58-implementing-reflection.png?w=277" alt="Ray-traced Reflections" width="277" height="300" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_58-implementing-reflection.png 520w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_58-implementing-reflection-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px" /></a><p id="caption-attachment-64" class="wp-caption-text">Ray-traced Reflections</p></div>
+<p>Then we had to create a checkerboard pattern.</p>
+<div id="attachment_65" style="width: 287px" class="wp-caption alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_11-testing-procedural-texture.png"><img aria-describedby="caption-attachment-65" class="size-medium wp-image-65" src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_11-testing-procedural-texture.png?w=277" alt="Checkerboard" width="277" height="300" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_11-testing-procedural-texture.png 520w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_11-testing-procedural-texture-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px" /></a><p id="caption-attachment-65" class="wp-caption-text">Checkboard</p></div>
+<p>Finally we were to implement Fresnel equations to properly simulate glass. I didn&#8217;t finish this one fully.</p>
+<div id="attachment_66" style="width: 287px" class="wp-caption alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_25-implementing-glass-material.png"><img aria-describedby="caption-attachment-66" class="size-medium wp-image-66" src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_25-implementing-glass-material.png?w=277" alt="Ray-traced Fresnel" width="277" height="300" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_25-implementing-glass-material.png 520w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_25-implementing-glass-material-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px" /></a><p id="caption-attachment-66" class="wp-caption-text">Ray-traced Fresnel</p></div>
+<p>And that was the end of the course. This course was online only, which probably had an impact on my view of it. The course notes weren&#8217;t that great. I repeatedly found myself Googling things that were phrased in strange ways to figure out how to implement them. And variable names like <i>V, N, n1, n2, </i>etc. used throughout the given code made things unnecessarily complex.</p>
+<p>Oh well, it&#8217;s over and done with!</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2015/01/06/gph-321-completed/">GPH 321 &#8211; Completed</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2015/01/06/gph-321-completed/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Updates!</title>
+		<link>https://augustkarlstedt.github.io/blog/2014/10/13/updates/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2014/10/13/updates/#respond</comments>
+				<pubDate>Mon, 13 Oct 2014 18:12:55 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Android]]></category>
+		<category><![CDATA[C++]]></category>
+		<category><![CDATA[Game Development]]></category>
+		<category><![CDATA[Java]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[School]]></category>
+		<category><![CDATA[Work]]></category>
+		<category><![CDATA[ANI]]></category>
+		<category><![CDATA[code]]></category>
+		<category><![CDATA[CSC]]></category>
+		<category><![CDATA[GPH]]></category>
+		<category><![CDATA[java]]></category>
+
+		<guid isPermaLink="false">http://parad0xdev.wordpress.com/?p=47</guid>
+				<description><![CDATA[<p>Obviously I haven&#8217;t posted anything in a while. But it&#8217;s time for a change &#8211; and change is good! I am now currently in three courses that are at least semi-relevant to this blog. ANI 230 &#8211; 3D Design &#38; Modeling CSC 298 &#8211; Internship GPH 321 &#8211; Computer Graphics Development I In ANI 230, we&#8217;re [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/10/13/updates/">Updates!</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Obviously I haven&#8217;t posted anything in a while. But it&#8217;s time for a change &#8211; and change is good!</p>
+<p>I am now currently in three courses that are at least semi-relevant to this blog.</p>
+<ul>
+<li>ANI 230 &#8211; 3D Design &amp; Modeling</li>
+<li>CSC 298 &#8211; Internship</li>
+<li>GPH 321 &#8211; Computer Graphics Development I</li>
+</ul>
+<p>In ANI 230, we&#8217;re learning Maya 2015. Starting with low-poly and now (it&#8217;s about midterms time) we&#8217;re onto animation with keyframes. I&#8217;m particularly interested in ray tracing, because we are building our very own in C++ in GPH 321.</p>
+<p>As for CSC 298, it basically runs alongside the internship that I already have. Here, I&#8217;ve been working with a ton of Java stuff lately interfacing with a USB HID. Through this, I&#8217;ve learned to use Maven &#8211; let me just say it&#8217;s awesome.</p>
+<p>Anyhow, I&#8217;ll be posting some images of the stuff I&#8217;ve been working on soon.</p>
+<p>Also, I may move this entire blog to a domain/host I pay for now. Or maybe even use Github Pages and Jekyll, those look fun.</p>
+<p>Oh and I read a few Android books, great stuff. Loving Android dev.</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/10/13/updates/">Updates!</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/10/13/updates/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Finished with GAM 374</title>
+		<link>https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/#respond</comments>
+				<pubDate>Wed, 25 Jun 2014 04:17:37 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Android]]></category>
+		<category><![CDATA[C++]]></category>
+		<category><![CDATA[Game Development]]></category>
+		<category><![CDATA[Java]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[School]]></category>
+		<category><![CDATA[Work]]></category>
+		<category><![CDATA[374]]></category>
+		<category><![CDATA[azul]]></category>
+		<category><![CDATA[c++]]></category>
+		<category><![CDATA[c++11]]></category>
+		<category><![CDATA[code]]></category>
+		<category><![CDATA[gam]]></category>
+		<category><![CDATA[java]]></category>
+		<category><![CDATA[programming]]></category>
+		<category><![CDATA[school]]></category>
+		<category><![CDATA[work]]></category>
+
+		<guid isPermaLink="false">http://parad0xdev.wordpress.com/?p=35</guid>
+				<description><![CDATA[<p>Well, I chose to turn in exactly what you see in that last blog post. Everything that was required for the assignment was there and it earned me a 95%. I am now focusing my efforts into work with a near-full-time schedule of 38 hours a week. I will be posting stuff about happenings relating [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/">Finished with GAM 374</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Well, I chose to turn in exactly what you see in that last blog post. Everything that was required for the assignment was there and it earned me a 95%.</p>
+<p>I am now focusing my efforts into work with a near-full-time schedule of 38 hours a week. I will be posting stuff about happenings relating to that from here on out.</p>
+<p>I&#8217;m also working on an Android app, so there will be some Java tossed in.</p>
+<p>And last but not least, my love for C++ is growing as I discover C++11 features. There&#8217;s a little code I wrote to test out the functionality of some of the new stuff if you read on.</p>
+<p><span id="more-35"></span></p>
+<p>[code language=&#8221;cpp&#8221;]<br />
+#include &lt;iostream&gt;<br />
+#include &lt;vector&gt;<br />
+#include &lt;algorithm&gt;<br />
+#include &lt;thread&gt;<br />
+#include &lt;memory&gt;</p>
+<p>using namespace std;</p>
+<p>int main()<br />
+{<br />
+	cout &lt;&lt; &quot;BASIC USE OF AUTO\n&quot;;<br />
+	auto hi = &quot;Hello, World!&quot;;<br />
+	cout &lt;&lt; hi &lt;&lt; endl;</p>
+<p>	cout &lt;&lt; &quot;\nLAMBDA FUNCTIONS\n&quot;;<br />
+	auto squareIt = [hi](int i) { cout &lt;&lt; hi &lt;&lt; &quot; from inside a lambda! &quot;; return i * i; };<br />
+	cout &lt;&lt; squareIt(10) &lt;&lt; endl;</p>
+<p>	cout &lt;&lt; &quot;\nPOINTERS AND NULLPTR\n&quot;;<br />
+	shared_ptr&lt;int&gt; sp;<br />
+	unique_ptr&lt;int&gt; up;<br />
+	weak_ptr&lt;int&gt; wp;<br />
+	auto pointer = nullptr;</p>
+<p>	cout &lt;&lt; &quot;\nUNIFORM INITIALIZATION AND INITIALIZER LISTS\n&quot;;<br />
+	int x{ 17 };<br />
+	cout &lt;&lt; x &lt;&lt; endl;<br />
+	vector&lt;int&gt; v{ 2, 1, 7, 9, 4 };</p>
+<p>	cout &lt;&lt; &quot;\nRANGE FOR\n&quot;;<br />
+	for (auto d : v)<br />
+	{<br />
+		cout &lt;&lt; d &lt;&lt; endl;<br />
+	}</p>
+<p>	cout &lt;&lt; &quot;\nNONMEMBER BEGIN AND END\n&quot;;<br />
+	sort(begin(v), end(v));</p>
+<p>	for (auto d : v)<br />
+	{<br />
+		cout &lt;&lt; d &lt;&lt; endl;<br />
+	}</p>
+<p>	cout &lt;&lt; &quot;\nCOMBINATION OF NONMEMBER BEGIN AND END AND LAMBDA FUNCTIONS\n&quot;;<br />
+	find_if(begin(v), end(v), [](int i) { if (i % 2) { cout &lt;&lt; i &lt;&lt; endl; } return 0; });</p>
+<p>	cout &lt;&lt; &quot;\nTHREADS\n&quot;;<br />
+	for (int i = 0; i &lt; 100; ++i)<br />
+	{<br />
+		thread([]{ cout &lt;&lt; &quot;I&#8217;m a thread! &quot; &lt;&lt; this_thread::get_id() &lt;&lt; endl; }).join();<br />
+	}</p>
+<p>	cin.get();<br />
+	return 0;<br />
+}<br />
+[/code]</p>
+<p>That&#8217;s all for now! Thanks for reading.</pre>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/">Finished with GAM 374</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Walls and Collision</title>
+		<link>https://augustkarlstedt.github.io/blog/2014/06/12/walls-and-collision/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2014/06/12/walls-and-collision/#respond</comments>
+				<pubDate>Fri, 13 Jun 2014 04:07:06 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Game Development]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[School]]></category>
+		<category><![CDATA[374]]></category>
+		<category><![CDATA[azul]]></category>
+		<category><![CDATA[code]]></category>
+		<category><![CDATA[collision]]></category>
+		<category><![CDATA[gam]]></category>
+		<category><![CDATA[physics]]></category>
+		<category><![CDATA[ugly]]></category>
+
+		<guid isPermaLink="false">http://parad0xdev.wordpress.com/?p=31</guid>
+				<description><![CDATA[<p>Azul doesn&#8217;t support real collision, so I have to check the position of stuff. It kinda sucks. Hopefully there will be improvements on the physics components, along with collision in Azul. It&#8217;s coming together, but the code isn&#8217;t pretty.</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/06/12/walls-and-collision/">Walls and Collision</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Azul doesn&#8217;t support <em>real</em> collision, so I have to check the position of stuff. It kinda sucks. Hopefully there will be improvements on the physics components, along with collision in Azul.</p>
+<p>It&#8217;s coming together, but the code isn&#8217;t pretty.</p>
+<p><a href="http://augustkarlstedt.github.io/wp-content/uploads/2014/06/2014-06-12-23_05_02-final-project-tanks_.png"><img id="i-32" class="size-full wp-image" src="http://augustkarlstedt.github.io/wp-content/uploads/2014/06/2014-06-12-23_05_02-final-project-tanks_.png?w=650" alt="Image" /></a></p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/06/12/walls-and-collision/">Walls and Collision</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/06/12/walls-and-collision/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>More Work</title>
+		<link>https://augustkarlstedt.github.io/blog/2014/06/12/more-work/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2014/06/12/more-work/#respond</comments>
+				<pubDate>Fri, 13 Jun 2014 02:12:02 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Game Development]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[School]]></category>
+		<category><![CDATA[374]]></category>
+		<category><![CDATA[azul]]></category>
+		<category><![CDATA[depaul]]></category>
+		<category><![CDATA[gam]]></category>
+		<category><![CDATA[player]]></category>
+		<category><![CDATA[tanks]]></category>
+		<category><![CDATA[two]]></category>
+
+		<guid isPermaLink="false">http://parad0xdev.wordpress.com/2014/06/12/more-work/</guid>
+				<description><![CDATA[<p>Instead of cloning Tanks! I&#8217;m actually going to create a two player tank battle game. It won&#8217;t be the best, because of time constraints, but it will have one player control a tank with the keyboard (WASD + Arrow keys to rotate turret) and the other player using a controller.</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/06/12/more-work/">More Work</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Instead of cloning Tanks! I&#8217;m actually going to create a two player tank battle game. It won&#8217;t be the best, because of time constraints, but it will have one player control a tank with the keyboard (WASD + Arrow keys to rotate turret) and the other player using a controller.</p>
+<p><a href="http://augustkarlstedt.github.io/wp-content/uploads/2014/06/2014-06-12-21_10_15-clipboard.png"><img id="i-28" class="size-full wp-image" src="http://augustkarlstedt.github.io/wp-content/uploads/2014/06/2014-06-12-21_10_15-clipboard.png?w=650" alt="Image" /></a></p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/06/12/more-work/">More Work</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/06/12/more-work/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Bullets!</title>
+		<link>https://augustkarlstedt.github.io/blog/2014/06/01/bullets/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2014/06/01/bullets/#respond</comments>
+				<pubDate>Sun, 01 Jun 2014 23:42:39 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Game Development]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[School]]></category>
+		<category><![CDATA[374]]></category>
+		<category><![CDATA[azul]]></category>
+		<category><![CDATA[bullets]]></category>
+		<category><![CDATA[c++]]></category>
+		<category><![CDATA[depaul]]></category>
+		<category><![CDATA[gam]]></category>
+		<category><![CDATA[programming]]></category>
+
+		<guid isPermaLink="false">http://parad0xdev.wordpress.com/2014/06/01/bullets/</guid>
+				<description><![CDATA[<p>Added bullets. Pretty simple really.</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/06/01/bullets/">Bullets!</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p><iframe class='youtube-player' type='text/html' width='730' height='411' src='https://www.youtube.com/embed/QpQPwHxBJFw?version=3&#038;rel=1&#038;fs=1&#038;autohide=2&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' allowfullscreen='true' style='border:0;'></iframe></p>
+<p>Added bullets. Pretty simple really.</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/06/01/bullets/">Bullets!</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/06/01/bullets/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>Player Tank!</title>
+		<link>https://augustkarlstedt.github.io/blog/2014/05/23/player-tank/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2014/05/23/player-tank/#respond</comments>
+				<pubDate>Sat, 24 May 2014 04:13:39 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Game Development]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[School]]></category>
+		<category><![CDATA[374]]></category>
+		<category><![CDATA[azul]]></category>
+		<category><![CDATA[depaul]]></category>
+		<category><![CDATA[engine]]></category>
+		<category><![CDATA[gam]]></category>
+		<category><![CDATA[game]]></category>
+		<category><![CDATA[greenshot]]></category>
+		<category><![CDATA[input]]></category>
+		<category><![CDATA[mouse]]></category>
+		<category><![CDATA[player]]></category>
+		<category><![CDATA[tanks]]></category>
+		<category><![CDATA[unity]]></category>
+
+		<guid isPermaLink="false">http://parad0xdev.wordpress.com/?p=12</guid>
+				<description><![CDATA[<p>I&#8217;ve finally done some work on this and got the player tank working. Azul doesn&#8217;t handle mouse input very well (I&#8217;m spoiled by Unity), so it&#8217;s all keyboard controls. WASD controls the tank movement LEFT/RIGHT control the turret I&#8217;m thinking the up arrow will fire a shell and the down arrow will lay a landmine. [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/05/23/player-tank/">Player Tank!</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>I&#8217;ve finally done some work on this and got the player tank working. Azul doesn&#8217;t handle mouse input very well (I&#8217;m spoiled by Unity), so it&#8217;s all keyboard controls.</p>
+<p>WASD controls the tank movement</p>
+<p>LEFT/RIGHT control the turret</p>
+<p>I&#8217;m thinking the up arrow will fire a shell and the down arrow will lay a landmine.</p>
+<h2><a href="http://augustkarlstedt.github.io/wp-content/uploads/2014/05/2014-05-23-23_12_00-final-project-tanks_.png"><img id="i-17" class="size-full wp-image" src="http://augustkarlstedt.github.io/wp-content/uploads/2014/05/2014-05-23-23_12_00-final-project-tanks_.png?w=650" alt="Image" /></a></h2>
+<h2></h2>
+<p>Screenshot taken with <a href="http://getgreenshot.org/">Greenshot</a>.</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/05/23/player-tank/">Player Tank!</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/05/23/player-tank/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+		<item>
+		<title>First Day of Final Project</title>
+		<link>https://augustkarlstedt.github.io/blog/2014/05/18/first-day-of-final-project/</link>
+				<comments>https://augustkarlstedt.github.io/blog/2014/05/18/first-day-of-final-project/#respond</comments>
+				<pubDate>Sun, 18 May 2014 16:37:55 +0000</pubDate>
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+				<category><![CDATA[Game Development]]></category>
+		<category><![CDATA[Programming]]></category>
+		<category><![CDATA[School]]></category>
+		<category><![CDATA[374]]></category>
+		<category><![CDATA[azul]]></category>
+		<category><![CDATA[depaul]]></category>
+		<category><![CDATA[design]]></category>
+		<category><![CDATA[gam]]></category>
+		<category><![CDATA[game]]></category>
+		<category><![CDATA[patterns]]></category>
+		<category><![CDATA[programming]]></category>
+
+		<guid isPermaLink="false">http://parad0xdev.wordpress.com/?p=3</guid>
+				<description><![CDATA[<p>Today marks the first day I&#8217;ve started working on the final project for my GAM 374: Fundamentals of Game Programming I class. I&#8217;ve decided to recreate Tank &#8211; well actually, the Wii Play version called &#8220;Tanks!&#8220;. We&#8217;re using the DePaul game engine called Azul &#8211; which I think could definitely use an engine overhaul since it&#8217;s based [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/05/18/first-day-of-final-project/">First Day of Final Project</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+								<content:encoded><![CDATA[<p>Today marks the first day I&#8217;ve started working on the final project for my GAM 374: Fundamentals of Game Programming I class. I&#8217;ve decided to recreate <a href="http://en.wikipedia.org/wiki/Tank_(arcade_game)">Tank</a> &#8211; well actually, the Wii Play version called &#8220;<a href="http://en.wikipedia.org/wiki/Wii_Play#Tanks.21">Tanks!</a>&#8220;.</p>
+<p>We&#8217;re using the DePaul game engine called Azul &#8211; which I think could definitely use an engine overhaul since it&#8217;s based on the singleton design pattern. Gross.</p>
+<p><a href="http://gameprogrammingpatterns.com/">Click to learn about Game Programming Patterns</a></p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/05/18/first-day-of-final-project/">First Day of Final Project</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/05/18/first-day-of-final-project/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+							</item>
+	</channel>
+</rss>
