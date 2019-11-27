@@ -187,7 +187,7 @@ p.has-text-color a {color: inherit;}
 .wp-block-pullquote p {font-size: 28px;line-height: 1.6;}
 .wp-block-pullquote cite, .wp-block-pullquote footer {position: relative;}
 .wp-block-pullquote .has-text-color a {color: inherit;}
-.wp-block-pullquote:not(.is-style-solid-color) {background: 0 0;}
+.wp-block-pullquote:not(.is-style-solid-color) {background: none;}
 .wp-block-pullquote.is-style-solid-color {border: none;}
 .wp-block-pullquote.is-style-solid-color blockquote {margin-left: auto;margin-right: auto;text-align: left;max-width: 60%;}
 .wp-block-pullquote.is-style-solid-color blockquote p {margin-top: 0;margin-bottom: 0;font-size: 32px;}
@@ -257,7 +257,7 @@ p.has-text-color a {color: inherit;}
 .wp-block-social-links:not(.is-style-logos-only) .wp-social-link-wordpress {background-color: #3499cd;color: #fff;}
 .wp-block-social-links:not(.is-style-logos-only) .wp-social-link-yelp {background-color: #d32422;color: #fff;}
 .wp-block-social-links:not(.is-style-logos-only) .wp-social-link-youtube {background-color: #ff0100;color: #fff;}
-.wp-block-social-links.is-style-logos-only .wp-social-link {background: 0 0;padding: 4px;}
+.wp-block-social-links.is-style-logos-only .wp-social-link {background: none;padding: 4px;}
 .wp-block-social-links.is-style-logos-only .wp-social-link svg {width: 28px;height: 28px;}
 .wp-block-social-links.is-style-logos-only .wp-social-link-amazon {color: #f90;}
 .wp-block-social-links.is-style-logos-only .wp-social-link-bandcamp {color: #1ea0c3;}
