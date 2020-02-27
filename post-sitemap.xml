@@ -2,15 +2,15 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/</loc>
-		<lastmod>2019-11-26T18:41:28-08:00</lastmod>
+		<lastmod>2020-02-22T17:42:24+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2014/05/18/first-day-of-final-project/</loc>
-		<lastmod>2014-05-18T09:37:55-07:00</lastmod>
+		<lastmod>2014-05-18T16:37:55+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2014/05/23/player-tank/</loc>
-		<lastmod>2014-05-23T21:13:39-07:00</lastmod>
+		<lastmod>2014-05-24T04:13:39+00:00</lastmod>
 		<image:image>
 			<image:loc>http://augustkarlstedt.github.io/wp-content/uploads/2014/05/2014-05-23-23_12_00-final-project-tanks_.png?w=650</image:loc>
 			<image:caption><![CDATA[Image]]></image:caption>
@@ -18,11 +18,11 @@
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2014/06/01/bullets/</loc>
-		<lastmod>2014-06-01T16:42:39-07:00</lastmod>
+		<lastmod>2014-06-01T23:42:39+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2014/06/12/more-work/</loc>
-		<lastmod>2014-06-12T19:12:02-07:00</lastmod>
+		<lastmod>2014-06-13T02:12:02+00:00</lastmod>
 		<image:image>
 			<image:loc>http://augustkarlstedt.github.io/wp-content/uploads/2014/06/2014-06-12-21_10_15-clipboard.png?w=650</image:loc>
 			<image:caption><![CDATA[Image]]></image:caption>
@@ -30,7 +30,7 @@
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2014/06/12/walls-and-collision/</loc>
-		<lastmod>2014-06-12T21:07:06-07:00</lastmod>
+		<lastmod>2014-06-13T04:07:06+00:00</lastmod>
 		<image:image>
 			<image:loc>http://augustkarlstedt.github.io/wp-content/uploads/2014/06/2014-06-12-23_05_02-final-project-tanks_.png?w=650</image:loc>
 			<image:caption><![CDATA[Image]]></image:caption>
@@ -38,15 +38,15 @@
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/</loc>
-		<lastmod>2014-06-24T21:17:37-07:00</lastmod>
+		<lastmod>2014-06-25T04:17:37+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2014/10/13/updates/</loc>
-		<lastmod>2014-10-13T11:12:55-07:00</lastmod>
+		<lastmod>2014-10-13T18:12:55+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2015/01/06/ani-230-completed/</loc>
-		<lastmod>2015-01-06T20:19:41-08:00</lastmod>
+		<lastmod>2015-01-07T04:19:41+00:00</lastmod>
 		<image:image>
 			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2015/01/01.jpg</image:loc>
 			<image:caption><![CDATA[Simple Fan - Maya 2014]]></image:caption>
@@ -70,7 +70,7 @@
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2015/01/06/gph-321-completed/</loc>
-		<lastmod>2015-01-06T21:16:13-08:00</lastmod>
+		<lastmod>2015-01-07T05:16:13+00:00</lastmod>
 		<image:image>
 			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_44_45-intersecting-a-polygon.png</image:loc>
 			<image:caption><![CDATA[Rays &amp; Intersections]]></image:caption>
@@ -102,47 +102,47 @@
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2015/01/08/new-classes-winter-quarter/</loc>
-		<lastmod>2015-01-07T23:45:11-08:00</lastmod>
+		<lastmod>2015-01-08T07:45:11+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2015/01/08/mat-140-pgp-encryption/</loc>
-		<lastmod>2015-01-08T03:29:57-08:00</lastmod>
+		<lastmod>2015-01-08T11:29:57+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2015/01/19/dat-college-feel/</loc>
-		<lastmod>2015-01-19T09:18:41-08:00</lastmod>
+		<lastmod>2015-01-19T17:18:41+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2016/02/09/winter-quarter-2015-in-retrospect/</loc>
-		<lastmod>2016-02-09T01:07:20-08:00</lastmod>
+		<lastmod>2016-02-09T09:07:20+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2016/03/08/spring-quarter-2015/</loc>
-		<lastmod>2016-03-08T21:24:53-08:00</lastmod>
+		<lastmod>2016-03-09T05:24:53+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2016/03/08/fall-quarter-2015/</loc>
-		<lastmod>2016-03-08T21:29:10-08:00</lastmod>
+		<lastmod>2016-03-09T05:29:10+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2016/03/08/winter-quarter-2016/</loc>
-		<lastmod>2016-03-08T21:31:32-08:00</lastmod>
+		<lastmod>2016-03-09T05:31:32+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2016/03/08/spring-quarter-2016-final-quarter-as-an-undergrad/</loc>
-		<lastmod>2016-03-08T21:34:32-08:00</lastmod>
+		<lastmod>2016-03-09T05:34:32+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2016/09/15/warning-dont-install-the-windows-subsystem-for-linux-beta-if-you-have-bitlocker-enabled/</loc>
-		<lastmod>2016-09-15T21:24:58-07:00</lastmod>
+		<lastmod>2016-09-16T04:24:58+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2016/09/15/kali-linux-on-raspberry-pi-2/</loc>
-		<lastmod>2016-09-15T21:28:29-07:00</lastmod>
+		<lastmod>2016-09-16T04:28:29+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2016/09/15/pgp-source-code-and-internals/</loc>
-		<lastmod>2016-09-15T21:57:49-07:00</lastmod>
+		<lastmod>2016-09-16T04:57:49+00:00</lastmod>
 		<image:image>
 			<image:loc>http://augustkarlstedt.github.io/wp-content/uploads/2016/09/pgp.jpg</image:loc>
 			<image:caption><![CDATA[pgp]]></image:caption>
@@ -150,15 +150,15 @@
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2016/11/21/how-to-fix-inkscapes-default-units-and-finally-work-with-illustrator/</loc>
-		<lastmod>2016-11-21T14:20:00-08:00</lastmod>
+		<lastmod>2016-11-21T22:20:00+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2016/11/26/amazing-resource-for-linear-algebra/</loc>
-		<lastmod>2016-11-26T20:03:42-08:00</lastmod>
+		<lastmod>2016-11-27T04:03:42+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2016/11/29/fall-quarter-2016-first-graduate-quarter/</loc>
-		<lastmod>2016-11-29T16:26:06-08:00</lastmod>
+		<lastmod>2016-11-30T00:26:06+00:00</lastmod>
 		<image:image>
 			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2016/11/numbers-time-watch-white.jpg</image:loc>
 			<image:title><![CDATA[numbers-time-watch-white]]></image:title>
@@ -166,11 +166,11 @@
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2016/11/29/winter-quarter-2017/</loc>
-		<lastmod>2016-11-29T16:50:15-08:00</lastmod>
+		<lastmod>2016-11-30T00:50:15+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/</loc>
-		<lastmod>2017-05-13T19:54:02-07:00</lastmod>
+		<lastmod>2017-05-14T02:54:02+00:00</lastmod>
 		<image:image>
 			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2017/05/robot-guitar.jpg</image:loc>
 			<image:title><![CDATA[robot-guitar]]></image:title>
@@ -178,19 +178,19 @@
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2017/01/31/the-best-video-series-for-linear-algebra/</loc>
-		<lastmod>2018-09-24T17:29:07-07:00</lastmod>
+		<lastmod>2018-09-25T00:29:07+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2016/11/23/holoportation/</loc>
-		<lastmod>2018-09-24T17:29:43-07:00</lastmod>
+		<lastmod>2018-09-25T00:29:43+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2016/11/05/microsoft-research-hololens/</loc>
-		<lastmod>2018-09-24T17:30:36-07:00</lastmod>
+		<lastmod>2018-09-25T00:30:36+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2016/10/13/the-ultimate-slack-emoji-latex/</loc>
-		<lastmod>2018-09-24T19:36:21-07:00</lastmod>
+		<lastmod>2018-09-25T02:36:21+00:00</lastmod>
 		<image:image>
 			<image:loc>http://augustkarlstedt.github.io/wp-content/uploads/2016/10/2016-10-13-02_57_54-clipboard.png</image:loc>
 			<image:caption><![CDATA[2016-10-13-02_57_54-clipboard]]></image:caption>
@@ -210,19 +210,26 @@
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2018/09/26/new-blog-stuff/</loc>
-		<lastmod>2018-09-26T14:27:17-07:00</lastmod>
+		<lastmod>2018-09-26T21:27:17+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2016/03/21/philosophy-on-relationships/</loc>
-		<lastmod>2019-11-26T17:52:44-08:00</lastmod>
+		<lastmod>2019-11-27T01:52:44+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2017/05/10/spring-quarter-2017/</loc>
-		<lastmod>2019-11-26T17:56:15-08:00</lastmod>
+		<lastmod>2019-11-27T01:56:15+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2018/10/11/learning-about-android-and-fireos/</loc>
-		<lastmod>2019-11-26T18:41:28-08:00</lastmod>
+		<lastmod>2019-11-27T02:41:28+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://augustkarlstedt.github.io/blog/2020/02/26/going-through-old-source-code/</loc>
+		<lastmod>2020-02-26T22:30:00+00:00</lastmod>
+		<image:image>
+			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2020/01/Annotation-2020-01-06-185709.png</image:loc>
+		</image:image>
 	</url>
 </urlset>
 <!-- XML Sitemap generated by Yoast SEO -->
