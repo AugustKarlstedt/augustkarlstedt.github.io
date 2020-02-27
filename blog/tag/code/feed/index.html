@@ -15,7 +15,7 @@
 	<atom:link href="https://augustkarlstedt.github.io/blog/tag/code/feed/" rel="self" type="application/rss+xml" />
 	<link>https://augustkarlstedt.github.io/</link>
 	<description>Machine Learning Researcher, Software Engineer, Game Developer, and Consultant</description>
-	<lastBuildDate>Wed, 07 Jan 2015 05:16:13 +0000</lastBuildDate>
+	<lastBuildDate>Thu, 27 Feb 2020 02:04:37 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -41,23 +41,75 @@
 				<description><![CDATA[<p>In this class we created a ray tracer from the ground up. I by &#8220;we&#8221; I mean our professor wrote most of the code and we had to fill in certain class functions. It was pretty terrible, but overall the end result was good. Oh and we had to zip our source code and send [&#8230;]</p>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2015/01/06/gph-321-completed/">GPH 321 &#8211; Completed</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></description>
-								<content:encoded><![CDATA[<p>In this class we created a ray tracer from the ground up. I by &#8220;we&#8221; I mean our professor wrote most of the code and we had to fill in certain class functions. It was pretty terrible, but overall the end result was good. Oh and we had to zip our source code and send it in, instead of simply using something like Github or Bitbucket. The midterm and final SUCKED, simply because it&#8217;s 2015 (well, it was 2014) and written exams for programming finals are absurd. Writing code on paper completely lacks the feel of typing it out using an IDE. Plus, come on, who doesn&#8217;t use IntelliSense, Resharper, Visual Assist X, or some kind of code-completion tool? A fool! And that&#8217;s exactly what we are when we write code by hand.</p>
+								<content:encoded><![CDATA[
+<p>In this class we created a ray tracer from the ground up. I by &#8220;we&#8221; I mean our professor wrote most of the code and we had to fill in certain class functions. It was pretty terrible, but overall the end result was good. Oh and we had to zip our source code and send it in, instead of simply using something like GitHub or Bitbucket. The midterm and final SUCKED, simply because it&#8217;s 2015 (well, it was 2014) and written exams for programming finals are absurd. Writing code on paper completely lacks the feel of typing it out using an IDE. Plus, come on, who doesn&#8217;t use IntelliSense, Resharper, Visual Assist X, or some kind of code-completion tool? A fool! And that&#8217;s exactly what we are when we write code by hand.</p>
+
+
+
 <p>Anyhow, here are some screenshots from the course.</p>
+
+
+
 <p>First we simply had to get rays working and detecting collisions.</p>
-<div id="attachment_60" style="width: 310px" class="wp-caption alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_44_45-intersecting-a-polygon.png"><img aria-describedby="caption-attachment-60" class="size-medium wp-image-60" src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_44_45-intersecting-a-polygon.png?w=300" alt="Rays &amp; Intersections" width="300" height="228" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_44_45-intersecting-a-polygon.png 650w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_44_45-intersecting-a-polygon-300x228.png 300w" sizes="(max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-60" class="wp-caption-text">Rays &amp; Intersections</p></div>
+
+
+
+<figure class="wp-block-image alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_44_45-intersecting-a-polygon.png"><img src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_44_45-intersecting-a-polygon.png?w=300" alt="Rays &amp; Intersections" class="wp-image-60" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_44_45-intersecting-a-polygon.png 650w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_44_45-intersecting-a-polygon-300x228.png 300w" sizes="(max-width: 650px) 100vw, 650px" /></a><figcaption>Rays &amp; Intersections</figcaption></figure>
+
+
+
 <p>Then we had to ray-trace our first object, a sphere. This is because it&#8217;s pretty simple to represent in math.</p>
-<div id="attachment_61" style="width: 287px" class="wp-caption alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_58_30-implementing-constant-material.png"><img aria-describedby="caption-attachment-61" class="size-medium wp-image-61" src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_58_30-implementing-constant-material.png?w=277" alt="First Ray-traced Object " width="277" height="300" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_58_30-implementing-constant-material.png 520w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_58_30-implementing-constant-material-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px" /></a><p id="caption-attachment-61" class="wp-caption-text">First Ray-traced Object</p></div>
-<p>Then we had to add some shading to that sphere. I know, it isn&#8217;t 100% correct. Spot the error!</p>
-<div id="attachment_62" style="width: 287px" class="wp-caption alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_59_23-implementing-phong-material.png"><img aria-describedby="caption-attachment-62" class="size-medium wp-image-62" src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_59_23-implementing-phong-material.png?w=277" alt="Phong shading" width="277" height="300" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_59_23-implementing-phong-material.png 520w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_59_23-implementing-phong-material-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px" /></a><p id="caption-attachment-62" class="wp-caption-text">Phong Shading</p></div>
+
+
+
+<figure class="wp-block-image alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_58_30-implementing-constant-material.png"><img src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_58_30-implementing-constant-material.png?w=277" alt="First Ray-traced Object " class="wp-image-61" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_58_30-implementing-constant-material.png 520w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_58_30-implementing-constant-material-277x300.png 277w" sizes="(max-width: 520px) 100vw, 520px" /></a><figcaption>First Ray-traced Object</figcaption></figure>
+
+
+
+<p>Then we had to add some shading to that sphere. I know,&nbsp;it isn&#8217;t 100% correct. Spot the error!</p>
+
+
+
+<figure class="wp-block-image alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_59_23-implementing-phong-material.png"><img src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_59_23-implementing-phong-material.png?w=277" alt="Phong shading" class="wp-image-62" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_59_23-implementing-phong-material.png 520w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_59_23-implementing-phong-material-277x300.png 277w" sizes="(max-width: 520px) 100vw, 520px" /></a><figcaption>Phong Shading</figcaption></figure>
+
+
+
 <p>Next came shadows. These are awesome.</p>
-<div id="attachment_63" style="width: 287px" class="wp-caption alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_28-testing-transforms.png"><img aria-describedby="caption-attachment-63" class="size-medium wp-image-63" src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_28-testing-transforms.png?w=277" alt="Ray-traced Shadows" width="277" height="300" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_28-testing-transforms.png 520w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_28-testing-transforms-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px" /></a><p id="caption-attachment-63" class="wp-caption-text">Ray-traced Shadows</p></div>
+
+
+
+<figure class="wp-block-image alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_28-testing-transforms.png"><img src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_28-testing-transforms.png?w=277" alt="Ray-traced Shadows" class="wp-image-63" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_28-testing-transforms.png 520w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_28-testing-transforms-277x300.png 277w" sizes="(max-width: 520px) 100vw, 520px" /></a><figcaption>Ray-traced Shadows</figcaption></figure>
+
+
+
 <p>Next was reflections. Super easy thanks to how ray-tracing works.</p>
-<div id="attachment_64" style="width: 287px" class="wp-caption alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_58-implementing-reflection.png"><img aria-describedby="caption-attachment-64" class="size-medium wp-image-64" src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_58-implementing-reflection.png?w=277" alt="Ray-traced Reflections" width="277" height="300" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_58-implementing-reflection.png 520w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_58-implementing-reflection-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px" /></a><p id="caption-attachment-64" class="wp-caption-text">Ray-traced Reflections</p></div>
+
+
+
+<figure class="wp-block-image alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_58-implementing-reflection.png"><img src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_58-implementing-reflection.png?w=277" alt="Ray-traced Reflections" class="wp-image-64" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_58-implementing-reflection.png 520w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_58-implementing-reflection-277x300.png 277w" sizes="(max-width: 520px) 100vw, 520px" /></a><figcaption>Ray-traced Reflections</figcaption></figure>
+
+
+
 <p>Then we had to create a checkerboard pattern.</p>
-<div id="attachment_65" style="width: 287px" class="wp-caption alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_11-testing-procedural-texture.png"><img aria-describedby="caption-attachment-65" class="size-medium wp-image-65" src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_11-testing-procedural-texture.png?w=277" alt="Checkerboard" width="277" height="300" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_11-testing-procedural-texture.png 520w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_11-testing-procedural-texture-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px" /></a><p id="caption-attachment-65" class="wp-caption-text">Checkboard</p></div>
+
+
+
+<figure class="wp-block-image alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_11-testing-procedural-texture.png"><img src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_11-testing-procedural-texture.png?w=277" alt="Checkerboard" class="wp-image-65" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_11-testing-procedural-texture.png 520w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_11-testing-procedural-texture-277x300.png 277w" sizes="(max-width: 520px) 100vw, 520px" /></a><figcaption>Checkboard</figcaption></figure>
+
+
+
 <p>Finally we were to implement Fresnel equations to properly simulate glass. I didn&#8217;t finish this one fully.</p>
-<div id="attachment_66" style="width: 287px" class="wp-caption alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_25-implementing-glass-material.png"><img aria-describedby="caption-attachment-66" class="size-medium wp-image-66" src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_25-implementing-glass-material.png?w=277" alt="Ray-traced Fresnel" width="277" height="300" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_25-implementing-glass-material.png 520w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_25-implementing-glass-material-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px" /></a><p id="caption-attachment-66" class="wp-caption-text">Ray-traced Fresnel</p></div>
-<p>And that was the end of the course. This course was online only, which probably had an impact on my view of it. The course notes weren&#8217;t that great. I repeatedly found myself Googling things that were phrased in strange ways to figure out how to implement them. And variable names like <i>V, N, n1, n2, </i>etc. used throughout the given code made things unnecessarily complex.</p>
+
+
+
+<figure class="wp-block-image alignnone"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_25-implementing-glass-material.png"><img src="http://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_25-implementing-glass-material.png?w=277" alt="Ray-traced Fresnel" class="wp-image-66" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_25-implementing-glass-material.png 520w, https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_25-implementing-glass-material-277x300.png 277w" sizes="(max-width: 520px) 100vw, 520px" /></a><figcaption>Ray-traced Fresnel</figcaption></figure>
+
+
+
+<p>And that was the end of the course. This course was online only, which probably had an impact on my view of it. The course notes weren&#8217;t that great. I repeatedly found myself Googling things that were phrased in strange ways to figure out how to implement them. And variable names like <i>V, N, n1, n2,&nbsp;</i>etc. used throughout the given code made things unnecessarily complex.</p>
+
+
+
 <p>Oh well, it&#8217;s over and done with!</p>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2015/01/06/gph-321-completed/">GPH 321 &#8211; Completed</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></content:encoded>
@@ -84,20 +136,38 @@
 		<category><![CDATA[java]]></category>
 
 		<guid isPermaLink="false">http://parad0xdev.wordpress.com/?p=47</guid>
-				<description><![CDATA[<p>Obviously I haven&#8217;t posted anything in a while. But it&#8217;s time for a change &#8211; and change is good! I am now currently in three courses that are at least semi-relevant to this blog. ANI 230 &#8211; 3D Design &#38; Modeling CSC 298 &#8211; Internship GPH 321 &#8211; Computer Graphics Development I In ANI 230, we&#8217;re [&#8230;]</p>
+				<description><![CDATA[<p>Obviously I haven&#8217;t posted anything in a while.&#160;But it&#8217;s time for a change &#8211; and change is good! I am now currently in three courses that are at least semi-relevant to this blog. ANI 230 &#8211; 3D Design &#38; Modeling CSC 298 &#8211; Internship GPH 321 &#8211; Computer Graphics Development I In ANI 230, we&#8217;re [&#8230;]</p>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/10/13/updates/">Updates!</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></description>
-								<content:encoded><![CDATA[<p>Obviously I haven&#8217;t posted anything in a while. But it&#8217;s time for a change &#8211; and change is good!</p>
+								<content:encoded><![CDATA[
+<p>Obviously I haven&#8217;t posted anything in a while.&nbsp;But it&#8217;s time for a change &#8211; and change is good!</p>
+
+
+
 <p>I am now currently in three courses that are at least semi-relevant to this blog.</p>
-<ul>
-<li>ANI 230 &#8211; 3D Design &amp; Modeling</li>
-<li>CSC 298 &#8211; Internship</li>
-<li>GPH 321 &#8211; Computer Graphics Development I</li>
-</ul>
+
+
+
+<ul><li>ANI 230 &#8211; 3D Design &amp; Modeling</li><li>CSC 298 &#8211; Internship</li><li>GPH 321 &#8211; Computer Graphics Development I</li></ul>
+
+
+
 <p>In ANI 230, we&#8217;re learning Maya 2015. Starting with low-poly and now (it&#8217;s about midterms time) we&#8217;re onto animation with keyframes. I&#8217;m particularly interested in ray tracing, because we are building our very own in C++ in GPH 321.</p>
+
+
+
 <p>As for CSC 298, it basically runs alongside the internship that I already have. Here, I&#8217;ve been working with a ton of Java stuff lately interfacing with a USB HID. Through this, I&#8217;ve learned to use Maven &#8211; let me just say it&#8217;s awesome.</p>
+
+
+
 <p>Anyhow, I&#8217;ll be posting some images of the stuff I&#8217;ve been working on soon.</p>
-<p>Also, I may move this entire blog to a domain/host I pay for now. Or maybe even use Github Pages and Jekyll, those look fun.</p>
+
+
+
+<p>Also, I may move this entire blog to a domain/host I pay for now. Or maybe even use GitHub Pages and Jekyll, those look fun.</p>
+
+
+
 <p>Oh and I read a few Android books, great stuff. Loving Android dev.</p>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/10/13/updates/">Updates!</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></content:encoded>
@@ -132,58 +202,86 @@
 				<description><![CDATA[<p>Well, I chose to turn in exactly what you see in that last blog post. Everything that was required for the assignment was there and it earned me a 95%. I am now focusing my efforts into work with a near-full-time schedule of 38 hours a week. I will be posting stuff about happenings relating [&#8230;]</p>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/">Finished with GAM 374</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></description>
-								<content:encoded><![CDATA[<p>Well, I chose to turn in exactly what you see in that last blog post. Everything that was required for the assignment was there and it earned me a 95%.</p>
+								<content:encoded><![CDATA[
+<p>Well, I chose to turn in exactly what you see in that last blog post. Everything that was required for the assignment was there and it earned me a 95%.</p>
+
+
+
 <p>I am now focusing my efforts into work with a near-full-time schedule of 38 hours a week. I will be posting stuff about happenings relating to that from here on out.</p>
+
+
+
 <p>I&#8217;m also working on an Android app, so there will be some Java tossed in.</p>
+
+
+
 <p>And last but not least, my love for C++ is growing as I discover C++11 features. There&#8217;s a little code I wrote to test out the functionality of some of the new stuff if you read on.</p>
-<p><span id="more-35"></span></p>
-<p>[code language=&#8221;cpp&#8221;]<br />
-#include &lt;iostream&gt;<br />
-#include &lt;vector&gt;<br />
-#include &lt;algorithm&gt;<br />
-#include &lt;thread&gt;<br />
-#include &lt;memory&gt;</p>
-<p>using namespace std;</p>
-<p>int main()<br />
-{<br />
-	cout &lt;&lt; &quot;BASIC USE OF AUTO\n&quot;;<br />
-	auto hi = &quot;Hello, World!&quot;;<br />
-	cout &lt;&lt; hi &lt;&lt; endl;</p>
-<p>	cout &lt;&lt; &quot;\nLAMBDA FUNCTIONS\n&quot;;<br />
-	auto squareIt = [hi](int i) { cout &lt;&lt; hi &lt;&lt; &quot; from inside a lambda! &quot;; return i * i; };<br />
-	cout &lt;&lt; squareIt(10) &lt;&lt; endl;</p>
-<p>	cout &lt;&lt; &quot;\nPOINTERS AND NULLPTR\n&quot;;<br />
-	shared_ptr&lt;int&gt; sp;<br />
-	unique_ptr&lt;int&gt; up;<br />
-	weak_ptr&lt;int&gt; wp;<br />
-	auto pointer = nullptr;</p>
-<p>	cout &lt;&lt; &quot;\nUNIFORM INITIALIZATION AND INITIALIZER LISTS\n&quot;;<br />
-	int x{ 17 };<br />
-	cout &lt;&lt; x &lt;&lt; endl;<br />
-	vector&lt;int&gt; v{ 2, 1, 7, 9, 4 };</p>
-<p>	cout &lt;&lt; &quot;\nRANGE FOR\n&quot;;<br />
-	for (auto d : v)<br />
-	{<br />
-		cout &lt;&lt; d &lt;&lt; endl;<br />
-	}</p>
-<p>	cout &lt;&lt; &quot;\nNONMEMBER BEGIN AND END\n&quot;;<br />
-	sort(begin(v), end(v));</p>
-<p>	for (auto d : v)<br />
-	{<br />
-		cout &lt;&lt; d &lt;&lt; endl;<br />
-	}</p>
-<p>	cout &lt;&lt; &quot;\nCOMBINATION OF NONMEMBER BEGIN AND END AND LAMBDA FUNCTIONS\n&quot;;<br />
-	find_if(begin(v), end(v), [](int i) { if (i % 2) { cout &lt;&lt; i &lt;&lt; endl; } return 0; });</p>
-<p>	cout &lt;&lt; &quot;\nTHREADS\n&quot;;<br />
-	for (int i = 0; i &lt; 100; ++i)<br />
-	{<br />
-		thread([]{ cout &lt;&lt; &quot;I&#8217;m a thread! &quot; &lt;&lt; this_thread::get_id() &lt;&lt; endl; }).join();<br />
-	}</p>
-<p>	cin.get();<br />
-	return 0;<br />
-}<br />
-[/code]</p>
-<p>That&#8217;s all for now! Thanks for reading.</pre>
+
+
+
+<span id="more-35"></span>
+
+
+
+<pre class="wp-block-code"><code>#include &lt;iostream>
+#include &lt;vector>
+#include &lt;algorithm>
+#include &lt;thread>
+#include &lt;memory>
+
+using namespace std;
+
+int main()
+{
+	cout &lt;&lt; "BASIC USE OF AUTO\n";
+	auto hi = "Hello, World!";
+	cout &lt;&lt; hi &lt;&lt; endl;
+
+	cout &lt;&lt; "\nLAMBDA FUNCTIONS\n";
+	auto squareIt = &#91;hi](int i) { cout &lt;&lt; hi &lt;&lt; " from inside a lambda! "; return i * i; };
+	cout &lt;&lt; squareIt(10) &lt;&lt; endl;
+
+	cout &lt;&lt; "\nPOINTERS AND NULLPTR\n";
+	shared_ptr&lt;int> sp;
+	unique_ptr&lt;int> up;
+	weak_ptr&lt;int> wp;
+	auto pointer = nullptr;
+
+	cout &lt;&lt; "\nUNIFORM INITIALIZATION AND INITIALIZER LISTS\n";
+	int x{ 17 };
+	cout &lt;&lt; x &lt;&lt; endl;
+	vector&lt;int> v{ 2, 1, 7, 9, 4 };
+
+	cout &lt;&lt; "\nRANGE FOR\n";
+	for (auto d : v)
+	{
+		cout &lt;&lt; d &lt;&lt; endl;
+	}
+
+	cout &lt;&lt; "\nNONMEMBER BEGIN AND END\n";
+	sort(begin(v), end(v));
+
+	for (auto d : v)
+	{
+		cout &lt;&lt; d &lt;&lt; endl;
+	}
+
+	cout &lt;&lt; "\nCOMBINATION OF NONMEMBER BEGIN AND END AND LAMBDA FUNCTIONS\n";
+	find_if(begin(v), end(v), &#91;](int i) { if (i % 2) { cout &lt;&lt; i &lt;&lt; endl; } return 0; });
+
+	cout &lt;&lt; "\nTHREADS\n";
+	for (int i = 0; i &lt; 100; ++i)
+	{
+		thread(&#91;]{ cout &lt;&lt; "I'm a thread! " &lt;&lt; this_thread::get_id() &lt;&lt; endl; }).join();
+	}
+
+	cin.get();
+	return 0;
+}</code></pre>
+
+
+
+<p>That&#8217;s all for now! Thanks for reading.</p>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/">Finished with GAM 374</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></content:encoded>
 							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/feed/</wfw:commentRss>
@@ -207,12 +305,19 @@
 		<category><![CDATA[ugly]]></category>
 
 		<guid isPermaLink="false">http://parad0xdev.wordpress.com/?p=31</guid>
-				<description><![CDATA[<p>Azul doesn&#8217;t support real collision, so I have to check the position of stuff. It kinda sucks. Hopefully there will be improvements on the physics components, along with collision in Azul. It&#8217;s coming together, but the code isn&#8217;t pretty.</p>
+				<description><![CDATA[<p>Azul doesn&#8217;t support&#160;real collision, so I have to check the position of stuff. It kinda sucks. Hopefully there will be improvements on the physics components, along with collision in Azul. It&#8217;s coming together, but the code isn&#8217;t pretty.</p>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/06/12/walls-and-collision/">Walls and Collision</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></description>
-								<content:encoded><![CDATA[<p>Azul doesn&#8217;t support <em>real</em> collision, so I have to check the position of stuff. It kinda sucks. Hopefully there will be improvements on the physics components, along with collision in Azul.</p>
+								<content:encoded><![CDATA[
+<p>Azul doesn&#8217;t support&nbsp;<em>real</em> collision, so I have to check the position of stuff. It kinda sucks. Hopefully there will be improvements on the physics components, along with collision in Azul.</p>
+
+
+
 <p>It&#8217;s coming together, but the code isn&#8217;t pretty.</p>
-<p><a href="http://augustkarlstedt.github.io/wp-content/uploads/2014/06/2014-06-12-23_05_02-final-project-tanks_.png"><img id="i-32" class="size-full wp-image" src="http://augustkarlstedt.github.io/wp-content/uploads/2014/06/2014-06-12-23_05_02-final-project-tanks_.png?w=650" alt="Image" /></a></p>
+
+
+
+<figure class="wp-block-image"><a href="http://augustkarlstedt.github.io/wp-content/uploads/2014/06/2014-06-12-23_05_02-final-project-tanks_.png"><img src="http://augustkarlstedt.github.io/wp-content/uploads/2014/06/2014-06-12-23_05_02-final-project-tanks_.png?w=650" alt="Image"/></a></figure>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/06/12/walls-and-collision/">Walls and Collision</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></content:encoded>
 							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/06/12/walls-and-collision/feed/</wfw:commentRss>

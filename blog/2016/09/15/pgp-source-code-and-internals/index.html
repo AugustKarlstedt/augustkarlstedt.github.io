@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>PGP Source Code and Internals - August Karlstedt</title><meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="PGP Source Code and Internals - August Karlstedt"><meta property="og:description" content="I knew it existed and I’m glad to have spotted it in the wild. 🙂"><meta property="og:url" content="https://augustkarlstedt.github.io/blog/2016/09/15/pgp-source-code-and-internals/"><meta property="og:site_name" content="August Karlstedt"><meta property="article:section" content="Uncategorized"><meta property="article:published_time" content="2016-09-16T04:57:49+00:00"><meta property="og:image" content="http://PLACEHOLDER.wpsho/wp-content/uploads/2016/09/pgp.jpg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="I knew it existed and I’m glad to have spotted it in the wild. 🙂"><meta name="twitter:title" content="PGP Source Code and Internals - August Karlstedt"><meta name="twitter:site" content="@AugustKarlstedt"><meta name="twitter:image" content="http://PLACEHOLDER.wpsho/wp-content/uploads/2016/09/pgp.jpg"><meta name="twitter:creator" content="@AugustKarlstedt"><script type="application/ld+json" class="yoast-schema-graph yoast-schema-graph--main">{
+<html lang="en-US"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>PGP Source Code and Internals - August Karlstedt</title><meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"><meta property="og:locale" content="en_US"><meta property="og:type" content="article"><meta property="og:title" content="PGP Source Code and Internals - August Karlstedt"><meta property="og:description" content="I knew it existed and I’m glad to have spotted it in the wild. 🙂"><meta property="og:url" content="https://augustkarlstedt.github.io/blog/2016/09/15/pgp-source-code-and-internals/"><meta property="og:site_name" content="August Karlstedt"><meta property="article:section" content="Uncategorized"><meta property="article:published_time" content="2016-09-16T04:57:49+00:00"><meta property="article:modified_time" content="2020-02-27T02:08:37+00:00"><meta property="og:updated_time" content="2020-02-27T02:08:37+00:00"><meta property="og:image" content="http://PLACEHOLDER.wpsho/wp-content/uploads/2016/09/pgp.jpg"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="I knew it existed and I’m glad to have spotted it in the wild. 🙂"><meta name="twitter:title" content="PGP Source Code and Internals - August Karlstedt"><meta name="twitter:site" content="@AugustKarlstedt"><meta name="twitter:image" content="http://PLACEHOLDER.wpsho/wp-content/uploads/2016/09/pgp.jpg"><meta name="twitter:creator" content="@AugustKarlstedt"><script type="application/ld+json" class="yoast-schema-graph yoast-schema-graph--main">{
     "@context": "https://schema.org",
     "@graph": [
         {
@@ -59,7 +59,7 @@
                 "@id": "https://augustkarlstedt.github.io/blog/2016/09/15/pgp-source-code-and-internals/#primaryimage"
             },
             "datePublished": "2016-09-16T04:57:49+00:00",
-            "dateModified": "2016-09-16T04:57:49+00:00"
+            "dateModified": "2020-02-27T02:08:37+00:00"
         },
         {
             "@type": "Article",
@@ -72,7 +72,7 @@
             },
             "headline": "PGP Source Code and Internals",
             "datePublished": "2016-09-16T04:57:49+00:00",
-            "dateModified": "2016-09-16T04:57:49+00:00",
+            "dateModified": "2020-02-27T02:08:37+00:00",
             "commentCount": 0,
             "mainEntityOfPage": {
                 "@id": "https://augustkarlstedt.github.io/blog/2016/09/15/pgp-source-code-and-internals/#webpage"
@@ -187,7 +187,7 @@
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main"><article id="post-208" class="post post-208 type-post status-publish format-image hentry category-uncategorized post_format-post-format-image"><header class="entry-header"><div class="entry-date">
-			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2016/09/15/pgp-source-code-and-internals/" rel="bookmark"><time class="entry-date published" datetime="2016-09-15T22:57:49-07:00">September 15, 2016</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div>
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2016/09/15/pgp-source-code-and-internals/" rel="bookmark"><time class="entry-date published" datetime="2016-09-15T22:57:49-07:00">September 15, 2016</time><time class="updated" datetime="2020-02-26T18:08:37-08:00">February 26, 2020</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div>
 		
 		<h1 class="entry-title">PGP Source Code and Internals</h1>	</header><div class="entry-meta">
 	
@@ -197,9 +197,12 @@
 		</li>
 					</ul></div>
 	<div class="entry-content">
-		<p>I knew it existed and I’m glad to have spotted it in the wild. 🙂</p>
-<p><img class="alignnone size-full wp-image-211" src="http://PLACEHOLDER.wpsho/wp-content/uploads/2016/09/pgp.jpg" alt="pgp" width="1032" height="1835" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2016/09/pgp.jpg 1032w,https://augustkarlstedt.github.io/wp-content/uploads/2016/09/pgp-169x300.jpg 169w,https://augustkarlstedt.github.io/wp-content/uploads/2016/09/pgp-768x1366.jpg 768w,https://augustkarlstedt.github.io/wp-content/uploads/2016/09/pgp-576x1024.jpg 576w" sizes="(max-width: 1032px) 100vw, 1032px"></p>
-			</div>
+		
+<p>I knew it existed and I’m glad to have spotted it in the wild. 🙂</p>
+
+
+
+<figure class="wp-block-image"><img src="http://PLACEHOLDER.wpsho/wp-content/uploads/2016/09/pgp.jpg" alt="pgp" class="wp-image-211" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2016/09/pgp.jpg 1032w,https://augustkarlstedt.github.io/wp-content/uploads/2016/09/pgp-169x300.jpg 169w,https://augustkarlstedt.github.io/wp-content/uploads/2016/09/pgp-768x1366.jpg 768w,https://augustkarlstedt.github.io/wp-content/uploads/2016/09/pgp-576x1024.jpg 576w" sizes="(max-width: 1032px) 100vw, 1032px"></figure></div>
 
 </article><nav class="navigation post-navigation" role="navigation"><h1 class="screen-reader-text">Post navigation</h1>
 		<div class="nav-links">

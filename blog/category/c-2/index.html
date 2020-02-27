@@ -182,7 +182,7 @@
 			</div>
 
 </article><article id="post-58" class="post post-58 type-post status-publish format-standard hentry category-c-2 category-game-development category-programming-2 category-school tag-c tag-code tag-depaul tag-gph"><header class="entry-header"><div class="entry-date">
-			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2015/01/06/gph-321-completed/" rel="bookmark"><time class="entry-date published" datetime="2015-01-06T23:16:13-08:00">January 6, 2015</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div>
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2015/01/06/gph-321-completed/" rel="bookmark"><time class="entry-date published" datetime="2015-01-06T23:16:13-08:00">January 6, 2015</time><time class="updated" datetime="2020-02-26T18:04:37-08:00">February 26, 2020</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div>
 		
 		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2015/01/06/gph-321-completed/" rel="bookmark">GPH 321 – Completed</a></h1>	</header><div class="entry-meta">
 	
@@ -193,28 +193,52 @@
 		</li>
 					</ul></div>
 	<div class="entry-content">
-		<p>In this class we created a ray tracer from the ground up. I by “we” I mean our professor wrote most of the code and we had to fill in certain class functions. It was pretty terrible, but overall the end result was good. Oh and we had to zip our source code and send it in, instead of simply using something like Github or Bitbucket. The midterm and final SUCKED, simply because it’s 2015 (well, it was 2014) and written exams for programming finals are absurd. Writing code on paper completely lacks the feel of typing it out using an IDE. Plus, come on, who doesn’t use IntelliSense, Resharper, Visual Assist X, or some kind of code-completion tool? A fool! And that’s exactly what we are when we write code by hand.</p>
+		
+<p>In this class we created a ray tracer from the ground up. I by “we” I mean our professor wrote most of the code and we had to fill in certain class functions. It was pretty terrible, but overall the end result was good. Oh and we had to zip our source code and send it in, instead of simply using something like GitHub or Bitbucket. The midterm and final SUCKED, simply because it’s 2015 (well, it was 2014) and written exams for programming finals are absurd. Writing code on paper completely lacks the feel of typing it out using an IDE. Plus, come on, who doesn’t use IntelliSense, Resharper, Visual Assist X, or some kind of code-completion tool? A fool! And that’s exactly what we are when we write code by hand.</p>
+
+
+
 <p>Anyhow, here are some screenshots from the course.</p>
+
+
+
 <p>First we simply had to get rays working and detecting collisions.</p>
-<p></p><div id="attachment_60" style="width: 310px" class="wp-caption alignnone"><a href="http://PLACEHOLDER.wpsho/wp-content/uploads/2015/01/2015-01-06-22_44_45-intersecting-a-polygon.png"><img aria-describedby="caption-attachment-60" class="size-medium wp-image-60" src="http://PLACEHOLDER.wpsho/wp-content/uploads/2015/01/2015-01-06-22_44_45-intersecting-a-polygon.png" alt="Rays & Intersections" width="300" height="228" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_44_45-intersecting-a-polygon.png 650w,https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_44_45-intersecting-a-polygon-300x228.png 300w" sizes="(max-width: 300px) 100vw, 300px"></a><p id="caption-attachment-60" class="wp-caption-text">Rays & Intersections</p></div>
-<p>Then we had to ray-trace our first object, a sphere. This is because it’s pretty simple to represent in math.</p>
-<p></p><div id="attachment_61" style="width: 287px" class="wp-caption alignnone"><a href="http://PLACEHOLDER.wpsho/wp-content/uploads/2015/01/2015-01-06-22_58_30-implementing-constant-material.png"><img aria-describedby="caption-attachment-61" class="size-medium wp-image-61" src="http://PLACEHOLDER.wpsho/wp-content/uploads/2015/01/2015-01-06-22_58_30-implementing-constant-material.png" alt="First Ray-traced Object " width="277" height="300" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_58_30-implementing-constant-material.png 520w,https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_58_30-implementing-constant-material-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px"></a><p id="caption-attachment-61" class="wp-caption-text">First Ray-traced Object</p></div>
-<p>Then we had to add some shading to that sphere. I know, it isn’t 100% correct. Spot the error!</p>
-<p></p><div id="attachment_62" style="width: 287px" class="wp-caption alignnone"><a href="http://PLACEHOLDER.wpsho/wp-content/uploads/2015/01/2015-01-06-22_59_23-implementing-phong-material.png"><img aria-describedby="caption-attachment-62" class="size-medium wp-image-62" src="http://PLACEHOLDER.wpsho/wp-content/uploads/2015/01/2015-01-06-22_59_23-implementing-phong-material.png" alt="Phong shading" width="277" height="300" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_59_23-implementing-phong-material.png 520w,https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_59_23-implementing-phong-material-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px"></a><p id="caption-attachment-62" class="wp-caption-text">Phong Shading</p></div>
-<p>Next came shadows. These are awesome.</p>
-<p></p><div id="attachment_63" style="width: 287px" class="wp-caption alignnone"><a href="http://PLACEHOLDER.wpsho/wp-content/uploads/2015/01/2015-01-06-23_01_28-testing-transforms.png"><img aria-describedby="caption-attachment-63" class="size-medium wp-image-63" src="http://PLACEHOLDER.wpsho/wp-content/uploads/2015/01/2015-01-06-23_01_28-testing-transforms.png" alt="Ray-traced Shadows" width="277" height="300" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_28-testing-transforms.png 520w,https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_28-testing-transforms-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px"></a><p id="caption-attachment-63" class="wp-caption-text">Ray-traced Shadows</p></div>
-<p>Next was reflections. Super easy thanks to how ray-tracing works.</p>
-<p></p><div id="attachment_64" style="width: 287px" class="wp-caption alignnone"><a href="http://PLACEHOLDER.wpsho/wp-content/uploads/2015/01/2015-01-06-23_01_58-implementing-reflection.png"><img aria-describedby="caption-attachment-64" class="size-medium wp-image-64" src="http://PLACEHOLDER.wpsho/wp-content/uploads/2015/01/2015-01-06-23_01_58-implementing-reflection.png" alt="Ray-traced Reflections" width="277" height="300" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_58-implementing-reflection.png 520w,https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_58-implementing-reflection-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px"></a><p id="caption-attachment-64" class="wp-caption-text">Ray-traced Reflections</p></div>
-<p>Then we had to create a checkerboard pattern.</p>
-<p></p><div id="attachment_65" style="width: 287px" class="wp-caption alignnone"><a href="http://PLACEHOLDER.wpsho/wp-content/uploads/2015/01/2015-01-06-23_02_11-testing-procedural-texture.png"><img aria-describedby="caption-attachment-65" class="size-medium wp-image-65" src="http://PLACEHOLDER.wpsho/wp-content/uploads/2015/01/2015-01-06-23_02_11-testing-procedural-texture.png" alt="Checkerboard" width="277" height="300" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_11-testing-procedural-texture.png 520w,https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_11-testing-procedural-texture-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px"></a><p id="caption-attachment-65" class="wp-caption-text">Checkboard</p></div>
-<p>Finally we were to implement Fresnel equations to properly simulate glass. I didn’t finish this one fully.</p>
-<p></p><div id="attachment_66" style="width: 287px" class="wp-caption alignnone"><a href="http://PLACEHOLDER.wpsho/wp-content/uploads/2015/01/2015-01-06-23_02_25-implementing-glass-material.png"><img aria-describedby="caption-attachment-66" class="size-medium wp-image-66" src="http://PLACEHOLDER.wpsho/wp-content/uploads/2015/01/2015-01-06-23_02_25-implementing-glass-material.png" alt="Ray-traced Fresnel" width="277" height="300" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_25-implementing-glass-material.png 520w,https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_25-implementing-glass-material-277x300.png 277w" sizes="(max-width: 277px) 100vw, 277px"></a><p id="caption-attachment-66" class="wp-caption-text">Ray-traced Fresnel</p></div>
-<p>And that was the end of the course. This course was online only, which probably had an impact on my view of it. The course notes weren’t that great. I repeatedly found myself Googling things that were phrased in strange ways to figure out how to implement them. And variable names like <i>V, N, n1, n2, </i>etc. used throughout the given code made things unnecessarily complex.</p>
+
+
+
+<figure class="wp-block-image alignnone"><a href="http://PLACEHOLDER.wpsho/wp-content/uploads/2015/01/2015-01-06-22_44_45-intersecting-a-polygon.png"><img src="http://PLACEHOLDER.wpsho/wp-content/uploads/2015/01/2015-01-06-22_44_45-intersecting-a-polygon.png" alt="Rays & Intersections" class="wp-image-60" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_44_45-intersecting-a-polygon.png 650w,https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_44_45-intersecting-a-polygon-300x228.png 300w" sizes="(max-width: 650px) 100vw, 650px"></a><figcaption>Rays & Intersections</figcaption></figure><p>Then we had to ray-trace our first object, a sphere. This is because it’s pretty simple to represent in math.</p>
+
+
+
+<figure class="wp-block-image alignnone"><a href="http://PLACEHOLDER.wpsho/wp-content/uploads/2015/01/2015-01-06-22_58_30-implementing-constant-material.png"><img src="http://PLACEHOLDER.wpsho/wp-content/uploads/2015/01/2015-01-06-22_58_30-implementing-constant-material.png" alt="First Ray-traced Object " class="wp-image-61" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_58_30-implementing-constant-material.png 520w,https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_58_30-implementing-constant-material-277x300.png 277w" sizes="(max-width: 520px) 100vw, 520px"></a><figcaption>First Ray-traced Object</figcaption></figure><p>Then we had to add some shading to that sphere. I know, it isn’t 100% correct. Spot the error!</p>
+
+
+
+<figure class="wp-block-image alignnone"><a href="http://PLACEHOLDER.wpsho/wp-content/uploads/2015/01/2015-01-06-22_59_23-implementing-phong-material.png"><img src="http://PLACEHOLDER.wpsho/wp-content/uploads/2015/01/2015-01-06-22_59_23-implementing-phong-material.png" alt="Phong shading" class="wp-image-62" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_59_23-implementing-phong-material.png 520w,https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_59_23-implementing-phong-material-277x300.png 277w" sizes="(max-width: 520px) 100vw, 520px"></a><figcaption>Phong Shading</figcaption></figure><p>Next came shadows. These are awesome.</p>
+
+
+
+<figure class="wp-block-image alignnone"><a href="http://PLACEHOLDER.wpsho/wp-content/uploads/2015/01/2015-01-06-23_01_28-testing-transforms.png"><img src="http://PLACEHOLDER.wpsho/wp-content/uploads/2015/01/2015-01-06-23_01_28-testing-transforms.png" alt="Ray-traced Shadows" class="wp-image-63" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_28-testing-transforms.png 520w,https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_28-testing-transforms-277x300.png 277w" sizes="(max-width: 520px) 100vw, 520px"></a><figcaption>Ray-traced Shadows</figcaption></figure><p>Next was reflections. Super easy thanks to how ray-tracing works.</p>
+
+
+
+<figure class="wp-block-image alignnone"><a href="http://PLACEHOLDER.wpsho/wp-content/uploads/2015/01/2015-01-06-23_01_58-implementing-reflection.png"><img src="http://PLACEHOLDER.wpsho/wp-content/uploads/2015/01/2015-01-06-23_01_58-implementing-reflection.png" alt="Ray-traced Reflections" class="wp-image-64" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_58-implementing-reflection.png 520w,https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_58-implementing-reflection-277x300.png 277w" sizes="(max-width: 520px) 100vw, 520px"></a><figcaption>Ray-traced Reflections</figcaption></figure><p>Then we had to create a checkerboard pattern.</p>
+
+
+
+<figure class="wp-block-image alignnone"><a href="http://PLACEHOLDER.wpsho/wp-content/uploads/2015/01/2015-01-06-23_02_11-testing-procedural-texture.png"><img src="http://PLACEHOLDER.wpsho/wp-content/uploads/2015/01/2015-01-06-23_02_11-testing-procedural-texture.png" alt="Checkerboard" class="wp-image-65" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_11-testing-procedural-texture.png 520w,https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_11-testing-procedural-texture-277x300.png 277w" sizes="(max-width: 520px) 100vw, 520px"></a><figcaption>Checkboard</figcaption></figure><p>Finally we were to implement Fresnel equations to properly simulate glass. I didn’t finish this one fully.</p>
+
+
+
+<figure class="wp-block-image alignnone"><a href="http://PLACEHOLDER.wpsho/wp-content/uploads/2015/01/2015-01-06-23_02_25-implementing-glass-material.png"><img src="http://PLACEHOLDER.wpsho/wp-content/uploads/2015/01/2015-01-06-23_02_25-implementing-glass-material.png" alt="Ray-traced Fresnel" class="wp-image-66" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_25-implementing-glass-material.png 520w,https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_25-implementing-glass-material-277x300.png 277w" sizes="(max-width: 520px) 100vw, 520px"></a><figcaption>Ray-traced Fresnel</figcaption></figure><p>And that was the end of the course. This course was online only, which probably had an impact on my view of it. The course notes weren’t that great. I repeatedly found myself Googling things that were phrased in strange ways to figure out how to implement them. And variable names like <i>V, N, n1, n2, </i>etc. used throughout the given code made things unnecessarily complex.</p>
+
+
+
 <p>Oh well, it’s over and done with!</p>
 			</div>
 
 </article><article id="post-47" class="post post-47 type-post status-publish format-standard hentry category-android category-c-2 category-game-development category-java category-programming-2 category-school category-work tag-ani tag-code tag-csc tag-gph tag-java-2"><header class="entry-header"><div class="entry-date">
-			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2014/10/13/updates/" rel="bookmark"><time class="entry-date published" datetime="2014-10-13T12:12:55-07:00">October 13, 2014</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div>
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2014/10/13/updates/" rel="bookmark"><time class="entry-date published" datetime="2014-10-13T12:12:55-07:00">October 13, 2014</time><time class="updated" datetime="2020-02-26T18:02:23-08:00">February 26, 2020</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div>
 		
 		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2014/10/13/updates/" rel="bookmark">Updates!</a></h1>	</header><div class="entry-meta">
 	
@@ -225,20 +249,36 @@
 		</li>
 					</ul></div>
 	<div class="entry-content">
-		<p>Obviously I haven’t posted anything in a while. But it’s time for a change – and change is good!</p>
+		
+<p>Obviously I haven’t posted anything in a while. But it’s time for a change – and change is good!</p>
+
+
+
 <p>I am now currently in three courses that are at least semi-relevant to this blog.</p>
-<ul><li>ANI 230 – 3D Design & Modeling</li>
-<li>CSC 298 – Internship</li>
-<li>GPH 321 – Computer Graphics Development I</li>
-</ul><p>In ANI 230, we’re learning Maya 2015. Starting with low-poly and now (it’s about midterms time) we’re onto animation with keyframes. I’m particularly interested in ray tracing, because we are building our very own in C++ in GPH 321.</p>
+
+
+
+<ul><li>ANI 230 – 3D Design & Modeling</li><li>CSC 298 – Internship</li><li>GPH 321 – Computer Graphics Development I</li></ul><p>In ANI 230, we’re learning Maya 2015. Starting with low-poly and now (it’s about midterms time) we’re onto animation with keyframes. I’m particularly interested in ray tracing, because we are building our very own in C++ in GPH 321.</p>
+
+
+
 <p>As for CSC 298, it basically runs alongside the internship that I already have. Here, I’ve been working with a ton of Java stuff lately interfacing with a USB HID. Through this, I’ve learned to use Maven – let me just say it’s awesome.</p>
+
+
+
 <p>Anyhow, I’ll be posting some images of the stuff I’ve been working on soon.</p>
-<p>Also, I may move this entire blog to a domain/host I pay for now. Or maybe even use Github Pages and Jekyll, those look fun.</p>
+
+
+
+<p>Also, I may move this entire blog to a domain/host I pay for now. Or maybe even use GitHub Pages and Jekyll, those look fun.</p>
+
+
+
 <p>Oh and I read a few Android books, great stuff. Loving Android dev.</p>
 			</div>
 
 </article><article id="post-35" class="post post-35 type-post status-publish format-standard hentry category-android category-c-2 category-game-development category-java category-programming-2 category-school category-work tag-13 tag-azul tag-c tag-c11 tag-code tag-gam tag-java-2 tag-programming tag-school-2 tag-work-2"><header class="entry-header"><div class="entry-date">
-			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/" rel="bookmark"><time class="entry-date published" datetime="2014-06-24T22:17:37-07:00">June 24, 2014</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div>
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/" rel="bookmark"><time class="entry-date published" datetime="2014-06-24T22:17:37-07:00">June 24, 2014</time><time class="updated" datetime="2020-02-26T18:02:04-08:00">February 26, 2020</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div>
 		
 		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/" rel="bookmark">Finished with GAM 374</a></h1>	</header><div class="entry-meta">
 	
@@ -249,12 +289,24 @@
 		</li>
 					</ul></div>
 	<div class="entry-content">
-		<p>Well, I chose to turn in exactly what you see in that last blog post. Everything that was required for the assignment was there and it earned me a 95%.</p>
+		
+<p>Well, I chose to turn in exactly what you see in that last blog post. Everything that was required for the assignment was there and it earned me a 95%.</p>
+
+
+
 <p>I am now focusing my efforts into work with a near-full-time schedule of 38 hours a week. I will be posting stuff about happenings relating to that from here on out.</p>
+
+
+
 <p>I’m also working on an Android app, so there will be some Java tossed in.</p>
+
+
+
 <p>And last but not least, my love for C++ is growing as I discover C++11 features. There’s a little code I wrote to test out the functionality of some of the new stuff if you read on.</p>
-<p> <a href="https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/#more-35" class="more-link">Continue reading →</a></p>
-			</div>
+
+
+
+ <a href="https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/#more-35" class="more-link">Continue reading →</a>			</div>
 
 </article></main></section></div>
 
