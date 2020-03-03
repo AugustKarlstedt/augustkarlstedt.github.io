@@ -2,7 +2,7 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/</loc>
-		<lastmod>2020-02-27T02:18:09+00:00</lastmod>
+		<lastmod>2020-02-28T13:01:22+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2017/01/31/the-best-video-series-for-linear-algebra/</loc>
@@ -20,100 +20,12 @@
 		</image:image>
 	</url>
 	<url>
-		<loc>https://augustkarlstedt.github.io/blog/2014/06/12/walls-and-collision/</loc>
-		<lastmod>2020-02-27T01:56:04+00:00</lastmod>
-		<image:image>
-			<image:loc>http://augustkarlstedt.github.io/wp-content/uploads/2014/06/2014-06-12-23_05_02-final-project-tanks_.png?w=650</image:loc>
-			<image:caption><![CDATA[Image]]></image:caption>
-		</image:image>
-	</url>
-	<url>
-		<loc>https://augustkarlstedt.github.io/blog/2014/05/18/first-day-of-final-project/</loc>
-		<lastmod>2020-02-27T01:57:11+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://augustkarlstedt.github.io/blog/2014/05/23/player-tank/</loc>
-		<lastmod>2020-02-27T01:57:33+00:00</lastmod>
-		<image:image>
-			<image:loc>http://augustkarlstedt.github.io/wp-content/uploads/2014/05/2014-05-23-23_12_00-final-project-tanks_.png?w=650</image:loc>
-			<image:caption><![CDATA[Image]]></image:caption>
-		</image:image>
-	</url>
-	<url>
-		<loc>https://augustkarlstedt.github.io/blog/2014/06/01/bullets/</loc>
-		<lastmod>2020-02-27T01:57:48+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://augustkarlstedt.github.io/blog/2014/06/12/more-work/</loc>
-		<lastmod>2020-02-27T01:58:00+00:00</lastmod>
-		<image:image>
-			<image:loc>http://augustkarlstedt.github.io/wp-content/uploads/2014/06/2014-06-12-21_10_15-clipboard.png?w=650</image:loc>
-			<image:caption><![CDATA[Image]]></image:caption>
-		</image:image>
-	</url>
-	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/</loc>
 		<lastmod>2020-02-27T02:02:04+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2014/10/13/updates/</loc>
 		<lastmod>2020-02-27T02:02:23+00:00</lastmod>
-	</url>
-	<url>
-		<loc>https://augustkarlstedt.github.io/blog/2015/01/06/ani-230-completed/</loc>
-		<lastmod>2020-02-27T02:03:48+00:00</lastmod>
-		<image:image>
-			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2015/01/01.jpg</image:loc>
-			<image:caption><![CDATA[Simple Fan - Maya 2014]]></image:caption>
-		</image:image>
-		<image:image>
-			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2015/01/everyone.jpg</image:loc>
-			<image:caption><![CDATA[Animals - Maya 2014]]></image:caption>
-		</image:image>
-		<image:image>
-			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2015/01/03.jpg</image:loc>
-			<image:caption><![CDATA[Shoe - Maya 2014]]></image:caption>
-		</image:image>
-		<image:image>
-			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2015/01/04.jpg</image:loc>
-			<image:caption><![CDATA[Revised Shoe - Maya 2014]]></image:caption>
-		</image:image>
-		<image:image>
-			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2015/01/05.jpg</image:loc>
-			<image:caption><![CDATA[Guitar Capo - Maya 2014]]></image:caption>
-		</image:image>
-	</url>
-	<url>
-		<loc>https://augustkarlstedt.github.io/blog/2015/01/06/gph-321-completed/</loc>
-		<lastmod>2020-02-27T02:04:37+00:00</lastmod>
-		<image:image>
-			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_44_45-intersecting-a-polygon.png</image:loc>
-			<image:caption><![CDATA[Rays &amp; Intersections]]></image:caption>
-		</image:image>
-		<image:image>
-			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_58_30-implementing-constant-material.png</image:loc>
-			<image:caption><![CDATA[First Ray-traced Object ]]></image:caption>
-		</image:image>
-		<image:image>
-			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_59_23-implementing-phong-material.png</image:loc>
-			<image:caption><![CDATA[Phong shading]]></image:caption>
-		</image:image>
-		<image:image>
-			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_28-testing-transforms.png</image:loc>
-			<image:caption><![CDATA[Ray-traced Shadows]]></image:caption>
-		</image:image>
-		<image:image>
-			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_58-implementing-reflection.png</image:loc>
-			<image:caption><![CDATA[Ray-traced Reflections]]></image:caption>
-		</image:image>
-		<image:image>
-			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_11-testing-procedural-texture.png</image:loc>
-			<image:caption><![CDATA[Checkerboard]]></image:caption>
-		</image:image>
-		<image:image>
-			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_25-implementing-glass-material.png</image:loc>
-			<image:caption><![CDATA[Ray-traced Fresnel]]></image:caption>
-		</image:image>
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2015/01/08/new-classes-winter-quarter/</loc>
@@ -160,31 +72,6 @@
 		<lastmod>2020-02-27T02:08:17+00:00</lastmod>
 	</url>
 	<url>
-		<loc>https://augustkarlstedt.github.io/blog/2016/09/15/pgp-source-code-and-internals/</loc>
-		<lastmod>2020-02-27T02:08:37+00:00</lastmod>
-		<image:image>
-			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2016/09/pgp.jpg</image:loc>
-			<image:caption><![CDATA[pgp]]></image:caption>
-		</image:image>
-	</url>
-	<url>
-		<loc>https://augustkarlstedt.github.io/blog/2016/10/13/the-ultimate-slack-emoji-latex/</loc>
-		<lastmod>2020-02-27T02:08:54+00:00</lastmod>
-		<image:image>
-			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2016/10/latex-1.png</image:loc>
-		</image:image>
-		<image:image>
-			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2016/10/latex-2.png</image:loc>
-		</image:image>
-		<image:image>
-			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2016/10/latex-3.png</image:loc>
-		</image:image>
-		<image:image>
-			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2016/10/2016-10-13-02_57_54-clipboard.png</image:loc>
-			<image:caption><![CDATA[2016-10-13-02_57_54-clipboard]]></image:caption>
-		</image:image>
-	</url>
-	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2016/11/05/microsoft-research-hololens/</loc>
 		<lastmod>2020-02-27T02:09:54+00:00</lastmod>
 	</url>
@@ -219,6 +106,118 @@
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2018/10/11/learning-about-android-and-fireos/</loc>
 		<lastmod>2020-02-27T02:18:09+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://augustkarlstedt.github.io/blog/2016/09/15/pgp-source-code-and-internals/</loc>
+		<lastmod>2020-02-28T12:36:23+00:00</lastmod>
+		<image:image>
+			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2016/09/pgp.jpg</image:loc>
+			<image:caption><![CDATA[pgp book]]></image:caption>
+		</image:image>
+	</url>
+	<url>
+		<loc>https://augustkarlstedt.github.io/blog/2014/06/12/walls-and-collision/</loc>
+		<lastmod>2020-02-28T12:46:53+00:00</lastmod>
+		<image:image>
+			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2014/06/2014-06-12-23_05_02-final-project-tanks_.png</image:loc>
+			<image:caption><![CDATA[DePaul Azul Engine - Tanks!]]></image:caption>
+		</image:image>
+	</url>
+	<url>
+		<loc>https://augustkarlstedt.github.io/blog/2014/06/01/bullets/</loc>
+		<lastmod>2020-02-28T12:47:43+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://augustkarlstedt.github.io/blog/2014/06/12/more-work/</loc>
+		<lastmod>2020-02-28T12:47:52+00:00</lastmod>
+		<image:image>
+			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2014/06/2014-06-12-21_10_15-clipboard.png</image:loc>
+			<image:caption><![CDATA[DePaul Azul Engine - Tanks!]]></image:caption>
+		</image:image>
+	</url>
+	<url>
+		<loc>https://augustkarlstedt.github.io/blog/2014/05/23/player-tank/</loc>
+		<lastmod>2020-02-28T12:48:23+00:00</lastmod>
+		<image:image>
+			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2014/05/2014-05-23-23_12_00-final-project-tanks_.png</image:loc>
+			<image:caption><![CDATA[DePaul Azul Engine - Tanks!]]></image:caption>
+		</image:image>
+	</url>
+	<url>
+		<loc>https://augustkarlstedt.github.io/blog/2014/05/18/first-day-of-final-project/</loc>
+		<lastmod>2020-02-28T12:48:34+00:00</lastmod>
+	</url>
+	<url>
+		<loc>https://augustkarlstedt.github.io/blog/2015/01/06/gph-321-completed/</loc>
+		<lastmod>2020-02-28T12:55:41+00:00</lastmod>
+		<image:image>
+			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_44_45-intersecting-a-polygon.png</image:loc>
+			<image:caption><![CDATA[Rays &amp; Intersections]]></image:caption>
+		</image:image>
+		<image:image>
+			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_58_30-implementing-constant-material.png</image:loc>
+			<image:caption><![CDATA[First Ray-traced Object]]></image:caption>
+		</image:image>
+		<image:image>
+			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-22_59_23-implementing-phong-material.png</image:loc>
+			<image:caption><![CDATA[Phong shading]]></image:caption>
+		</image:image>
+		<image:image>
+			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_28-testing-transforms.png</image:loc>
+			<image:caption><![CDATA[Ray-traced Shadows]]></image:caption>
+		</image:image>
+		<image:image>
+			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_01_58-implementing-reflection.png</image:loc>
+			<image:caption><![CDATA[Ray-traced Reflections]]></image:caption>
+		</image:image>
+		<image:image>
+			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_11-testing-procedural-texture.png</image:loc>
+			<image:caption><![CDATA[Checkerboard]]></image:caption>
+		</image:image>
+		<image:image>
+			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2015/01/2015-01-06-23_02_25-implementing-glass-material.png</image:loc>
+			<image:caption><![CDATA[Ray-traced Fresnel]]></image:caption>
+		</image:image>
+	</url>
+	<url>
+		<loc>https://augustkarlstedt.github.io/blog/2015/01/06/ani-230-completed/</loc>
+		<lastmod>2020-02-28T12:57:39+00:00</lastmod>
+		<image:image>
+			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2015/01/01.jpg</image:loc>
+			<image:caption><![CDATA[Simple Fan - Maya 2014]]></image:caption>
+		</image:image>
+		<image:image>
+			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2015/01/everyone.jpg</image:loc>
+			<image:caption><![CDATA[Animals - Maya 2014]]></image:caption>
+		</image:image>
+		<image:image>
+			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2015/01/03.jpg</image:loc>
+			<image:caption><![CDATA[Shoe - Maya 2014]]></image:caption>
+		</image:image>
+		<image:image>
+			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2015/01/04.jpg</image:loc>
+			<image:caption><![CDATA[Revised Shoe - Maya 2014]]></image:caption>
+		</image:image>
+		<image:image>
+			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2015/01/05.jpg</image:loc>
+			<image:caption><![CDATA[Guitar Capo - Maya 2014]]></image:caption>
+		</image:image>
+	</url>
+	<url>
+		<loc>https://augustkarlstedt.github.io/blog/2016/10/13/the-ultimate-slack-emoji-latex/</loc>
+		<lastmod>2020-02-28T13:01:22+00:00</lastmod>
+		<image:image>
+			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2016/10/latex-1.png</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2016/10/latex-2.png</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2016/10/latex-3.png</image:loc>
+		</image:image>
+		<image:image>
+			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2016/10/2016-10-13-02_57_54-clipboard.png</image:loc>
+		</image:image>
 	</url>
 </urlset>
 <!-- XML Sitemap generated by Yoast SEO -->
