@@ -2,7 +2,7 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/</loc>
-		<lastmod>2020-02-28T13:01:22+00:00</lastmod>
+		<lastmod>2020-04-17T23:00:16+00:00</lastmod>
 	</url>
 	<url>
 		<loc>https://augustkarlstedt.github.io/blog/2017/01/31/the-best-video-series-for-linear-algebra/</loc>
@@ -217,6 +217,13 @@
 		</image:image>
 		<image:image>
 			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2016/10/2016-10-13-02_57_54-clipboard.png</image:loc>
+		</image:image>
+	</url>
+	<url>
+		<loc>https://augustkarlstedt.github.io/blog/2020/04/17/emulators-are-cool/</loc>
+		<lastmod>2020-04-17T23:00:16+00:00</lastmod>
+		<image:image>
+			<image:loc>https://augustkarlstedt.github.io/wp-content/uploads/2020/04/nintendo.gif</image:loc>
 		</image:image>
 	</url>
 </urlset>

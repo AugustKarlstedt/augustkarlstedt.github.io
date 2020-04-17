@@ -34,11 +34,13 @@
             "publisher": {
                 "@id": "https://augustkarlstedt.github.io/#/schema/person/a7417a5928f21d52b8cbb34bddb4f89b"
             },
-            "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://augustkarlstedt.github.io/?s={search_term_string}",
-                "query-input": "required name=search_term_string"
-            }
+            "potentialAction": [
+                {
+                    "@type": "SearchAction",
+                    "target": "https://augustkarlstedt.github.io/?s={search_term_string}",
+                    "query-input": "required name=search_term_string"
+                }
+            ]
         },
         {
             "@type": "CollectionPage",
@@ -103,7 +105,8 @@
 				
 				<div id="tab-3" class="tab-content animated fadeIn" role="tabpanel" aria-labelledby="panel-3" aria-hidden="true">
 						<div id="secondary" class="widget-area" role="complementary">
-		<aside id="archives-2" class="widget widget_archive"><h2 class="widget-title">Archives</h2>		<ul><li><a href="https://augustkarlstedt.github.io/blog/2020/02/">February 2020</a></li>
+		<aside id="archives-2" class="widget widget_archive"><h2 class="widget-title">Archives</h2>		<ul><li><a href="https://augustkarlstedt.github.io/blog/2020/04/">April 2020</a></li>
+	<li><a href="https://augustkarlstedt.github.io/blog/2020/02/">February 2020</a></li>
 	<li><a href="https://augustkarlstedt.github.io/blog/2018/10/">October 2018</a></li>
 	<li><a href="https://augustkarlstedt.github.io/blog/2018/09/">September 2018</a></li>
 	<li><a href="https://augustkarlstedt.github.io/blog/2017/05/">May 2017</a></li>
@@ -151,7 +154,51 @@
 
 	<section id="primary" class="content-area"><main id="main" class="site-main" role="main"><header class="page-header "><h1 class="page-title">
 					Category / Programming				</h1>
-							</header><article id="post-447" class="post post-447 type-post status-publish format-standard hentry category-c-2 category-game-development category-programming-2"><header class="entry-header"><div class="entry-date">
+							</header><article id="post-506" class="post post-506 type-post status-publish format-standard hentry category-c-2 category-programming-2"><header class="entry-header"><div class="entry-date">
+			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2020/04/17/emulators-are-cool/" rel="bookmark"><time class="entry-date published" datetime="2020-04-17T16:00:14-07:00">April 17, 2020</time><time class="updated" datetime="2020-04-17T16:00:16-07:00">April 17, 2020</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div>
+		
+		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2020/04/17/emulators-are-cool/" rel="bookmark">emulators are cool</a></h1>	</header><div class="entry-meta">
+	
+	<ul class="meta-list"><li class="meta-cat"><a href="https://augustkarlstedt.github.io/blog/category/c-2/" rel="category tag">C++</a>, <a href="https://augustkarlstedt.github.io/blog/category/programming-2/" rel="category tag">Programming</a></li>
+								<li class="meta-comment">
+			<span class="comments-link"><a href="https://augustkarlstedt.github.io/blog/2020/04/17/emulators-are-cool/#respond"><span class="dsq-postid" data-dsqidentifier="506 https://augustkarlstedt.github.io/?p=506">Leave a comment</span></a></span>
+		</li>
+					</ul></div>
+	<div class="entry-content">
+		
+<p>I started <s>working</s> hacking together a Game Boy emulator the other day and wanted to see how quickly I can get from absolute zero to <em>something</em>. I have achieved what I set out to do:</p>
+
+
+
+<figure class="wp-block-image size-large"><img src="https://augustkarlstedt.github.io/wp-content/uploads/2020/04/nintendo.gif" alt="" class="wp-image-507"><figcaption>classic</figcaption></figure><p>I took the absolute minimalist route and wanted something that wasn’t abstracted away like most (good) emulators are these days. Since my goal was understanding, abstraction wasn’t a high priority.</p>
+
+
+
+<figure class="wp-block-embed-twitter wp-block-embed is-type-rich is-provider-twitter"><div class="wp-block-embed__wrapper">
+<blockquote class="twitter-tweet" data-width="550" data-dnt="true"><p lang="en" dir="ltr">When trying to build something, abstraction helps. When trying to understand something, abstraction hurts.</p>— August Karlstedt (@AugustKarlstedt) <a href="https://twitter.com/AugustKarlstedt/status/1237854286207311872?ref_src=twsrc%5Etfw">March 11, 2020</a></blockquote><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div></figure><p>First, I wrote the parser for the ROMs to ensure I handled all of the instructions correctly in the bootrom. When that was looking good, I had to do a bit of refactoring now to actually execute those instructions and modify my state. After about a week or so of digging in, I had the basics working. For now, I’ll be putting this project on hold because other things have captured my attention. The code is available at https://github.com/AugustKarlstedt/gameboyemu but I warn: it isn’t pretty. 🙂</p>
+
+
+
+<p>I chose to use CMake for dependency management and I must say, THIS is the way to use C++ these days. Wonderful all around.</p>
+
+
+
+<h2>A higher-level discussion</h2>
+
+
+
+<p>Why do we write an emulator that gets compiled into machine code for a specific CPU? E.g. in my case I wrote my emulator in C++ and compiled it into x86 instructions using MVCC. What’s the point? Our CPUs already have instructions to do what these older CPUs did.</p>
+
+
+
+<blockquote class="wp-block-quote"><p>Why don’t we use LLVM to simply translate from e.g. Game Boy instruction set to e.g. x86 instruction set?</p></blockquote>
+
+
+
+<p>Luckily a smart dude already has worked on this: https://andrewkelley.me/post/jamulator.html</p>
+			</div>
+
+</article><article id="post-447" class="post post-447 type-post status-publish format-standard hentry category-c-2 category-game-development category-programming-2"><header class="entry-header"><div class="entry-date">
 			<span class="posted-on"><a href="https://augustkarlstedt.github.io/blog/2020/02/26/going-through-old-source-code/" rel="bookmark"><time class="entry-date published" datetime="2020-02-26T14:30:00-08:00">February 26, 2020</time><time class="updated" datetime="2020-02-22T09:42:24-08:00">February 22, 2020</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://augustkarlstedt.github.io/blog/author/augustk/">augustk</a></span>		</div>
 		
 		<h1 class="entry-title"><a href="https://augustkarlstedt.github.io/blog/2020/02/26/going-through-old-source-code/" rel="bookmark">Going Through Old Source Code</a></h1>	</header><div class="entry-meta">

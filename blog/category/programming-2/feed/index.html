@@ -15,28 +15,91 @@
 	<atom:link href="https://augustkarlstedt.github.io/blog/category/programming-2/feed/" rel="self" type="application/rss+xml" />
 	<link>https://augustkarlstedt.github.io/</link>
 	<description>Machine Learning Researcher, Software Engineer, Game Developer, and Consultant</description>
-	<lastBuildDate>Fri, 28 Feb 2020 12:55:41 +0000</lastBuildDate>
+	<lastBuildDate>Fri, 17 Apr 2020 23:00:16 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=5.3.2</generator>
+	<generator>https://wordpress.org/?v=5.4</generator>
 	<item>
+		<title>emulators are cool</title>
+		<link>https://augustkarlstedt.github.io/blog/2020/04/17/emulators-are-cool/</link>
+					<comments>https://augustkarlstedt.github.io/blog/2020/04/17/emulators-are-cool/#respond</comments>
+		
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+		<pubDate>Fri, 17 Apr 2020 23:00:14 +0000</pubDate>
+				<category><![CDATA[C++]]></category>
+		<category><![CDATA[Programming]]></category>
+		<guid isPermaLink="false">https://augustkarlstedt.github.io/?p=506</guid>
+
+					<description><![CDATA[<p>I started working hacking together a Game Boy emulator the other day and wanted to see how quickly I can get from absolute zero to something. I have achieved what I set out to do: I took the absolute minimalist route and wanted something that wasn&#8217;t abstracted away like most (good) emulators are these days. [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2020/04/17/emulators-are-cool/">emulators are cool</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>I started <s>working</s> hacking together a Game Boy emulator the other day and wanted to see how quickly I can get from absolute zero to <em>something</em>. I have achieved what I set out to do:</p>
+
+
+
+<figure class="wp-block-image size-large"><img src="https://augustkarlstedt.github.io/wp-content/uploads/2020/04/nintendo.gif" alt="" class="wp-image-507"/><figcaption>classic</figcaption></figure>
+
+
+
+<p>I took the absolute minimalist route and wanted something that wasn&#8217;t abstracted away like most (good) emulators are these days. Since my goal was understanding, abstraction wasn&#8217;t a high priority.</p>
+
+
+
+<figure class="wp-block-embed-twitter wp-block-embed is-type-rich is-provider-twitter"><div class="wp-block-embed__wrapper">
+<blockquote class="twitter-tweet" data-width="550" data-dnt="true"><p lang="en" dir="ltr">When trying to build something, abstraction helps. When trying to understand something, abstraction hurts.</p>&mdash; August Karlstedt (@AugustKarlstedt) <a href="https://twitter.com/AugustKarlstedt/status/1237854286207311872?ref_src=twsrc%5Etfw">March 11, 2020</a></blockquote><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div></figure>
+
+
+
+<p>First, I wrote the parser for the ROMs to ensure I handled all of the instructions correctly in the bootrom. When that was looking good, I had to do a bit of refactoring now to actually execute those instructions and modify my state. After about a week or so of digging in, I had the basics working. For now, I&#8217;ll be putting this project on hold because other things have captured my attention. The code is available at https://github.com/AugustKarlstedt/gameboyemu but I warn: it isn&#8217;t pretty. <img src="https://s.w.org/images/core/emoji/12.0.0-1/72x72/1f642.png" alt="🙂" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+
+
+
+<p>I chose to use CMake for dependency management and I must say, THIS is the way to use C++ these days. Wonderful all around.</p>
+
+
+
+<h2>A higher-level discussion</h2>
+
+
+
+<p>Why do we write an emulator that gets compiled into machine code for a specific CPU? E.g. in my case I wrote my emulator in C++ and compiled it into x86 instructions using MVCC. What&#8217;s the point? Our CPUs already have instructions to do what these older CPUs did.</p>
+
+
+
+<blockquote class="wp-block-quote"><p>Why don&#8217;t we use LLVM to simply translate from e.g. Game Boy instruction set to e.g. x86 instruction set?</p></blockquote>
+
+
+
+<p>Luckily a smart dude already has worked on this: https://andrewkelley.me/post/jamulator.html</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2020/04/17/emulators-are-cool/">emulators are cool</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://augustkarlstedt.github.io/blog/2020/04/17/emulators-are-cool/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
 		<title>Going Through Old Source Code</title>
 		<link>https://augustkarlstedt.github.io/blog/2020/02/26/going-through-old-source-code/</link>
-				<comments>https://augustkarlstedt.github.io/blog/2020/02/26/going-through-old-source-code/#respond</comments>
-				<pubDate>Wed, 26 Feb 2020 22:30:00 +0000</pubDate>
+					<comments>https://augustkarlstedt.github.io/blog/2020/02/26/going-through-old-source-code/#respond</comments>
+		
 		<dc:creator><![CDATA[augustk]]></dc:creator>
+		<pubDate>Wed, 26 Feb 2020 22:30:00 +0000</pubDate>
 				<category><![CDATA[C++]]></category>
 		<category><![CDATA[Game Development]]></category>
 		<category><![CDATA[Programming]]></category>
-
 		<guid isPermaLink="false">https://augustkarlstedt.github.io/?p=447</guid>
-				<description><![CDATA[<p>After backing up some files, I remembered that I wanted to go through some of the old programs and code that I&#8217;ve written. It would be a fun experiment: seeing how far I&#8217;ve come, what I actually spent my time doing as a teenager, and probably get a few laughs. Well, here are some of [&#8230;]</p>
+
+					<description><![CDATA[<p>After backing up some files, I remembered that I wanted to go through some of the old programs and code that I&#8217;ve written. It would be a fun experiment: seeing how far I&#8217;ve come, what I actually spent my time doing as a teenager, and probably get a few laughs. Well, here are some of [&#8230;]</p>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2020/02/26/going-through-old-source-code/">Going Through Old Source Code</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></description>
-								<content:encoded><![CDATA[<p>After backing up some files, I remembered that I wanted to go through some of the old programs and code that I&#8217;ve written. It would be a fun experiment: seeing how far I&#8217;ve come, what I actually spent my time doing as a teenager, and probably get a few laughs. Well, here are some of the interesting bits I found.</p>
+										<content:encoded><![CDATA[<p>After backing up some files, I remembered that I wanted to go through some of the old programs and code that I&#8217;ve written. It would be a fun experiment: seeing how far I&#8217;ve come, what I actually spent my time doing as a teenager, and probably get a few laughs. Well, here are some of the interesting bits I found.</p>
 <p>The first thing I came across was a C++ program I made for my friend Jose&#8217;s 17th birthday using SFML and Bass. It consisted of a single main.cpp file and most likely completed the night before.</p>
 
 
@@ -67,24 +130,28 @@
 <p>That&#8217;s all for now! More to come later.</p>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2020/02/26/going-through-old-source-code/">Going Through Old Source Code</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></content:encoded>
-							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2020/02/26/going-through-old-source-code/feed/</wfw:commentRss>
-		<slash:comments>0</slash:comments>
-							</item>
+					
+					<wfw:commentRss>https://augustkarlstedt.github.io/blog/2020/02/26/going-through-old-source-code/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
 		<item>
 		<title>Long Short-Term Memory Neural Networks and Guitar Tablature</title>
 		<link>https://augustkarlstedt.github.io/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/</link>
-				<comments>https://augustkarlstedt.github.io/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/#respond</comments>
-				<pubDate>Sun, 14 May 2017 02:54:02 +0000</pubDate>
+					<comments>https://augustkarlstedt.github.io/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/#respond</comments>
+		
 		<dc:creator><![CDATA[augustk]]></dc:creator>
+		<pubDate>Sun, 14 May 2017 02:54:02 +0000</pubDate>
 				<category><![CDATA[Computer Science]]></category>
 		<category><![CDATA[Machine Learning]]></category>
 		<category><![CDATA[Programming]]></category>
-
 		<guid isPermaLink="false">https://parad0xdev.wordpress.com/?p=285</guid>
-				<description><![CDATA[<p>Just messing around with LSTM neural nets, I had the idea to train it on some guitar tabs and see what happened. Data My dataset was a collection of guitar tabs for The Who&#8217;s album, Tommy. Some statsText total length: 277,155Distinct chars : 91Total sequences : 92,369 So yes, it&#8217;s a tiny little dataset. Training [&#8230;]</p>
+
+					<description><![CDATA[<p>Just messing around with LSTM neural nets, I had the idea to train it on some guitar tabs and see what happened. Data My dataset was a collection of guitar tabs for The Who&#8217;s album, Tommy. Some statsText total length: 277,155Distinct chars : 91Total sequences : 92,369 So yes, it&#8217;s a tiny little dataset. Training [&#8230;]</p>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/">Long Short-Term Memory Neural Networks and Guitar Tablature</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></description>
-								<content:encoded><![CDATA[
+										<content:encoded><![CDATA[
 <p>Just messing around with LSTM neural nets, I had the idea to train it on some guitar tabs and see what happened.</p>
 
 
@@ -126,15 +193,19 @@
 
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/">Long Short-Term Memory Neural Networks and Guitar Tablature</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></content:encoded>
-							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/feed/</wfw:commentRss>
-		<slash:comments>0</slash:comments>
-							</item>
+					
+					<wfw:commentRss>https://augustkarlstedt.github.io/blog/2017/05/13/long-short-term-memory-neural-networks-and-guitar-tablature/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
 		<item>
 		<title>MAT 140 &#038; PGP Encryption</title>
 		<link>https://augustkarlstedt.github.io/blog/2015/01/08/mat-140-pgp-encryption/</link>
-				<comments>https://augustkarlstedt.github.io/blog/2015/01/08/mat-140-pgp-encryption/#respond</comments>
-				<pubDate>Thu, 08 Jan 2015 11:29:57 +0000</pubDate>
+					<comments>https://augustkarlstedt.github.io/blog/2015/01/08/mat-140-pgp-encryption/#respond</comments>
+		
 		<dc:creator><![CDATA[augustk]]></dc:creator>
+		<pubDate>Thu, 08 Jan 2015 11:29:57 +0000</pubDate>
 				<category><![CDATA[Programming]]></category>
 		<category><![CDATA[School]]></category>
 		<category><![CDATA[depaul]]></category>
@@ -142,12 +213,12 @@
 		<category><![CDATA[mat]]></category>
 		<category><![CDATA[pgp]]></category>
 		<category><![CDATA[programming]]></category>
-
 		<guid isPermaLink="false">http://parad0xdev.wordpress.com/?p=74</guid>
-				<description><![CDATA[<p>I was in MAT 140 &#8211; Discrete Mathematics last quarter and I found that the fundamental theorem of arithmetic is super interesting. When the professor was speaking about it, I asked if it was the base for PGP encryption and it turned out it was. I had an inkling for this, because I previously heard [&#8230;]</p>
+
+					<description><![CDATA[<p>I was in MAT 140 &#8211; Discrete Mathematics last quarter and I found that the fundamental theorem of arithmetic is super interesting. When the professor was speaking about it, I asked if it was the base for PGP encryption and it turned out it was. I had an inkling for this, because I previously heard [&#8230;]</p>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2015/01/08/mat-140-pgp-encryption/">MAT 140 &#038; PGP Encryption</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></description>
-								<content:encoded><![CDATA[
+										<content:encoded><![CDATA[
 <p>I was in MAT 140 &#8211; Discrete Mathematics last quarter and I found that the <a href="http://en.wikipedia.org/wiki/Fundamental_theorem_of_arithmetic">fundamental theorem of arithmetic</a> is super interesting. When the professor was speaking about it, I asked if it was the base for <a href="http://en.wikipedia.org/wiki/Pretty_Good_Privacy">PGP encryption</a> and it turned out it was. I had an inkling for this, because I previously heard that PGP generates super large numbers and that&#8217;s where the security lies.</p>
 
 
@@ -163,15 +234,19 @@
 <p>Anyone know some places to learn more?</p>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2015/01/08/mat-140-pgp-encryption/">MAT 140 &#038; PGP Encryption</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></content:encoded>
-							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2015/01/08/mat-140-pgp-encryption/feed/</wfw:commentRss>
-		<slash:comments>0</slash:comments>
-							</item>
+					
+					<wfw:commentRss>https://augustkarlstedt.github.io/blog/2015/01/08/mat-140-pgp-encryption/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
 		<item>
 		<title>New Classes &#8211; Winter Quarter</title>
 		<link>https://augustkarlstedt.github.io/blog/2015/01/08/new-classes-winter-quarter/</link>
-				<comments>https://augustkarlstedt.github.io/blog/2015/01/08/new-classes-winter-quarter/#respond</comments>
-				<pubDate>Thu, 08 Jan 2015 07:45:11 +0000</pubDate>
+					<comments>https://augustkarlstedt.github.io/blog/2015/01/08/new-classes-winter-quarter/#respond</comments>
+		
 		<dc:creator><![CDATA[augustk]]></dc:creator>
+		<pubDate>Thu, 08 Jan 2015 07:45:11 +0000</pubDate>
 				<category><![CDATA[Game Development]]></category>
 		<category><![CDATA[Programming]]></category>
 		<category><![CDATA[School]]></category>
@@ -182,12 +257,12 @@
 		<category><![CDATA[quarter]]></category>
 		<category><![CDATA[soc]]></category>
 		<category><![CDATA[winter]]></category>
-
 		<guid isPermaLink="false">http://parad0xdev.wordpress.com/?p=69</guid>
-				<description><![CDATA[<p>Alright so I&#8217;m finally going to discuss the new courses I&#8217;m taking now. CSC 395 &#8211; Research Colloquium &#8211; I&#8217;m pretty excited about this course. It&#8217;s completely online and every week there will be a lecture by a guest speaker on new work in areas of computing. Hopefully there are some talks relevant to my [&#8230;]</p>
+
+					<description><![CDATA[<p>Alright so I&#8217;m finally going to discuss the new courses I&#8217;m taking now. CSC 395 &#8211; Research Colloquium &#8211; I&#8217;m pretty excited about this course. It&#8217;s completely online and every week there will be a lecture by a guest speaker on new work in areas of computing. Hopefully there are some talks relevant to my [&#8230;]</p>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2015/01/08/new-classes-winter-quarter/">New Classes &#8211; Winter Quarter</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></description>
-								<content:encoded><![CDATA[
+										<content:encoded><![CDATA[
 <p>Alright so I&#8217;m finally going to discuss the new courses I&#8217;m taking now.</p>
 
 
@@ -215,15 +290,19 @@
 <p>Anyhow, I wasn&#8217;t going to take these classes and considered switching majors. I&#8217;ll explain why in the next post.</p>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2015/01/08/new-classes-winter-quarter/">New Classes &#8211; Winter Quarter</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></content:encoded>
-							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2015/01/08/new-classes-winter-quarter/feed/</wfw:commentRss>
-		<slash:comments>0</slash:comments>
-							</item>
+					
+					<wfw:commentRss>https://augustkarlstedt.github.io/blog/2015/01/08/new-classes-winter-quarter/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
 		<item>
 		<title>GPH 321 &#8211; Completed</title>
 		<link>https://augustkarlstedt.github.io/blog/2015/01/06/gph-321-completed/</link>
-				<comments>https://augustkarlstedt.github.io/blog/2015/01/06/gph-321-completed/#respond</comments>
-				<pubDate>Wed, 07 Jan 2015 05:16:13 +0000</pubDate>
+					<comments>https://augustkarlstedt.github.io/blog/2015/01/06/gph-321-completed/#respond</comments>
+		
 		<dc:creator><![CDATA[augustk]]></dc:creator>
+		<pubDate>Wed, 07 Jan 2015 05:16:13 +0000</pubDate>
 				<category><![CDATA[C++]]></category>
 		<category><![CDATA[Game Development]]></category>
 		<category><![CDATA[Programming]]></category>
@@ -232,12 +311,12 @@
 		<category><![CDATA[code]]></category>
 		<category><![CDATA[depaul]]></category>
 		<category><![CDATA[GPH]]></category>
-
 		<guid isPermaLink="false">http://parad0xdev.wordpress.com/?p=58</guid>
-				<description><![CDATA[<p>In this class we created a ray tracer from the ground up. I by &#8220;we&#8221; I mean our professor wrote most of the code and we had to fill in certain class functions. It was pretty terrible, but overall the end result was good. Oh and we had to zip our source code and send [&#8230;]</p>
+
+					<description><![CDATA[<p>In this class we created a ray tracer from the ground up. I by &#8220;we&#8221; I mean our professor wrote most of the code and we had to fill in certain class functions. It was pretty terrible, but overall the end result was good. Oh and we had to zip our source code and send [&#8230;]</p>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2015/01/06/gph-321-completed/">GPH 321 &#8211; Completed</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></description>
-								<content:encoded><![CDATA[
+										<content:encoded><![CDATA[
 <p>In this class we created a ray tracer from the ground up. I by &#8220;we&#8221; I mean our professor wrote most of the code and we had to fill in certain class functions. It was pretty terrible, but overall the end result was good. Oh and we had to zip our source code and send it in, instead of simply using something like GitHub or Bitbucket. The midterm and final SUCKED, simply because it&#8217;s 2015 (well, it was 2014) and written exams for programming finals are absurd. Writing code on paper completely lacks the feel of typing it out using an IDE. Plus, come on, who doesn&#8217;t use IntelliSense, Resharper, Visual Assist X, or some kind of code-completion tool? A fool! And that&#8217;s exactly what we are when we write code by hand.</p>
 
 
@@ -309,15 +388,19 @@
 <p>Oh well, it&#8217;s over and done with!</p>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2015/01/06/gph-321-completed/">GPH 321 &#8211; Completed</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></content:encoded>
-							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2015/01/06/gph-321-completed/feed/</wfw:commentRss>
-		<slash:comments>0</slash:comments>
-							</item>
+					
+					<wfw:commentRss>https://augustkarlstedt.github.io/blog/2015/01/06/gph-321-completed/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
 		<item>
 		<title>Updates!</title>
 		<link>https://augustkarlstedt.github.io/blog/2014/10/13/updates/</link>
-				<comments>https://augustkarlstedt.github.io/blog/2014/10/13/updates/#respond</comments>
-				<pubDate>Mon, 13 Oct 2014 18:12:55 +0000</pubDate>
+					<comments>https://augustkarlstedt.github.io/blog/2014/10/13/updates/#respond</comments>
+		
 		<dc:creator><![CDATA[augustk]]></dc:creator>
+		<pubDate>Mon, 13 Oct 2014 18:12:55 +0000</pubDate>
 				<category><![CDATA[Android]]></category>
 		<category><![CDATA[C++]]></category>
 		<category><![CDATA[Game Development]]></category>
@@ -330,12 +413,12 @@
 		<category><![CDATA[CSC]]></category>
 		<category><![CDATA[GPH]]></category>
 		<category><![CDATA[java]]></category>
-
 		<guid isPermaLink="false">http://parad0xdev.wordpress.com/?p=47</guid>
-				<description><![CDATA[<p>Obviously I haven&#8217;t posted anything in a while.&#160;But it&#8217;s time for a change &#8211; and change is good! I am now currently in three courses that are at least semi-relevant to this blog. ANI 230 &#8211; 3D Design &#38; Modeling CSC 298 &#8211; Internship GPH 321 &#8211; Computer Graphics Development I In ANI 230, we&#8217;re [&#8230;]</p>
+
+					<description><![CDATA[<p>Obviously I haven&#8217;t posted anything in a while.&#160;But it&#8217;s time for a change &#8211; and change is good! I am now currently in three courses that are at least semi-relevant to this blog. ANI 230 &#8211; 3D Design &#38; Modeling CSC 298 &#8211; Internship GPH 321 &#8211; Computer Graphics Development I In ANI 230, we&#8217;re [&#8230;]</p>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/10/13/updates/">Updates!</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></description>
-								<content:encoded><![CDATA[
+										<content:encoded><![CDATA[
 <p>Obviously I haven&#8217;t posted anything in a while.&nbsp;But it&#8217;s time for a change &#8211; and change is good!</p>
 
 
@@ -367,15 +450,19 @@
 <p>Oh and I read a few Android books, great stuff. Loving Android dev.</p>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/10/13/updates/">Updates!</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></content:encoded>
-							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/10/13/updates/feed/</wfw:commentRss>
-		<slash:comments>0</slash:comments>
-							</item>
+					
+					<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/10/13/updates/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
 		<item>
 		<title>Finished with GAM 374</title>
 		<link>https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/</link>
-				<comments>https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/#respond</comments>
-				<pubDate>Wed, 25 Jun 2014 04:17:37 +0000</pubDate>
+					<comments>https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/#respond</comments>
+		
 		<dc:creator><![CDATA[augustk]]></dc:creator>
+		<pubDate>Wed, 25 Jun 2014 04:17:37 +0000</pubDate>
 				<category><![CDATA[Android]]></category>
 		<category><![CDATA[C++]]></category>
 		<category><![CDATA[Game Development]]></category>
@@ -393,12 +480,12 @@
 		<category><![CDATA[programming]]></category>
 		<category><![CDATA[school]]></category>
 		<category><![CDATA[work]]></category>
-
 		<guid isPermaLink="false">http://parad0xdev.wordpress.com/?p=35</guid>
-				<description><![CDATA[<p>Well, I chose to turn in exactly what you see in that last blog post. Everything that was required for the assignment was there and it earned me a 95%. I am now focusing my efforts into work with a near-full-time schedule of 38 hours a week. I will be posting stuff about happenings relating [&#8230;]</p>
+
+					<description><![CDATA[<p>Well, I chose to turn in exactly what you see in that last blog post. Everything that was required for the assignment was there and it earned me a 95%. I am now focusing my efforts into work with a near-full-time schedule of 38 hours a week. I will be posting stuff about happenings relating [&#8230;]</p>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/">Finished with GAM 374</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></description>
-								<content:encoded><![CDATA[
+										<content:encoded><![CDATA[
 <p>Well, I chose to turn in exactly what you see in that last blog post. Everything that was required for the assignment was there and it earned me a 95%.</p>
 
 
@@ -480,15 +567,19 @@ int main()
 <p>That&#8217;s all for now! Thanks for reading.</p>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/">Finished with GAM 374</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></content:encoded>
-							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/feed/</wfw:commentRss>
-		<slash:comments>0</slash:comments>
-							</item>
+					
+					<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/06/24/finished-with-gam-374/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
 		<item>
 		<title>Walls and Collision</title>
 		<link>https://augustkarlstedt.github.io/blog/2014/06/12/walls-and-collision/</link>
-				<comments>https://augustkarlstedt.github.io/blog/2014/06/12/walls-and-collision/#respond</comments>
-				<pubDate>Fri, 13 Jun 2014 04:07:06 +0000</pubDate>
+					<comments>https://augustkarlstedt.github.io/blog/2014/06/12/walls-and-collision/#respond</comments>
+		
 		<dc:creator><![CDATA[augustk]]></dc:creator>
+		<pubDate>Fri, 13 Jun 2014 04:07:06 +0000</pubDate>
 				<category><![CDATA[Game Development]]></category>
 		<category><![CDATA[Programming]]></category>
 		<category><![CDATA[School]]></category>
@@ -499,12 +590,12 @@ int main()
 		<category><![CDATA[gam]]></category>
 		<category><![CDATA[physics]]></category>
 		<category><![CDATA[ugly]]></category>
-
 		<guid isPermaLink="false">http://parad0xdev.wordpress.com/?p=31</guid>
-				<description><![CDATA[<p>Azul doesn&#8217;t support&#160;real collision, so I have to check the position of stuff. It kinda sucks. Hopefully there will be improvements on the physics components, along with collision in Azul. It&#8217;s coming together, but the code isn&#8217;t pretty.</p>
+
+					<description><![CDATA[<p>Azul doesn&#8217;t support&#160;real collision, so I have to check the position of stuff. It kinda sucks. Hopefully there will be improvements on the physics components, along with collision in Azul. It&#8217;s coming together, but the code isn&#8217;t pretty.</p>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/06/12/walls-and-collision/">Walls and Collision</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></description>
-								<content:encoded><![CDATA[
+										<content:encoded><![CDATA[
 <p>Azul doesn&#8217;t support&nbsp;<em>real</em> collision, so I have to check the position of stuff. It kinda sucks. Hopefully there will be improvements on the physics components, along with collision in Azul.</p>
 
 
@@ -516,15 +607,19 @@ int main()
 <figure class="wp-block-image size-large"><img src="https://augustkarlstedt.github.io/wp-content/uploads/2014/06/2014-06-12-23_05_02-final-project-tanks_.png" alt="DePaul Azul Engine - Tanks!" class="wp-image-32" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2014/06/2014-06-12-23_05_02-final-project-tanks_.png 816w, https://augustkarlstedt.github.io/wp-content/uploads/2014/06/2014-06-12-23_05_02-final-project-tanks_-300x235.png 300w, https://augustkarlstedt.github.io/wp-content/uploads/2014/06/2014-06-12-23_05_02-final-project-tanks_-768x601.png 768w" sizes="(max-width: 816px) 100vw, 816px" /><figcaption>DePaul Azul Engine &#8211; Tanks!</figcaption></figure>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/06/12/walls-and-collision/">Walls and Collision</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></content:encoded>
-							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/06/12/walls-and-collision/feed/</wfw:commentRss>
-		<slash:comments>0</slash:comments>
-							</item>
+					
+					<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/06/12/walls-and-collision/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
 		<item>
 		<title>More Work</title>
 		<link>https://augustkarlstedt.github.io/blog/2014/06/12/more-work/</link>
-				<comments>https://augustkarlstedt.github.io/blog/2014/06/12/more-work/#respond</comments>
-				<pubDate>Fri, 13 Jun 2014 02:12:02 +0000</pubDate>
+					<comments>https://augustkarlstedt.github.io/blog/2014/06/12/more-work/#respond</comments>
+		
 		<dc:creator><![CDATA[augustk]]></dc:creator>
+		<pubDate>Fri, 13 Jun 2014 02:12:02 +0000</pubDate>
 				<category><![CDATA[Game Development]]></category>
 		<category><![CDATA[Programming]]></category>
 		<category><![CDATA[School]]></category>
@@ -535,12 +630,12 @@ int main()
 		<category><![CDATA[player]]></category>
 		<category><![CDATA[tanks]]></category>
 		<category><![CDATA[two]]></category>
-
 		<guid isPermaLink="false">http://parad0xdev.wordpress.com/2014/06/12/more-work/</guid>
-				<description><![CDATA[<p>Instead of cloning Tanks! I&#8217;m actually going to create a two player tank battle game. It won&#8217;t be the best, because of time constraints, but it will have one player control a tank with the keyboard (WASD + Arrow keys to rotate turret) and the other player using a controller.</p>
+
+					<description><![CDATA[<p>Instead of cloning Tanks! I&#8217;m actually going to create a two player tank battle game. It won&#8217;t be the best, because of time constraints, but it will have one player control a tank with the keyboard (WASD + Arrow keys to rotate turret) and the other player using a controller.</p>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/06/12/more-work/">More Work</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></description>
-								<content:encoded><![CDATA[
+										<content:encoded><![CDATA[
 <p>Instead of cloning Tanks! I&#8217;m actually going to create a two player tank battle game. It won&#8217;t be the best, because of time constraints, but it will have one player control a tank with the keyboard (WASD + Arrow keys to rotate turret) and the other player using a controller.</p>
 
 
@@ -548,15 +643,19 @@ int main()
 <figure class="wp-block-image size-large"><img src="https://augustkarlstedt.github.io/wp-content/uploads/2014/06/2014-06-12-21_10_15-clipboard.png" alt="DePaul Azul Engine - Tanks!" class="wp-image-28" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2014/06/2014-06-12-21_10_15-clipboard.png 816w, https://augustkarlstedt.github.io/wp-content/uploads/2014/06/2014-06-12-21_10_15-clipboard-300x235.png 300w, https://augustkarlstedt.github.io/wp-content/uploads/2014/06/2014-06-12-21_10_15-clipboard-768x601.png 768w" sizes="(max-width: 816px) 100vw, 816px" /><figcaption>DePaul Azul Engine &#8211; Tanks!</figcaption></figure>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/06/12/more-work/">More Work</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></content:encoded>
-							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/06/12/more-work/feed/</wfw:commentRss>
-		<slash:comments>0</slash:comments>
-							</item>
+					
+					<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/06/12/more-work/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
 		<item>
 		<title>Bullets!</title>
 		<link>https://augustkarlstedt.github.io/blog/2014/06/01/bullets/</link>
-				<comments>https://augustkarlstedt.github.io/blog/2014/06/01/bullets/#respond</comments>
-				<pubDate>Sun, 01 Jun 2014 23:42:39 +0000</pubDate>
+					<comments>https://augustkarlstedt.github.io/blog/2014/06/01/bullets/#respond</comments>
+		
 		<dc:creator><![CDATA[augustk]]></dc:creator>
+		<pubDate>Sun, 01 Jun 2014 23:42:39 +0000</pubDate>
 				<category><![CDATA[Game Development]]></category>
 		<category><![CDATA[Programming]]></category>
 		<category><![CDATA[School]]></category>
@@ -567,12 +666,12 @@ int main()
 		<category><![CDATA[depaul]]></category>
 		<category><![CDATA[gam]]></category>
 		<category><![CDATA[programming]]></category>
-
 		<guid isPermaLink="false">http://parad0xdev.wordpress.com/2014/06/01/bullets/</guid>
-				<description><![CDATA[<p>Added bullets. Pretty simple really.</p>
+
+					<description><![CDATA[<p>Added bullets. Pretty simple really.</p>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/06/01/bullets/">Bullets!</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></description>
-								<content:encoded><![CDATA[
+										<content:encoded><![CDATA[
 <figure class="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
 <iframe class='youtube-player' type='text/html' width='730' height='411' src='https://www.youtube.com/embed/QpQPwHxBJFw?version=3&#038;rel=1&#038;fs=1&#038;autohide=2&#038;showsearch=0&#038;showinfo=1&#038;iv_load_policy=1&#038;wmode=transparent' allowfullscreen='true' style='border:0;'></iframe>
 </div></figure>
@@ -582,15 +681,19 @@ int main()
 <p>Added bullets. Pretty simple really.</p>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/06/01/bullets/">Bullets!</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></content:encoded>
-							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/06/01/bullets/feed/</wfw:commentRss>
-		<slash:comments>0</slash:comments>
-							</item>
+					
+					<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/06/01/bullets/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
 		<item>
 		<title>Player Tank!</title>
 		<link>https://augustkarlstedt.github.io/blog/2014/05/23/player-tank/</link>
-				<comments>https://augustkarlstedt.github.io/blog/2014/05/23/player-tank/#respond</comments>
-				<pubDate>Sat, 24 May 2014 04:13:39 +0000</pubDate>
+					<comments>https://augustkarlstedt.github.io/blog/2014/05/23/player-tank/#respond</comments>
+		
 		<dc:creator><![CDATA[augustk]]></dc:creator>
+		<pubDate>Sat, 24 May 2014 04:13:39 +0000</pubDate>
 				<category><![CDATA[Game Development]]></category>
 		<category><![CDATA[Programming]]></category>
 		<category><![CDATA[School]]></category>
@@ -606,12 +709,12 @@ int main()
 		<category><![CDATA[player]]></category>
 		<category><![CDATA[tanks]]></category>
 		<category><![CDATA[unity]]></category>
-
 		<guid isPermaLink="false">http://parad0xdev.wordpress.com/?p=12</guid>
-				<description><![CDATA[<p>I&#8217;ve finally done some work on this and got the player tank working. Azul doesn&#8217;t handle mouse input very well (I&#8217;m spoiled by Unity), so it&#8217;s all keyboard controls. WASD controls the tank movement LEFT/RIGHT control the turret I&#8217;m thinking the up arrow will fire a shell and the down arrow will lay a landmine. [&#8230;]</p>
+
+					<description><![CDATA[<p>I&#8217;ve finally done some work on this and got the player tank working. Azul doesn&#8217;t handle mouse input very well (I&#8217;m spoiled by Unity), so it&#8217;s all keyboard controls. WASD controls the tank movement LEFT/RIGHT control the turret I&#8217;m thinking the up arrow will fire a shell and the down arrow will lay a landmine. [&#8230;]</p>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/05/23/player-tank/">Player Tank!</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></description>
-								<content:encoded><![CDATA[
+										<content:encoded><![CDATA[
 <p>I&#8217;ve finally done some work on this and got the player tank working. Azul doesn&#8217;t handle mouse input very well (I&#8217;m spoiled by Unity), so it&#8217;s all keyboard controls.</p>
 
 
@@ -635,15 +738,19 @@ int main()
 <p>Screenshot taken with <a href="http://getgreenshot.org/">Greenshot</a>.</p>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/05/23/player-tank/">Player Tank!</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></content:encoded>
-							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/05/23/player-tank/feed/</wfw:commentRss>
-		<slash:comments>0</slash:comments>
-							</item>
+					
+					<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/05/23/player-tank/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
 		<item>
 		<title>First Day of Final Project</title>
 		<link>https://augustkarlstedt.github.io/blog/2014/05/18/first-day-of-final-project/</link>
-				<comments>https://augustkarlstedt.github.io/blog/2014/05/18/first-day-of-final-project/#respond</comments>
-				<pubDate>Sun, 18 May 2014 16:37:55 +0000</pubDate>
+					<comments>https://augustkarlstedt.github.io/blog/2014/05/18/first-day-of-final-project/#respond</comments>
+		
 		<dc:creator><![CDATA[augustk]]></dc:creator>
+		<pubDate>Sun, 18 May 2014 16:37:55 +0000</pubDate>
 				<category><![CDATA[Game Development]]></category>
 		<category><![CDATA[Programming]]></category>
 		<category><![CDATA[School]]></category>
@@ -655,12 +762,12 @@ int main()
 		<category><![CDATA[game]]></category>
 		<category><![CDATA[patterns]]></category>
 		<category><![CDATA[programming]]></category>
-
 		<guid isPermaLink="false">http://parad0xdev.wordpress.com/?p=3</guid>
-				<description><![CDATA[<p>Today marks the first day I&#8217;ve started working on the final project for my&#160;GAM 374: Fundamentals of Game Programming I class. I&#8217;ve decided to recreate Tank&#160;&#8211; well actually, the Wii Play version called &#8220;Tanks!&#8220;. We&#8217;re using the DePaul game engine called Azul &#8211; which I think could definitely use an engine overhaul since it&#8217;s based [&#8230;]</p>
+
+					<description><![CDATA[<p>Today marks the first day I&#8217;ve started working on the final project for my&#160;GAM 374: Fundamentals of Game Programming I class. I&#8217;ve decided to recreate Tank&#160;&#8211; well actually, the Wii Play version called &#8220;Tanks!&#8220;. We&#8217;re using the DePaul game engine called Azul &#8211; which I think could definitely use an engine overhaul since it&#8217;s based [&#8230;]</p>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/05/18/first-day-of-final-project/">First Day of Final Project</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></description>
-								<content:encoded><![CDATA[
+										<content:encoded><![CDATA[
 <p>Today marks the first day I&#8217;ve started working on the final project for my&nbsp;GAM 374: Fundamentals of Game Programming I class. I&#8217;ve decided to recreate <a href="http://en.wikipedia.org/wiki/Tank_(arcade_game)">Tank</a>&nbsp;&#8211; well actually, the Wii Play version called &#8220;<a href="http://en.wikipedia.org/wiki/Wii_Play#Tanks.21">Tanks!</a>&#8220;.</p>
 
 
@@ -672,8 +779,11 @@ int main()
 <p><a href="http://gameprogrammingpatterns.com/">Click to learn about Game Programming Patterns</a></p>
 <p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2014/05/18/first-day-of-final-project/">First Day of Final Project</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
 ]]></content:encoded>
-							<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/05/18/first-day-of-final-project/feed/</wfw:commentRss>
-		<slash:comments>0</slash:comments>
-							</item>
+					
+					<wfw:commentRss>https://augustkarlstedt.github.io/blog/2014/05/18/first-day-of-final-project/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
 	</channel>
 </rss>
