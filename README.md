@@ -4,3 +4,4 @@ I've chosen to locally run a docker container with WordPress and MySQL to do my 
 You get the best of both worlds: the powerful dynamic tooling behind WordPress + the speed, reliability, and security of a static site.
 
 ## WIN!
+https://augustkarlstedt.github.io/
