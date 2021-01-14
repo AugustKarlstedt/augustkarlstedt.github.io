@@ -15,14 +15,59 @@
 	<atom:link href="https://augustkarlstedt.github.io/blog/category/web/feed/" rel="self" type="application/rss+xml" />
 	<link>https://augustkarlstedt.github.io/</link>
 	<description>Machine Learning Researcher, Software Engineer, Game Developer, and Consultant</description>
-	<lastBuildDate>Wed, 26 Sep 2018 21:27:17 +0000</lastBuildDate>
+	<lastBuildDate>Thu, 14 Jan 2021 07:11:44 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=5.4.1</generator>
+	<generator>https://wordpress.org/?v=5.6</generator>
 	<item>
+		<title>side tabs are the future</title>
+		<link>https://augustkarlstedt.github.io/blog/2021/01/10/side-tabs-are-the-future/</link>
+					<comments>https://augustkarlstedt.github.io/blog/2021/01/10/side-tabs-are-the-future/#respond</comments>
+		
+		<dc:creator><![CDATA[augustk]]></dc:creator>
+		<pubDate>Sun, 10 Jan 2021 22:52:35 +0000</pubDate>
+				<category><![CDATA[Web]]></category>
+		<guid isPermaLink="false">https://augustkarlstedt.github.io/?p=534</guid>
+
+					<description><![CDATA[<p>Our screens have gotten wider. Our browsers have also gotten wider. But our tabs remain a thin, barely visible line drawn across the top that become two letters when we have more than 10 tabs open? This is 2021. You need side tabs. Download and install https://addons.mozilla.org/en-US/firefox/addon/tree-style-tab/ Enable userChrome.css https://winaero.com/enable-loading-userchrome-css-usercontent-css-firefox/ Open about:profiles and click Open [&#8230;]</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2021/01/10/side-tabs-are-the-future/">side tabs are the future</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></description>
+										<content:encoded><![CDATA[
+<p>Our screens have gotten wider. Our browsers have also gotten wider. But our tabs remain a thin, barely visible line drawn across the top that become two letters when we have more than 10 tabs open? This is 2021. You need side tabs.</p>
+
+
+
+<figure class="wp-block-image size-large"><a href="https://augustkarlstedt.github.io/wp-content/uploads/2021/01/Screenshot-2021-01-09-192517.png"><img loading="lazy" width="1024" height="576" src="https://augustkarlstedt.github.io/wp-content/uploads/2021/01/Screenshot-2021-01-09-192517-1024x576.png" alt="" class="wp-image-535" srcset="https://augustkarlstedt.github.io/wp-content/uploads/2021/01/Screenshot-2021-01-09-192517-1024x576.png 1024w, https://augustkarlstedt.github.io/wp-content/uploads/2021/01/Screenshot-2021-01-09-192517-300x169.png 300w, https://augustkarlstedt.github.io/wp-content/uploads/2021/01/Screenshot-2021-01-09-192517-768x432.png 768w, https://augustkarlstedt.github.io/wp-content/uploads/2021/01/Screenshot-2021-01-09-192517-1536x864.png 1536w, https://augustkarlstedt.github.io/wp-content/uploads/2021/01/Screenshot-2021-01-09-192517-1200x675.png 1200w, https://augustkarlstedt.github.io/wp-content/uploads/2021/01/Screenshot-2021-01-09-192517.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></a><figcaption>my firefox setup</figcaption></figure>
+
+
+
+<ol><li>Download and install <a href="https://addons.mozilla.org/en-US/firefox/addon/tree-style-tab/" target="_blank" rel="noreferrer noopener">https://addons.mozilla.org/en-US/firefox/addon/tree-style-tab/</a> </li><li>Enable <code>userChrome.css</code> <a href="https://winaero.com/enable-loading-userchrome-css-usercontent-css-firefox/" target="_blank" rel="noreferrer noopener">https://winaero.com/enable-loading-userchrome-css-usercontent-css-firefox/</a></li><li>Open <code>about:profiles</code> and click <code>Open Folder</code> next to the Root Directory.</li><li>Create a folder named <code>chrome</code></li><li>Create a file named <code>userChrome.css</code> inside that folder.</li><li>Paste the following into it and save</li></ol>
+
+
+
+<pre class="wp-block-code"><code>.tabbrowser-tab:not(&#91;selected]) {
+    display: none !important;
+}
+
+.tabbrowser-tab&#91;visuallyselected="true"] {
+	max-width: none !important;
+}</code></pre>
+
+
+
+<p>Enjoy!</p>
+<p>The post <a rel="nofollow" href="https://augustkarlstedt.github.io/blog/2021/01/10/side-tabs-are-the-future/">side tabs are the future</a> appeared first on <a rel="nofollow" href="https://augustkarlstedt.github.io/">August Karlstedt</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://augustkarlstedt.github.io/blog/2021/01/10/side-tabs-are-the-future/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
 		<title>New Blog Stuff!</title>
 		<link>https://augustkarlstedt.github.io/blog/2018/09/26/new-blog-stuff/</link>
 					<comments>https://augustkarlstedt.github.io/blog/2018/09/26/new-blog-stuff/#respond</comments>
@@ -110,7 +155,7 @@ docker-entrypoint.sh apache2-foreground</pre>
 
 
 
-<p>With that, my local WordPress environment was set up. This admittedly took a few hours across multiple days to get configured just right. I then exported my WordPress.com content and imported it over here. Finally, when I want to update my site here, I simply navigate to the WP Static Site Generator plugin and click export. Voilà!</p>
+<p>With that, my local WordPress environment was set up. This admittedly took a few hours across multiple days to get configured just right. I then exported my WordPress.com content and imported it over here. Finally, when I want to update my site here, I simply navigate to the WP Static Site Generator plugin and click export. VoilΓö£├í!</p>
 
 
 
